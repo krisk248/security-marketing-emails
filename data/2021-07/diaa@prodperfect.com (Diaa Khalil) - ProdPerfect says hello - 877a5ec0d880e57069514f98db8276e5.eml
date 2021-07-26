@@ -1,0 +1,146 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp835813wrr; Wed, 14 Jul
+ 2021 09:16:57 -0700 (PDT)
+X-Received: by 2002:a05:6402:1acf:: with SMTP id
+ ba15mr14421142edb.167.1626279417680; Wed, 14 Jul 2021 09:16:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626279417; cv=none; d=google.com;
+ s=arc-20160816;
+ b=R4psd63XUQQATgVt05FRN8TQDIFLoYVQUjuAneodhmdgCxxUO9LYPgXPo57ZcSkDHO
+ Ch5OO0gh38fg0/AAtcbkcxh/mrMAZLFpUhZTo3mXo6q0jcH9btAuCMv0AO4UVPQZdCqm
+ j0eDlJwCmqsPcHoy3tGLBC4RDSvDzYeKRkGEVrFJDweg6rBxo3tsD98PGLIgZxGH0Ucs
+ tND0yWKBGzNltCSPWxxVAct+q+eiW1NjJoeg4rI6UXYnI57ge5/hZwGzap/lWcEtv9rp
+ 1Xr0+aQlcK/cOlRCu1jpTlxVrxaKyd3hV4wHWgraLCiUqswHD1EuBmC86p3m19qQIe5U +t2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:mime-version:from:dkim-signature;
+ bh=zLzAVRoQJexJ/3luNan9SbKsrmgPzKAkyDkiav7j1/Y=;
+ b=l/7uHfnHtvORE897iL2u8co7G8KUExovHg/l97TEQmAXTnpTaiGvfwZcWEwBP+5EOX
+ D96P+mwnIawXI6R2Ty05SDGKUcYto+FMzOspMTZtFaPjhOjYWLt4oxsV4lvOpgmA1CZu
+ 8Ko2EG67X4MwTkxuJThJTHwltQVToY5Nr0hxgUtCqmwvk/FPDrPlrouCFE6zSr8uwFO2
+ qTvW0TZ65RaWzU2OVQiXrykIDG1w3rL10+a9rT0R+of42Bw9rwuav77q0mS+J4cTWgvw
+ OPmTyeFcsox6J8AzDoD3xB2DbQop01Hh1zVwFM35ngl/mxA5au4jrfA/1ptpnwls7ECR 1d2w==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@prodperfect.com header.s=google header.b=Mah+DXqW; spf=pass
+ (google.com: domain of diaa@prodperfect.com designates 209.85.220.41 as
+ permitted sender) smtp.mailfrom=diaa@prodperfect.com; dmarc=pass
+ (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=prodperfect.com
+Return-Path: <diaa@prodperfect.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ c11sor2807675edt.21.2021.07.14.09.16.57 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Wed, 14 Jul 2021 09:16:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of diaa@prodperfect.com designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass header.i=@prodperfect.com
+ header.s=google header.b=Mah+DXqW; spf=pass (google.com: domain of
+ diaa@prodperfect.com designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=diaa@prodperfect.com; dmarc=pass (p=QUARANTINE sp=QUARANTINE
+ dis=NONE) header.from=prodperfect.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=prodperfect.com;
+ s=google; h=from:mime-version:date:message-id:subject:to;
+ bh=zLzAVRoQJexJ/3luNan9SbKsrmgPzKAkyDkiav7j1/Y=;
+ b=Mah+DXqW9dTwGHTFWKA1vt9imKAmIu2Px+ASlg7I53BqV77SJcAzeckbwN62pmAUX3
+ HSjERWaMGD92Ih9QUxCAm+X+swA//KG6rEqbfY7UDaQl0LIuM4M2LvcNXPZjB7duOXE0
+ FzKzqQLz59LZtwaDEv9XTXSYyUWrwSmjJMhY9LBunpbfNw5O+ZRdmPlmHrDX2w7riVGG
+ 2i4dfbYaNDtX1Iz6GWngBf8gaNT7cD/rwT+6slm0emX7MhrWMGpXBq6HgF+pTo8NiQRP
+ 4ypB9LzyPJZBH3CG1pZ1JzKZulnJbco+bJIYqXiATWsKLQ5nfoEAr70dB0XVym8HT9je +9Hw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:mime-version:date:message-id:subject:to;
+ bh=zLzAVRoQJexJ/3luNan9SbKsrmgPzKAkyDkiav7j1/Y=;
+ b=me05OSUxYxU1/8an1el4hOl9FsNJq2R99eVQABs1gFHpZSDV6b/8IyTYSeDC9T42hv
+ 0PgosFeWICLhBqK4AagkzG5fbsP06gBnN1RJ88RxTwUPRrKuaOsX6SlMytmfzHWXvSQ0
+ VBfcA71pBzZsGZ/yaqgYHi78ajmAY/CdJ2JGZYZNCHwAuOXjoct1GCAnk+cKDkLMQ1yx
+ zJwtQBH7RJely1FTGKjz+oqX61TL5QW9G6gOlfazEIuGUaeI2QGq85O1VQXIHSnUFPE1
+ BjIuLSElM/x46oE6DmIhHoUjy8YWw2xvre/piuLZpVvBtL96rpmGDxkPZt/UbnRCL6yG QJ7g==
+X-Gm-Message-State: AOAM533cU1j/OtL+hnk9VZ9CgwFsODoYBDRNr0dsle2jlrMkVHbBx6dj
+ nnhL6SK660R6FXVyofMTXQPQb6X+DszvV3sTA2qS6twR71c=
+X-Google-Smtp-Source: ABdhPJzh24lp/A5tTQg+gfoCa4tIKiF72OlLhFBdbqfSiwBZ3vcztz8VrzmbpfK+KbEuAqwYIILRynJFibR7TYdcC7M=
+X-Received: by 2002:a05:6402:7cc:: with SMTP id
+ u12mr14716101edy.156.1626279417338; Wed, 14 Jul 2021 09:16:57 -0700 (PDT)
+Received: from 300935273661 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 14 Jul 2021 09:16:56 -0700
+From: Diaa Khalil <diaa@prodperfect.com>
+Mime-Version: 1.0
+Date: Wed, 14 Jul 2021 09:16:56 -0700
+Message-ID: <CAEptS7uZHG6JROvRL5UWTJuuUX075LbpNhK-bUavWmqXrZwp0Q@mail.gmail.com>
+Subject: ProdPerfect says hello
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Content-Type: multipart/alternative; boundary="000000000000f9eca705c717ae35"
+
+
+--000000000000f9eca705c717ae35
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy,
+
+Hope you=E2=80=99re having an exciting summer! Reaching out because when ta=
+lking to
+engineering leaders across the industry, we've identified that over 50% of
+teams are not confident with their current coverage when it comes to their
+current E2E testing efforts.
+
+Briefly, ProdPerfect is an autonomous E2E testing platform that builds,
+maintains, & evolves browser automation test suites by analyzing live user
+traffic.
+
+Would love to learn more about your team and share how other tech leaders
+are reducing their reliance on specialized manpower to build and maintain
+browser automation.
+
+Do you have a few minutes for a brief call on Monday or Tuesday?
+
+All the best,
+Diaa
+Diaa Khalil
+Senior Business Development Representative
+ProdPerfect
+<https://hello.prodperfect.com/t/100593/c/39f9973a-b99c-4ac5-805d-66731ec3f=
+c76/NB2HI4DTHIXS64DSN5SHAZLSMZSWG5BOMNXW2=3D=3D=3D/prodperfect-com>
+862.200.1257
+
+--000000000000f9eca705c717ae35
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div style=3D"font-family:Arial,Helvetica,sans-serif;font-size:13.333333px"=
+>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial,Helvetica,sans=
+-serif;font-size:10pt"> <p><span style=3D"font-size:10pt;color:#000000;font=
+-family:arial,helvetica,sans-serif">Hi Arkadiy,</span></p> <p><span style=
+=3D"font-size:10pt;color:#000000;font-family:arial,helvetica,sans-serif">Ho=
+pe you=E2=80=99re having an exciting summer! Reaching out because when talk=
+ing to engineering leaders across the industry, we&#39;ve identified that o=
+ver 50% of teams are not confident with their current coverage when it come=
+s to their current E2E testing efforts.=C2=A0</span></p> <p><span style=3D"=
+font-family:arial,helvetica,sans-serif;font-size:10pt">Briefly, ProdPerfect=
+ is an autonomous E2E testing platform that builds, maintains, &amp; evolve=
+s browser automation test suites by analyzing live user traffic.=C2=A0</spa=
+n></p> <p><span style=3D"font-size:10pt;color:#000000;font-family:arial,hel=
+vetica,sans-serif">Would love to learn more about your team and share how o=
+ther tech <span style=3D"font-weight:400">leaders are reducing their relian=
+ce on specialized manpower to build and maintain browser automation</span>.=
+</span></p> <p><span style=3D"font-size:10pt;color:#000000;font-family:aria=
+l,helvetica,sans-serif">Do you have a few minutes for a brief call on Monda=
+y or Tuesday?</span></p> <p><span style=3D"color:#000000;font-size:10pt;fon=
+t-family:arial,helvetica,sans-serif">All the best,<br>Diaa<br></span></p>
+</div>
+<div class=3D"sl-signature">
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+"><span style=3D"font-size:8pt">Diaa Khalil</span></div>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+"><span style=3D"font-size:8pt">Senior Business Development Representative =
+</span></div>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+"><span style=3D"font-size:8pt"><a href=3D"https://hello.prodperfect.com/t/=
+100593/c/39f9973a-b99c-4ac5-805d-66731ec3fc76/NB2HI4DTHIXS64DSN5SHAZLSMZSWG=
+5BOMNXW2=3D=3D=3D/prodperfect-com" target=3D"_blank" rel=3D"noopener">ProdP=
+erfect</a></span></div>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+"><span style=3D"font-size:8pt">862.200.1257</span></div>
+</div>
+</div><img src=3D"https://hello.prodperfect.com/t/100593/open/39f9973a-b99c=
+-4ac5-805d-66731ec3fc76.gif" alt=3D"" width=3D"1" height=3D"1">
+
+--000000000000f9eca705c717ae35--

@@ -1,0 +1,437 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp1615779wrr; Fri, 16
+ Jul 2021 02:25:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMzsisAMoxt9gdcWRcsNJ4zC/QN3raLI/zYwBU3T2dSh+1V86byxUJ+gsjNZUReDM8AHz5
+X-Received: by 2002:adf:ef11:: with SMTP id e17mr11232828wro.71.1626427549755;
+ Fri, 16 Jul 2021 02:25:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626427549; cv=none; d=google.com;
+ s=arc-20160816;
+ b=Cc3x9yXAmU91UjqGfjpvKMtw37T+/LW0Gu8PiGXPwuLputFLwjT+svxAX9WkN158oJ
+ nuNrXSyjfZUbyGcQU5fBHLoKbWFqEtdvx3XfP6kenouWS/mWGTL0joJITd8cPY7ZRsGJ
+ gekj0Q5beHvAf7PqrpjW+7fkgUKQt/nW5B7evJqOXst9voisIb0+5ZGb8WD6b/njj6hR
+ K3RtSVZ+QmxcL+f/uCLYmceUEoO5DCQYrmvaLgJeLCVqTuAUzx20rv3E4tjDmNw22+yq
+ xx6vMKSNzWdmWdqw4qVLw2wj7gYqikMSFw4PTBRS1YkkxB4O2YYdGm6rV5Zr5n/tAQ/n j+kA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:subject:message-id:to:from:date:dkim-signature;
+ bh=at/EhmcE9SRJHFgwJau6D0zbYaopEgw9T1/vPLrIAIA=;
+ b=nmhZYfUNc8Mhdv6rBXJsg41yBgXJYP0NpYt6nWj/+FUn7GW+SI9J5cyEmzv7BRWW41
+ UwiHyS5K/luEOUY92nr1kCTQ1VrbrHJIJTa+oXWO1tfnLOLfaPjXc/OU1/O5tGgZuimb
+ X2yQ4ccHlmzyMMY8XLUojccyCwlrSUlwN3k+Q9F/OVz2RtKg33eCSt2wKZeZF2pTZbbg
+ xIE8bj5V4GXKYkGq5wrJSz7js+sER1K6Z6gQuNtEYmzYfBg6UEuxKXg+snDmIga2UxIP
+ 0CUAL02sKzUQp56YYZexFnmcbTuce97p5xKKCYKrAeJq0kDXJyXOEDvl8RWP3dhvmdRm BoLA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@bizclikmedia.com header.s=Salesforce-Alternate header.b=K3TwUpt5;
+ spf=pass (google.com: domain of
+ ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com
+ designates 161.71.14.233 as permitted sender)
+ smtp.mailfrom="ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com";
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bizclikmedia.com
+Return-Path: <ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com>
+Received: from smtp10-lo3-sp1.mta.salesforce.com
+ (smtp10-lo3-sp1.mta.salesforce.com. [161.71.14.233]) by mx.google.com with
+ ESMTPS id j5si11189823wrq.160.2021.07.16.02.25.49 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Fri, 16 Jul 2021 02:25:49
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com
+ designates 161.71.14.233 as permitted sender) client-ip=161.71.14.233;
+Authentication-Results: mx.google.com; dkim=pass header.i=@bizclikmedia.com
+ header.s=Salesforce-Alternate header.b=K3TwUpt5; spf=pass (google.com: domain
+ of
+ ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com
+ designates 161.71.14.233 as permitted sender)
+ smtp.mailfrom="ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com";
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bizclikmedia.com
+Return-Path: <ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizclikmedia.com;
+ s=Salesforce-Alternate; t=1626427549;
+ bh=4/WHRsVQ0OZ6+saNFtgGZ2Ip9msPOtJEwmE6WyH8pkM=;
+ h=Date:From:To:Subject:MIME-Version:Content-Type;
+ b=K3TwUpt52Wclyu0Z+on68iilgAUhbUVYdYM4Z1Yun63nI8WYw29N0Jam87uzUs5jD
+ cDMrPK8s29zYWanRJQFPIg0575JkwHkHq38BPtXf8tLeQsw7/mA0PhFY5jSp4dOMfu
+ tEpWjNtCFH3gbReHgGlYFp1R4yRomhkT/K2dUG8A=
+Authentication-Results: mx2-lo3-sp1.mta.salesforce.com
+ x-tls.subject="/C=US/ST=California/L=San Francisco/O=salesforce.com,
+ inc./OU=0:app;1:lo3;2:lo3-sp1;3:um5;4:prod/CN=um5-app2-1-lo3.ops.sfdc.net";
+ auth=pass (cipher=ECDHE-RSA-AES256-GCM-SHA384)
+Received: from [10.162.140.171] ([10.162.140.171:43124]
+ helo=um5-app2-1-lo3.ops.sfdc.net) by mx2-lo3-sp1.mta.salesforce.com
+ (envelope-from
+ <ryan.hall=bizclikmedia.com__0-1vugr0d6lrmb8l@3bbkruj4427b4ff5.41zqq6xktx4qif6k.968hl4t.4j-udcquae.um5.bnc.salesforce.com>)
+ (ecelerity 4.2.38.62368 r(Core:release/4.2.38.0)) with ESMTPS
+ (cipher=ECDHE-RSA-AES256-GCM-SHA384 subject="/C=US/ST=California/L=San
+ Francisco/O=salesforce.com,
+ inc./OU=0:app;1:lo3;2:lo3-sp1;3:um5;4:prod/CN=um5-app2-1-lo3.ops.sfdc.net")
+ id 21/75-41588-D9051F06; Fri, 16 Jul 2021 09:25:49 +0000
+Date: Fri, 16 Jul 2021 09:25:49 +0000 (GMT)
+From: Ryan Hall <ryan.hall@bizclikmedia.com>
+To: "arkadiy.tetelman@chime.com" <arkadiy.tetelman@chime.com>
+Message-ID: <4Noou000000000000000000000000000000000000000000000QWBZIO00WfywHRCbSJGN0WmwEqEntA@sfdc.net>
+Subject: RE: Cyber Magazine & Technology Magazine | Keynote Interview &
+ Digital Report
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="----=_Part_2024_575037747.1626427549460"
+X-Priority: 3
+X-SFDC-LK: 00D4J000000uDcq
+X-SFDC-User: 0054J000002tM4U
+X-Sender: postmaster@salesforce.com
+X-mail_abuse_inquiries: http://www.salesforce.com/company/abuse.jsp
+X-SFDC-TLS-NoRelay: 1
+X-SFDC-Binding: iCBT705cy8bBFz3B
+X-SFDC-EmailCategory: apiMassMail
+X-SFDC-EntityId: 00Q4J00000CxLKg
+X-SFDC-Interface: internal
+
+
+------=_Part_2024_575037747.1626427549460
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+Hi Arkadiy,
+
+Not sure if you caught my previous email - they sometimes have a tendency to end up in spam folders due to the imagery!
+
+I wanted to follow up on the below interview opportunity within Cyber Magazine & Technology Magazine. We're telling some amazing stories at the moment, and I think your profile looks great - do you have some time over the next week or so to touch base briefly?
+
+Thanks,
+
+Ryan Hall
+VP of Technology & AI
+BizClik Media Group
+
+
+From: Ryan Hall <ryan.hall@bizclikmedia.com>
+Sent: 29 June 2021 10:00
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Subject: Cyber Magazine & Technology Magazine | Keynote Interview & Digital Report
+
+Hi Arkadiy,
+
+I hope all is well.
+
+It would be great to talk to you about a potential keynote interview for the upcoming editions of Technology Magazine & the launch of Cyber Magazine.
+
+Would you be open to discussing this? I'm free week commencing July 5th or July 12th to discuss.
+
+The newest edition of Technology Magazine is live with lots of exciting features! The cover story is insight from The British Army about their Digital Transformation Project named THEIA - interviews with their CIO and CDO. We also have content from NASCAR, IBM, Cognizant, Infosys, Accenture and LOADS more. ( click the cover to view)
+
+
+
+Let me know if we can set up a quick exploratory call next week or the following?
+
+Thanks,
+
+Ryan Hall
+VP of Technology & AI
+BizClik Media Group
+
+
+To unsubscribe from all future correspondence from BizClik Media please click here, and provide your reason for unsubscribing if relevant.
+------=_Part_2024_575037747.1626427549460
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+	<title></title>
+	<meta content="no-referrer" name="referrer" />
+</head>
+<body>
+<p>Hi Arkadiy,<br />
+<br />
+Not sure if you caught my previous email - they sometimes have a tendency to end up in spam folders due to the imagery!<br />
+<br />
+I wanted to follow up on the below interview opportunity within Cyber Magazine &amp; Technology Magazine. We&#39;re telling some amazing stories at the moment, and I think your profile looks great - do you have some time over the next week or so to touch base briefly?<br />
+<br />
+Thanks,</p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+						<table>
+							<tbody>
+								<tr>
+									<td><b>Ryan&nbsp;Hall</b></td>
+								</tr>
+								<tr>
+									<td><b>VP&nbsp;of&nbsp;Technology&nbsp;&amp;&nbsp;AI</b></td>
+								</tr>
+								<tr>
+									<td><b>BizClik&nbsp;Media&nbsp;Group</b></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+						<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u%3Dhttps%253A%252F%252Fwww.bizclikmedia.com%252F&source=gmail&ust=1623488352565000&usg=AFQjCNGp9ZH690leHmL_66io3z6Gy96Kew" href="https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u=https%3A%2F%2Fwww.bizclikmedia.com%2F" target="_blank"><img id="m_8143205308992122385_x0000_i1037" src="https://ci5.googleusercontent.com/proxy/YMSM7IzmmBc6R5WneFhfpuDg8EGhAE6wl2UZS0Ap23PPX6PC0u0vuznCRTbehJbMtfgB3xISjPd7fjR9By1d8PJBjwahUUB0GrrdvaXv04Qs1F43bciUxYpXHG8kwu2L8u97=s0-d-e1-ft#https://drive.google.com/uc?id=1QhVS_t21zzqdZ7EwKjYVKv1jhiG5lqNy&export" style="max-width: 798px;" /></a></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+									<table>
+										<tbody>
+											<tr>
+												<td>
+												<table>
+													<tbody>
+														<tr>
+															<td>
+															<table>
+																<tbody>
+																	<tr>
+																		<td><img id="m_8143205308992122385_x0000_i1036" src="https://ci4.googleusercontent.com/proxy/KWsPzQUtLGD0NOt7RxXsw3vYUlJYJslkME1-ES7aTqqaXHPwg906q1hkim7H0Z2wfw0k1sjLpidwt34RNYimOBLNLERyDeY7Z3SMSUCQcYMDdZOEBoSagjw3XBJCb-r_x5M7=s0-d-e1-ft#https://drive.google.com/uc?id=1Xi1a35KqKaqameA5AotAp655qDXBk9Bw&export" style="max-width: 798px;" /></td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+												<table>
+													<tbody>
+														<tr>
+															<td><img id="m_8143205308992122385_x0000_i1035" src="https://ci4.googleusercontent.com/proxy/PSs-cQlGHCIPRIhEPNDSswx9xcx-zulFPyvALrnB77IvFR4eRl2famIZo4pyJAXBZq2GRp8XCGJg0gJPpS-HBLWMh8SUI4pAInntlBX12VlvqkBXUMG8YXywKk4deEVz32No=s0-d-e1-ft#https://drive.google.com/uc?id=14-7MF_9oysY1btm-epja05WKWf5fR_U3&export" style="max-width: 798px;" /></td>
+															<td>
+															<table>
+																<tbody>
+																	<tr>
+																		<td><img id="m_8143205308992122385_x0000_i1034" src="https://ci3.googleusercontent.com/proxy/YhIjCUN4iQUPFJ8L-yq88I51-3AWIEM90ALODg2YWKFPtWhuh8QbuL0Upo07uqWiYpM7CUpuNNKReb59Z_VK8I44f0fDM76-KnvuZYOTCNuxjAJnFEv-JivukD3b1aA4Bji7=s0-d-e1-ft#https://drive.google.com/uc?id=1tYGAiZZphF8xw1KUDJqcsvrdgDAqSi2b&export" style="max-width: 798px;" /></td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+						<td>
+						<table align="right">
+							<tbody>
+								<tr>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/367hgPYNzg9k9WWUAHrRfP67Vc?u%3Dhttps%253A%252F%252Fca.linkedin.com%252Fcompany%252Fbizclik-media&source=gmail&ust=1623488352566000&usg=AFQjCNEQxoSpwnBUrjzSWlvSeatu1uRf3Q" href="https://clicktime.symantec.com/367hgPYNzg9k9WWUAHrRfP67Vc?u=https%3A%2F%2Fca.linkedin.com%2Fcompany%2Fbizclik-media" target="_blank"><img alt="Linkedin" id="m_8143205308992122385_x0000_i1033" src="https://ci6.googleusercontent.com/proxy/Mw5RWDDlu7FaNjUDbzF6qC4VJUa8Bve4gbIFtuUE5URqZ0sYHMe-845i1uIKKA52YOpnsKrh5dFRuyctgi_i5obIOAF8zXVgpcei0C9a8QZkDdbmlwjlSJaDy-PHcP1NYcCZ=s0-d-e1-ft#https://drive.google.com/uc?id=1g1pDTgURs4UkTIwCSR0ukUSX8pUCh0xw&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3VWqxYjdbf4yCX6655N1zNo7Vc?u%3Dhttps%253A%252F%252Ftwitter.com%252Fbizclikmedia%253Flang%253Den&source=gmail&ust=1623488352566000&usg=AFQjCNFt-H9f2kJal1MGnqFp16IuU-4u6g" href="https://clicktime.symantec.com/3VWqxYjdbf4yCX6655N1zNo7Vc?u=https%3A%2F%2Ftwitter.com%2Fbizclikmedia%3Flang%3Den" target="_blank"><img alt="Twitter" id="m_8143205308992122385_x0000_i1032" src="https://ci5.googleusercontent.com/proxy/61jIPleeDZ3_JHg87nJN68pOIy0Hkvy2Pj_LmZxq0DYke49E8P4_dqxJEv43Xs2CixAgmvCsx6VUG-yxmqJw8vhjsGTNqTsIiKr4hVueDo28OKn6LcLANiA2YI5oWYdKIc10=s0-d-e1-ft#https://drive.google.com/uc?id=1sRZVwjIbnneQhJbwLtYydYTjd_So5g5a&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3Lx3Uw2pe3jnFnGBprAHSdV7Vc?u%3Dhttps%253A%252F%252Fwww.facebook.com%252FBizClikMedia%252F&source=gmail&ust=1623488352566000&usg=AFQjCNHaPzQYb22o8YujvACbS4jXVzJ6fA" href="https://clicktime.symantec.com/3Lx3Uw2pe3jnFnGBprAHSdV7Vc?u=https%3A%2F%2Fwww.facebook.com%2FBizClikMedia%2F" target="_blank"><img alt="Facebook" id="m_8143205308992122385_x0000_i1031" src="https://ci4.googleusercontent.com/proxy/v_M4vyimg1Z_uM_V-IZeNT3xsgtVwZRml5V6mNSoSW9NN8PxGIavH8Gx54dCj-lTN0Ts5SXozw6LzGbZBnDyOJnDwF7ZuP9mfW0RLu40ahQee_xIwOhP321p3Bgj52Jw8_hb=s0-d-e1-ft#https://drive.google.com/uc?id=1-pZzym9R-LRR9h7_n8y-6aTmwVMfJljd&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3DpyyspuoTdodn9G2SXYMjD7Vc?u%3Dhttps%253A%252F%252Fwww.instagram.com%252Fbizclikmedia&source=gmail&ust=1623488352566000&usg=AFQjCNEXpXX4ykX5e4DOkWeMNPG03X_2lw" href="https://clicktime.symantec.com/3DpyyspuoTdodn9G2SXYMjD7Vc?u=https%3A%2F%2Fwww.instagram.com%2Fbizclikmedia" target="_blank"><img alt="Instagram" id="m_8143205308992122385_x0000_i1030" src="https://ci3.googleusercontent.com/proxy/AuYIdC0GYaM172c4xO6Yr8U3_Q1z6xI1rWoGKO82mAk-ZdRAT6ibTGbOEeRiXyqCaLXPEbrhnn-gvRpO_O9W3V2924Bmh5fQXDmGMZfWWsiTglTXSjCMDrHUfkCUyW7jPhcy=s0-d-e1-ft#https://drive.google.com/uc?id=1vA0ztL0GXOjbVjHceZ1lpHqsTlLwd_IV&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u%3Dhttps%253A%252F%252Fwww.bizclikmedia.com%252F&source=gmail&ust=1623488352566000&usg=AFQjCNH6zuY8EWOsdQ9sFuFUxXnBEe1VPg" href="https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u=https%3A%2F%2Fwww.bizclikmedia.com%2F" target="_blank"><img alt="Website" id="m_8143205308992122385_x0000_i1029" src="https://ci5.googleusercontent.com/proxy/wVDV1TMqwjhB6LSCzJoFpOcqqjUn06_bu2nX_zjbrT47Il35NBWOAkNFEaee49CUqN6RI5NlQmOZohna8X_2xGyzOYVwm30jsoQX_Px_Pl4ROllLbnu2LbSJ3HtV1eOAWttY=s0-d-e1-ft#https://drive.google.com/uc?id=1jCBGE38vaQHP32wf53_-IiFds4ma0j5O&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3JjAz1KBFfnUqG18auKnx2c7Vc?u%3Dhttps%253A%252F%252Fmedium.com%252Fbusiness-chief&source=gmail&ust=1623488352566000&usg=AFQjCNHbgchGerhE2Uy10U9TqhT4ZnWIrA" href="https://clicktime.symantec.com/3JjAz1KBFfnUqG18auKnx2c7Vc?u=https%3A%2F%2Fmedium.com%2Fbusiness-chief" target="_blank"><img id="m_8143205308992122385_x0000_i1028" src="https://ci4.googleusercontent.com/proxy/-aVKx5nxV08kR8L33mqpDLXcfLnBsvR322MMJ_trHpLZ5vFFKrZHr2nOQQ9MjbN-UUcbe931n5nrksUi3zs9wa6wCAy9z-SQj-QwFyPCsCIgmWGBcesxqUBx0Jo0vSB2u1Vp=s0-d-e1-ft#https://drive.google.com/uc?id=1i8tk0XkUTY492jLiwUGiMd4xcO0WgVGO&export" style="max-width: 798px;" /></a></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<table>
+	<tbody>
+		<tr>
+			<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3T2SsnHSqMbbuB8qBDYVnsg7Vc?u%3Dhttps%253A%252F%252Fmailchi.mp%252Ftechnologymagazine.com%252Ftop100leaderstechnology2021&source=gmail&ust=1623488352566000&usg=AFQjCNH3MgcZz9ncV13JmEB9zuySZ0i--w" href="https://clicktime.symantec.com/3T2SsnHSqMbbuB8qBDYVnsg7Vc?u=https%3A%2F%2Fmailchi.mp%2Ftechnologymagazine.com%2Ftop100leaderstechnology2021" target="_blank"><img id="m_8143205308992122385_x0000_i1027" src="https://ci6.googleusercontent.com/proxy/j6hf3OVPcKMcP3NQytFRZSGdAuuKHyoahVmnsIeib9ymm39XoqLUtlJOhvXLEHBqGrBuoFqR_APaB9JaQaALbf6G1zk0ILxzEfOAHRZ_FZ2ANdRCXj-0E1cWHJzdsegXBlWN=s0-d-e1-ft#https://drive.google.com/uc?id=1G4h7f_6fVgKo6AcvltM7BpR9P3GWPG5a&export" style="max-width: 798px;" /></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<table>
+	<tbody>
+		<tr>
+			<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3ERiUNo96okPQWRx4LccBon7Vc?u%3Dhttps%253A%252F%252Fcybermagazine.com%252F&source=gmail&ust=1623488352566000&usg=AFQjCNH1pS_G_18TxPCm3Tn2TAeoNx9nVg" href="https://clicktime.symantec.com/3ERiUNo96okPQWRx4LccBon7Vc?u=https%3A%2F%2Fcybermagazine.com%2F" target="_blank"><img id="m_8143205308992122385_x0000_i1026" src="https://ci6.googleusercontent.com/proxy/7lAnPTBWPBMuaE9JT-PW2Z6Qe3SqhjVbtj4IOCi6feBcrjd7iSwTID0HqzbX9byTo8TgARCtWi5LcC6HCKtoEhUkKxkhonWNWRwYWCndebn-omtzARL-cBUhwAOdmfjsOr7d=s0-d-e1-ft#https://drive.google.com/uc?id=13k4_6qRAs3FZDUrvUNsBqyWqaI-cOtCq&export" style="max-width: 798px;" /></a></td>
+		</tr>
+	</tbody>
+</table>
+<br />
+<b>From:</b>&nbsp;Ryan Hall &lt;<a href="mailto:ryan.hall@bizclikmedia.com" target="_blank">ryan.hall@bizclikmedia.com</a>&gt;<br />
+<b>Sent:</b>&nbsp;29 June 2021 10:00<br />
+<b>To:</b>&nbsp;Arkadiy Tetelman &lt;<a href="mailto:bsolomon@cielgroup.com" target="_blank">arkadiy.tetelman@chime.com</a>&gt;<br />
+<b>Subject:</b>&nbsp;Cyber Magazine &amp; Technology Magazine | Keynote Interview &amp; Digital Report<br />
+<br />
+Hi Arkadiy,<br />
+<br />
+I hope all is well.<br />
+<br />
+It would be great to talk to you about a potential keynote interview for the upcoming editions of Technology Magazine &amp; the launch of Cyber Magazine.&nbsp;<br />
+<br />
+Would you be open to discussing this? I&#39;m free week commencing July 5th or July 12th to discuss.<br />
+<br />
+The newest edition of Technology Magazine is live with lots of exciting features! The cover story is insight from The British Army about their Digital Transformation Project named THEIA - interviews with their CIO and CDO. We also have content from NASCAR, IBM, Cognizant, Infosys, Accenture and LOADS more. (&nbsp;<b>click the cover to view)</b><br />
+<br />
+<a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/392cHXQqmiNn9d5Cu1v4VNJ7Vc?u%3Dhttps%253A%252F%252Ftechnologymagazine.com%252Fmagazine%252Ftechnology-june-2021&source=gmail&ust=1623488352565000&usg=AFQjCNFhbLbm1NPZ6e9EMK4CsSWSoud7RQ" href="https://clicktime.symantec.com/392cHXQqmiNn9d5Cu1v4VNJ7Vc?u=https%3A%2F%2Ftechnologymagazine.com%2Fmagazine%2Ftechnology-june-2021" target="_blank"><img alt="Technology Magazine June" border="0" height="849" id="m_8143205308992122385_x0000_i1038" src="https://ci6.googleusercontent.com/proxy/cVqhVHt8FBVt0-eQxROMAXWgf_RoN4wtYgSPP4zEOa5vH9UFds3aNO8OKECbmjD4XoP2dq_7s1Jlep5MMIsUJfcyouf-ocqOGQUo6A8HU2PZj1rY55SvJcRPj2yfXmrGnIlc69ukR7tFdJmc-KlCxXeFGF1O7sdjsdm1=s0-d-e1-ft#https://bizclikmedia--c.documentforce.c" style="max-width: 798px; width: 296.997px; height: 421.979px;" width="598" /></a>&nbsp;&nbsp;<br />
+<br />
+Let me know if we can set up a quick exploratory call next week or the following?<br />
+<br />
+Thanks,&nbsp;<br />
+&nbsp;
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+						<table>
+							<tbody>
+								<tr>
+									<td><b>Ryan&nbsp;Hall</b></td>
+								</tr>
+								<tr>
+									<td><b>VP&nbsp;of&nbsp;Technology&nbsp;&amp;&nbsp;AI</b></td>
+								</tr>
+								<tr>
+									<td><b>BizClik&nbsp;Media&nbsp;Group</b></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+						<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u%3Dhttps%253A%252F%252Fwww.bizclikmedia.com%252F&source=gmail&ust=1623488352565000&usg=AFQjCNGp9ZH690leHmL_66io3z6Gy96Kew" href="https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u=https%3A%2F%2Fwww.bizclikmedia.com%2F" target="_blank"><img id="m_8143205308992122385_x0000_i1037" src="https://ci5.googleusercontent.com/proxy/YMSM7IzmmBc6R5WneFhfpuDg8EGhAE6wl2UZS0Ap23PPX6PC0u0vuznCRTbehJbMtfgB3xISjPd7fjR9By1d8PJBjwahUUB0GrrdvaXv04Qs1F43bciUxYpXHG8kwu2L8u97=s0-d-e1-ft#https://drive.google.com/uc?id=1QhVS_t21zzqdZ7EwKjYVKv1jhiG5lqNy&export" style="max-width: 798px;" /></a></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+									<table>
+										<tbody>
+											<tr>
+												<td>
+												<table>
+													<tbody>
+														<tr>
+															<td>
+															<table>
+																<tbody>
+																	<tr>
+																		<td><img id="m_8143205308992122385_x0000_i1036" src="https://ci4.googleusercontent.com/proxy/KWsPzQUtLGD0NOt7RxXsw3vYUlJYJslkME1-ES7aTqqaXHPwg906q1hkim7H0Z2wfw0k1sjLpidwt34RNYimOBLNLERyDeY7Z3SMSUCQcYMDdZOEBoSagjw3XBJCb-r_x5M7=s0-d-e1-ft#https://drive.google.com/uc?id=1Xi1a35KqKaqameA5AotAp655qDXBk9Bw&export" style="max-width: 798px;" /></td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+												<table>
+													<tbody>
+														<tr>
+															<td><img id="m_8143205308992122385_x0000_i1035" src="https://ci4.googleusercontent.com/proxy/PSs-cQlGHCIPRIhEPNDSswx9xcx-zulFPyvALrnB77IvFR4eRl2famIZo4pyJAXBZq2GRp8XCGJg0gJPpS-HBLWMh8SUI4pAInntlBX12VlvqkBXUMG8YXywKk4deEVz32No=s0-d-e1-ft#https://drive.google.com/uc?id=14-7MF_9oysY1btm-epja05WKWf5fR_U3&export" style="max-width: 798px;" /></td>
+															<td>
+															<table>
+																<tbody>
+																	<tr>
+																		<td><img id="m_8143205308992122385_x0000_i1034" src="https://ci3.googleusercontent.com/proxy/YhIjCUN4iQUPFJ8L-yq88I51-3AWIEM90ALODg2YWKFPtWhuh8QbuL0Upo07uqWiYpM7CUpuNNKReb59Z_VK8I44f0fDM76-KnvuZYOTCNuxjAJnFEv-JivukD3b1aA4Bji7=s0-d-e1-ft#https://drive.google.com/uc?id=1tYGAiZZphF8xw1KUDJqcsvrdgDAqSi2b&export" style="max-width: 798px;" /></td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+						<td>
+						<table align="right">
+							<tbody>
+								<tr>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/367hgPYNzg9k9WWUAHrRfP67Vc?u%3Dhttps%253A%252F%252Fca.linkedin.com%252Fcompany%252Fbizclik-media&source=gmail&ust=1623488352566000&usg=AFQjCNEQxoSpwnBUrjzSWlvSeatu1uRf3Q" href="https://clicktime.symantec.com/367hgPYNzg9k9WWUAHrRfP67Vc?u=https%3A%2F%2Fca.linkedin.com%2Fcompany%2Fbizclik-media" target="_blank"><img alt="Linkedin" id="m_8143205308992122385_x0000_i1033" src="https://ci6.googleusercontent.com/proxy/Mw5RWDDlu7FaNjUDbzF6qC4VJUa8Bve4gbIFtuUE5URqZ0sYHMe-845i1uIKKA52YOpnsKrh5dFRuyctgi_i5obIOAF8zXVgpcei0C9a8QZkDdbmlwjlSJaDy-PHcP1NYcCZ=s0-d-e1-ft#https://drive.google.com/uc?id=1g1pDTgURs4UkTIwCSR0ukUSX8pUCh0xw&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3VWqxYjdbf4yCX6655N1zNo7Vc?u%3Dhttps%253A%252F%252Ftwitter.com%252Fbizclikmedia%253Flang%253Den&source=gmail&ust=1623488352566000&usg=AFQjCNFt-H9f2kJal1MGnqFp16IuU-4u6g" href="https://clicktime.symantec.com/3VWqxYjdbf4yCX6655N1zNo7Vc?u=https%3A%2F%2Ftwitter.com%2Fbizclikmedia%3Flang%3Den" target="_blank"><img alt="Twitter" id="m_8143205308992122385_x0000_i1032" src="https://ci5.googleusercontent.com/proxy/61jIPleeDZ3_JHg87nJN68pOIy0Hkvy2Pj_LmZxq0DYke49E8P4_dqxJEv43Xs2CixAgmvCsx6VUG-yxmqJw8vhjsGTNqTsIiKr4hVueDo28OKn6LcLANiA2YI5oWYdKIc10=s0-d-e1-ft#https://drive.google.com/uc?id=1sRZVwjIbnneQhJbwLtYydYTjd_So5g5a&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3Lx3Uw2pe3jnFnGBprAHSdV7Vc?u%3Dhttps%253A%252F%252Fwww.facebook.com%252FBizClikMedia%252F&source=gmail&ust=1623488352566000&usg=AFQjCNHaPzQYb22o8YujvACbS4jXVzJ6fA" href="https://clicktime.symantec.com/3Lx3Uw2pe3jnFnGBprAHSdV7Vc?u=https%3A%2F%2Fwww.facebook.com%2FBizClikMedia%2F" target="_blank"><img alt="Facebook" id="m_8143205308992122385_x0000_i1031" src="https://ci4.googleusercontent.com/proxy/v_M4vyimg1Z_uM_V-IZeNT3xsgtVwZRml5V6mNSoSW9NN8PxGIavH8Gx54dCj-lTN0Ts5SXozw6LzGbZBnDyOJnDwF7ZuP9mfW0RLu40ahQee_xIwOhP321p3Bgj52Jw8_hb=s0-d-e1-ft#https://drive.google.com/uc?id=1-pZzym9R-LRR9h7_n8y-6aTmwVMfJljd&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3DpyyspuoTdodn9G2SXYMjD7Vc?u%3Dhttps%253A%252F%252Fwww.instagram.com%252Fbizclikmedia&source=gmail&ust=1623488352566000&usg=AFQjCNEXpXX4ykX5e4DOkWeMNPG03X_2lw" href="https://clicktime.symantec.com/3DpyyspuoTdodn9G2SXYMjD7Vc?u=https%3A%2F%2Fwww.instagram.com%2Fbizclikmedia" target="_blank"><img alt="Instagram" id="m_8143205308992122385_x0000_i1030" src="https://ci3.googleusercontent.com/proxy/AuYIdC0GYaM172c4xO6Yr8U3_Q1z6xI1rWoGKO82mAk-ZdRAT6ibTGbOEeRiXyqCaLXPEbrhnn-gvRpO_O9W3V2924Bmh5fQXDmGMZfWWsiTglTXSjCMDrHUfkCUyW7jPhcy=s0-d-e1-ft#https://drive.google.com/uc?id=1vA0ztL0GXOjbVjHceZ1lpHqsTlLwd_IV&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u%3Dhttps%253A%252F%252Fwww.bizclikmedia.com%252F&source=gmail&ust=1623488352566000&usg=AFQjCNH6zuY8EWOsdQ9sFuFUxXnBEe1VPg" href="https://clicktime.symantec.com/35eJu6rCe7zf4cYHohkzaKX7Vc?u=https%3A%2F%2Fwww.bizclikmedia.com%2F" target="_blank"><img alt="Website" id="m_8143205308992122385_x0000_i1029" src="https://ci5.googleusercontent.com/proxy/wVDV1TMqwjhB6LSCzJoFpOcqqjUn06_bu2nX_zjbrT47Il35NBWOAkNFEaee49CUqN6RI5NlQmOZohna8X_2xGyzOYVwm30jsoQX_Px_Pl4ROllLbnu2LbSJ3HtV1eOAWttY=s0-d-e1-ft#https://drive.google.com/uc?id=1jCBGE38vaQHP32wf53_-IiFds4ma0j5O&export" style="max-width: 798px;" /></a></td>
+									<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3JjAz1KBFfnUqG18auKnx2c7Vc?u%3Dhttps%253A%252F%252Fmedium.com%252Fbusiness-chief&source=gmail&ust=1623488352566000&usg=AFQjCNHbgchGerhE2Uy10U9TqhT4ZnWIrA" href="https://clicktime.symantec.com/3JjAz1KBFfnUqG18auKnx2c7Vc?u=https%3A%2F%2Fmedium.com%2Fbusiness-chief" target="_blank"><img id="m_8143205308992122385_x0000_i1028" src="https://ci4.googleusercontent.com/proxy/-aVKx5nxV08kR8L33mqpDLXcfLnBsvR322MMJ_trHpLZ5vFFKrZHr2nOQQ9MjbN-UUcbe931n5nrksUi3zs9wa6wCAy9z-SQj-QwFyPCsCIgmWGBcesxqUBx0Jo0vSB2u1Vp=s0-d-e1-ft#https://drive.google.com/uc?id=1i8tk0XkUTY492jLiwUGiMd4xcO0WgVGO&export" style="max-width: 798px;" /></a></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<table>
+	<tbody>
+		<tr>
+			<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3T2SsnHSqMbbuB8qBDYVnsg7Vc?u%3Dhttps%253A%252F%252Fmailchi.mp%252Ftechnologymagazine.com%252Ftop100leaderstechnology2021&source=gmail&ust=1623488352566000&usg=AFQjCNH3MgcZz9ncV13JmEB9zuySZ0i--w" href="https://clicktime.symantec.com/3T2SsnHSqMbbuB8qBDYVnsg7Vc?u=https%3A%2F%2Fmailchi.mp%2Ftechnologymagazine.com%2Ftop100leaderstechnology2021" target="_blank"><img id="m_8143205308992122385_x0000_i1027" src="https://ci6.googleusercontent.com/proxy/j6hf3OVPcKMcP3NQytFRZSGdAuuKHyoahVmnsIeib9ymm39XoqLUtlJOhvXLEHBqGrBuoFqR_APaB9JaQaALbf6G1zk0ILxzEfOAHRZ_FZ2ANdRCXj-0E1cWHJzdsegXBlWN=s0-d-e1-ft#https://drive.google.com/uc?id=1G4h7f_6fVgKo6AcvltM7BpR9P3GWPG5a&export" style="max-width: 798px;" /></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<table>
+	<tbody>
+		<tr>
+			<td><a data-saferedirecturl="https://www.google.com/url?q=https://clicktime.symantec.com/3ERiUNo96okPQWRx4LccBon7Vc?u%3Dhttps%253A%252F%252Fcybermagazine.com%252F&source=gmail&ust=1623488352566000&usg=AFQjCNH1pS_G_18TxPCm3Tn2TAeoNx9nVg" href="https://clicktime.symantec.com/3ERiUNo96okPQWRx4LccBon7Vc?u=https%3A%2F%2Fcybermagazine.com%2F" target="_blank"><img id="m_8143205308992122385_x0000_i1026" src="https://ci6.googleusercontent.com/proxy/7lAnPTBWPBMuaE9JT-PW2Z6Qe3SqhjVbtj4IOCi6feBcrjd7iSwTID0HqzbX9byTo8TgARCtWi5LcC6HCKtoEhUkKxkhonWNWRwYWCndebn-omtzARL-cBUhwAOdmfjsOr7d=s0-d-e1-ft#https://drive.google.com/uc?id=13k4_6qRAs3FZDUrvUNsBqyWqaI-cOtCq&export" style="max-width: 798px;" /></a></td>
+		</tr>
+	</tbody>
+</table>
+<br />
+To&nbsp;unsubscribe&nbsp;from all future correspondence from BizClik Media please&nbsp;&nbsp;&nbsp;<a href="mailto:unsubscribe@bizclikmedia.com?subject=Unsubscribe+Request" target="_blank">click here</a>,&nbsp;and provide your reason for&nbsp;unsubscribing&nbsp;if relevant.<br />
+<input id="hv-ckeditor-injected" type="hidden" value="true" /></body>
+</html><img src="https://bizclikmedia.my.salesforce.com/servlet/servlet.ImageServer?oid=00D4J000000uDcq&esid=0184J00000DMNCD&from=ext">
+------=_Part_2024_575037747.1626427549460--

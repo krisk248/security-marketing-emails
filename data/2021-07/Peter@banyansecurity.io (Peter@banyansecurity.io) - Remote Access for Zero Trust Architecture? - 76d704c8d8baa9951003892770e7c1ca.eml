@@ -1,0 +1,278 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp659120wrr; Thu, 8 Jul
+ 2021 06:28:49 -0700 (PDT)
+X-Received: by 2002:a17:907:7285:: with SMTP id
+ dt5mr26896730ejc.215.1625750929081; Thu, 08 Jul 2021 06:28:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625750929; cv=none; d=google.com;
+ s=arc-20160816;
+ b=F1DiQw+OrmkN8AF1Uegp0Nc+6WLsfZxNSHoVAKFNRYv9fhjYCRWzROy3hCJMoSayVx
+ u1sZbtoLJoTCf/Uy0K7ddxdZrWfjz0GEGkAGexcRqJjrrKDTm2CB0JKuToJGnsJkHX7v
+ 3decTem9xdXoL3YUftMaYXcm0yvaefZHQFWoRQYDZa0DII6SYKXp/YYeQm77VoQEXJHC
+ 4MlaxyChPXGwWvM9Pely6cty3l8uWwE96YWgguLlO/G+dEulzhxm7Np3zwYILwEOdIXU
+ /grDZXorY5BQJWfmSyR++eEM7i/SyzrGFgo7mRMvD8MYRxhCgygXf+brc0benhyxybcE lEOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:trackid:mime-version:from:dkim-signature;
+ bh=DoAUUSzZ/G93fxwM8HicBhWuGelewjytWqWozl8uEWo=;
+ b=brL0uSWf+hbKpWaCuGQLrrywVrnpm6yMuwDpEMTHIqivQsdwv9R8fGwiaIwTBZRMUd
+ hnOEScqPzWKQ2/O7kDfuL8AfwK5xFmnMS7wtm0/kRPXxl95r5tkZapWGKdttEYlm27iG
+ NXUk6Z3ArGoCCa4zZJfCdxVNxA6QGPEwCWekZpG90Ehhd/oJJN/P3V6tSesKNe5k1y1r
+ SJ+kjqL6Hr6JCcO0wpZk7n5R41ZRRUgzQSuoePcNoReO65HSO4l0r3DsNXkoQPKgCnN5
+ gUs86Swap6avKSXnWJ/OCPzvXGaWo2IwroyuO6llhLSrcVZExN/yM/G7Hq0HkBticV+h xoTw==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@banyansecurity.io header.s=google header.b=CEaiLGzY; spf=pass
+ (google.com: domain of peter@banyansecurity.io designates 209.85.220.65 as
+ permitted sender) smtp.mailfrom=peter@banyansecurity.io; dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=banyansecurity.io
+Return-Path: <peter@banyansecurity.io>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com.
+ [209.85.220.65]) by mx.google.com with SMTPS id
+ q17sor1281234ejf.91.2021.07.08.06.28.49 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Thu, 08 Jul 2021 06:28:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter@banyansecurity.io designates
+ 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com; dkim=pass header.i=@banyansecurity.io
+ header.s=google header.b=CEaiLGzY; spf=pass (google.com: domain of
+ peter@banyansecurity.io designates 209.85.220.65 as permitted sender)
+ smtp.mailfrom=peter@banyansecurity.io; dmarc=pass (p=REJECT sp=REJECT
+ dis=NONE) header.from=banyansecurity.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=banyansecurity.io;
+ s=google; h=from:mime-version:trackid:date:message-id:subject:to;
+ bh=DoAUUSzZ/G93fxwM8HicBhWuGelewjytWqWozl8uEWo=;
+ b=CEaiLGzYh3y7cWamhSW/qF08GKfshzm2+5VQY0C/Am7aD1HlPjkFXwA2Udi1WrG+j/
+ x/t1koETZD75vxHOSyrvRwhufRm9s6DymKRHHGpgPBcy3d8U/VN+9ByyohNU7nZGIPmC
+ q6Iy41vs6o8wbD3D/WBlVR3KJkcS+JTmSRqUU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025; h=x-gm-message-state:from:mime-version:trackid:date:message-id
+ :subject:to; bh=DoAUUSzZ/G93fxwM8HicBhWuGelewjytWqWozl8uEWo=;
+ b=jNEJnhQI42grI+ElcoBTP2RWgasNc78PT78eVswW+kOK+UUv7fDe2/KXXDq7c0NaJe
+ 57xPISVJ+E0Y/Fa4BpTdxJOyR8KHp2ER927zvKa8s2r7ohyBzdVliGaNtxol+GepS/hN
+ uRLXBS/+ujPHXYfYCpEZHWK97YaMBdnx88X7Ll1FavjZHLWpoi+iR0lAzQBSDun+xgWR
+ 6keacNCZQSmWcJN6CQMg6kQNJQI1GLWlRmi1FFM+x3egOVLy/42ct+3L5gAGAgdSXUm6
+ 4+ImoY7BC+9yQ2e+RN0r4h4TFatTwMnLuF3QoS8Hb0i+JuTdF37reBc+BgQMzgCbbssK UxQA==
+X-Gm-Message-State: AOAM533BIoU27UaNgiCqMkghdxk2wNBW6Lm5L2jAHZyinmQZPQEp1jUc
+ t88TVIdVI/clYoxoiZtzLt925kvCf3Xb0TWU7Vj9kNlLRbU=
+X-Google-Smtp-Source: ABdhPJxCt7hMmacLQ4lczHI79Y4GuCaQmmpyubtZObwI4TKk1fYLJUdhfLWsN2Hl1Qa5m1NgP6aNgDrXa8AnM3bLbhA=
+X-Received: by 2002:a05:6402:503:: with SMTP id
+ m3mr39251424edv.330.1625750928567; Thu, 08 Jul 2021 06:28:48 -0700 (PDT)
+Received: from 916584037700 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 8 Jul 2021 13:28:47 +0000
+From: "Peter@banyansecurity.io" <Peter@banyansecurity.io>
+MIME-Version: 1.0
+trackid: B1156878BC569EFC50445DEA59B752B0B5E38D47377726E7EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A489659E88DFAF59B4763B1ECC4C9CCF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF86A04A70
+Date: Thu, 8 Jul 2021 13:28:47 +0000
+Message-ID: <CAD_dLJ5KBzPJJreW4=44qb_jyAbZM+=CtGJz3Hifyac8NcNo_A@mail.gmail.com>
+Subject: Remote Access for Zero Trust Architecture?
+To: arkadiy.tetelman@chime.com
+Content-Type: multipart/alternative; boundary="0000000000009738b805c69ca28e"
+
+
+--0000000000009738b805c69ca28e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<484324B102BFF41381A6D57D0B60FEB8D5F04CDCA49E17A99B8950C9C3CF2DD2E5CFC05BAA=
+F13B29>
+Arkadiy,
+
+I am hoping to connect with you for a conversation about secure remote
+access and zero trust architecture.
+
+Here at Banyan Security
+<https://na50.clclient.com/emailservices/lt?clet=3DB1156878BC569EFC50445DEA=
+59B752B0B5E38D47377726E7EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A48965=
+9E88DFAF59B4763B1ECC4C9CCF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF8=
+6A04A70&lid=3D4077>
+we have a unique solution that removes the pains and headaches of
+traditional VPNs to truly enable your teams to work from anywhere securely.
+
+Might you have some time available this month to discuss how we can help
+with your challenges and concerns to learn more about how we can help you
+to effectively solve them?
+
+*How Banyan Security can help:*
+
+~Secure Remote Access Made Simple
+~User-to-Application Segmentation
+~Trust Based Access Control
+~Continuous Authorization
+~Any User, Any Device, Any App, Any Infrastructure
+
+
+Here is a 1 min and 42 second video overview for additional context as well=
+:
+ https://vimeo.com/374583143
+<https://na50.clclient.com/emailservices/lt?clet=3DB1156878BC569EFC50445DEA=
+59B752B0B5E38D47377726E7EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A48965=
+9E88DFAF59B4763B1ECC4C9CCF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF8=
+6A04A70&lid=3D4959>
+<https://na50.clclient.com/emailservices/lt?clet=3DB1156878BC569EFC50445DEA=
+59B752B0B5E38D47377726E7EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A48965=
+9E88DFAF59B4763B1ECC4C9CCF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF8=
+6A04A70&lid=3D4960>
+
+Let me know what day and time would be ideal for you or if I should be
+reaching out to someone else on your team.
+
+Securely,
+
+Peter Economos
+Sales Development Team
+Banyan Security
+650.521.1691
+www.BanyanSecurity.io
+
+If you'd like me to stop sending you emails, please click here
+<https://na50.clclient.com/emailservices/oo?clet=3DB1156878BC569EFC50445DEA=
+59B752B0B5E38D47377726E7EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A48965=
+9E88DFAF59B4763B1ECC4C9CCF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF8=
+6A04A70>
+
+--0000000000009738b805c69ca28e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<span id=3D"cl-email-uid#@@#484324B102BFF41381A6D57D0B60FEB8D5F04CDCA49E17A=
+99B8950C9C3CF2DD2E5CFC05BAAF13B29#@@#idend" style=3D"display:none"><a href=
+=3D"484324B102BFF41381A6D57D0B60FEB8D5F04CDCA49E17A99B8950C9C3CF2DD2E5CFC05=
+BAAF13B29"></a></span><span style=3D"font-family:Arial,sans-serif;font-size=
+:14px"><span style=3D"font-size:12px"><span style=3D"font-family:Arial,Helv=
+etica,sans-serif">Arkadiy,<br><br>I am hoping to connect with you for a con=
+versation about secure remote access and zero trust architecture.<br><br>He=
+re at <a href=3D"https://na50.clclient.com/emailservices/lt?clet=3DB1156878=
+BC569EFC50445DEA59B752B0B5E38D47377726E7EDED7AC4143C8F20A5A9286D80193312694=
+3160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC41=
+455C8C6361A489659E88DFAF59B4763B1ECC4C9CCF052DA703C9D3016A53FBA9EB070FDB039=
+B612CB3D70B1DEF86A04A70&amp;lid=3D4077">Banyan Security</a> we have a uniqu=
+e solution that removes the pains and headaches of traditional VPNs to trul=
+y enable your teams to work from anywhere securely.<br><br>Might you have s=
+ome time available this month to discuss how we can help with your challeng=
+es and concerns to learn more about how we can help you to effectively solv=
+e them?</span></span></span><br><br><strong><u style=3D"color:rgb(34,34,34)=
+;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-style:normal;fo=
+nt-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter=
+-spacing:normal;text-align:start;text-indent:0px;text-transform:none;white-=
+space:normal;word-spacing:0px;background-color:rgb(255,255,255)"><em>How Ba=
+nyan Security can help:</em></u></strong><br style=3D"color:rgb(34,34,34);f=
+ont-family:Arial,Helvetica,sans-serif;font-size:12px;font-style:normal;font=
+-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-s=
+pacing:normal;text-align:start;text-indent:0px;text-transform:none;white-sp=
+ace:normal;word-spacing:0px;background-color:rgb(255,255,255);text-decorati=
+on-style:initial;text-decoration-color:initial"><br style=3D"color:rgb(34,3=
+4,34);font-family:Arial,Helvetica,sans-serif;font-size:12px;font-style:norm=
+al;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;l=
+etter-spacing:normal;text-align:start;text-indent:0px;text-transform:none;w=
+hite-space:normal;word-spacing:0px;background-color:rgb(255,255,255);text-d=
+ecoration-style:initial;text-decoration-color:initial"><span style=3D"color=
+:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:12px;font-s=
+tyle:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-wei=
+ght:400;letter-spacing:normal;text-align:start;text-indent:0px;text-transfo=
+rm:none;white-space:normal;word-spacing:0px;background-color:rgb(255,255,25=
+5);text-decoration-style:initial;text-decoration-color:initial;display:inli=
+ne!important;float:none">~Secure Remote Access Made Simple</span><br style=
+=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:12=
+px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal=
+;font-weight:400;letter-spacing:normal;text-align:start;text-indent:0px;tex=
+t-transform:none;white-space:normal;word-spacing:0px;background-color:rgb(2=
+55,255,255);text-decoration-style:initial;text-decoration-color:initial"><s=
+pan style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;fon=
+t-size:12px;font-style:normal;font-variant-ligatures:normal;font-variant-ca=
+ps:normal;font-weight:400;letter-spacing:normal;text-align:start;text-inden=
+t:0px;text-transform:none;white-space:normal;word-spacing:0px;background-co=
+lor:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:in=
+itial;display:inline!important;float:none">~User-to-Application Segmentatio=
+n</span><br style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-s=
+erif;font-size:12px;font-style:normal;font-variant-ligatures:normal;font-va=
+riant-caps:normal;font-weight:400;letter-spacing:normal;text-align:start;te=
+xt-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;backg=
+round-color:rgb(255,255,255);text-decoration-style:initial;text-decoration-=
+color:initial"><span style=3D"color:rgb(34,34,34);font-family:Arial,Helveti=
+ca,sans-serif;font-size:12px;font-style:normal;font-variant-ligatures:norma=
+l;font-variant-caps:normal;font-weight:400;letter-spacing:normal;text-align=
+:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:=
+0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-de=
+coration-color:initial;display:inline!important;float:none">~Trust Based Ac=
+cess Control</span><br style=3D"color:rgb(34,34,34);font-family:Arial,Helve=
+tica,sans-serif;font-size:12px;font-style:normal;font-variant-ligatures:nor=
+mal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;text-ali=
+gn:start;text-indent:0px;text-transform:none;white-space:normal;word-spacin=
+g:0px;background-color:rgb(255,255,255);text-decoration-style:initial;text-=
+decoration-color:initial"><span style=3D"color:rgb(34,34,34);font-family:Ar=
+ial,Helvetica,sans-serif;font-size:12px;font-style:normal;font-variant-liga=
+tures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal=
+;text-align:start;text-indent:0px;text-transform:none;white-space:normal;wo=
+rd-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:init=
+ial;text-decoration-color:initial;display:inline!important;float:none">~Con=
+tinuous Authorization</span><br style=3D"color:rgb(34,34,34);font-family:Ar=
+ial,Helvetica,sans-serif;font-size:12px;font-style:normal;font-variant-liga=
+tures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal=
+;text-align:start;text-indent:0px;text-transform:none;white-space:normal;wo=
+rd-spacing:0px;background-color:rgb(255,255,255);text-decoration-style:init=
+ial;text-decoration-color:initial"><span style=3D"color:rgb(34,34,34);font-=
+family:Arial,Helvetica,sans-serif;font-size:12px;font-style:normal;font-var=
+iant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spaci=
+ng:normal;text-align:start;text-indent:0px;text-transform:none;white-space:=
+normal;word-spacing:0px;background-color:rgb(255,255,255);text-decoration-s=
+tyle:initial;text-decoration-color:initial;display:inline!important;float:n=
+one">~Any User, Any Device, Any App, Any Infrastructure</span><br style=3D"=
+color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:12px;f=
+ont-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;fon=
+t-weight:400;letter-spacing:normal;text-align:start;text-indent:0px;text-tr=
+ansform:none;white-space:normal;word-spacing:0px;background-color:rgb(255,2=
+55,255);text-decoration-style:initial;text-decoration-color:initial"><br st=
+yle=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size=
+:12px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:nor=
+mal;font-weight:400;letter-spacing:normal;text-align:start;text-indent:0px;=
+text-transform:none;white-space:normal;word-spacing:0px;background-color:rg=
+b(255,255,255);text-decoration-style:initial;text-decoration-color:initial"=
+><br style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;fo=
+nt-size:12px;font-style:normal;font-variant-ligatures:normal;font-variant-c=
+aps:normal;font-weight:400;letter-spacing:normal;text-align:start;text-inde=
+nt:0px;text-transform:none;white-space:normal;word-spacing:0px;background-c=
+olor:rgb(255,255,255);text-decoration-style:initial;text-decoration-color:i=
+nitial"><span style=3D"color:rgb(34,34,34);font-family:Arial,Helvetica,sans=
+-serif;font-size:12px;font-style:normal;font-variant-ligatures:normal;font-=
+variant-caps:normal;font-weight:400;letter-spacing:normal;text-align:start;=
+text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;bac=
+kground-color:rgb(255,255,255);text-decoration-style:initial;text-decoratio=
+n-color:initial;display:inline!important;float:none">Here is a 1 min and 42=
+ second video overview for additional context as well:<span>=C2=A0</span></=
+span><a target=3D"_blank" style=3D"color:rgb(17,85,204);font-family:Arial,H=
+elvetica,sans-serif;font-size:12px;font-style:normal;font-variant-ligatures=
+:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;text=
+-align:start;text-indent:0px;text-transform:none;white-space:normal;word-sp=
+acing:0px;background-color:rgb(255,255,255)" href=3D"https://na50.clclient.=
+com/emailservices/lt?clet=3DB1156878BC569EFC50445DEA59B752B0B5E38D47377726E=
+7EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD=
+68455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A489659E88DFAF59B4763B1ECC4C9=
+CCF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF86A04A70&amp;lid=3D4959"=
+>https://vimeo.com/374583143</a><a href=3D"https://na50.clclient.com/emails=
+ervices/lt?clet=3DB1156878BC569EFC50445DEA59B752B0B5E38D47377726E7EDED7AC41=
+43C8F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C=
+80BEB404729D43D3271E8BBC41455C8C6361A489659E88DFAF59B4763B1ECC4C9CCF052DA70=
+3C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF86A04A70&amp;lid=3D4960"> </a><br>=
+<br><span style=3D"font-family:Arial,sans-serif;font-size:14px"><span style=
+=3D"font-size:12px"><span style=3D"font-family:Arial,Helvetica,sans-serif">=
+Let me know what day and time would be ideal for you or if I should be reac=
+hing out to someone else on your team.<br><br>Securely,</span></span></span=
+><br>=C2=A0<br><span style=3D"font-family:Arial,sans-serif;font-size:14px">=
+<span style=3D"font-family:Arial,sans-serif;font-size:14px">Peter Economos<=
+br>Sales Development Team<br>Banyan Security<br>650.521.1691<br><a href=3D"=
+http://www.BanyanSecurity.io">www.BanyanSecurity.io</a></span> </span><br><=
+br><p><font size=3D"2" color=3D"#AABBCC">If you&#39;d like me to stop sendi=
+ng you emails, please click <a href=3D"https://na50.clclient.com/emailservi=
+ces/oo?clet=3DB1156878BC569EFC50445DEA59B752B0B5E38D47377726E7EDED7AC4143C8=
+F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C80BE=
+B404729D43D3271E8BBC41455C8C6361A489659E88DFAF59B4763B1ECC4C9CCF052DA703C9D=
+3016A53FBA9EB070FDB039B612CB3D70B1DEF86A04A70">here</a></font></p><br><img =
+style=3D"display:none;width:1px;height:1px;" src=3D"https://na50.clclient.c=
+om/emailservices/et?clet=3DB1156878BC569EFC50445DEA59B752B0B5E38D47377726E7=
+EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD6=
+8455B0F6C80BEB404729D43D3271E8BBC41455C8C6361A489659E88DFAF59B4763B1ECC4C9C=
+CF052DA703C9D3016A53FBA9EB070FDB039B612CB3D70B1DEF86A04A70">
+
+--0000000000009738b805c69ca28e--

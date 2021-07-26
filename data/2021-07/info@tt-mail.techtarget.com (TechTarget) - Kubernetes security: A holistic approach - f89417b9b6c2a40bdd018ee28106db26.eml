@@ -1,0 +1,177 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp2936014wrr; Wed, 7 Jul
+ 2021 05:02:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzD/anxcfWP1V8xegPc9VZEsIPh8CwLyN3zljpylTTvx66Hl+lDYHWEdonwnXWWLq1roFHi
+X-Received: by 2002:a63:d915:: with SMTP id
+ r21mr26026273pgg.283.1625659375563; Wed, 07 Jul 2021 05:02:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625659375; cv=none; d=google.com;
+ s=arc-20160816;
+ b=RyVdN2nBsRdEnWKS71PDrWncG9LvuCJrPHurrj4R7K6ojqnLBhgSer3cwk3zBas42U
+ 4tgt6Qj3Cri4zrMEKFpqYAQHApvlJRDybApwkgGhnWMojsDW+zeNbJqBDuc34+adFTjm
+ ZUhHKAXw6og1FTxehHOpC4ZwTO3riynQ/SKGeUj5qrbSX/CjoTaIUkyGuufn9OSNr7/n
+ 5V7E28qxjRBSkck/ksMrR8aBMzOFD40B444zhxggtkeZdBXNzzFuuym62cQIhhYU5Q0e
+ mcAiX2mo4a+qvgajEuIXREIa2GNyrPnB5iIWfJQJCGoXqHtEc0RtGJCCckopWarSsI4X b6kw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=rf5SeTM/ORjkzxB4BVzCBOhMEhobpiDJvasceEH3GUc=;
+ b=XodcxoY1VYwlP6OWiW0ZxPeVBnHZ+B4WyMC8cNxv3pdvIZZs+2CKJUWm/pG5P8IEeI
+ X7tKsLkNJxoLpxOepMP/VeS5T6NF0ARCHozjNvQZxmSWc4pBQYa+keOOWbFeLbtAcUeO
+ YNHktf/uM9Lksa2y7ixIzxtzI7eDoq+/tRR2NYvABZgdfeLQlwpFXYov0MDpm+hD5HYK
+ g7+XLqaAGMhCRs2mnKOg47e/g5s8KH9ymuEvYn/DQUR5H2wmMk3iOjJO0wqltTSFPzTe
+ 6/GuYAkgMtbr2OqitHMoelVhKXye5lMwE4pWVnV3YHJ62262xO4dFBuD+Mh7J0xiCal4 Yupw==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=UySoF3BZ;
+ spf=pass (google.com: domain of
+ njanbcu-3z0vp1-x8pj3y-534lqe-tldxxa-h-m2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.72]) by mx.google.com with ESMTP id
+ e3si16061821plj.273.2021.07.07.05.02.53 for <arkadiy.tetelman@chime.com>;
+ Wed, 07 Jul 2021 05:02:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ njanbcu-3z0vp1-x8pj3y-534lqe-tldxxa-h-m2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender) client-ip=96.47.30.72;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=UySoF3BZ;
+ spf=pass (google.com: domain of
+ njanbcu-3z0vp1-x8pj3y-534lqe-tldxxa-h-m2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625659369;
+ h=From; bh=51sQRmEt1vCoYPfPoXEG9+PKXeo=;
+ b=UySoF3BZHDOdtu7yAekFnZtktypPX9VbOinO7rOIfUSvh83xzn2g+gpYE5fN1LFw
+ 3PF971BmeAsxAqvtFSoetjoOrS3uTojrkroCybkJNh3x5RH6fqHiLxL7s0HT6UIJ
+ 4SH2+DPNylQx7wxeOv7yY567RmO61TJGMnjdmtPmwT8=;
+Received: from [127.0.0.1] ([127.0.0.1:60767]) by bm1-23.bo3.e-dialog.com
+ (envelope-from
+ <NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 73/E9-09868-9E795E06; Wed, 07
+ Jul 2021 08:02:49 -0400
+Date: Wed, 07 Jul 2021 08:02:49 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.H0RATL.11856809@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: Kubernetes security: A holistic approach
+Message-Id: <10640-554-NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@e-dialog.com>
+X-Mail-From: NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/NJANBCU/X8PJ3Y/534LQE/TLDXXA/4X/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856809
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169289007/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856809&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856809&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856809&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169287499/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">Kubernetes security: A holistic approach</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169287499/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">When it comes to building a security and compliance roadmap, there are 3 key areas organizations should focus on:<br /></font></font>
+<ul>
+<li><font size="2"><font face="arial, trebuchet, verdana">Shifting towards zero-trust and identity management</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Incorporating regulatory requirements as the foundation of cloud security</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Implementing cloud-native systems to address your unique challenges</font></font></li>
+</ul>
+<font size="2"><font face="arial, trebuchet, verdana">In July 2018, Google introduced Kubernetes (K8s) - an open-source container-orchestration system for automating deployment that can help accelerate regulatory compliance.<br /><br />In this white paper, discover a holistic approach to securing Kubernetes that integrates security and culture.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/NJANBCU/X8PJ3Y/534LQE/TLDXXA/4X/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169289009/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169289010/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169289010/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169289009/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[NJANBCU-3Z0VP1-X8PJ3Y-534LQE-TLDXXA-H-M2-20210707-f6f6632b75ed81]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/NJANBCU/X8PJ3Y/534LQE/TLDXXA/X8JR/52"></body></html>
+
+

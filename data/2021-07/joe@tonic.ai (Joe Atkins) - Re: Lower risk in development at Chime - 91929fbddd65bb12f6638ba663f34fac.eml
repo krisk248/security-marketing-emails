@@ -1,0 +1,168 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp2276572wrr; Tue, 6 Jul
+ 2021 11:42:08 -0700 (PDT)
+X-Received: by 2002:aca:abd0:: with SMTP id
+ u199mr10587519oie.125.1625596928205; Tue, 06 Jul 2021 11:42:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625596928; cv=none; d=google.com;
+ s=arc-20160816;
+ b=FdGPyPtWOn5+dqYkZoFeYi8vK1/QMfrvHtaRP8AJvGkcXG2QevQqy2ZxHgiD+Or2s8
+ x+fhzXMeOkUWQKVW2bo011y6p7VmBELN3NjU8P/YN+zlWj+cN0Og90duVT5D8ctURk4T
+ pno0yo9mVLbdguiRHnT1MHggqAqS0efjS9wfKhR6A1CjRL84Iz+1mFPsU/dGjH4y0os7
+ HORz/9N0TJkSzGAXoB4NkXIwpEWqkE8glJEo+aVxQWhtV/v5diBCYRyleQ/peV7OjkHf
+ vw9owsxp85fcNIbolgf8swogrEOm8kB902spDxB29d0mu3fOOtUALxdoqP3S8rN5XjWs Yfbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:mime-version:references:in-reply-to:from
+ :dkim-signature; bh=A82P6VmdQGZqNBGmO/ayNu/hIHFZBk2F7l6vevbxvaQ=;
+ b=CPhPfX59LasVWy/knXAZnMOX5OdwNjOuTZZaV6XfASABIW+xV8orm4R1bU4SxHEEdw
+ u8JjZoC4ceF1Y+E69Uhl7gJVf+Cfi1ayHCpitjjdHAWBYZ3sJiwHTmgT0dqKG5sK5bd7
+ Ky31nwQNQ4LxgfGLdwDQgJBXw6Kb9ZoavJb0813TXgjUJ4xXuHJz1vSjWmk0CI59/m6Y
+ q9r9ncoY3MdrUPGsB/o28ESR7NfFtBNo1i+tgBPysKhzs0WaFbMPsFgtgIA8YeZ+CQUz
+ ZokoCk7EtQsd4V8lvO1CEdHDhJd7slwjVrzGv/v6seDuWsMvgt/JeK45+PoW7quxHXTa 4Hyw==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass header.i=@tonic.ai
+ header.s=google header.b=b+XS0Px+; spf=pass (google.com: domain of
+ joe@tonic.ai designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=joe@tonic.ai; dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=tonic.ai
+Return-Path: <joe@tonic.ai>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ n7sor106721otr.188.2021.07.06.11.42.08 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Tue, 06 Jul 2021 11:42:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of joe@tonic.ai designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass header.i=@tonic.ai
+ header.s=google header.b=b+XS0Px+; spf=pass (google.com: domain of
+ joe@tonic.ai designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=joe@tonic.ai; dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=tonic.ai
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tonic.ai; s=google;
+ h=from:in-reply-to:references:mime-version:date:message-id:subject:to;
+ bh=A82P6VmdQGZqNBGmO/ayNu/hIHFZBk2F7l6vevbxvaQ=;
+ b=b+XS0Px+Oc2UtFiZisou1G+JujsTBEnykt4dGvv3LxkHERh8vo1uHggxrQC9A5p8Q8
+ mjbwXTzuo0rLBJJqsqNoIwbyB5NAXT9oYwhLpE9VSymikqX1gNEjOCZ+UcDqyp+tq0/q
+ /owLHZs4LC07OSZEN0Q8/r13hz94Fj0Y3d6Uc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:in-reply-to:references:mime-version:date
+ :message-id:subject:to; bh=A82P6VmdQGZqNBGmO/ayNu/hIHFZBk2F7l6vevbxvaQ=;
+ b=GMn8KAIbOArXqndrhesPaeHQtfuVnQq/ZU9UVW7xX1wGNlZguU0fQy3AWtJH8dDfaa
+ EsJV3iB6x62EUuU2yrrfsDyuGSHwE/QAU235/f7vrHsUDymxBIiixLK7DFR1BY3w662R
+ iqaEQ3GrIzdWlmltuB8+j0JL+UrkyeTZfsGu2VH2GOZhghSHOZVZUoKv4dij1kh4xAPn
+ C44ubIWk/3G2gZ39mJ12ZQAoCx7sc31gOeK3XqUzuUMZgwpBebgfqWOoyKD2Z/WEtYd0
+ oxNtdpbvyqyMRwJ8T/M+CYSAMV2TYBreAbKzLIiT1rxTRwFWNb+HXJ4/uCC3n/UkVayK cyHw==
+X-Gm-Message-State: AOAM533pRbBxE3r/arziH1tK/9itK2xtCQcxZbTW0wv+OrUmWtRluZmX
+ PS4QHaQq31vTfejpsolZopspFxfoSWwGthjP2R79tk98rww=
+X-Google-Smtp-Source: ABdhPJwuNehM1sOQg2qc4aAy3EN7cjDxIhMVgk/1Z3491S85+ICLpKh+YsZI8FMQgVNbhAzo/zPlUF1bsRigkBqjC/c=
+X-Received: by 2002:a05:6830:14c1:: with SMTP id
+ t1mr11892796otq.181.1625596927620; Tue, 06 Jul 2021 11:42:07 -0700 (PDT)
+Received: from 193155701165 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 6 Jul 2021 11:42:07 -0700
+From: Joe Atkins <joe@tonic.ai>
+In-Reply-To: <CAApGK1d3F5NUBeyZFLpRtKpw7vgd9QE56H8FGhCZoELj7Nx4Nw@mail.gmail.com>
+References: <CAApGK1d3F5NUBeyZFLpRtKpw7vgd9QE56H8FGhCZoELj7Nx4Nw@mail.gmail.com>
+Mime-Version: 1.0
+X-OUTREACH-SENT: true
+Date: Tue, 6 Jul 2021 11:42:07 -0700
+Message-ID: <CAApGK1cv1fQmStxhQg9x_MCxUsi9fGKEQQzYqMS3ruAv7oec1w@mail.gmail.com>
+Subject: Re: Lower risk in development at Chime
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Content-Type: multipart/alternative; boundary="0000000000006b480d05c678c7a4"
+
+
+--0000000000006b480d05c678c7a4
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Arkadiy,
+
+Sending this again in case you missed it.
+
+If you're anonymizing test data, are you already doing something similar?
+
+If not, please do let me know!
+
+Best,
+Joe
+
+
+If you'd like me to stop sending you emails, please click here
+<https://tonicai.orhektor.com/api/mailings/unsubscribe/PMRGSZBCHI4TGMJXGQWCE33SM4RDUIRSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWMZDBMQZTIOJQEIWCE5TFOJZWS33OEI5CENBCFQRHG2LHEI5CEZCRIVSDMMCLIRUW6RT2KFEXIQ3JKBDW4Z3EINSTAMDSJRXDEZKDOJDWENSLOE2XAMLBHA6SE7I=>
+
+
+On Thu, Jul 1, 2021 at 12:46 pm, Joe Atkins wrote:
+
+Hi Arkadiy,
+
+If Chime is simply masking sensitive data, then you're likely stripping
+away its unique properties that are invaluable in testing.
+
+The Tonic platform generates realistic and safe datasets for your local &
+remote teams, or even for 3rd party partners.
+
+Do you have time to meet early next week?
+
+--
+Joe Atkins
+tonic.ai | 925.963.5238
+San Francisco, CA
+
+
+
+If you'd like me to stop sending you emails, please click here
+<https://tonicai.orhektor.com/api/mailings/unsubscribe/PMRGSZBCHI4TAOJZHEWCE33SM4RDUIRSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWMZDBMQZTIOJQEIWCE5TFOJZWS33OEI5CENBCFQRHG2LHEI5CEMLFMFZWIZ2VMR3UGLLOMJ3G23TMPFTWC6SRK5WFO3LWGY4DS6CSIN2WO53BPJCXCZ3NNM6SE7I=>
+
+--0000000000006b480d05c678c7a4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans s=
+erif;font-size:13px;line-height:1.38;margin-top:0pt;margin-bottom:0pt">Hi A=
+rkadiy,</span></div><br><div><span style=3D"font-family:Helvetica Neue,Libe=
+ration Sans,Arial,sans serif;font-size:13px">Sending this again in case you=
+ missed it.</span></div><br><div><span style=3D"font-family:Helvetica Neue,=
+Liberation Sans,Arial,sans serif;font-size:13px">If you&#39;re anonymizing =
+test data, are you already doing something similar?</span></div><br><div><s=
+pan style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;fo=
+nt-size:13px">If not, please do let me know!</span></div><br><div><span sty=
+le=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size=
+:13px">Best,</span></div><div><span style=3D"font-family:Helvetica Neue,Lib=
+eration Sans,Arial,sans serif;font-size:13px">Joe</span></div><div><br></di=
+v><div class=3D"outreach-signature"><br></div><div class=3D"outreach-signat=
+ure outreach-unsubscribe" style=3D"font-size:10px;color:#999">If you&#39;d =
+like me to stop sending you emails, please <a href=3D"https://tonicai.orhek=
+tor.com/api/mailings/unsubscribe/PMRGSZBCHI4TGMJXGQWCE33SM4RDUIRSMJTDSOJYMU=
+3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWMZDBMQZTIOJQEIWCE5TFOJZWS33OEI5CENBCFQRHG=
+2LHEI5CEZCRIVSDMMCLIRUW6RT2KFEXIQ3JKBDW4Z3EINSTAMDSJRXDEZKDOJDWENSLOE2XAMLB=
+HA6SE7I=3D">click here</a></div><div><br></div><div><br></div><div class=3D=
+"outreach-quote">On Thu, Jul 1, 2021 at 12:46 pm, Joe Atkins wrote:<div><br=
+></div><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial=
+,sans serif;font-size:13px">Hi Arkadiy,</span></div><br><div><span style=3D=
+"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px=
+">If Chime is simply masking sensitive data, then you&#39;re likely strippi=
+ng away its unique properties that are invaluable in testing.</span></div><=
+br><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,san=
+s serif;font-size:13px">The Tonic platform generates realistic and safe dat=
+asets for your local &amp; remote teams, or even for 3rd party partners.</s=
+pan></div><br><div><span style=3D"font-family:Helvetica Neue,Liberation San=
+s,Arial,sans serif;font-size:13px">Do you have time to meet early next week=
+?</span></div><br><div><span style=3D"font-family:Helvetica Neue,Liberation=
+ Sans,Arial,sans serif;font-size:13px">--</span></div><div><span style=3D"f=
+ont-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">=
+Joe Atkins</span></div><div><span style=3D"font-family:Helvetica Neue,Liber=
+ation Sans,Arial,sans serif;font-size:13px"><a href=3D"http://tonic.ai">ton=
+ic.ai</a>=C2=A0|=C2=A0925.963.5238</span></div><div><span style=3D"font-fam=
+ily:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">San Fra=
+ncisco, CA</span></div><br><div><br></div><div class=3D"outreach-signature"=
+><br></div><div class=3D"outreach-signature outreach-unsubscribe" style=3D"=
+font-size:10px;color:#999">If you&#39;d like me to stop sending you emails,=
+ please <a href=3D"https://tonicai.orhektor.com/api/mailings/unsubscribe/PM=
+RGSZBCHI4TAOJZHEWCE33SM4RDUIRSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWM=
+ZDBMQZTIOJQEIWCE5TFOJZWS33OEI5CENBCFQRHG2LHEI5CEMLFMFZWIZ2VMR3UGLLOMJ3G23TM=
+PFTWC6SRK5WFO3LWGY4DS6CSIN2WO53BPJCXCZ3NNM6SE7I=3D">click here</a>
+</div></div><img src=3D"https://tonicai.orhektor.com/api/mailings/opened/PM=
+RGSZBCHI4TGMJXGQWCE33SM4RDUIRSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWM=
+ZDBMQZTIOJQEIWCE5TFOJZWS33OEI5CENBCFQRHG2LHEI5CEY2EMJFTMYTUMZNGK2JRK53WETBU=
+PFXUSZDFK5WGUVT2GBZVS4RXFVSDAR3DMRFDA4TPKU6SE7I=3D.gif" alt=3D"" width=3D"1=
+" height=3D"1">
+
+--0000000000006b480d05c678c7a4--

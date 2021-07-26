@@ -1,0 +1,190 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp5283254wrr; Tue, 20
+ Jul 2021 02:48:20 -0700 (PDT)
+X-Received: by 2002:a2e:7a18:: with SMTP id
+ v24mr12983070ljc.420.1626774500493; Tue, 20 Jul 2021 02:48:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626774500; cv=none; d=google.com;
+ s=arc-20160816;
+ b=yMTH4SkSZsqOy2QtAJga5Q3lVku7ApaHFFRriIHVdvuhULWys4DI+TVe06i2WvYNZh
+ vCDDNon80R8MxBPOCo26CjmSE6Y3cQ9L3QkccNv3itB27xwBX8DSNYR7On4uYRDazjF0
+ WvZYptF04kLCsDlletNl5cbx1BxbTt+PcEq2Bwg/FROnfM/u+EF3u59bVwhddCbk6RP4
+ 4j4Nj/p8Dus7ozBTxwSGui/4TcsQTjxW6PHoin5ATjTBH0kMmPeYxhDBMQR9ME27Rzn4
+ dn50JE/acag2OI+/auzLMQMJI+QOi1e/KGQSIFgwetcpqc8uXRDWLTpI3tsh+UNlGgm2 OVVw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:mime-version:from:dkim-signature;
+ bh=ft7V4EJ5EKh24zIEwLl7lFq8vlYLzhdbTc2+22xLDJ4=;
+ b=BJ2kkk9Up1q+997yb1rntw5uNXrkaxExi25vcaNuPmzuumqv1Ryc3jzcFvjYILdm//
+ e2vd0tbGQ4n/CxqO3zBQcJ9ziQ39SLQ2Hzua2Ma+FEViY0/6aQehJ7agbl/a0T64b4kn
+ E8qbkGipYLe7JLs/nBuNfgnuCLrEOcNoZYKFl/KUYWV2X35IuYW+TS+GNyrhmiN5xToz
+ p7EjxDKEcFURz3VE71W8BYi9iG1S08jNvR0GSgEgFRnKkHKzfUuev7evZbRkYDE7jxKu
+ E5Zc3+e/PMxNvHj37+edMfEdmT5j+ESStbMrXJY2hWDGoD9OCd36EUzelmKa5egMcnqn ellQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@cmd-com.20150623.gappssmtp.com header.s=20150623 header.b=iw+ozUIG;
+ spf=pass (google.com: domain of alan.oudjit@cmd.com designates 209.85.220.41
+ as permitted sender) smtp.mailfrom=alan.oudjit@cmd.com; dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=cmd.com
+Return-Path: <alan.oudjit@cmd.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ b9sor1235656lfj.87.2021.07.20.02.48.20 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Tue, 20 Jul 2021 02:48:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alan.oudjit@cmd.com designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@cmd-com.20150623.gappssmtp.com header.s=20150623 header.b=iw+ozUIG;
+ spf=pass (google.com: domain of alan.oudjit@cmd.com designates 209.85.220.41
+ as permitted sender) smtp.mailfrom=alan.oudjit@cmd.com; dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=cmd.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cmd-com.20150623.gappssmtp.com; s=20150623;
+ h=from:mime-version:date:message-id:subject:to;
+ bh=ft7V4EJ5EKh24zIEwLl7lFq8vlYLzhdbTc2+22xLDJ4=;
+ b=iw+ozUIGvTNNJv6f7M3L7L2GVLe/E2YO3RzA9Hjn/j3E3HJc5FViWspXv7aewRrSD8
+ zMTFqX7l5YFpZTSCwMs7lhW5pb2wm1/zQZ2K1CUcO5yCptQymbwKnJerF0Wrwm6Ngt6K
+ 5GbKhHa8xba9M4R1PoD/D0OzXN7349Lrz6QMaKCZEfPPamEycZnU4ImoM+p5WoSuI9Ah
+ DyIlhdOWUAoq6WuKQqRaKDxbkjKzqzEYoKr6LZCPs4ZW1lsRvY1blQoe4VOEIUMfUWXk
+ ZOgDjzRmvXMbYnQGmnKCRMPyYhOxCK3RlWnSIJtEudKx5KejSYYE0cqrIpo/BkfV98uh M0aQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:mime-version:date:message-id:subject:to;
+ bh=ft7V4EJ5EKh24zIEwLl7lFq8vlYLzhdbTc2+22xLDJ4=;
+ b=NJuZ/KYc7aGRix8jKZeg7L3D868XPdwF7I+nJe/OJqpCsbGMB/Wjy+Sn4Y4WIAg7nT
+ GKYendm4Xi7v9g7wADo/RXu0GvTPtR2Bgy7Ju+Kjovklj95izBOA9m/7doIdl5lnm5Mp
+ JabFkhSazCXpuNEZ7UfCBea5rGmh8+vzEXHV7+hbfDIU8MDfmbTre28T31JfPWfbxSLv
+ inHdCm1bWrLh77caiUCbomb8v5YkTmIqcY547R9qIKPExF9UfNWEDavZtF7Splor1MrT
+ 90IjfCXkiaNzHvj/f3RvHlcS34qJ/+bomnPAR7iksHSL3r0/sSD6LUNsKa9DDDjID+bL Dv8w==
+X-Gm-Message-State: AOAM53118O+wEfq8w8CPNgmI/yOpf05ZiwdCYQetHlYm9nSiEGRxE3sa
+ 3RHNx1NvUJ9d/eXIxg+68U/p39GIAUtB+J7uRcbrKQe3Cio=
+X-Google-Smtp-Source: ABdhPJyO2PJkUEPi6kkUvLDA0Rxq4074SVkorQRzu4fSRTwRf1LiXBSIthwbDlQYWVJrOgHKiHmHWBN2GosHG/qYph4=
+X-Received: by 2002:a05:6512:22c2:: with SMTP id
+ g2mr23226341lfu.305.1626774500124; Tue, 20 Jul 2021 02:48:20 -0700 (PDT)
+Received: from 300935273661 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 20 Jul 2021 09:48:19 +0000
+From: Alan Oudjit <alan.oudjit@cmd.com>
+Mime-Version: 1.0
+Date: Tue, 20 Jul 2021 09:48:19 +0000
+Message-ID: <CALokta+YSnaMraWpaJ2TTGnqKokNjTd0LZeHhwdfN8Sn3yyCXA@mail.gmail.com>
+Subject: Upcoming Cipher Webinar
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Content-Type: multipart/alternative; boundary="00000000000035bfeb05c78af43a"
+
+
+--00000000000035bfeb05c78af43a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy,
+
+
+
+The connections between the credit card issuer (bank or credit union) and
+the credit card network (Visa, Mastercard, Discover, or American Express)
+have to be up and running at all times, or either organization stands to
+lose millions of dollars a minute.
+
+
+
+You need to ensure the digital connection between the bank servers and
+payment card infrastructure is sound. Cmd
+<https://sales.cmd.com/t/104147/c/3242fb19-1228-4349-b96b-1536d2944880/NB2H=
+I4DTHIXS6Y3NMQXGG33NH52XI3K7MNQW24DBNFTW4PKDNVSF6Q3JOBUGK4RFGIYC2JJSGBDHE33=
+NEUZDAQ3SMVSGS5BFGIYEGYLSMQSTEMCJONZXKZLSOMSTEMDUN4STEMCDMFZGIJJSGBHGK5DXN5=
+ZGW4ZFGNASKMRQIVXHG5LSMUSTEMCTMVRXK4TFEUZDARDJM5UXIYLMEUZDAQ3PNZXGKY3UNFXW4=
+4ZFGIYECY3SN5ZXGJJSGB2GQZJFGIYEG3DPOVSCKMRQK5SWE2LOMFZCM5LUNVPXG33VOJRWKPLI=
+ONPWK3LBNFWCM5LUNVPW2ZLENF2W2PLFNVQWS3BGL5UHGZLOMM6XAMSBJZYXI6RNHEWVI33VKBE=
+VI4DINY4HOWSXNVLGYN2ONN3TG3RWNVTFQOBNNIYVI5D2KZWDC6TDJ5JXCNTUPFXECVTGGUYXS3=
+TOMIWVMVZVJV2GGUSZLFVTGOKL/cmd-com>
+ and Cipher
+<https://sales.cmd.com/t/104147/c/3242fb19-1228-4349-b96b-1536d2944880/NB2H=
+I4DTHIXS6Y3JOBUGK4ROMNXW2P3VORWV6Y3BNVYGC2LHNY6UG3LEL5BWS4DIMVZCKMRQFUSTEMC=
+GOJXW2JJSGBBXEZLENF2CKMRQINQXEZBFGIYES43TOVSXE4ZFGIYHI3ZFGIYEGYLSMQSTEMCOMV=
+2HO33SNNZSKM2BEUZDARLOON2XEZJFGIYFGZLDOVZGKJJSGBCGSZ3JORQWYJJSGBBW63TOMVRXI=
+2LPNZZSKMRQIFRXE33TOMSTEMDUNBSSKMRQINWG65LEEUZDAV3FMJUW4YLSEZ2XI3K7ONXXK4TD=
+MU6WQ427MVWWC2LMEZ2XI3K7NVSWI2LVNU6WK3LBNFWCMX3IONSW4YZ5OAZECTTROR5C2OJNKRX=
+XKUCJKRYGQ3RYO5NFO3KWNQ3U423XGNXDM3LGLA4C22RRKR2HUVTMGF5GGT2TOE3HI6LOIFLGMN=
+JRPFXG4YRNKZLTKTLUMNJFSWLLGM4UW=3D=3D=3D/cipher-com>
+ monitor and secure the connection between your bank servers to the payment
+card infrastructure, in order to prevent attacks.
+
+In this webinar
+<https://sales.cmd.com/t/104147/c/3242fb19-1228-4349-b96b-1536d2944880/NB2H=
+I4DTHIXS6Y3NMQXGG33NF5THE33NFVRGC3TLOMWXI3ZNMNQXEZBNNFZXG5LFOJZS2ZLOON2XEZJ=
+NONSWG5LSMUWWI2LHNF2GC3BNMNXW43TFMN2GS33OOMWWCY3SN5ZXGLLUNBSS2Y3MN52WILZ7NR=
+YD2MJGOV2G2X3DMFWXAYLJM5XD2V3FMJUW4YLSEUZUCJJSGBBW2ZC7INUXA2DFOISTEMBNEUZDA=
+RTSN5WSKMRQINZGKZDJOQSTEMCDMFZGIJJSGBEXG43VMVZHGJJSGB2G6JJSGBBWC4TEEUZDATTF=
+OR3W64TLOMSTGQJFGIYEK3TTOVZGKJJSGBJWKY3VOJSSKMRQIRUWO2LUMFWCKMRQINXW43TFMN2=
+GS33OOMSTEMCBMNZG643TEUZDA5DIMUSTEMCDNRXXKZBGOV2G2X3TN52XEY3FHVSW2YLJNQTHK5=
+DNL5WWKZDJOVWT2ZLNMFUWYJTVORWV6Y3PNZ2GK3TUHVBW2ZC7INUXA2DFOISTEMBQG4ZDCMRRE=
+UZDA53FMJUW4YLSEUZDA2LOOZUXIZJGL5UHGZLOMM6XAMSBJZYXI6RNHEWVI33VKBEVI4DINY4H=
+OWSXNVLGYN2ONN3TG3RWNVTFQOBNNIYVI5D2KZWDC6TDJ5JXCNTUPFXECVTGGUYXS3TOMIWVMVZ=
+VJV2GGUSZLFVTGOKL/cmd-com-from-banks-to-card-issuers-ensure-secure-digital-=
+connections-across>,
+we'll show you how we do it and how you can do the same for your
+organization.
+
+
+Thanks,
+Alan Oudjit
+SDR / BDR at Cmd
+
+--00000000000035bfeb05c78af43a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+">
+<p>Hi Arkadiy,</p>
+<p>=C2=A0</p>
+<p>The connections between the credit card issuer (bank or credit union) an=
+d the credit card network (Visa, Mastercard, Discover, or American Express)=
+ have to be up and running at all times, or either organization stands to l=
+ose millions of dollars a minute.</p>
+<p>=C2=A0</p>
+<p>You need to ensure the digital connection between the bank servers and p=
+ayment card infrastructure is sound.<span>=C2=A0</span><a href=3D"https://s=
+ales.cmd.com/t/104147/c/3242fb19-1228-4349-b96b-1536d2944880/NB2HI4DTHIXS6Y=
+3NMQXGG33NH52XI3K7MNQW24DBNFTW4PKDNVSF6Q3JOBUGK4RFGIYC2JJSGBDHE33NEUZDAQ3SM=
+VSGS5BFGIYEGYLSMQSTEMCJONZXKZLSOMSTEMDUN4STEMCDMFZGIJJSGBHGK5DXN5ZGW4ZFGNAS=
+KMRQIVXHG5LSMUSTEMCTMVRXK4TFEUZDARDJM5UXIYLMEUZDAQ3PNZXGKY3UNFXW44ZFGIYECY3=
+SN5ZXGJJSGB2GQZJFGIYEG3DPOVSCKMRQK5SWE2LOMFZCM5LUNVPXG33VOJRWKPLIONPWK3LBNF=
+WCM5LUNVPW2ZLENF2W2PLFNVQWS3BGL5UHGZLOMM6XAMSBJZYXI6RNHEWVI33VKBEVI4DINY4HO=
+WSXNVLGYN2ONN3TG3RWNVTFQOBNNIYVI5D2KZWDC6TDJ5JXCNTUPFXECVTGGUYXS3TOMIWVMVZV=
+JV2GGUSZLFVTGOKL/cmd-com" target=3D"_blank" rel=3D"noopener">Cmd</a><span>=
+=C2=A0</span>and<span>=C2=A0</span><a href=3D"https://sales.cmd.com/t/10414=
+7/c/3242fb19-1228-4349-b96b-1536d2944880/NB2HI4DTHIXS6Y3JOBUGK4ROMNXW2P3VOR=
+WV6Y3BNVYGC2LHNY6UG3LEL5BWS4DIMVZCKMRQFUSTEMCGOJXW2JJSGBBXEZLENF2CKMRQINQXE=
+ZBFGIYES43TOVSXE4ZFGIYHI3ZFGIYEGYLSMQSTEMCOMV2HO33SNNZSKM2BEUZDARLOON2XEZJF=
+GIYFGZLDOVZGKJJSGBCGSZ3JORQWYJJSGBBW63TOMVRXI2LPNZZSKMRQIFRXE33TOMSTEMDUNBS=
+SKMRQINWG65LEEUZDAV3FMJUW4YLSEZ2XI3K7ONXXK4TDMU6WQ427MVWWC2LMEZ2XI3K7NVSWI2=
+LVNU6WK3LBNFWCMX3IONSW4YZ5OAZECTTROR5C2OJNKRXXKUCJKRYGQ3RYO5NFO3KWNQ3U423XG=
+NXDM3LGLA4C22RRKR2HUVTMGF5GGT2TOE3HI6LOIFLGMNJRPFXG4YRNKZLTKTLUMNJFSWLLGM4U=
+W=3D=3D=3D/cipher-com" target=3D"_blank" rel=3D"noopener">Cipher</a><span>=
+=C2=A0</span>monitor and secure the connection between your bank servers to=
+ the payment card infrastructure, in order to prevent attacks.<br><br>In th=
+is<span>=C2=A0</span><a href=3D"https://sales.cmd.com/t/104147/c/3242fb19-1=
+228-4349-b96b-1536d2944880/NB2HI4DTHIXS6Y3NMQXGG33NF5THE33NFVRGC3TLOMWXI3ZN=
+MNQXEZBNNFZXG5LFOJZS2ZLOON2XEZJNONSWG5LSMUWWI2LHNF2GC3BNMNXW43TFMN2GS33OOMW=
+WCY3SN5ZXGLLUNBSS2Y3MN52WILZ7NRYD2MJGOV2G2X3DMFWXAYLJM5XD2V3FMJUW4YLSEUZUCJ=
+JSGBBW2ZC7INUXA2DFOISTEMBNEUZDARTSN5WSKMRQINZGKZDJOQSTEMCDMFZGIJJSGBEXG43VM=
+VZHGJJSGB2G6JJSGBBWC4TEEUZDATTFOR3W64TLOMSTGQJFGIYEK3TTOVZGKJJSGBJWKY3VOJSS=
+KMRQIRUWO2LUMFWCKMRQINXW43TFMN2GS33OOMSTEMCBMNZG643TEUZDA5DIMUSTEMCDNRXXKZB=
+GOV2G2X3TN52XEY3FHVSW2YLJNQTHK5DNL5WWKZDJOVWT2ZLNMFUWYJTVORWV6Y3PNZ2GK3TUHV=
+BW2ZC7INUXA2DFOISTEMBQG4ZDCMRREUZDA53FMJUW4YLSEUZDA2LOOZUXIZJGL5UHGZLOMM6XA=
+MSBJZYXI6RNHEWVI33VKBEVI4DINY4HOWSXNVLGYN2ONN3TG3RWNVTFQOBNNIYVI5D2KZWDC6TD=
+J5JXCNTUPFXECVTGGUYXS3TOMIWVMVZVJV2GGUSZLFVTGOKL/cmd-com-from-banks-to-card=
+-issuers-ensure-secure-digital-connections-across" target=3D"_blank" rel=3D=
+"noopener">webinar</a>, we&#39;ll show you how we do it and how you can do =
+the same for your organization.=C2=A0</p>
+<p>=C2=A0</p>
+</div><div class=3D"sl-signature">
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+">Thanks,</div>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+">Alan Oudjit</div>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial;font-size:11pt=
+">SDR / BDR at Cmd</div>
+</div><img src=3D"https://sales.cmd.com/t/104147/open/3242fb19-1228-4349-b9=
+6b-1536d2944880.gif" alt=3D"" width=3D"1" height=3D"1">
+
+--00000000000035bfeb05c78af43a--

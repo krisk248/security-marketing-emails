@@ -1,0 +1,666 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp924348wrr; Fri, 9 Jul
+ 2021 11:03:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPBEvjGOWD5dWzcAVtBP0dYlOauwNT4wfjz9a41i56h3A6jpzRRmoxGtAzJzE8j2TnGw3E
+X-Received: by 2002:a17:902:b113:b029:128:cec4:e01e with SMTP id
+ q19-20020a170902b113b0290128cec4e01emr31916936plr.78.1625853794401; Fri, 09
+ Jul 2021 11:03:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625853794; cv=none; d=google.com;
+ s=arc-20160816;
+ b=T6/gdhKMV9jvaW9S5c/bMhMRrRpapvtXqsqAj2zExeqqEDs8W8Q6RYutSMAXMGEBV2
+ pDFtEfsGo39SUSrdoRk4S7pGHVhm/EkeH1enNC4RitZsFr3JDY2tIZjbIWqo125e9a0X
+ UEOwktyILhDyJ+QEmQI34YFMU19ntc5PhDkiiKJRQpT0h67R6Ta9KjaSuPFPrdhRcaem
+ jKcKSp+3td7bt7bd/ZFrP6zFGRrrTqggvOk6irtMvMvb5s4T/p48zrAXNxgYhLmbq+ng
+ YFdyWZuycMxAkIj0Umx9r4+bXuJ9kHX2QxKnBehniEK5NUeWXVyWpOWW/HyJTV0mzOJk iGcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=W73NAp/g0C0GVdkrE3W/6AqiqkmFW7FppTk1+2Nrplc=;
+ b=K7kk6U37Ey+87uDtrwUC9GP44WzVpZDUwExmJybb2ZwGW8PkJUpSYHOVNK6O9mQBc9
+ u2qpuRJNdCnCHGdtzFzyuIgREKybqp7MMO4CJ+nd7A4T8PqC2FEar9HrUUeJuPPD3vth
+ y3vxn/CPu6dZMP/VxFiKhT270DetXc5EyqrY2dgC4qw2cNgM0NW/AmLj42CZS/lUKUn3
+ 3Y+NmW15r70Ly57RCPwEjoKiKbxmKSB+FMw8krZyIZx7IJ1PrJSQa4aiqqrJxZw9tjiA
+ f44+vyNlUMWd+0ymgVmKshl5/iZ++Lz3mfpEADUrIjijCLkZRhqzjSHLAfUMf1fTg4g0 sPWg==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b="m9aZFUV/";
+ spf=pass (google.com: domain of
+ njanbcu-3z0vuv-uhfs0i-7uxhs9-95tlqb-h-m2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ w2si7508828pgs.469.2021.07.09.11.03.12 for <arkadiy.tetelman@chime.com>; Fri,
+ 09 Jul 2021 11:03:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ njanbcu-3z0vuv-uhfs0i-7uxhs9-95tlqb-h-m2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b="m9aZFUV/";
+ spf=pass (google.com: domain of
+ njanbcu-3z0vuv-uhfs0i-7uxhs9-95tlqb-h-m2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625853791;
+ h=From; bh=1wy5xE0ni6TRtPdlW0szfyJPpU0=;
+ b=m9aZFUV/1YDS55o3/UOTOiis11IOHJX+snEFfnaqS/7bH1TeUO74YL9KPay6PxYZ
+ c9kOpjGJNSkcAHi12Ci/8Puyv/8Bcjxv1YJzLNsba7m7QLsivwoVxDEHt4HFhjmy
+ ZhcQFzCCKFga49vIza3L82jgXFlA8NcFA18CG4j/AhU=;
+Received: from [127.0.0.1] ([127.0.0.1:42299]) by bm1-23.bo3.e-dialog.com
+ (envelope-from
+ <NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 5A/26-09868-F5F88E06; Fri, 09
+ Jul 2021 14:03:11 -0400
+Date: Fri, 09 Jul 2021 14:03:11 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.N71WO6.11856820@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: 7 Steps to Create a Security incident Response Plan
+Message-Id: <15663-579-NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@e-dialog.com>
+X-Mail-From: NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/NJANBCU/UHFS0I/7UXHS9/95TLQB/NH/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856820
+
+
+
+
+<html><body><!doctype html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+      <head>
+        <title>
+          
+        </title>
+        <!--[if !mso]><!-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--<![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style type="text/css">
+          #outlook a { padding:0; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }
+        </style>
+        <!--[if mso]>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <!--[if lte mso 11]>
+        <style type="text/css">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]-->
+        
+        
+    <style type="text/css">
+      @media only screen and (min-width:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+.mj-column-per-75 { width:75% !important; max-width: 75%; }
+.mj-column-per-25 { width:25% !important; max-width: 25%; }
+.mj-column-per-80 { width:80% !important; max-width: 80%; }
+.mj-column-per-20 { width:20% !important; max-width: 20%; }
+      }
+    </style>
+    
+  
+        <style type="text/css">
+        
+        
+
+    @media only screen and (max-width:480px) {
+      table.mj-full-width-mobile { width: 100% !important; }
+      td.mj-full-width-mobile { width: auto !important; }
+    }
+  
+        </style>
+        
+        
+      </head>
+      <body style="word-spacing:normal;background-color:#ffffff;">
+<div style="background-color: #ffffff;">
+        <!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div class="preheader" style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+      <span class="preheader" style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;">The latest white papers, case studies and product information</span>
+  </div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN Honeypot link -->
+  
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+      
+          
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169648074/36983911/1" style="text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+  
+</table>
+<!-- END Honeypot link -->
+<!-- BEGIN 250okblank table -->
+<div id="_two50" style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;">
+    <img id="_two50_img" style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856820&promo_type=White Paper Dedicated" alt="" />
+<style><!--
+            @media print{
+              #_two50 {background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856820&promo_type=White Paper Dedicated'); } }
+              blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856820&promo_type=White Paper Dedicated'); }
+--></style>
+<table style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" border="0" cellspacing="0" cellpadding="0" width="0">
+</table>
+</div>
+<!-- END 250okblank table -->
+      
+      <!--[if mso | IE]>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#00b3ac;background-color:#00b3ac;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #00b3ac; background-color: #00b3ac; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0; line-height: 0; text-align: left; display: inline-block; width: 100%; direction: ltr;">
+        <!--[if mso | IE]>
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" >
+<tr>
+<td style="vertical-align:middle;width:450px;" ><![endif]-->
+<div class="mj-column-per-75 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: middle; width: 75%;">
+        
+      
+<table style="vertical-align: middle;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 10px 0 5px 10px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 17px; font-weight: 800; line-height: 17px; text-align: left; color: #ffffff;">Business Technology Research</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 0 10px 10px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 13px; font-weight: 200; line-height: 1; text-align: left; color: #ffffff;">March 21, 2021</div>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+<td style="vertical-align:middle;width:150px;" ><![endif]-->
+<div class="mj-column-per-25 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: middle; width: 25%;">
+        
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="vertical-align:middle;padding:10px 10px 10px 0;">
+              
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0; word-break: break-word;" align="right">
+                  
+      
+<table style="border-collapse: collapse; border-spacing: 0px;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="width: 71px;">
+              
+        <a
+ href="https://www.techtarget.com" target="_blank"
+>
+          
+      <img style="border: 0; display: block; outline: none; text-decoration: none; height: 38px; width: 100%; font-size: 13px;" src="https://cdn.ttgtmedia.com/welcome_nl/TechTargetLogo.png" alt="TechTarget" width="71" height="38" />
+    
+        </a>
+      
+            </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+      </div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#f2f2f2;background-color:#f2f2f2;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #f2f2f2; background-color: #f2f2f2; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 5px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: bold; line-height: 17px; text-align: left; color: #323232;">IN THIS ISSUE</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 5px 20px; padding-top: 6px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/169641883/36983911/1" style="color:#00379c;"
+>7 Steps to Create a Security incident Response Plan</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 5px 20px; padding-top: 6px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/169647214/36983911/2" style="color:#00379c;"
+>Top Reasons Automated Data Governance and Compliance</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 0 20px; padding-top: 6px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/169647374/36983911/3" style="color:#00379c;"
+>Using AI to improve data management processes
+</a></div>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #ffffff; background-color: #ffffff; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 21px; font-weight: 600; line-height: 26px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/169641883/36983911/2" style="color:#00379c;"
+>7 Steps to Create a Security incident Response Plan</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; line-height: 1; text-align: left; color: #afafaf;">This resource is brought to you by our sponsors</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 20px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">If your network was under attack this very minute, would you know how to respond? Would your team know what to do? If your answer wasn't a quick "YES!", it may be time to create a Security Incident Response Plan.<br /><br />A security incident response plan lays out steps for how to counteract a cybersecurity attack or data breach. The plan outlines how to respond as quickly as possible if something happens, to limit damage to systems and data, 
+and to ensure normal operations can continue without too much delay.<br /><br />Access this white paper to learn the seven steps you can take to formulate a comprehensive plan. <br />
+</font>
+</font>
+</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px; word-break: break-word;" align="left">
+                  
+      
+<table style="border-collapse: separate; width: 224px; line-height: 100%;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border: none; border-radius: 3px; cursor: auto; height: 40px; mso-padding-alt: 10px 25px; background: #ce3325;" align="center" valign="middle" bgcolor="#ce3325">
+            <a
+ href="https://go.techtarget.com/r/169641883/36983911/2" style="display: inline-block; width: 174px; background: #ce3325; color: #ffffff; font-family: Helvetica,arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"
+>
+              Read More
+            </a>
+          </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#f2f2f2;background-color:#f2f2f2;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #f2f2f2; background-color: #f2f2f2; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 21px; font-weight: 600; line-height: 26px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/169647214/36983911/3" style="color:#00379c;"
+>Top Reasons Automated Data Governance and Compliance</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; line-height: 1; text-align: left; color: #afafaf;">This resource is brought to you by our sponsors</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 20px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Data is a valuable asset that many companies are looking to harvest, hold, and harness.<br /><br />But the data warehouses and lakes that businesses have set up for these purposes are full of risk - degradation of data quality, noncompliance exposure, and data silos are just a few of the potential problems you might face sooner than later.<br /><br />Access this sheet to learn how automated data governance can eliminate these risks, allowing 
+admins better control of company data, easy analytics-based reporting, and more.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px; word-break: break-word;" align="left">
+                  
+      
+<table style="border-collapse: separate; width: 224px; line-height: 100%;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border: none; border-radius: 3px; cursor: auto; height: 40px; mso-padding-alt: 10px 25px; background: #ce3325;" align="center" valign="middle" bgcolor="#ce3325">
+            <a
+ href="https://go.techtarget.com/r/169647214/36983911/3" style="display: inline-block; width: 174px; background: #ce3325; color: #ffffff; font-family: Helvetica,arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"
+>
+              Read More
+            </a>
+          </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #ffffff; background-color: #ffffff; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 21px; font-weight: 600; line-height: 26px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/169647374/36983911/4" style="color:#00379c;"
+>Using AI to improve data management processes</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; line-height: 1; text-align: left; color: #afafaf;">This resource is brought to you by our sponsors</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 20px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">The positive impacts of AI adoption have been made clear across many use cases - but what about in data management?<br /><br />After all, data management is often seen more as a crucial step in preparing data for AI or machine learning models, not the other way around.<br /><br />Read this e-guide to learn how you can take AI tools and apply them to automate, improve, and accelerate crucial data management tasks including master data 
+management.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px; word-break: break-word;" align="left">
+                  
+      
+<table style="border-collapse: separate; width: 224px; line-height: 100%;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border: none; border-radius: 3px; cursor: auto; height: 40px; mso-padding-alt: 10px 25px; background: #ce3325;" align="center" valign="middle" bgcolor="#ce3325">
+            <a
+ href="https://go.techtarget.com/r/169647374/36983911/4" style="display: inline-block; width: 174px; background: #ce3325; color: #ffffff; font-family: Helvetica,arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"
+>
+              Read More
+            </a>
+          </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 10px 25px; padding-top: 30px; padding-bottom: 0; word-break: break-word;" align="center">
+<p style="border-top: solid 1px #f2f2f2; font-size: 1px; margin: 0px auto; width: 100%;">&nbsp;</p>
+<!--[if mso | IE]>
+<table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #f2f2f2;font-size:1px;margin:0px auto;width:550px;" role="presentation" width="550px" >
+<tr>
+<td style="height:0;line-height:0;"> &nbsp;
+</td>
+</tr>
+</table>
+<![endif]-->
+    
+    
+                </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="margin:0px auto;max-width:600px;">
+        
+        
+<table style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; padding-top: 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:480px;" ><![endif]-->
+<div class="mj-column-per-80 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="vertical-align:top;padding-top:0;">
+<style><!--
+     td.mobile-logo {display:block !important;width:100% !important;text-align: left !important;padding:0 20px !important;}
+--></style>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 10px 25px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; font-weight: 200; line-height: 1.3; text-align: left; color: #999999;">This newsletter is published by <a
+ href="https://www.techtarget.com" style="color:#008bc1;"
+>TechTarget, Inc.</a>,
+<br />275 Grove Street, Newton, Massachusetts, 02466 US
+<br /><br />
+Click to: <a
+ href="http://ed-link.techtarget.com/u/NJANBCU/UHFS0I/7UXHS9/95TLQB/NH/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/" style="color:#008bc1;"
+>Unsubscribe</a>
+<br /><br />
+  You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169648076/36983911/1" style="color:#008bc1;"
+>Partners List</a> below, as described in our <a
+ href="https://go.techtarget.com/r/169648077/36983911/1" style="color:#008bc1;"
+>Privacy Policy</a>. For additional assistance, please contact: <a
+ href="mailto:webmaster@techtarget.com" style="color:#008bc1;"
+>webmaster@techtarget.com</a>
+<br /><br />
+&copy; 2021 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners. 
+<br /><br />
+  <a
+ href="https://go.techtarget.com/r/169648077/36983911/1" style="color:#008bc1;"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169648076/36983911/1" style="color:#008bc1;"
+>Partners List</a></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+<td class="" style="vertical-align:middle;width:120px;" ><![endif]-->
+<div class="mj-column-per-20 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: middle; width: 100%;">
+        
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="vertical-align:middle;padding:10px 10px 10px 0;">
+              
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td class="mobile-logo" style="font-size: 0px; padding: 0; word-break: break-word;" align="right">
+                  
+      
+<table style="border-collapse: collapse; border-spacing: 0px;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="width: 71px;">
+              
+        <a
+ href="https://www.techtarget.com" target="_blank"
+>
+          
+      <img style="border: 0; display: block; outline: none; text-decoration: none; height: 38px; width: 100%; font-size: 13px;" src="https://media.techtarget.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png" alt="TechTarget" width="71" height="38" />
+    
+        </a>
+      
+            </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+    
+    
+      </div>
+</body>
+    </html>
+
+<!-- [[NJANBCU-3Z0VUV-UHFS0I-7UXHS9-95TLQB-H-M2-20210709-5bcf98c9209587]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/NJANBCU/UHFS0I/7UXHS9/95TLQB/X8JN/52"></body></html>
+
+

@@ -1,0 +1,722 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp841649wrr; Thu, 8 Jul
+ 2021 10:07:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzmP5N59ka/pDKInTI9qBwNs2SGa/KaDa9LJ2kEztslHSKXIl+/iba6BKVtWtPFIfr+yT3I
+X-Received: by 2002:a62:dd83:0:b029:30f:d69:895f with SMTP id
+ w125-20020a62dd830000b029030f0d69895fmr32331651pff.17.1625764036703; Thu, 08
+ Jul 2021 10:07:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625764036; cv=none; d=google.com;
+ s=arc-20160816;
+ b=pwF/VIc9sNv9mtJxiwrBO4uCao6En8xgf6TMxbpIJcYxwZMIuatyRL+Pf9MJekW71W
+ VCrUQju80jrE2upX1RV8xCTKyj+wJTHHBlgSQOPcWxjNYTTgqKlZ6rUH5o0GtBK+5N0/
+ K5FhxPSUJlF8doBxA7BR3sj7PBsytuWgZI7s5R5ZdFnD+DATPkBIt/ePTUWK3Iiq2IVO
+ SCaZnhgaymRiVOwAQx1IudLtigeKgoxwEChJ+p19f7rVu9EIOtPVRv2pktXzHQMn4Hkv
+ 6FGwHe5b7J1QoqM26v86KLrIhGr4B8EIw9yEDtmQPfS0937HjFATFZ0vkv+NNup/CHvQ JieA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:subject:message-id:to:reply-to:mime-version:from
+ :date:dkim-signature; bh=7vljo5FxaBtwmAxdh+BQEVZFTi/fUQgnWMDNvfcXSPo=;
+ b=Vm0eyJk2iqNeD6FFBW3ABvm2r7wOXkEnmyfrnPVdPxGgR4Jm+72UwhPp02AhtVfSV6
+ 7dACnTnHD+FJosPsV4JUluaMGHYnuPo8tQp+yZYY9IY6xJr8gi2E3V3TV3TstiodVf0D
+ 8UWKW6bKSzJ73+7afG0WSHv50sOOtzYwSYqoIQJBCrsq2NT4mVdKDCcoOngi/jVAymrU
+ vSVLBWHX/fWWJUR59Q6Hh3vyyaq0zr0SspFTWy56hRkTKdubd1KFoO+ggGyIUXZ6MiYy
+ XS1NhyWYUJG5n+w7OymXXya0XzWLABNGMbKRI2tSXyRMIaECVso5ipQPXTwdqeIuueDE BSyA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@humanriskmanagement.com header.s=s1 header.b=jyuPy4Ed; spf=pass
+ (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender)
+ smtp.mailfrom="bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com"
+Return-Path: <bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com>
+Received: from o1.email.utilitypartners.com (o1.email.utilitypartners.com.
+ [208.117.61.30]) by mx.google.com with ESMTPS id
+ u11si3476519pfh.80.2021.07.08.10.07.15 for <arkadiy.tetelman@chime.com>
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Thu, 08
+ Jul 2021 10:07:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender) client-ip=208.117.61.30;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@humanriskmanagement.com header.s=s1 header.b=jyuPy4Ed; spf=pass
+ (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender)
+ smtp.mailfrom="bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=humanriskmanagement.com;
+ h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe; s=s1;
+ bh=7vljo5FxaBtwmAxdh+BQEVZFTi/fUQgnWMDNvfcXSPo=; b=jyuPy4E
+ dkrEV67f1YnYQ483m6b09d/yg73VeevnEXVgIjOQx4e5QSNS4z7AE9Hs2BvRC/p0
+ x57FNLM0GMH5v0EbzmdSeWd7ozdqeAHogODWHfh4KmNEHZV1myzDApjoKjNDh6xP
+ mBlTlLV1MiQCIVndQz+813Z8gUVQ5bJ2hdtM=
+Received: by filter2507p1las1.sendgrid.net with SMTP id
+ filter2507p1las1-9282-60E72204-C 2021-07-08 16:04:20.38282229 +0000 UTC
+ m=+593057.132500677
+Received: from MTk2MDAyNzg (unknown) by geopod-ismtpd-1-2 (SG) with HTTP id
+ _ChqH88oSFmDdUmO2mSPvw Thu, 08 Jul 2021 16:04:20.139 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary=9ca1b8a735baa996c4a9a8778db6f68a2b8107a0a0705733cc7a8673a934
+Date: Thu, 08 Jul 2021 16:04:24 +0000 (UTC)
+From: "Cybersecurity Human Risk Update" <donotreply@humanriskmanagement.com>
+Mime-Version: 1.0
+Reply-To: donotreply@humanriskmanagement.com
+To: "Arkadiy Tetelman" <arkadiy.tetelman@chime.com>
+Message-ID: <_ChqH88oSFmDdUmO2mSPvw@geopod-ismtpd-1-2>
+Subject: =?UTF-8?B?V2hhdOKAmXMgWW91ciBGYXZvcml0ZSBDeWJlcnNlY3VyaXR5IE1vdmllPw==?=
+List-Unsubscribe: =?UTF-8?B?PG1haWx0bzp1bnN1YnNjcmliZUBlbTk5NzQuaHVtYW5yaXNrbWFuYWdlbWVu?=
+ =?UTF-8?B?dC5jb20/c3ViamVjdD1odHRwczovL3UxOTYwMDI3OC5jdC5zZW5kZ3JpZC5u?=
+ =?UTF-8?B?ZXQvd2YvdW5zdWJzY3JpYmUqcSp1cG49NVozWGJRV1NOMi0yRlZNRmVNN0Ix?=
+ =?UTF-8?B?N2gxNkYtMkJyVGhXV282UjNwSXB4dFoxZ2NzUGR4eUFxVVgwbXItMkIzWGYy?=
+ =?UTF-8?B?ekF1dTVlek9tUndtNi0yQkNKcWJqSjF2Qk5hSC0yRmJyVUZPVnEyeE0yT1Zm?=
+ =?UTF-8?B?QTZiRHBibUg4V1RXT0xPYkVPRzA3WmFCTGtoaU9qLTJGdWxJN3prVjk3bGhx?=
+ =?UTF-8?B?QllRSk0wUGx2Y2lGUFQ5NFpRTTFxemFXNmVrbDE5ZlJwMDdxbEQ3SVlyQTlO?=
+ =?UTF-8?B?aXIzSUFFSm95WHlkNzBRZnFnQVNVZ3J2QS0yQkNyRE1ocTVYTGp6dW01a2VU?=
+ =?UTF-8?B?WkdzbEt0OHdYaU1tQWJBbkRYdUM5b2lwYTk5MU83ME8yc0hIaUlWdmJ3Q1p0?=
+ =?UTF-8?B?ZWRldm9lUFNiSUxLeXQ4TThILTJGYi0yQmRnTmlRQ3l5WGtSZFVmd2l3WEV0?=
+ =?UTF-8?B?UTNTb041VVZFWTN6WGdVN01xNXg3bjlMc2hjdXVmYldjMENhNVFLVmNZejlF?=
+ =?UTF-8?B?U1BRNUFLV3kzUVJsYVRGdVlXcjFOdWpINC0yQlFNTVBWTTRJQjFYRi0yQkM3?=
+ =?UTF-8?B?bmctMkZDWVZManZIcmdzakVwTnliVWRHMTlhOW9oMmJhSEVkckZjRG9sTWg3?=
+ =?UTF-8?B?aVR5d3ZKdzVMRC0yQlNZQ1FUbzU0VGZnN2tNeUp0cHdhYXFERUFjWm8wbFNY?=
+ =?UTF-8?B?aHpIRXB5MVhBLTJGdC0yQlpXR1FkcWVaZUUya3VMM1JITllrTER1Si0yRnhq?=
+ =?UTF-8?B?T0xCaHdDU1FZUWppQTdvOXVHQ3JNeUFTSDQ1M3U4YWVRNWJPZUJ3U0t5clJo?=
+ =?UTF-8?B?RUo5RnJrbFJHbHUyQ1BPelJMejNlU29JdGdqbzhKN0dMbmtmWHNBNExidERF?=
+ =?UTF-8?B?MjgyQ3dydC0yRlN5RW51T1VEdWJ2by0yRm9ma0VlNUJRc3JGNnN6b3JORGUx?=
+ =?UTF-8?B?V2t4bFpqa1BuN0I3cUp6aUMtMkZQTHF3d0wwMS0yQnJVSUZITGhveDQxTW1O?=
+ =?UTF-8?B?VWt4ci0yQkRzZzFtem1DbXdTYWdraS0yQkx4SzdwRW8xdWx4aU9SNVNoZ0cx?=
+ =?UTF-8?B?N1RvQ3hFSzdMM3J6d3JOMmR4a3ZQRVlJM1pxR3RzS0FHbnR2cHAweXVzb1Js?=
+ =?UTF-8?B?WDdjOTZaOUExY0UwZzNFNFR5cUdRUWhmOVRrSjZ2RjlaV2UyWXYxOEdJNXF4?=
+ =?UTF-8?B?eEstMkJMczQtMkZZdVhoSFdwMmNOdXJ3OEJabzZpZmNwSy0yQkdoSzIzTzhy?=
+ =?UTF-8?B?ZnRxZ3ZwYkdqOEotMkYyUjk2RHEweGl0TEdoeG5KaWlBOVJRcHdtWUJxUVc2?=
+ =?UTF-8?B?bkEtMkZZbmpSVERVZGRhUmJwQXg1c1JLYjFuYTd5MnpTMTFjZEN0YWtaakpQ?=
+ =?UTF-8?B?U2dTUXVPQktTb2tjMkN0MlpSaHVVWERuOFIzMmRveHEtMkZ2MkZ1alhPM01E?=
+ =?UTF-8?B?bnE4ZGV4Tk9mWVRSVTlBYWRMcU5GU2NXckNzSHRHZkNRYVJrN2FPUS0yRmdz?=
+ =?UTF-8?B?c3k4N0stMkZQNmRyMkYtMkJ4WWhOU0RJLTJGdUdyZkVlbzZjQkpZWnF3WWRH?=
+ =?UTF-8?B?d2JYemJLPg==?=
+X-SG-EID: EAYsSDcGFktsaXmg04s8K8jlClXv1wnA7PSjq12fk6F+ImIlLASU3pdwTsHJXtnMa8zIope1ol1HVY
+ UyMOft7li9XSyS7UkrnPqBddoIcsDmtxHh5u8WQZlAqp95Mc1IqH0nZdPaZdTAN9pcn9F1X/VDBf2c
+ X1gCAGnzqazOL3RpIDERMU7U7bRD8QigIb5ZKxBQTft5+6wjtFNLoGOowHLofAVQPE9hdKdVMqOlZj
+ cUkUZvTnKWSeKrEWzR9r+mfVugbQkJBJU6WNwQ86DY6A==
+X-SG-ID: mcTyqcYTtmn56LU3ATD1f3jTeIc3nmwaMCmCzyY2ZAhIMoktD8Yk5WRQA4Q/s958mnxg5c2mPE0348
+ irXRj3+ICW1xALSVvzFCsVN/oD+jwM43VNeVM4APU+gtA08ylnTqJhaJcpxWE/ILNQxiyXJ3clu7/l
+ h7exIPJWDe8MejcInSWJyTKSzAgeHFh82LNehnEhv/QpJj/mXobUDVetk98VSpk4tDQUF7GGuUR1wd
+ kITlFoC30y2KdV78nczFzXloM9HM9P1TZlM4v97brPNnRRPzSW58oTSoNSM4ydM+fz3tQHIAJBxPJt
+ oVnSbkPDNadxt41RE4q3UQh+Pg127b7uLpjWCdkPk0wmYq8FGjtcfwxLPGWYpfGLQG/E3NnDaNDKNV
+ OIWHfr1buRMmX9zyBvnKsxT/j0rF0bLglEVFlcXtulMOvihUGgqnB45yhALfNSlYcgVYTjyNPpmt+w
+ 7YvvGoV2wnfoy78Z3moD2uPv7jxpCgAOOBu7fsKDpZqCnsPLyELogr/7hFC3J31DkECTi3aHXGvw6Y
+ 1QAYEPO+ghnU8jbnxySe/GdTClJKbgBbSsfCfo8g8I9oJRUFkZymk9kB6HG3WtTq40IYeBE4aNh6R0
+ 4bJEvckF70sitnrprQ+M7ySsgzVqdf3ez6WF77EkrRP/S1uCUm+LjMRTsY6tRMf+BDBCQ/uIiit2cl
+ E5xtt54oW3Sw/r/86WL4980nMuJLDm2dLojr1+yNO5ERdx+O9zbzbYnObVMKcwPMguxQOg0zB6EAz5
+ aBWxQbaIwsrC5V5z7itemCb9TzN9HDeRPEn3H5kk4Wd7lGpCWSjq9NDR26ULN8UpR3DVTu3/CQ==
+X-Entity-ID: ktqcbPjqzfKahrDgVDs7pg==
+
+
+--9ca1b8a735baa996c4a9a8778db6f68a2b8107a0a0705733cc7a8673a934
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+We live in a world where most of our life is available on the internet. It=
+=E2=80=99s normal to be curious about what could happen if the wrong person=
+ gets their hands on your personal information.
+
+4 Must-Watch Cybersecurity Webinars for Security Awareness Program Owners (=
+ https://www.livingsecurity.com/blog/5-movies-about-cybersecurity-to-add-to=
+-your-watch-list )
+
+Hi Arkadiy,
+
+We live in a world where most of our life is available on the internet. It=
+=E2=80=99s normal to be curious about what could happen if the wrong person=
+ gets their hands on your personal information.
+While real-life hacking might not be as action-packed as it is in the movie=
+s, you might be surprised at how much you can actually learn from cybersecu=
+rity movies. Living Security makes cybersecurity awareness fun!
+Here are five movies about cybersecurity that any security professional sho=
+uld add to their must-watch list:
+
+*5 Movies About Cybersecurity to Add to Your Watch List* ( https://www.livi=
+ngsecurity.com/blog/5-movies-about-cybersecurity-to-add-to-your-watch-list )
+
+-------------------------
+Living Security Community
+JOIN THE CONVERSATION
+-------------------------
+
+Living Security developed this Community to support cybersecurity leaders j=
+ust like you. We realize the challenges of your role, so let's help each ot=
+her by sharing what's working best in your cybersecurity awareness program!
+
+GET MORE INFORMATION ( https://hubs.la/H0RSHVk0 )
+
+( https://twitter.com/living_security ) ( https://www.instagram.com/livings=
+ecurity/ ) ( https://www.linkedin.com/company/living-security/ )
+
+Cybersecurity Human Risk Update
+
+Living Security, 3595 RR 620 South , Austin , TX 78738
+
+Unsubscribe ( https://u19600278.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQ=
+WSN2-2FVMFeM7B17h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuu5ezOmRwm6-2=
+BCJqbjJ1vBNaH-2FbrUFOVq2xM2OVfA6bDpbmH8WTWOLObEOG07ZaBLkhiOj-2FulI7zkV97lhq=
+BYQJM0PlvciFPT94ZQM1qzaW6ekl19fRp07qlD7IYrA9Nir3IAEJoyXyd70QfqgASUgrvA-2BCr=
+DMhq5XLjzum5keTZGslKt8wXiMmAbAnDXuC9oipa991O70O2sHHiIVvbwCZtedevoePSbILKyt8=
+M8H-2Fb-2BdgNiQCyyXkRdUfwiwXEtQ3SoN5UVEY3zXgU7Mq5x7n9LshcuufbWc0Ca5QKVcYz9E=
+SPQ5AKWy3QRlaTFuYWr1NujH4-2BQMMPVM4IB1XF-2BC7ng-2FCYVLjvHrgsjEpNybUdG19a9oh=
+2baHEdrFcDolMh7iTywvJw5LD-2BSYCQTo54Tfg7kMyJtpwaaqDEAcZo0lSXhzHEpy1XA-2Ft-2=
+BZWGQdqeZeE2kuL3RHNYkLDuJ-2FxjOLBhwCSQYQjiA7o9uGCrMyASH453u8aeQ5bOeBwSKyrRh=
+EJ9FrklRGlu2CPOzRLz3eSoItgjo8J7GLnkfXsA4LbtDE282Cwrt-2FSyEnuOUDubvo-2FofkEe=
+5BQsrF6szorNDe1WkxlZjkPn7B7qJziC-2FPLqwwL01-2BrUIFHLhox41MmNUkxr-2BDsg1mzmC=
+mwSagki-2BLxK7pEo1ulxiOR5ShgG17ToCxEK7L3rzwrN2dxkvPEYI3ZqGtsKAGntvpp0yusoRl=
+X7c96Z9A1cE0g3E4TyqGQQhf9TkJ6vF9ZWe2Yv18GI5qxxK-2BLs4-2FYuXhHWp2cNurw8BZo6i=
+fcpK-2BGhK23O8rftqgobDTxNp28hfOOPTeHXhKFPO9MOaaaYhFrJWx2Mt23OYA1DQDl4jnEnSq=
+7sBaR5S5vHe-2BtLK9HRvS17IkOEVXuUMJ-2FK-2FzDw4qvkseP7B37dCxTDOP55232SAZa2Emp=
+Mwi0BP-2FwLush55TWYbZZqF8KxIDyOuIt1uiSpXTyGnmvH-2BEUnu9QcZ0UNXD70iXDlRu76Qo=
+AOHlP8LK7nTXQCO0u )=
+
+--9ca1b8a735baa996c4a9a8778db6f68a2b8107a0a0705733cc7a8673a934
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 640px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: inherit;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #e36654;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><link href=3D"https://fonts.google.com/=
+specimen/Work+Sans" rel=3D"stylesheet"><style>
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6    {
+        font-family: 'Work Sans', sans-serif;=20
+        }
+  body  {
+        font-family: 'Work Sans', sans-serif;
+        }
+  </style><!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#e36654" data-body-style=
+=3D"font-size:14px; font-family:inherit; color:#000000; background-color:#F=
+7F7F7;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" class=3D"wrapper" bgcolor=3D"#F7F7F7">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#F7F7F7" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"o=
+uter" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"640">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:640px;" alig=
+n=3D"center">
+                                      <tr>
+                                        <td role=3D"modules-container" styl=
+e=3D"padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor=3D"#=
+FFFFFF" width=3D"100%" align=3D"left"><table class=3D"module preheader preh=
+eader-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;">
+    <tr>
+      <td role=3D"module-content">
+        <p>We live in a world where most of our life is available on the in=
+ternet. It=E2=80=99s normal to be curious about what could happen if the wr=
+ong person gets their hands on your personal information.</p>
+      </td>
+    </tr>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"b08b1fc4-c52c-47c0-a9f1-b18631abe9fc">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;" valign=3D"top" align=3D"center">
+=20=20=20=20=20=20=20=20=20=20
+        <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=3DEVwvmma=
+Di1RKsQYtmuLaoCg3bPB2Cp5iXCZVfMHp5rUV2CmZR53FTTyxHb50UL-2BF2U9YxJfH6G3QpJfc=
+GoCg6DRF6ygxd2ZkB-2BicY3pcF-2B1SXWkeaV0zO5Zw7C0xcJOshKkYNbhw5yGBUFyfHYsYIw-=
+3D-3DLCoH_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6q3=
+JH2t8AROPyLlJSiJbmmIiyxRe2bhpGoc5XyL2qVmtzdwLfZzhAqtPFb7fAgVskHelXdratI-2Ft=
+OrjQoPC-2Flb83GLk-2BFno8Rxj4P3SjDTgYe7Oe-2BNwAAq9AHUT5aaBno6n4OwkXPn6aUKF-2=
+BEVNuKh9kokxR1QQmcQRgd7f8A0EvnJhy99vMMyGNC-2FOYz6ou4hVhxHPAYcfdBcJ9GKB2-2FG=
+2JjPlmzh2-2FeX7KhbKS2DnQOhNiTen4jyYQMMk6X4Rh6FlebE3XD3fRiUP4QyDkpgVkNw36U-2=
+BfPHAbSb4JKy73aQ7H5M-2B0JbdZoLe60My7awuYDT-2FFGWYMQ4hcg8BmQsirzCf2W-2BLrc34=
+juzv9FFnDcYUo5jDrDFnEGdr-2FwadvHji35rbGNaNlRjKcHDLH1ZtjMViOT-2BuEou-2FMFDkP=
+jMK8-2BkHVogexM4wjcix1sX-2Bt1zsYky8pRtnW6DN65fnEupjatSFhDfkUl0xgW5Ctjfpq07Z=
+AyMvvvMz9KqfWeLPOoxTpz4KFn4rB1B5Kul7o0Uf4FjYX1NHNvHHhZzdf544Itge9TRhFoun3aV=
+4-2B5SvS-2FO59OVDg3GO8boFKpZ9IhHjadYAiV0OMO1XWZioMLyY42HRoq19rxTEDcdBHlKJxf=
+JPDtuoT2lcOIcJJVpO8bLWXiUHORC1SsMMa9ilC8A4XEMIXVIhA3cgD27b8Pg2T0N-2BkPZV9yE=
+dhc4jk95oO9hPAK5AsGzZwIu2K96B9rU1jgHxXggs4vd3wep59GsbFF-2FUakQbD-2ByVtFWoCM=
+rCJg0e7CXN-2BgcQIgb9pQX-2BA9ytOKM5UG0olSVO9F5EI7532wtUwZGifI1kp-2FITPhVfFjw=
+A81Fe-2FlbMqbSPCma7OqZfVGlYghIk4ydOSjdXyV5ycY8bM5tp83I6FPl9lX1Jk4-2BGNvlXnJ=
+nbrjoSqAe0DHkpqIyMDxIifk8YCb6Rli8xcm28PXZpnTnTuPE-2F3n-2BDwBxad1gxtr8a6CAOE=
+nPqzhlnISg-2FS5E4E0UjzOeo0o-2FX2Kh1"><img class=3D"max-width" border=3D"0" =
+style=3D"display:block; color:#000000; text-decoration:none; font-family:He=
+lvetica, arial, sans-serif; font-size:16px; max-width:100% !important; widt=
+h:100%; height:auto !important;" width=3D"640" alt=3D"4 Must-Watch Cybersec=
+urity Webinars for Security Awareness Program Owners" data-proportionally-c=
+onstrained=3D"true" data-responsive=3D"true" src=3D"http://cdn.mcauto-image=
+s-production.sendgrid.net/8da17a11c39e717c/3671d412-f4d4-4599-b406-165ec0ea=
+4d1e/619x275.png"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"1ea1b591-d934-4e56-8877-0819ab0999bd" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 40px 18px 40px; line-height:20px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><div style=3D"font-family: inherit; text-align: inherit"><span =
+style=3D"color: #000000; font-size: 14px; font-style: normal; font-variant-=
+ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spac=
+ing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-=
+stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-th=
+ickness: initial; text-decoration-style: initial; text-decoration-color: in=
+itial; float: none; display: inline; font-family: inherit">Hi Arkadiy,</spa=
+n></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"lin=
+e-height: 1.38; margin-top: 0pt; margin-bottom: 10pt; font-size: 11pt; colo=
+r: #000000; background-color: transparent; font-weight: 400; font-style: no=
+rmal; font-variant-ligatures: normal; font-variant-caps: normal; font-varia=
+nt-numeric: normal; font-variant-east-asian: normal; text-decoration-line: =
+none; text-decoration-thickness: initial; text-decoration-style: initial; t=
+ext-decoration-color: initial; vertical-align: baseline; white-space: pre-w=
+rap; font-family: inherit">We live in a world where most of our life is ava=
+ilable on the internet. It=E2=80=99s normal to be curious about what could =
+happen if the wrong person gets their hands on your personal information.<b=
+r>
+While real-life hacking might not be as action-packed as it is in the movie=
+s, you might be surprised at how much you can actually learn from cybersecu=
+rity movies. Living Security makes cybersecurity awareness fun!<br>
+Here are five movies about cybersecurity that any security professional sho=
+uld add to their must-watch list:<br>
+</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><a href=3D"https:/=
+/u19600278.ct.sendgrid.net/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoCg3bPB2Cp5iX=
+CZVfMHp5rUV2CmZR53FTTyxHb50UL-2BF2U9YxJfH6G3QpJfcGoCg6DRF6ygxd2ZkB-2BicY3pc=
+F-2B1SXWkeaV0zO5Zw7C0xcJOshKkYNbhw5yGBUFyfHYsYIw-3D-3DGXCm_aKl06bRJjmvwJ2wP=
+sUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyLlJSiJbmmIiyxRe2=
+bhpGoc5XyL2qVmtzdwLfZzhAqtPFb7fAgVskHelXdratI-2FtOrjQoPC-2Flb83GLk-2BFno8Rx=
+j4P3SjDTgYe7Oe-2BNwAAq9AHUT5aaBno6n4OwkXPn6aUKF-2BEVNuKh9kokxR1QQmcQRgd7f8A=
+0EvnJhy99vMMyGNC-2FOYz6ou4hVhxHPAYcfdBcJ9GKB2-2FG2JjPlmzh2-2FeX7KhbKS2DnQOh=
+NiTen4jyYQMMk6X4Rh6FlebE3XD3fRiUP4QyDkpgVkNw36U-2BfPHAbSb4JKy73aQ7H5M-2B0Jb=
+dZoLe60My7awuYDT-2FFGWYMQ4hcg8BmQsirzCf2W-2BLrc34juzv9FFnDcYUo5jDrDFnEGdr-2=
+FwadvHji35rbGNaNlRjKcHDLH1ZtjMViOT-2BuEou-2FMFDkPjMK8-2BkHVogexM4wjcix1sX-2=
+Bt1zsYky8pRtnW6DN65fnEupjatSFhDfkUl0xgW5Ctjfpq07ZAyMvvvMz9KqfWeLPOoxTpz4KFn=
+4rB1B5Kul7o0Uf4FjYX1NHNvHHhZzdf544Itge9TRhFoun3aV4-2B5SvS-2FO59OVDg3GO8boFK=
+pZ9IhHjadYAiV0OMO1XWZioMLyY42HRoq19rxTEDcdBHlKJxfJPDtuoT2lcOIcJJVpO8bLWXiUH=
+ORC1SsMMa9ilC8A4XEMIXVIhA3cgD27b8Pg2T0N-2BkPZV9yEdhc4jk95oO9hPAK5AsGzZwIu2K=
+96B9rU1jgHxXggs4vd3wep59GsbFF-2FUakQbD-2ByVtFWoCMrCJg0e7CXN-2BgcQIgb9pQX-2B=
+A9ytOKPfqb-2FRLFEPacvs38-2BKYmxVJD7nJQNj2ABE5Jp8OU4fy1n4cT1kqdZuIo5Ib4nPgcE=
+t9pM2W-2F9hBBwaZyJYsmCPsTJmQyxLA3CmKipMtw-2BG8UZhA8qwsRoK3r3jxpn-2Bcof62-2F=
+ZkyjvnmL3YPQj8TWvbBXMkJCoSLlhw4mFoktnd5xJay95Ont-2FQedZ3LyO42g93bIJWhWDa9Ph=
+TWiZSl1m6"><span style=3D"font-size: 14px; font-style: normal; font-variant=
+-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spa=
+cing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfo=
+rm: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text=
+-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-t=
+hickness: initial; text-decoration-style: initial; text-decoration-color: i=
+nitial; float: none; display: inline; color: #e36654; font-family: inherit"=
+><strong>5 Movies About Cybersecurity to Add to Your Watch List</strong></s=
+pan></a></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"divider" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table=
+-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda.1">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 40px 0px 40px;" role=3D"module-content" he=
+ight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"w9yiCQx4JusmopNeqfavk9" data-mc-module-version=
+=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 18px 40px; line-height:23px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><h2 style=3D"text-align: left"><span style=3D"font-size: 11px">=
+Living Security Community</span><br>
+JOIN THE CONVERSATION</h2>
+<div style=3D"font-family: inherit; text-align: left">Living Security devel=
+oped this Community to support cybersecurity leaders just like you. We real=
+ize the challenges of your role, so let's help each other by sharing what's=
+ working best in your cybersecurity awareness program!</div><div></div></di=
+v></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+module" data-role=3D"module-button" data-type=3D"button" role=3D"module" st=
+yle=3D"table-layout:fixed;" width=3D"100%" data-muid=3D"33d32f37-e2b1-4818-=
+b5d2-3ffc4ce932f1">
+      <tbody>
+        <tr>
+          <td align=3D"center" bgcolor=3D"" class=3D"outer-td" style=3D"pad=
+ding:0px 0px 0px 0px;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"wrapper-mobile" style=3D"text-align:center;">
+              <tbody>
+                <tr>
+                <td align=3D"center" bgcolor=3D"#3F69D4" class=3D"inner-td"=
+ style=3D"border-radius:6px; font-size:16px; text-align:center; background-=
+color:inherit;">
+                  <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=
+=3DEVwvmmaDi1RKsQYtmuLaoAupaoOu-2Fb6nqBi1UIa-2F-2BtEug8MtJPk-2FVK3fzEGCaYzx=
+jnTE_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8=
+AROPyLlJSiJbmmIiyxRe2bhpGoc5XyL2qVmtzdwLfZzhAqtPFb7fAgVskHelXdratI-2FtOrjQo=
+PC-2Flb83GLk-2BFno8Rxj4P3SjDTgYe7Oe-2BNwAAq9AHUT5aaBno6n4OwkXPn6aUKF-2BEVNu=
+Kh9kokxR1QQmcQRgd7f8A0EvnJhy99vMMyGNC-2FOYz6ou4hVhxHPAYcfdBcJ9GKB2-2FG2JjPl=
+mzh2-2FeX7KhbKS2DnQOhNiTen4jyYQMMk6X4Rh6FlebE3XD3fRiUP4QyDkpgVkNw36U-2BfPHA=
+bSb4JKy73aQ7H5M-2B0JbdZoLe60My7awuYDT-2FFGWYMQ4hcg8BmQsirzCf2W-2BLrc34juzv9=
+FFnDcYUo5jDrDFnEGdr-2FwadvHji35rbGNaNlRjKcHDLH1ZtjMViOT-2BuEou-2FMFDkPjMK8-=
+2BkHVogexM4wjcix1sX-2Bt1zsYky8pRtnW6DN65fnEupjatSFhDfkUl0xgW5Ctjfpq07ZAyMvv=
+vMz9KqfWeLPOoxTpz4KFn4rB1B5Kul7o0Uf4FjYX1NHNvHHhZzdf544Itge9TRhFoun3aV4-2B5=
+SvS-2FO59OVDg3GO8boFKpZ9IhHjadYAiV0OMO1XWZioMLyY42HRoq19rxTEDcdBHlKJxfJPDtu=
+oT2lcOIcJJVpO8bLWXiUHORC1SsMMa9ilC8A4XEMIXVIhA3cgD27b8Pg2T0N-2BkPZV9yEdhc4j=
+k95oO9hPAK5AsGzZwIu2K96B9rU1jgHxXggs4vd3wep59GsbFF-2FUakQbD-2ByVtFWoCMrCJg0=
+e7CXN-2BgcQIgb9pQX-2BA9ytOKNYjdkSt5A9-2Fm62nvQYXIwVnhk7CV8QwfFNs3M0YKP-2BpQ=
+aMyYD5juHR6LmChmYceyPYjM-2Fe6QS9zVI4KsQTfCuQNRcv7E66LggkEQYJ-2BfPgA95FwlC1M=
+1FvDtxa7hfMI-2B4KqkDiftPvzHMJs2rOCkOMxCu1dMz6zp7Fog8YqJkPzonfuj2pVUut2kyD4Y=
+5SYkps-2FpGxBw-2B0l8fcM6lQR5mJ" style=3D"background-color:#3F69D4; border:0=
+px solid #333333; border-color:#333333; border-radius:60px; border-width:0p=
+x; color:#ffffff; display:inline-block; font-size:14px; font-weight:normal;=
+ letter-spacing:0px; line-height:normal; padding:15px 60px 15px 60px; text-=
+align:center; text-decoration:none; border-style:solid;" target=3D"_blank">=
+GET MORE INFORMATION</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table class=3D"module" role=3D"module" data-type=3D"divider" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"tab=
+le-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 0px 40px;" role=3D"module-content" h=
+eight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"social" alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" style=3D"table-layout: fixed;" data-muid=3D"8bd92b43-527a-485c-8970-c255a=
+e4d60e6">
+    <tbody>
+      <tr>
+        <td valign=3D"top" style=3D"padding:10px 0px 10px 0px; font-size:6p=
+x; line-height:10px;" align=3D"center">
+          <table align=3D"center" style=3D"-webkit-margin-start:auto;-webki=
+t-margin-end:auto;">
+            <tbody><tr align=3D"center"><td style=3D"padding: 0px 5px;" cla=
+ss=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoI75LnejYhHo32v-2BEnoLxkR8COdjnBV96sAb=
+EvzkuxWSUbJe_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss=
+6q3JH2t8AROPyLlJSiJbmmIiyxRe2bhpGoc5XyL2qVmtzdwLfZzhAqtPFb7fAgVskHelXdratI-=
+2FtOrjQoPC-2Flb83GLk-2BFno8Rxj4P3SjDTgYe7Oe-2BNwAAq9AHUT5aaBno6n4OwkXPn6aUK=
+F-2BEVNuKh9kokxR1QQmcQRgd7f8A0EvnJhy99vMMyGNC-2FOYz6ou4hVhxHPAYcfdBcJ9GKB2-=
+2FG2JjPlmzh2-2FeX7KhbKS2DnQOhNiTen4jyYQMMk6X4Rh6FlebE3XD3fRiUP4QyDkpgVkNw36=
+U-2BfPHAbSb4JKy73aQ7H5M-2B0JbdZoLe60My7awuYDT-2FFGWYMQ4hcg8BmQsirzCf2W-2BLr=
+c34juzv9FFnDcYUo5jDrDFnEGdr-2FwadvHji35rbGNaNlRjKcHDLH1ZtjMViOT-2BuEou-2FMF=
+DkPjMK8-2BkHVogexM4wjcix1sX-2Bt1zsYky8pRtnW6DN65fnEupjatSFhDfkUl0xgW5Ctjfpq=
+07ZAyMvvvMz9KqfWeLPOoxTpz4KFn4rB1B5Kul7o0Uf4FjYX1NHNvHHhZzdf544Itge9TRhFoun=
+3aV4-2B5SvS-2FO59OVDg3GO8boFKpZ9IhHjadYAiV0OMO1XWZioMLyY42HRoq19rxTEDcdBHlK=
+JxfJPDtuoT2lcOIcJJVpO8bLWXiUHORC1SsMMa9ilC8A4XEMIXVIhA3cgD27b8Pg2T0N-2BkPZV=
+9yEdhc4jk95oO9hPAK5AsGzZwIu2K96B9rU1jgHxXggs4vd3wep59GsbFF-2FUakQbD-2ByVtFW=
+oCMrCJg0e7CXN-2BgcQIgb9pQX-2BA9ytOKOaY23jzbbeUbnk1pq-2BKJEIaVMgJnhOmgh-2Fn3=
+-2BeyLEqOlytm5WefU68KEXtGuEUv-2F3DnGDIHi5ScSFPGe8CxZz6cEQpeZEpvXmNsC0r1M14g=
+H-2Fjol4Dc2ucqsqMIroeRyEr4JFA2UqCk-2FlcCwqjtl5U030lkAE7eZC8aeeim8q7YXrQiD9b=
+OLqd0Bz2DmaKfwoUngnzWpJEwaX69WyTZl4-2B" target=3D"_blank" alt=3D"Twitter" t=
+itle=3D"Twitter" style=3D"display:inline-block; background-color:#e36654; h=
+eight:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"Twitter" title=3D"Twitter" src=3D"=
+https://mc.sendgrid.com/assets/social/white/twitter.png" style=3D"height:30=
+px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoHzAtCmJySJE626E0Va66T6PHRKBDsZM6p2HRC=
+s35N1ID-2BP8uD23VvMJ5d2BTSHxMg-3D-3Dmp0C_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTq=
+ox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyLlJSiJbmmIiyxRe2bhpGoc5XyL2qVmtzdw=
+LfZzhAqtPFb7fAgVskHelXdratI-2FtOrjQoPC-2Flb83GLk-2BFno8Rxj4P3SjDTgYe7Oe-2BN=
+wAAq9AHUT5aaBno6n4OwkXPn6aUKF-2BEVNuKh9kokxR1QQmcQRgd7f8A0EvnJhy99vMMyGNC-2=
+FOYz6ou4hVhxHPAYcfdBcJ9GKB2-2FG2JjPlmzh2-2FeX7KhbKS2DnQOhNiTen4jyYQMMk6X4Rh=
+6FlebE3XD3fRiUP4QyDkpgVkNw36U-2BfPHAbSb4JKy73aQ7H5M-2B0JbdZoLe60My7awuYDT-2=
+FFGWYMQ4hcg8BmQsirzCf2W-2BLrc34juzv9FFnDcYUo5jDrDFnEGdr-2FwadvHji35rbGNaNlR=
+jKcHDLH1ZtjMViOT-2BuEou-2FMFDkPjMK8-2BkHVogexM4wjcix1sX-2Bt1zsYky8pRtnW6DN6=
+5fnEupjatSFhDfkUl0xgW5Ctjfpq07ZAyMvvvMz9KqfWeLPOoxTpz4KFn4rB1B5Kul7o0Uf4FjY=
+X1NHNvHHhZzdf544Itge9TRhFoun3aV4-2B5SvS-2FO59OVDg3GO8boFKpZ9IhHjadYAiV0OMO1=
+XWZioMLyY42HRoq19rxTEDcdBHlKJxfJPDtuoT2lcOIcJJVpO8bLWXiUHORC1SsMMa9ilC8A4XE=
+MIXVIhA3cgD27b8Pg2T0N-2BkPZV9yEdhc4jk95oO9hPAK5AsGzZwIu2K96B9rU1jgHxXggs4vd=
+3wep59GsbFF-2FUakQbD-2ByVtFWoCMrCJg0e7CXN-2BgcQIgb9pQX-2BA9ytOKMDsXVbheLwNy=
+HvbSXvKfACuNFfMyX1POWSDWQnb2ku9hAR-2BiZ9HDC19NTdSMxUWTizgGF4Z-2Bag06bup2ujj=
+h3Di6ZIfmjILDs-2F5ebWZJeTp1IMQYO6OEOYWPmIeOHREHy3Xs3VynOQHrRzfllLaTjSGhogN3=
+JOQKu3HcXqrh3kL4drz-2Fly1tK1doq0QLP7-2FWIe17R9c9pRnTTWla9EZlMe" target=3D"_=
+blank" alt=3D"Instagram" title=3D"Instagram" style=3D"display:inline-block;=
+ background-color:#e36654; height:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"Instagram" title=3D"Instagram" src=
+=3D"https://mc.sendgrid.com/assets/social/white/instagram.png" style=3D"hei=
+ght:30px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoB-2FSxnJj7QW6IRziGDQmuqGIy9gnzMgazmK7=
+6EsIHs1NY7KRGyQUWqtivr4HtQmcqw-3D-3D4ZBl_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTq=
+ox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyLlJSiJbmmIiyxRe2bhpGoc5XyL2qVmtzdw=
+LfZzhAqtPFb7fAgVskHelXdratI-2FtOrjQoPC-2Flb83GLk-2BFno8Rxj4P3SjDTgYe7Oe-2BN=
+wAAq9AHUT5aaBno6n4OwkXPn6aUKF-2BEVNuKh9kokxR1QQmcQRgd7f8A0EvnJhy99vMMyGNC-2=
+FOYz6ou4hVhxHPAYcfdBcJ9GKB2-2FG2JjPlmzh2-2FeX7KhbKS2DnQOhNiTen4jyYQMMk6X4Rh=
+6FlebE3XD3fRiUP4QyDkpgVkNw36U-2BfPHAbSb4JKy73aQ7H5M-2B0JbdZoLe60My7awuYDT-2=
+FFGWYMQ4hcg8BmQsirzCf2W-2BLrc34juzv9FFnDcYUo5jDrDFnEGdr-2FwadvHji35rbGNaNlR=
+jKcHDLH1ZtjMViOT-2BuEou-2FMFDkPjMK8-2BkHVogexM4wjcix1sX-2Bt1zsYky8pRtnW6DN6=
+5fnEupjatSFhDfkUl0xgW5Ctjfpq07ZAyMvvvMz9KqfWeLPOoxTpz4KFn4rB1B5Kul7o0Uf4FjY=
+X1NHNvHHhZzdf544Itge9TRhFoun3aV4-2B5SvS-2FO59OVDg3GO8boFKpZ9IhHjadYAiV0OMO1=
+XWZioMLyY42HRoq19rxTEDcdBHlKJxfJPDtuoT2lcOIcJJVpO8bLWXiUHORC1SsMMa9ilC8A4XE=
+MIXVIhA3cgD27b8Pg2T0N-2BkPZV9yEdhc4jk95oO9hPAK5AsGzZwIu2K96B9rU1jgHxXggs4vd=
+3wep59GsbFF-2FUakQbD-2ByVtFWoCMrCJg0e7CXN-2BgcQIgb9pQX-2BA9ytOKOYlCNxwFy-2B=
+3p1-2BZs-2F5UhXkVcvvEsUF7wq4RgSKj8Rn4qFgwtUOW0Et-2BWb7Rj9TTH6oT24hcQ6BoxZK1=
+bbW29jrAYnrTRyZFbxUA5UYQbzBChkZemxluR2ArBOh-2B0Ms79-2BoGDJbEdx9O9gHWtefzkR7=
+00hx072XNUgC6vN2PtgiOdmCAkfIBtSy6Sxhj-2FpRxfBas2GJXuYvrEk2uFYF2v-2FJ" targe=
+t=3D"_blank" alt=3D"LinkedIn" title=3D"LinkedIn" style=3D"display:inline-bl=
+ock; background-color:#e36654; height:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"LinkedIn" title=3D"LinkedIn" src=
+=3D"https://mc.sendgrid.com/assets/social/white/linkedin.png" style=3D"heig=
+ht:30px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td></tr></tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><div data-role=3D"module-unsubscribe" class=3D"module" role=3D"mo=
+dule" data-type=3D"unsubscribe" style=3D"color:#444444; font-size:12px; lin=
+e-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid=
+=3D"4e838cf3-9892-4a6d-94d6-170e474d21e5"><div class=3D"Unsubscribe--addres=
+sLine"><p class=3D"Unsubscribe--senderName" style=3D"font-size:12px; line-h=
+eight:20px;">Cybersecurity Human Risk Update</p><p style=3D"font-size:12px;=
+ line-height:20px;"><span class=3D"Unsubscribe--senderAddress">Living Secur=
+ity, 3595 RR 620 South</span>, <span class=3D"Unsubscribe--senderCity">Aust=
+in</span>, <span class=3D"Unsubscribe--senderState">TX</span> <span class=
+=3D"Unsubscribe--senderZip">78738</span></p></div><p style=3D"font-size:12p=
+x; line-height:20px;"><a class=3D"Unsubscribe--unsubscribeLink" href=3D"htt=
+ps://u19600278.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQWSN2-2FVMFeM7B17h=
+16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuu5ezOmRwm6-2BCJqbjJ1vBNaH-2Fb=
+rUFOVq2xM2OVfA6bDpbmH8WTWOLObEOG07ZaBLkhiOj-2FulI7zkV97lhqBYQJM0PlvciFPT94Z=
+QM1qzaW6ekl19fRp07qlD7IYrA9Nir3IAEJoyXyd70QfqgASUgrvA-2BCrDMhq5XLjzum5keTZG=
+slKt8wXiMmAbAnDXuC9oipa991O70O2sHHiIVvbwCZtedevoePSbILKyt8M8H-2Fb-2BdgNiQCy=
+yXkRdUfwiwXEtQ3SoN5UVEY3zXgU7Mq5x7n9LshcuufbWc0Ca5QKVcYz9ESPQ5AKWy3QRlaTFuY=
+Wr1NujH4-2BQMMPVM4IB1XF-2BC7ng-2FCYVLjvHrgsjEpNybUdG19a9oh2baHEdrFcDolMh7iT=
+ywvJw5LD-2BSYCQTo54Tfg7kMyJtpwaaqDEAcZo0lSXhzHEpy1XA-2Ft-2BZWGQdqeZeE2kuL3R=
+HNYkLDuJ-2FxjOLBhwCSQYQjiA7o9uGCrMyASH453u8aeQ5bOeBwSKyrRhEJ9FrklRGlu2CPOzR=
+Lz3eSoItgjo8J7GLnkfXsA4LbtDE282Cwrt-2FSyEnuOUDubvo-2FofkEe5BQsrF6szorNDe1Wk=
+xlZjkPn7B7qJziC-2FPLqwwL01-2BrUIFHLhox41MmNUkxr-2BDsg1mzmCmwSagki-2BLxK7pEo=
+1ulxiOR5ShgG17ToCxEK7L3rzwrN2dxkvPEYI3ZqGtsKAGntvpp0yusoRlX7c96Z9A1cE0g3E4T=
+yqGQQhf9TkJ6vF9ZWe2Yv18GI5qxxK-2BLs4-2FYuXhHWp2cNurw8BZo6ifcpK-2BGhK23O8rft=
+qjDcD8dDxbFQxx8jO-2FfxcJ4ei8jc-2F9UshDNr58hBZpPiB8Y7cdGZlszCOB-2FAvpan0EM1g=
+5r2nCWs5-2BXFl2mq7n-2Bez-2BbvxLx-2By3D7lJCBhcIDEtRDOb91rfFIkZApYE0kcXltKRA-=
+2Btz71r21AunRVdnaqb2oecXb-2BQQ8qYMON-2FUVpLdwGOgdj0-2FhJEn52T16nBNxGBKL4jl2=
+-2B6HqPD7wDGmV" target=3D"_blank" style=3D"">Unsubscribe</a></p></div></td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+=20=20=20=20
+<img src=3D"https://u19600278.ct.sendgrid.net/wf/open?upn=3D5Z3XbQWSN2-2FVM=
+FeM7B17h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuu5ezOmRwm6-2BCJqbjJ1v=
+BNaH-2FbrUFOVq2xM2OVfA6bDpbmH8WTWOLObEOG07ZaBLkhiOj-2FulI7zkV97lhqBYQJM0Plv=
+ciFPT94ZQM1qzaW6ekl19fRp07qlD7IYrA9Nir3IAEJoyXyd70QfqgASUgrvA-2BCrDMhq5XLjz=
+um5keTZGslKt8wXiMmAbAnDXuC9oipa991O70O2sHHiIVvbwCZtedevoePSbILKyt8M8H-2Fb-2=
+BdgNiQCyyXkRdUfwiwXEtQ3SoN5UVEY3zXgU7Mq5x7n9LshcuufbWc0Ca5QKVcYz9ESPQ5AKWy3=
+QRlaTFuYWr1NujH4-2BQMMPVM4IB1XF-2BC7ng-2FCYVLjvHrgsjEpNybUdG19a9oh2baHEdrFc=
+DolMh7iTywvJw5LD-2BSYCQTo54Tfg7kMyJtpwaaqDEAcZo0lSXhzHEpy1XA-2Ft-2BZWGQdqeZ=
+eE2kuL3RHNYkLDuJ-2FxjOLBhwCSQYQjiA7o9uGCrMyASH453u8aeQ5bOeBwSKyrRhEJ9FrklRG=
+lu2CPOzRLz3eSoItgjo8J7GLnkfXsA4LbtDE282Cwrt-2FSyEnuOUDubvo-2FofkEe5BQsrF6sz=
+orNDe1WkxlZjkPn7B7qJziC-2FPLqwwL01-2BrUIFHLhox41MmNUkxr-2BDsg1mzmCmwSagki-2=
+BLxK7pEo1ulxiOR5ShgG17ToCxEK7L3rzwrN2dxkvPEYI3ZqGtsKAGntvpp0yusoRlX7c96Z9A1=
+cE0g3E4TyqGQQhf9TkJ6vF9ZWe2Yv18GI5qxxK-2BLs4-2FYuXhHWp2cNurw8BZo6ifcpK-2BGh=
+K23O8rftqj6TWkTUv2fBg7w-2FTbgsnF27s1Oda-2BI-2BMVVQzu9dj47EI-2Fkm6TKPUden4Ty=
+VBoeavldVz1M8qwRGQN-2BFCrmrXVeAyte6ECQdwIYw6-2BmSHKTKi-2BvNTBpM7x4LVJnaqliW=
+TjQNT9UUTsTOq-2F6yS14ryjaThaXb0FMVNqchH2GhvF2-2Fig03BFN4uVACPmV13rdROHcI14E=
+ME-2B5sy1mObabw5Qc" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D=
+"height:1px !important;width:1px !important;border-width:0 !important;margi=
+n-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;mar=
+gin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;=
+padding-right:0 !important;padding-left:0 !important;"/>
+</body>
+  </html>
+
+--9ca1b8a735baa996c4a9a8778db6f68a2b8107a0a0705733cc7a8673a934--

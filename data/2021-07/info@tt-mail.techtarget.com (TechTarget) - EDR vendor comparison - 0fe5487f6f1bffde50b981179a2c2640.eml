@@ -1,0 +1,176 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp2152242wrr; Tue, 6 Jul
+ 2021 09:03:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykJeJvS4n83/IVkPvjN57Kskl56vl6Xf3h8MtwfDzG8mwP8HXgi4iLsyJL8kU1JZlIVSwu
+X-Received: by 2002:a17:902:9b87:b029:11e:7c15:a597 with SMTP id
+ y7-20020a1709029b87b029011e7c15a597mr17430008plp.6.1625587387401; Tue, 06 Jul
+ 2021 09:03:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625587387; cv=none; d=google.com;
+ s=arc-20160816;
+ b=wrqma1cYO8Mz9Lgyim6kItBh1ISKgaXdw1wxE8767b2tsD9y5XSET5VEwBG+1Em+Jz
+ MrvNI40j1o1aQ1Gwzlgxni1Pp9urB0q5ETJTAoV0ZHCRTfD3sgNVefEM/9pJ3p14MIP1
+ 3YjlLiOVrRV2VqzkDjjXwUilSU1P6jhJX5gseWf+go5D0cW6o+HAPjoBJ+p4/+LXKoBf
+ wy+NLZ4izRHdvJ50zolNEwhPvHkPPkEommgLCVdmjfd0zKHbNAPV7FyU1zGm7JHOyKtX
+ DIZB5Da4OgLZNUVyx3jQGYrJ8o6juRtc8FtIcbAR+XGa6JcvWvfFD2UsVbDXZFgieR6j qaOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=q5BEybGT8OgTwa9KBcAaeDfDB/6dxtv0G6E3WqHYsfM=;
+ b=kbguX3hY4Bl2BU18JahMDDHtuRgJSHbkBZfr7wt+zupHmUB21uzaPG4cpffd0YDwpG
+ mMNzFtUs1Jc8iPDZqEtJy2q2WI5CnVQru7NjPjTWYsvUm1+DjtkiQGCp9EUMl2AXpKEZ
+ geIryAALoUJRsNDrZ9xZMUOp/7qRJpCAd45RVz4+YK4XBLvHsry0twqKxXH/pLHpKLfS
+ RYT7pZ5H1Jf35rvmQyBCL3BfLwjZHisivcSX0OVM1nUsC6LmYVHOGU8amY6rt487O3lb
+ BTWlnMYPAazXezAYv0HzWpiIp387/O2G4Cvzisw2seM1JqeUa+B4rUNR3dLYBQaxIBKB UFsA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b="noYz/pHt";
+ spf=pass (google.com: domain of
+ qnmu6at-kfqs77-nniw8o-icfzht-ed6gf2-h-m2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ a5si21300503pls.157.2021.07.06.09.03.05 for <arkadiy.tetelman@chime.com>;
+ Tue, 06 Jul 2021 09:03:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ qnmu6at-kfqs77-nniw8o-icfzht-ed6gf2-h-m2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b="noYz/pHt";
+ spf=pass (google.com: domain of
+ qnmu6at-kfqs77-nniw8o-icfzht-ed6gf2-h-m2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625587384;
+ h=From; bh=8aMDISuz5PUlC9N+XWP2RgfIxvo=;
+ b=noYz/pHtbiq/Tw8aiqEoiaPMgiFhmLq9QLRH6BQRBcu2conBYDKDSOWKGnuquoI6
+ hMxr+WLT/E1B5gQmYEyK3YM3QV+isYgDW0XC/5WlYxUHtU4sS0+18zcMrCUAiBOn
+ yo4t5CDhX41BtL90lzvnhCI+AtuaD8J02UH7zMWBndw=;
+Received: from [127.0.0.1] ([127.0.0.1:35512]) by bm1-20.bo3.e-dialog.com
+ (envelope-from
+ <QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id FD/5D-05752-8BE74E06; Tue, 06
+ Jul 2021 12:03:04 -0400
+Date: Tue, 06 Jul 2021 12:03:04 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.OMLX0O.11856807@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: EDR vendor comparison
+Message-Id: <14955-304-QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@e-dialog.com>
+X-Mail-From: QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/QNMU6AT/NNIW8O/ICFZHT/ED6GF2/H3/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856807
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169094031/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856807&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856807&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856807&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169090864/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">EDR vendor comparison</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169090864/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Endpoint detection and response (EDR) is quickly becoming a ubiquitous security technology in the age of remote work. As such, it is critical for security professionals to be aware of the vendors in the space.<br /><br />Take a look at the MITRE ATT&CK Round 2 EDR Evaluation to get a sense of how EDR players stack up against one another in terms of:<br /></font></font>
+<ul>
+<li><font size="2"><font face="arial, trebuchet, verdana">Overall detection capabilities</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Detection quality</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Actionability</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">And more</font></font></li>
+</ul>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/QNMU6AT/NNIW8O/ICFZHT/ED6GF2/H3/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169094033/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169094034/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169094034/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169094033/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[QNMU6AT-KFQS77-NNIW8O-ICFZHT-ED6GF2-H-M2-20210706-67561f9b3b45df]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/QNMU6AT/NNIW8O/ICFZHT/ED6GF2/AW88/52"></body></html>
+
+

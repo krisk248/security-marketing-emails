@@ -1,0 +1,831 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp953989wrr; Thu, 15 Jul
+ 2021 10:04:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWItlD1+3JQv9Kb7vMTkte10XkldM8cU+t3r05dVfhHHCl/RG4oCUNMMFcjHQsoFm1331c
+X-Received: by 2002:a05:6402:647:: with SMTP id
+ u7mr8433020edx.113.1626368650126; Thu, 15 Jul 2021 10:04:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626368650; cv=none; d=google.com;
+ s=arc-20160816;
+ b=y95/7wTMtHmqcgkPvNParIvaSUiPE9bc829I+U2CazPgLMo/8b6bXjryr13ZZQKd3C
+ Q9jbQmvCD5Gkp2iwScB4+fR9xjSpPABR0B89U8PoZMRRkKo+9XZqC1keopwRDKE2b13I
+ vgI/tKKRCxd1O8DZiwqnfeOb2ArnKu9CRW0ofol3hvpFY3PLIXtaUmb8PDYJDHYDtA/z
+ QKmnhjFQdoi6W+a29SP1npntJ2leYSajfstouSR/zQG75WLC9topvyVAITjg5bElUWfL
+ D6mEf1+DjRcGYeUw9tvANovdfuI6ivuDEzDuRA8sxeDK8ux0WlHMI8ixZHo6RSMk5MpS 1xrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:subject:message-id:to:reply-to:mime-version:from
+ :date:dkim-signature; bh=0+KpJ8TUvga2su+HTQGWz5Mdykkbw6XRnZs30FwYpN0=;
+ b=BVEeB7ml1P4+KwitaGpKmWQb2UoQKLqJt92YFypmaU+pa/p4gM6hSsQTffATQfxW06
+ e7nQTy46C1dPh3t26qUyxbSu9KCt8hOd2b/d6bCi48DeNGVaIojJ/pGX7lhTpd1H8VrG
+ Yn84UZr1QS2rME4vXoEdwj0TTT9EIwsFTFxIh9NtsRNu+aOA3x1sWWgbpZyYVKrQ+DKs
+ EMOssiX+02rjA5nfP0z6vlZhb7dvLfdtuWRS42P0IkOUkUB8gfqZZaj8FUKOoG7pYzwv
+ u9aU6oJjSzV/KIzTWOOMVlt6AA3XFHlluDW1dOUlRUHckZDVbs9+E844L/NModnKOvIF toZg==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@humanriskmanagement.com header.s=s2 header.b=efWpXMtI; spf=pass
+ (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender)
+ smtp.mailfrom="bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com"
+Return-Path: <bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com>
+Received: from o1.email.utilitypartners.com (o1.email.utilitypartners.com.
+ [208.117.61.30]) by mx.google.com with ESMTPS id
+ u10si8167890ejc.522.2021.07.15.10.04.09 for <arkadiy.tetelman@chime.com>
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Thu, 15
+ Jul 2021 10:04:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender) client-ip=208.117.61.30;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@humanriskmanagement.com header.s=s2 header.b=efWpXMtI; spf=pass
+ (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender)
+ smtp.mailfrom="bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=humanriskmanagement.com;
+ h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe; s=s2;
+ bh=0+KpJ8TUvga2su+HTQGWz5Mdykkbw6XRnZs30FwYpN0=; b=efWpXMt
+ I7Bm2N1Jnz7V7zyq7pk+b3gQsOl1ZOuSpnHKkZJOAsRS7TTyIw9WkmcZv/Z9mnkL
+ 45dVpHYutlKRrHeFywwfwPIRF2o6oSNG+ch6bLO+LX0LDfseCWnpo/89uRGGDmg4
+ g7kReZph/jr4G80swW8Fp0bhfbLONB3S4XD8=
+Received: by filter2542p1mdw1.sendgrid.net with SMTP id
+ filter2542p1mdw1-12396-60F05BD8-45 2021-07-15 16:01:28.916608968 +0000 UTC
+ m=+1202481.703015017
+Received: from MTk2MDAyNzg (unknown) by geopod-ismtpd-6-0 (SG) with HTTP id
+ -AOLxlJMSviuu6llzE9wcg Thu, 15 Jul 2021 16:01:28.849 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary=9470bf8ca1285aa7d3d14df1c657a6219bc9c7bcde03c828bb1e50bc0d22
+Date: Thu, 15 Jul 2021 16:01:32 +0000 (UTC)
+From: "Cybersecurity Human Risk Update" <donotreply@humanriskmanagement.com>
+Mime-Version: 1.0
+Reply-To: donotreply@humanriskmanagement.com
+To: "Arkadiy Tetelman" <arkadiy.tetelman@chime.com>
+Message-ID: <-AOLxlJMSviuu6llzE9wcg@geopod-ismtpd-6-0>
+Subject: Living Security Shares Tips on How to Incentivize Cybersecurity
+ Awareness Training Within Budget
+List-Unsubscribe: =?UTF-8?B?PG1haWx0bzp1bnN1YnNjcmliZUBlbTk5NzQuaHVtYW5yaXNrbWFuYWdlbWVu?=
+ =?UTF-8?B?dC5jb20/c3ViamVjdD1odHRwczovL3UxOTYwMDI3OC5jdC5zZW5kZ3JpZC5u?=
+ =?UTF-8?B?ZXQvd2YvdW5zdWJzY3JpYmUqcSp1cG49NVozWGJRV1NOMi0yRlZNRmVNN0Ix?=
+ =?UTF-8?B?N2gxNkYtMkJyVGhXV282UjNwSXB4dFoxZ2NzUGR4eUFxVVgwbXItMkIzWGYy?=
+ =?UTF-8?B?ekF1dTVlek9tUndtNi0yQkNKcWJqSjF2Qk5hSTdRTTNOR1NQQWNmS3R5QWRa?=
+ =?UTF-8?B?VW02LTJGaXVnU3VEU2VISlVuV0JpWUtaQnlYcThrZkRldEhmTDRkcnNWSDZV?=
+ =?UTF-8?B?cmI4NWhmTEFtdlFpN2dnUFZqaEdhNmVYVVpaTzhCVzExcjZoTTZUbjdOSXNH?=
+ =?UTF-8?B?M3ZwNDBhenhUNEFqb2tiLTJGNzQ2WndxU1MyY3hjVE1NNk1kdVNXaEZDWnNw?=
+ =?UTF-8?B?WWRVaXZ6LTJGQkxBelBJc1p3dXBhVmVmLTJGbmhGejlScnBrd1ZFSTlMOVlh?=
+ =?UTF-8?B?dXVkZG9RMmhhaUktMkZha0J2VWFXN2pjak9JUlR3T1U4UnFLTGxzRFE5YTlB?=
+ =?UTF-8?B?U2dJZWZvMC0yQlI3bXlkNDRqMk9JbzM0SExYTXk1dzdOWlBGUGJCTkRuOHhv?=
+ =?UTF-8?B?NER3VVNRSE9sUDBZd3h5dDFDck5sZVlnaTFRNnpUUGRsZEUtMkJFYjlaTHBr?=
+ =?UTF-8?B?RVZFVndVdnNBcFEzSFdLaVpFTW9aUGVDVmkzMTRZQlRITGVhVEJndXVORmRu?=
+ =?UTF-8?B?ZXBZdlVvWDA5QVVLUDNNU2VrNGQ3ZFY5RjF6YkxidjVKS3cwRFRsOHhQdENZ?=
+ =?UTF-8?B?RXh5SUdmSE8xbGNNbGgxUGJuWHV3QXF0N0NvTDBIQ2FVUUczNXk3NnEtMkZo?=
+ =?UTF-8?B?ZFBCYkRuaVg3aGdmeGZXZFRodUF0U25LY0xXaFZDOUNFT1I1SGtHRnFESy0y?=
+ =?UTF-8?B?RklTS2RlUUdhVjEyVTRTRWNsanNIQjVvSmJwLTJGOUI2cWpwbnJZdG9IQUQz?=
+ =?UTF-8?B?Ti0yRllNRFBrLTJCUmtLUTM5WC0yRkZ0eVpWMU5PeUZMV01YMDNZOEZSdHdO?=
+ =?UTF-8?B?dnJaSnFVV2k2TExTcDZaRU1vZXJyMy0yRmI2OE5UYmppR256bndKUE1IVE05?=
+ =?UTF-8?B?TDU5QjQ3YTNpT3pmMFVQdU1HZ2RlYVFINGhaUUk4S2dlNndpSlJDUFh3emgw?=
+ =?UTF-8?B?THRjTHQ3bmNrQ2NyVGd5Y1ZxNkVEZ3c4aTZGdlhqZ29XYTBTc0ZjaE5KbG1u?=
+ =?UTF-8?B?MFNCVHhYSXFqUnVCQUxNWG9TWkdrYXlIaTMxMll3cXpOYy0yRkxSZ3ZlVVB0?=
+ =?UTF-8?B?c1JDdllrUVZxSDZRU3c4NEpJT2VBbGhINmp6SDdFZTV1N2MxNVFrMzlRNUpU?=
+ =?UTF-8?B?NFg1ZUJZQ3ZvZS0yRkNjQno5YTVpSEFxaEY0eGNUU3IyV1djbnZSS1dxZFBm?=
+ =?UTF-8?B?eHg4OGhNdWNzSXRTczZBbU0tMkZNbEpQVmNnUWFSbFN6V281cVNtbUFoOVFw?=
+ =?UTF-8?B?QnRObWZXbVhrVDJqd2tIV1NHd2dTa2x4TnVjRjdsYzFWUG5MNGM0dTVabjUy?=
+ =?UTF-8?B?LTJCR1pmbG0ybUIwb3BkR3Jxa2t4cUVDRnZiRVBKeVVNZGx1MXUwakwtMkZC?=
+ =?UTF-8?B?d0VWVWxaSzctMkItMkZsb1Q4cEJyOUhlYVU3MktjamNBSFZUSHZIZVkwa0VG?=
+ =?UTF-8?B?enFPWkFGcjhDWDF5LTJCdy0zRC0zRD4=?=
+X-SG-EID: EAYsSDcGFktsaXmg04s8K8jlClXv1wnA7PSjq12fk6GgmtFzmxU6AAa0HTpVWRODtYB9F8swsHiPCc
+ GreoDfWDH8OvIOWNlskPUrYm87XhJPtkfQdbgf0mstxdCLo87WFbtA0s3oJ1wD0Vt2U+MiPeaqwOIy
+ ziNjL+oFbI6Oa9cMpdLYwf0wntfVAeNd+U4VJ1CEraiOyTJLPDMKhovib9dM+t++/9ZMiWl7ILZytF
+ 4Ujl/QY7g2dRO3YZ0c3FY5HDGtBQphLBclhU0keps6kw==
+X-SG-ID: mcTyqcYTtmn56LU3ATD1f/5EpIB38Za5X0mULpLlBGeho+DobVA34wbkecbVLkrHyGvnDRU0j+lK34
+ GnBEAEhHElDM1RwmpCKtWLoDHe6y6mABrcJ8hUNi9NSHirRfLnLBcbEnF3d2x6GUHfxo4KrXmURcm4
+ cIkU0fqoxtEqMl6/f016RhIczPheh2qSmPaI41tR7/R7iYd0Qpg4cJ8HBPrdsAV/MDHkYixfB/EIyd
+ BiFhqSCRbZS5q1tqJy/UVhjpcMXA3RF0XLa4ycT78vFkk44UYsZELhElhPdMTboNHK+hRVgs/nnrSR
+ piDAZpO6G8ZO/VW3K7btSliVupLKE+t0Y6dzaOI27VYHkYHqebH3oZiITQeyS6TZZZgYzibbL+kF4k
+ 4+lbQkFlsIqgtorxfC3bKkwtfVmMXTAKHQNAJSKI0C8hSK9ihhps07hNedqB82d2BlicO9fpFVjhRr
+ zyP+NB5KhqffkbcowOcMiJcYbeXiZVHBa+0NtgiM0JfB9sJzSmgJvUgCx4yMGw1om0jjdEs+hWZ73g
+ fJZPdjdAhIZJH30nz7Sb8NiVjmKj7un7gzEHIJ1kaFmvWEmsR7Iop2/JsecpanWZE82CocCBJs1pR1
+ xW7Tp5+maHXulXKmTmh9e6YQpZfNbR2iQRpH+Dx+VjzXUV8EeOi3F0/cyxZ5It5wWBREfX/t7bD451
+ dWXppGfsdf/nnogyJCOzWL6/EkrgNMhjnoD4sDZ5s22ySFRuwkWifLqu3Zw0xf0kd3AYg1NUaW92aB
+ Gw1mEnKV0b7c3hJtQ7FWkozbIij55/nFEFuwuC7uLoSz9FDRuhPiO74QlY4FnAnvP7xHXQ2+O1MJ1n
+ 8wkuEsB/SjWwlNFEM=
+X-Entity-ID: ktqcbPjqzfKahrDgVDs7pg==
+
+
+--9470bf8ca1285aa7d3d14df1c657a6219bc9c7bcde03c828bb1e50bc0d22
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+Are you struggling to create engagement in your Security Awareness program =
+AND stay within budget?
+
+How to Incentivize Cybersecurity Awareness Training Within Budget ( https:/=
+/www.livingsecurity.com/blog/how-to-incentivize-cybersecurity-awareness-tra=
+ining-within-budget?utm_campaign=3DNewsletter&utm_source=3Demail&utm_medium=
+=3Dsendgrid )
+
+Hi Arkadiy,
+
+Are you struggling to create engagement in your Security Awareness program =
+AND stay within budget? Look no further; we=E2=80=99ve got you covered!
+Employees often need strong incentives or rewards to actively participate i=
+n security awareness programs at work. So program owners rely on rewards to=
+ boost participation and engagement, but free days off and prizes can be ex=
+pensive to give out.
+Luckily, we put together some of our favorite creative tricks to get employ=
+ees excited about training and not break the bank. Read more in our latest =
+blog!
+
+*How To Incentivize Cybersecurity Awareness Training Within Budget* ( https=
+://www.livingsecurity.com/blog/how-to-incentivize-cybersecurity-awareness-t=
+raining-within-budget?utm_campaign=3DNewsletter&utm_source=3Demail&utm_medi=
+um=3Dsendgrid )
+
+---------------------------------------------------------------------------=
+--------------------
+Breaking Security Awareness Webinar Series
+Cybersecurity Awareness Month: Jumpstart Proven, Lasting Change in Security=
+ Culture This October
+---------------------------------------------------------------------------=
+--------------------
+
+This month's Breaking Security Awareness (BSA) webinar will focus on effect=
+ive strategies to plan and execute the best Cybersecurity Awareness Month (=
+CSAM) possible, as we speak with a Top 10 Fortune Cloud 100 client who has =
+demonstrated success creating dynamic and effective October programs.
+
+REGISTER NOW ( https://hubs.la/H0Snt1p0 )
+
+-------------------------
+Living Security Community
+JOIN THE CONVERSATION
+-------------------------
+
+Living Security developed this Community to support cybersecurity leaders j=
+ust like you. We realize the challenges of your role, so let's help each ot=
+her by sharing what's working best in your cybersecurity awareness program!
+
+GET MORE INFORMATION ( https://hubs.la/H0RSHVk0 )
+
+( https://twitter.com/living_security ) ( https://www.instagram.com/livings=
+ecurity/ ) ( https://www.linkedin.com/company/living-security/ )
+
+Cybersecurity Human Risk Update
+
+Living Security, 3595 RR 620 South , Austin , TX 78738
+
+Unsubscribe ( https://u19600278.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQ=
+WSN2-2FVMFeM7B17h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuu5ezOmRwm6-2=
+BCJqbjJ1vBNaI7QM3NGSPAcfKtyAdZUm6-2FiugSuDSeHJUnWBiYKZByXq8kfDetHfL4drsVH6U=
+rb85hfLAmvQi7ggPVjhGa6eXUZZO8BW11r6hM6Tn7NIsG3vp40azxT4Ajokb-2F746ZwqSS2cxc=
+TMM6MduSWhFCZspYdUivz-2FBLAzPIsZwupaVef-2FnhFz9RrpkwVEI9L9YauuddoQ2haiI-2Fa=
+kBvUaW7jcjOIRTwOU8RqKLlsDQ9a9ASgIefo0-2BR7myd44j2OIo34HLXMy5w7NZPFPbBNDn8xo=
+4DwUSQHOlP0Ywxyt1CrNleYgi1Q6zTPdldE-2BEb9ZLpkEVEVwUvsApQ3HWKiZEMoZPeCVi314Y=
+BTHLeaTBguuNFdnepYvUoX09AUKP3MSek4d7dV9F1zbLbv5JKw0DTl8xPtCYExyIGfHO1lcMlh1=
+PbnXuwAqt7CoL0HCaUQG35y76q-2FhdPBbDniX7hgfxfWdThuAtSnKcLWhVC9CEOR5HkGFqDK-2=
+FISKdeQGaV12U4SEcljsHB5oJbp-2F9B6qjpnrYtoHAD3N-2FYMDPk-2BRkKQ39X-2FFtyZV1NO=
+yFLWMX03Y8FRtwNvrZJqUWi6LLSp6ZEMoerr3-2Fb68NTbjiGnznwJPMHTM9L59B47a3iOzf0UP=
+uMGgdeaQH4hZQI8Kge6wiJRCPXwzh0LtcLt7nckCcrTgycVq6EDgw8i6FvXjgoWa0SsFchNJlmn=
+0SBTxXIqjRuBALMXoSZGkayHi312YwqzNc-2FLRgveUPtsRCvYkQVqH6QSw84JIOeAlhH6jzH7E=
+e5u7c15Qk39Q5JT4X5eBYCvoe-2FCctVbvdF0PFHprJcptU4W57NR4uX-2FBSmJTLj8eATiY48A=
+qkpAxLW40dBvfVZVStPecT0wm0hUYsU1lQt33FeJPLlaOyZiWlo8Ic99etF4G78HAaaTAJz3-2B=
+EHe5gu24GK6IO4MXklw4b6SHrZFHiDkvFBw1cJx7ggnN9HTkaqR2Lg8t9rJ-2B6IkxD-2FaP0yq=
+ls5Hvb5QWnxJZAnlp6tRjVnwYvw-3D-3D )=
+
+--9470bf8ca1285aa7d3d14df1c657a6219bc9c7bcde03c828bb1e50bc0d22
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 640px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: inherit;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #e36654;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><link href=3D"https://fonts.google.com/=
+specimen/Work+Sans" rel=3D"stylesheet"><style>
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6    {
+        font-family: 'Work Sans', sans-serif;=20
+        }
+  body  {
+        font-family: 'Work Sans', sans-serif;
+        }
+  </style><!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#e36654" data-body-style=
+=3D"font-size:14px; font-family:inherit; color:#000000; background-color:#F=
+7F7F7;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" class=3D"wrapper" bgcolor=3D"#F7F7F7">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#F7F7F7" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"o=
+uter" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"640">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:640px;" alig=
+n=3D"center">
+                                      <tr>
+                                        <td role=3D"modules-container" styl=
+e=3D"padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor=3D"#=
+FFFFFF" width=3D"100%" align=3D"left"><table class=3D"module preheader preh=
+eader-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;">
+    <tr>
+      <td role=3D"module-content">
+        <p>Are you struggling to create engagement in your Security Awarene=
+ss program AND stay within budget?</p>
+      </td>
+    </tr>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"b08b1fc4-c52c-47c0-a9f1-b18631abe9fc">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;" valign=3D"top" align=3D"center">
+=20=20=20=20=20=20=20=20=20=20
+        <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=3DEVwvmma=
+Di1RKsQYtmuLaoCg3bPB2Cp5iXCZVfMHp5rUxCt5xzbsELGBpA-2BuvwiO18xaSyw59GRFnDp6b=
+81lY-2FUuV7evrUT0N5y6sTmkNVCUrxQo5itfyx5XhvaTvO4UiwZK6rg1qRmWBOWqewbd7rwlI8=
+RVo35Sg8z-2FrSD6MtHeyFBwITyZ3-2FJqP0lo3KLEf4395Bx8Z3sNQT-2FyjcxbAqWpmgLKao7=
+DQVA2cqsakgO8-3DnAav_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6=
+lvw9FYss6q3JH2t8AROPyLlJSiJbmmIjeCj-2FbGSYABY7Rp5QbR2K-2F4erAdbWlKrKsBqVu0e=
+yoY-2BnFLjyKjwhNt37izxetdOiAD0SUimsdJttZTn6pQ63wCm0Wwm4WUbj8jj9-2B3urBwXjSf=
+icznJ43pjaQYQlsYKScKy5YS2wfAeVvN55IAhiaX0Jjgw2uIVbGU0Nz0EMyFblA9OqfEXR8xzF3=
+ZB2EyZayuxUscqwav4tFjWl7L30SWVejMs-2BmUR4PFVPlpIfAnadmI8XZuvED2eqmBBM2-2Bpn=
+r2Bv5hHGc0fF9kJUmtbr-2BRRC0BURKRmku8N-2F7yCq6jQFTFGJJgs7T39PiEfaKeY9o-2BpoX=
+qdFWwIaI2atzxJIXZKAP5gh27NxnvkdEH9Jx6q0j7kUieiSD65fAd8Ny5rltBLUsYYwx4mW3FjZ=
+f8OWdl8hMBbmiAX-2Bbh9xe2YFlkQZG1J3-2FXHpZc86VDMHGd4xjBbFsca7pGyTwwa4-2FpKNK=
+qTdnKvH7kEUdCLEnO7iAHBd8Romt2KsNNRJWkDzmoF5AhCHpTPkJ4f6pKczgyWm2Bt6dHNRpUuA=
+HLXDFSOi0f4kCjmPT3KuTByngWWIdSih6OcYwWWVbty80fjh-2FJSXZzhOhETcrG6eKuqS36mQ9=
+MPxRRm4SVWdWBd89isZ7wEX-2F0DFKrhkk3NeBiPq4iehE0YhIOgjnCeqfPnU-2B-2FOCv1Wo8X=
+IvUj4FNNUernunUVzhSgblC8cKEJ16DAWO6R3c5mbpeZ-2BxAykdVSX-2FY4-2BzIquCndwy-2F=
+iHXy67KRBU8a-2FBTYPmScOIJfmaDyBEiMLIoOl1pxFEWUk3ciWbG0ZVUIHWLR2V4jBRoAePigf=
+UeF1-2BKYIJ1fWHxh6EqLh11JCPEGIIlMWHWBw8v9N9B0TxTccQjjcJLEdd-2BKS3je37n8Zv0o=
+kZoPZ0Lmw4el5LvhpMSYGcGlc5MgQe8R9kd6j539HmCo0Wd-2F3H4tXbWB1DigAa4CntITx02Gw=
+pq3z9Cnp0cls4jh5IKfR9C5pGf57rgzBJl010AQK3x3-2FRtV2E9lbTg-3D-3D"><img class=
+=3D"max-width" border=3D"0" style=3D"display:block; color:#000000; text-dec=
+oration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max=
+-width:100% !important; width:100%; height:auto !important;" width=3D"640" =
+alt=3D"How to Incentivize Cybersecurity Awareness Training Within Budget" d=
+ata-proportionally-constrained=3D"true" data-responsive=3D"true" src=3D"htt=
+p://cdn.mcauto-images-production.sendgrid.net/8da17a11c39e717c/8e87dc93-f1a=
+1-4ef4-a2b7-405f5bdf4afc/619x275.png"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"1ea1b591-d934-4e56-8877-0819ab0999bd" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 40px 18px 40px; line-height:20px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><div style=3D"font-family: inherit; text-align: inherit"><span =
+style=3D"color: #000000; font-size: 14px; font-style: normal; font-variant-=
+ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spac=
+ing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-=
+stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-th=
+ickness: initial; text-decoration-style: initial; text-decoration-color: in=
+itial; float: none; display: inline; font-family: inherit">Hi Arkadiy,</spa=
+n></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"lin=
+e-height: 1.38; margin-top: 0pt; margin-bottom: 10pt; font-size: 11pt; colo=
+r: #000000; background-color: transparent; font-weight: 400; font-style: no=
+rmal; font-variant-ligatures: normal; font-variant-caps: normal; font-varia=
+nt-numeric: normal; font-variant-east-asian: normal; text-decoration-line: =
+none; text-decoration-thickness: initial; text-decoration-style: initial; t=
+ext-decoration-color: initial; vertical-align: baseline; white-space: pre-w=
+rap; font-family: inherit">Are you struggling to create engagement in your =
+Security Awareness program AND stay within budget? Look no further; we=E2=
+=80=99ve got you covered!<br>
+Employees often need strong incentives or rewards to actively participate i=
+n security awareness programs at work. So program owners rely on rewards to=
+ boost participation and engagement, but free days off and prizes can be ex=
+pensive to give out.<br>
+Luckily, we put together some of our favorite creative tricks to get employ=
+ees excited about training and not break the bank. Read more in our latest =
+blog!<br>
+</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><a href=3D"https:/=
+/u19600278.ct.sendgrid.net/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoCg3bPB2Cp5iX=
+CZVfMHp5rUxCt5xzbsELGBpA-2BuvwiO18xaSyw59GRFnDp6b81lY-2FUuV7evrUT0N5y6sTmkN=
+VCUrxQo5itfyx5XhvaTvO4UiwZK6rg1qRmWBOWqewbd7rwlI8RVo35Sg8z-2FrSD6MtHeyFBwIT=
+yZ3-2FJqP0lo3KLEf4395Bx8Z3sNQT-2FyjcxbAqWpmgLKao7DQVA2cqsakgO8-3D4roE_aKl06=
+bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyLlJSi=
+JbmmIjeCj-2FbGSYABY7Rp5QbR2K-2F4erAdbWlKrKsBqVu0eyoY-2BnFLjyKjwhNt37izxetdO=
+iAD0SUimsdJttZTn6pQ63wCm0Wwm4WUbj8jj9-2B3urBwXjSficznJ43pjaQYQlsYKScKy5YS2w=
+fAeVvN55IAhiaX0Jjgw2uIVbGU0Nz0EMyFblA9OqfEXR8xzF3ZB2EyZayuxUscqwav4tFjWl7L3=
+0SWVejMs-2BmUR4PFVPlpIfAnadmI8XZuvED2eqmBBM2-2Bpnr2Bv5hHGc0fF9kJUmtbr-2BRRC=
+0BURKRmku8N-2F7yCq6jQFTFGJJgs7T39PiEfaKeY9o-2BpoXqdFWwIaI2atzxJIXZKAP5gh27N=
+xnvkdEH9Jx6q0j7kUieiSD65fAd8Ny5rltBLUsYYwx4mW3FjZf8OWdl8hMBbmiAX-2Bbh9xe2YF=
+lkQZG1J3-2FXHpZc86VDMHGd4xjBbFsca7pGyTwwa4-2FpKNKqTdnKvH7kEUdCLEnO7iAHBd8Ro=
+mt2KsNNRJWkDzmoF5AhCHpTPkJ4f6pKczgyWm2Bt6dHNRpUuAHLXDFSOi0f4kCjmPT3KuTByngW=
+WIdSih6OcYwWWVbty80fjh-2FJSXZzhOhETcrG6eKuqS36mQ9MPxRRm4SVWdWBd89isZ7wEX-2F=
+0DFKrhkk3NeBiPq4iehE0YhIOgjnCeqfPnU-2B-2FOCv1Wo8XIvUj4FNNUernunUVzhSgblC8cK=
+EJ16DAWO6R3c5mbpeZ-2BxAykdVSX-2FY4-2BzIquCndwy-2FiHXy67KRBU8a-2FBTYPmScOIJf=
+maDyBEiMLIoOl1pxFEWUk3ciWbG0ZVUIHSK0U5zP6ap6L7JNrdsmyDTMtKG-2FW-2FIYgkBCial=
+s8IusFFai8Bg3ORpWd1JG2PEVxubWC3VZjsWeVk9KgDzA4qTwGST2Gct7xiB4hV6EsT6DYqZ-2F=
+m-2BNrVjyUZ8oHMMxKJYx80dwmB6gVCEJGF561Q8cY-2BUS4-2BwAe9ZUea8-2BpqWCVk20zZFL=
+XrLms-2FNpKBKIj8FgoK2BxO7-2Fux4asVa1Z72w-3D-3D"><span style=3D"font-size: 1=
+4px; font-style: normal; font-variant-ligatures: normal; font-variant-caps:=
+ normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: =
+start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widow=
+s: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: =
+rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-sty=
+le: initial; text-decoration-color: initial; float: none; display: inline; =
+color: #e36654; font-family: inherit"><strong>How To Incentivize Cybersecur=
+ity Awareness Training Within Budget</strong></span></a></div><div></div></=
+div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"divider" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table=
+-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda.1">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 40px 0px 40px;" role=3D"module-content" he=
+ight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"w9yiCQx4JusmopNeqfavk9" data-mc-module-version=
+=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 18px 40px; line-height:23px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><h2 style=3D"text-align: left"><span style=3D"font-size: 11px">=
+Breaking Security Awareness Webinar Series</span><br>
+Cybersecurity Awareness Month: Jumpstart Proven, Lasting Change in Security=
+ Culture This October</h2>
+<div style=3D"font-family: inherit; text-align: left">This month's Breaking=
+ Security Awareness (BSA) webinar will focus on effective strategies to pla=
+n and execute the best Cybersecurity Awareness Month (CSAM) possible, as we=
+ speak with a Top 10 Fortune Cloud 100 client who has demonstrated success =
+creating dynamic and effective October programs.</div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+module" data-role=3D"module-button" data-type=3D"button" role=3D"module" st=
+yle=3D"table-layout:fixed;" width=3D"100%" data-muid=3D"33d32f37-e2b1-4818-=
+b5d2-3ffc4ce932f1">
+      <tbody>
+        <tr>
+          <td align=3D"center" bgcolor=3D"" class=3D"outer-td" style=3D"pad=
+ding:0px 0px 0px 0px;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"wrapper-mobile" style=3D"text-align:center;">
+              <tbody>
+                <tr>
+                <td align=3D"center" bgcolor=3D"#3F69D4" class=3D"inner-td"=
+ style=3D"border-radius:6px; font-size:16px; text-align:center; background-=
+color:inherit;">
+                  <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=
+=3DEVwvmmaDi1RKsQYtmuLaoNHP2t5fzQET0Rhg-2FUK4wdaNa9ZuvclbzbBqlS0Q926sjm_h_a=
+Kl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyL=
+lJSiJbmmIjeCj-2FbGSYABY7Rp5QbR2K-2F4erAdbWlKrKsBqVu0eyoY-2BnFLjyKjwhNt37izx=
+etdOiAD0SUimsdJttZTn6pQ63wCm0Wwm4WUbj8jj9-2B3urBwXjSficznJ43pjaQYQlsYKScKy5=
+YS2wfAeVvN55IAhiaX0Jjgw2uIVbGU0Nz0EMyFblA9OqfEXR8xzF3ZB2EyZayuxUscqwav4tFjW=
+l7L30SWVejMs-2BmUR4PFVPlpIfAnadmI8XZuvED2eqmBBM2-2Bpnr2Bv5hHGc0fF9kJUmtbr-2=
+BRRC0BURKRmku8N-2F7yCq6jQFTFGJJgs7T39PiEfaKeY9o-2BpoXqdFWwIaI2atzxJIXZKAP5g=
+h27NxnvkdEH9Jx6q0j7kUieiSD65fAd8Ny5rltBLUsYYwx4mW3FjZf8OWdl8hMBbmiAX-2Bbh9x=
+e2YFlkQZG1J3-2FXHpZc86VDMHGd4xjBbFsca7pGyTwwa4-2FpKNKqTdnKvH7kEUdCLEnO7iAHB=
+d8Romt2KsNNRJWkDzmoF5AhCHpTPkJ4f6pKczgyWm2Bt6dHNRpUuAHLXDFSOi0f4kCjmPT3KuTB=
+yngWWIdSih6OcYwWWVbty80fjh-2FJSXZzhOhETcrG6eKuqS36mQ9MPxRRm4SVWdWBd89isZ7wE=
+X-2F0DFKrhkk3NeBiPq4iehE0YhIOgjnCeqfPnU-2B-2FOCv1Wo8XIvUj4FNNUernunUVzhSgbl=
+C8cKEJ16DAWO6R3c5mbpeZ-2BxAykdVSX-2FY4-2BzIquCndwy-2FiHXy67KRBU8a-2FBTYPmSc=
+OIJfmaDyBEiMLIoOl1pxFEWUk3ciWbG0ZVUIHbSd-2BOJioWJyip-2FClTMhPpww-2B6lTfl7Ry=
+W6HpnCe-2FKNIxtZYo3h3zT1pGVmN-2BC-2BReBI-2Fo8VHZKkwczbrL0ptvYluG-2FSSF6NTGB=
+7yx3Shoox24OhMi8ts2JvTUNEgrBSjSCyJ5zfCjyU-2FEaCSKZDTNm6LgreYgodfplJhaXIBB8U=
+lYfniFacrx7aRe4ragHs3DuZ9X7I1wW6tOlwhjBgNFGw-3D-3D" style=3D"background-col=
+or:#3F69D4; border:0px solid #333333; border-color:#333333; border-radius:6=
+0px; border-width:0px; color:#ffffff; display:inline-block; font-size:14px;=
+ font-weight:normal; letter-spacing:0px; line-height:normal; padding:15px 6=
+0px 15px 60px; text-align:center; text-decoration:none; border-style:solid;=
+" target=3D"_blank">REGISTER NOW</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table class=3D"module" role=3D"module" data-type=3D"divider" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"tab=
+le-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda.1.1">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 0px 40px;" role=3D"module-content" h=
+eight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"w9yiCQx4JusmopNeqfavk9.1" data-mc-module-version=
+=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 18px 40px; line-height:23px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><h2 style=3D"text-align: left"><span style=3D"font-size: 11px">=
+Living Security Community</span><br>
+JOIN THE CONVERSATION</h2>
+<div style=3D"font-family: inherit; text-align: left">Living Security devel=
+oped this Community to support cybersecurity leaders just like you. We real=
+ize the challenges of your role, so let's help each other by sharing what's=
+ working best in your cybersecurity awareness program!</div><div></div></di=
+v></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+module" data-role=3D"module-button" data-type=3D"button" role=3D"module" st=
+yle=3D"table-layout:fixed;" width=3D"100%" data-muid=3D"33d32f37-e2b1-4818-=
+b5d2-3ffc4ce932f1.1">
+      <tbody>
+        <tr>
+          <td align=3D"center" bgcolor=3D"" class=3D"outer-td" style=3D"pad=
+ding:0px 0px 0px 0px;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"wrapper-mobile" style=3D"text-align:center;">
+              <tbody>
+                <tr>
+                <td align=3D"center" bgcolor=3D"#3F69D4" class=3D"inner-td"=
+ style=3D"border-radius:6px; font-size:16px; text-align:center; background-=
+color:inherit;">
+                  <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=
+=3DEVwvmmaDi1RKsQYtmuLaoAupaoOu-2Fb6nqBi1UIa-2F-2BtEug8MtJPk-2FVK3fzEGCaYzx=
+6kNt_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8=
+AROPyLlJSiJbmmIjeCj-2FbGSYABY7Rp5QbR2K-2F4erAdbWlKrKsBqVu0eyoY-2BnFLjyKjwhN=
+t37izxetdOiAD0SUimsdJttZTn6pQ63wCm0Wwm4WUbj8jj9-2B3urBwXjSficznJ43pjaQYQlsY=
+KScKy5YS2wfAeVvN55IAhiaX0Jjgw2uIVbGU0Nz0EMyFblA9OqfEXR8xzF3ZB2EyZayuxUscqwa=
+v4tFjWl7L30SWVejMs-2BmUR4PFVPlpIfAnadmI8XZuvED2eqmBBM2-2Bpnr2Bv5hHGc0fF9kJU=
+mtbr-2BRRC0BURKRmku8N-2F7yCq6jQFTFGJJgs7T39PiEfaKeY9o-2BpoXqdFWwIaI2atzxJIX=
+ZKAP5gh27NxnvkdEH9Jx6q0j7kUieiSD65fAd8Ny5rltBLUsYYwx4mW3FjZf8OWdl8hMBbmiAX-=
+2Bbh9xe2YFlkQZG1J3-2FXHpZc86VDMHGd4xjBbFsca7pGyTwwa4-2FpKNKqTdnKvH7kEUdCLEn=
+O7iAHBd8Romt2KsNNRJWkDzmoF5AhCHpTPkJ4f6pKczgyWm2Bt6dHNRpUuAHLXDFSOi0f4kCjmP=
+T3KuTByngWWIdSih6OcYwWWVbty80fjh-2FJSXZzhOhETcrG6eKuqS36mQ9MPxRRm4SVWdWBd89=
+isZ7wEX-2F0DFKrhkk3NeBiPq4iehE0YhIOgjnCeqfPnU-2B-2FOCv1Wo8XIvUj4FNNUernunUV=
+zhSgblC8cKEJ16DAWO6R3c5mbpeZ-2BxAykdVSX-2FY4-2BzIquCndwy-2FiHXy67KRBU8a-2FB=
+TYPmScOIJfmaDyBEiMLIoOl1pxFEWUk3ciWbG0ZVUIHFHYIXT5BYGlqV0Yr-2BRfHSkuLMmqikV=
+mVN2yajuY2QKGcSfoclSj22X-2BF41bqHUthAUBgrxF-2FXvsa3HyMh4tCiR7tE-2FNjEpltqSo=
+7tXbZEEFcO7fZ3O6GKPZ7NaBQfg2qYNUEnMRmuP7vBk80U-2BBV8QH-2FxWv4a-2FHN2DoLJLO1=
+kvzHBZ7K-2F4q3crOdg2Hqz-2BYl4fHGkY-2FWblWhsHAyqnqR1A-3D-3D" style=3D"backgr=
+ound-color:#3F69D4; border:0px solid #333333; border-color:#333333; border-=
+radius:60px; border-width:0px; color:#ffffff; display:inline-block; font-si=
+ze:14px; font-weight:normal; letter-spacing:0px; line-height:normal; paddin=
+g:15px 60px 15px 60px; text-align:center; text-decoration:none; border-styl=
+e:solid;" target=3D"_blank">GET MORE INFORMATION</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table class=3D"module" role=3D"module" data-type=3D"divider" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"tab=
+le-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 0px 40px;" role=3D"module-content" h=
+eight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"social" alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" style=3D"table-layout: fixed;" data-muid=3D"8bd92b43-527a-485c-8970-c255a=
+e4d60e6">
+    <tbody>
+      <tr>
+        <td valign=3D"top" style=3D"padding:10px 0px 10px 0px; font-size:6p=
+x; line-height:10px;" align=3D"center">
+          <table align=3D"center" style=3D"-webkit-margin-start:auto;-webki=
+t-margin-end:auto;">
+            <tbody><tr align=3D"center"><td style=3D"padding: 0px 5px;" cla=
+ss=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoI75LnejYhHo32v-2BEnoLxkR8COdjnBV96sAb=
+EvzkuxWSetgH_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss=
+6q3JH2t8AROPyLlJSiJbmmIjeCj-2FbGSYABY7Rp5QbR2K-2F4erAdbWlKrKsBqVu0eyoY-2BnF=
+LjyKjwhNt37izxetdOiAD0SUimsdJttZTn6pQ63wCm0Wwm4WUbj8jj9-2B3urBwXjSficznJ43p=
+jaQYQlsYKScKy5YS2wfAeVvN55IAhiaX0Jjgw2uIVbGU0Nz0EMyFblA9OqfEXR8xzF3ZB2EyZay=
+uxUscqwav4tFjWl7L30SWVejMs-2BmUR4PFVPlpIfAnadmI8XZuvED2eqmBBM2-2Bpnr2Bv5hHG=
+c0fF9kJUmtbr-2BRRC0BURKRmku8N-2F7yCq6jQFTFGJJgs7T39PiEfaKeY9o-2BpoXqdFWwIaI=
+2atzxJIXZKAP5gh27NxnvkdEH9Jx6q0j7kUieiSD65fAd8Ny5rltBLUsYYwx4mW3FjZf8OWdl8h=
+MBbmiAX-2Bbh9xe2YFlkQZG1J3-2FXHpZc86VDMHGd4xjBbFsca7pGyTwwa4-2FpKNKqTdnKvH7=
+kEUdCLEnO7iAHBd8Romt2KsNNRJWkDzmoF5AhCHpTPkJ4f6pKczgyWm2Bt6dHNRpUuAHLXDFSOi=
+0f4kCjmPT3KuTByngWWIdSih6OcYwWWVbty80fjh-2FJSXZzhOhETcrG6eKuqS36mQ9MPxRRm4S=
+VWdWBd89isZ7wEX-2F0DFKrhkk3NeBiPq4iehE0YhIOgjnCeqfPnU-2B-2FOCv1Wo8XIvUj4FNN=
+UernunUVzhSgblC8cKEJ16DAWO6R3c5mbpeZ-2BxAykdVSX-2FY4-2BzIquCndwy-2FiHXy67KR=
+BU8a-2FBTYPmScOIJfmaDyBEiMLIoOl1pxFEWUk3ciWbG0ZVUIHl12ZRI7JbqhRXmq2KzmezIIE=
+-2Bd3LRoqmTUo5-2F-2BAReQNQGIC2JQE-2FNHTHBDf3nMyFaRPSZNL6TkMJz84A3WqFJciBfc1=
+vDUaKWlSdrZftg62KLAO1-2Bg808N-2BI-2B-2Bdi5FltVh6VCRWyWr0MitSuKxSwqin4DOyH3x=
+hmkPMKYi0nB353QeUJz416GMabgfmcyzqeBknWdKL-2BASdosIGnnO-2FYCw-3D-3D" target=
+=3D"_blank" alt=3D"Twitter" title=3D"Twitter" style=3D"display:inline-block=
+; background-color:#e36654; height:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"Twitter" title=3D"Twitter" src=3D"=
+https://mc.sendgrid.com/assets/social/white/twitter.png" style=3D"height:30=
+px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoHzAtCmJySJE626E0Va66T6PHRKBDsZM6p2HRC=
+s35N1ID-2BP8uD23VvMJ5d2BTSHxMg-3D-3Dy3zj_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTq=
+ox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyLlJSiJbmmIjeCj-2FbGSYABY7Rp5QbR2K-=
+2F4erAdbWlKrKsBqVu0eyoY-2BnFLjyKjwhNt37izxetdOiAD0SUimsdJttZTn6pQ63wCm0Wwm4=
+WUbj8jj9-2B3urBwXjSficznJ43pjaQYQlsYKScKy5YS2wfAeVvN55IAhiaX0Jjgw2uIVbGU0Nz=
+0EMyFblA9OqfEXR8xzF3ZB2EyZayuxUscqwav4tFjWl7L30SWVejMs-2BmUR4PFVPlpIfAnadmI=
+8XZuvED2eqmBBM2-2Bpnr2Bv5hHGc0fF9kJUmtbr-2BRRC0BURKRmku8N-2F7yCq6jQFTFGJJgs=
+7T39PiEfaKeY9o-2BpoXqdFWwIaI2atzxJIXZKAP5gh27NxnvkdEH9Jx6q0j7kUieiSD65fAd8N=
+y5rltBLUsYYwx4mW3FjZf8OWdl8hMBbmiAX-2Bbh9xe2YFlkQZG1J3-2FXHpZc86VDMHGd4xjBb=
+Fsca7pGyTwwa4-2FpKNKqTdnKvH7kEUdCLEnO7iAHBd8Romt2KsNNRJWkDzmoF5AhCHpTPkJ4f6=
+pKczgyWm2Bt6dHNRpUuAHLXDFSOi0f4kCjmPT3KuTByngWWIdSih6OcYwWWVbty80fjh-2FJSXZ=
+zhOhETcrG6eKuqS36mQ9MPxRRm4SVWdWBd89isZ7wEX-2F0DFKrhkk3NeBiPq4iehE0YhIOgjnC=
+eqfPnU-2B-2FOCv1Wo8XIvUj4FNNUernunUVzhSgblC8cKEJ16DAWO6R3c5mbpeZ-2BxAykdVSX=
+-2FY4-2BzIquCndwy-2FiHXy67KRBU8a-2FBTYPmScOIJfmaDyBEiMLIoOl1pxFEWUk3ciWbG0Z=
+VUIHY0iwwcZXv5tg4cCnJzBC0I0vAUDBb-2FeqaqkZKPPelupoU3appGxFXfNeVtLwB1GVHFzdn=
+gn-2BVKDYl4RYpRIg5ZYh2wtZ5r5A6-2FQpeyvELKAMxhKcbz1o1S-2Fu1Hz6U9pnIiPDacFO1a=
+kX7-2B-2BkRLZSairNpMgr75YsmIan-2B-2BSsQhGjY4YUQN8bgOa5OYNCte89DcdNA-2Bcj4ts=
+P-2B3GDQMHqWQ-3D-3D" target=3D"_blank" alt=3D"Instagram" title=3D"Instagram=
+" style=3D"display:inline-block; background-color:#e36654; height:30px; wid=
+th:30px;">
+        <img role=3D"social-icon" alt=3D"Instagram" title=3D"Instagram" src=
+=3D"https://mc.sendgrid.com/assets/social/white/instagram.png" style=3D"hei=
+ght:30px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoB-2FSxnJj7QW6IRziGDQmuqGIy9gnzMgazmK7=
+6EsIHs1NY7KRGyQUWqtivr4HtQmcqw-3D-3DHUvE_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTq=
+ox4xXDA5o4wdJmgedTB6lvw9FYss6q3JH2t8AROPyLlJSiJbmmIjeCj-2FbGSYABY7Rp5QbR2K-=
+2F4erAdbWlKrKsBqVu0eyoY-2BnFLjyKjwhNt37izxetdOiAD0SUimsdJttZTn6pQ63wCm0Wwm4=
+WUbj8jj9-2B3urBwXjSficznJ43pjaQYQlsYKScKy5YS2wfAeVvN55IAhiaX0Jjgw2uIVbGU0Nz=
+0EMyFblA9OqfEXR8xzF3ZB2EyZayuxUscqwav4tFjWl7L30SWVejMs-2BmUR4PFVPlpIfAnadmI=
+8XZuvED2eqmBBM2-2Bpnr2Bv5hHGc0fF9kJUmtbr-2BRRC0BURKRmku8N-2F7yCq6jQFTFGJJgs=
+7T39PiEfaKeY9o-2BpoXqdFWwIaI2atzxJIXZKAP5gh27NxnvkdEH9Jx6q0j7kUieiSD65fAd8N=
+y5rltBLUsYYwx4mW3FjZf8OWdl8hMBbmiAX-2Bbh9xe2YFlkQZG1J3-2FXHpZc86VDMHGd4xjBb=
+Fsca7pGyTwwa4-2FpKNKqTdnKvH7kEUdCLEnO7iAHBd8Romt2KsNNRJWkDzmoF5AhCHpTPkJ4f6=
+pKczgyWm2Bt6dHNRpUuAHLXDFSOi0f4kCjmPT3KuTByngWWIdSih6OcYwWWVbty80fjh-2FJSXZ=
+zhOhETcrG6eKuqS36mQ9MPxRRm4SVWdWBd89isZ7wEX-2F0DFKrhkk3NeBiPq4iehE0YhIOgjnC=
+eqfPnU-2B-2FOCv1Wo8XIvUj4FNNUernunUVzhSgblC8cKEJ16DAWO6R3c5mbpeZ-2BxAykdVSX=
+-2FY4-2BzIquCndwy-2FiHXy67KRBU8a-2FBTYPmScOIJfmaDyBEiMLIoOl1pxFEWUk3ciWbG0Z=
+VUIH9UG355rKSALFhcD3UwSjH9Lskp6g4gMfhQD1ZXkydJyi1FkrgT38G1WagWf8hs4W-2FReTs=
+SPswY6umGI4VtuqnQQ8DwQohZYVCXldU1jo-2FfYDqZOav-2BkKRCx3JA2g4urV3L8TGBCnXu2l=
+39rOHH1Ky3JTaPW-2B45bergHVoMIlhj77R7xbfmRpPLumELNVIrGtMbMybdkTciw2YLy88XtBM=
+g-3D-3D" target=3D"_blank" alt=3D"LinkedIn" title=3D"LinkedIn" style=3D"dis=
+play:inline-block; background-color:#e36654; height:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"LinkedIn" title=3D"LinkedIn" src=
+=3D"https://mc.sendgrid.com/assets/social/white/linkedin.png" style=3D"heig=
+ht:30px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td></tr></tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><div data-role=3D"module-unsubscribe" class=3D"module" role=3D"mo=
+dule" data-type=3D"unsubscribe" style=3D"color:#444444; font-size:12px; lin=
+e-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid=
+=3D"4e838cf3-9892-4a6d-94d6-170e474d21e5"><div class=3D"Unsubscribe--addres=
+sLine"><p class=3D"Unsubscribe--senderName" style=3D"font-size:12px; line-h=
+eight:20px;">Cybersecurity Human Risk Update</p><p style=3D"font-size:12px;=
+ line-height:20px;"><span class=3D"Unsubscribe--senderAddress">Living Secur=
+ity, 3595 RR 620 South</span>, <span class=3D"Unsubscribe--senderCity">Aust=
+in</span>, <span class=3D"Unsubscribe--senderState">TX</span> <span class=
+=3D"Unsubscribe--senderZip">78738</span></p></div><p style=3D"font-size:12p=
+x; line-height:20px;"><a class=3D"Unsubscribe--unsubscribeLink" href=3D"htt=
+ps://u19600278.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQWSN2-2FVMFeM7B17h=
+16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuu5ezOmRwm6-2BCJqbjJ1vBNaI7QM3=
+NGSPAcfKtyAdZUm6-2FiugSuDSeHJUnWBiYKZByXq8kfDetHfL4drsVH6Urb85hfLAmvQi7ggPV=
+jhGa6eXUZZO8BW11r6hM6Tn7NIsG3vp40azxT4Ajokb-2F746ZwqSS2cxcTMM6MduSWhFCZspYd=
+Uivz-2FBLAzPIsZwupaVef-2FnhFz9RrpkwVEI9L9YauuddoQ2haiI-2FakBvUaW7jcjOIRTwOU=
+8RqKLlsDQ9a9ASgIefo0-2BR7myd44j2OIo34HLXMy5w7NZPFPbBNDn8xo4DwUSQHOlP0Ywxyt1=
+CrNleYgi1Q6zTPdldE-2BEb9ZLpkEVEVwUvsApQ3HWKiZEMoZPeCVi314YBTHLeaTBguuNFdnep=
+YvUoX09AUKP3MSek4d7dV9F1zbLbv5JKw0DTl8xPtCYExyIGfHO1lcMlh1PbnXuwAqt7CoL0HCa=
+UQG35y76q-2FhdPBbDniX7hgfxfWdThuAtSnKcLWhVC9CEOR5HkGFqDK-2FISKdeQGaV12U4SEc=
+ljsHB5oJbp-2F9B6qjpnrYtoHAD3N-2FYMDPk-2BRkKQ39X-2FFtyZV1NOyFLWMX03Y8FRtwNvr=
+ZJqUWi6LLSp6ZEMoerr3-2Fb68NTbjiGnznwJPMHTM9L59B47a3iOzf0UPuMGgdeaQH4hZQI8Kg=
+e6wiJRCPXwzh0LtcLt7nckCcrTgycVq6EDgw8i6FvXjgoWa0SsFchNJlmn0SBTxXIqjRuBALMXo=
+SZGkayHi312YwqzNc-2FLRgveUPtsRCvYkQVqH6QSw84JIOeAlhH6jzH7Ee5u7c15Qk39Q5JT4X=
+5eBYCvoe-2FCc5xoCtL7d12R5HnPqo7pwgoAn1S7Mk3SOAXt6c50gVusxx9VFOYHU4yhVP2q3xg=
+T8oOdBB9ERlCJojAltD93fHJ2ETAmEYuO6E2np7ZbfOYq9JG1kTIZ8p7-2BEj-2FcIVtMggnJaZ=
+kOMe1fKChfmNvotrPu1wemaUNaealV1VhHKZCRUEUBD-2FZ5PZQJu8Zowpg2KGLsjRUwSsd-2FR=
+0O-2FBMPVCEg-3D-3D" target=3D"_blank" style=3D"">Unsubscribe</a></p></div><=
+/td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+=20=20=20=20
+<img src=3D"https://u19600278.ct.sendgrid.net/wf/open?upn=3D5Z3XbQWSN2-2FVM=
+FeM7B17h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuu5ezOmRwm6-2BCJqbjJ1v=
+BNaI7QM3NGSPAcfKtyAdZUm6-2FiugSuDSeHJUnWBiYKZByXq8kfDetHfL4drsVH6Urb85hfLAm=
+vQi7ggPVjhGa6eXUZZO8BW11r6hM6Tn7NIsG3vp40azxT4Ajokb-2F746ZwqSS2cxcTMM6MduSW=
+hFCZspYdUivz-2FBLAzPIsZwupaVef-2FnhFz9RrpkwVEI9L9YauuddoQ2haiI-2FakBvUaW7jc=
+jOIRTwOU8RqKLlsDQ9a9ASgIefo0-2BR7myd44j2OIo34HLXMy5w7NZPFPbBNDn8xo4DwUSQHOl=
+P0Ywxyt1CrNleYgi1Q6zTPdldE-2BEb9ZLpkEVEVwUvsApQ3HWKiZEMoZPeCVi314YBTHLeaTBg=
+uuNFdnepYvUoX09AUKP3MSek4d7dV9F1zbLbv5JKw0DTl8xPtCYExyIGfHO1lcMlh1PbnXuwAqt=
+7CoL0HCaUQG35y76q-2FhdPBbDniX7hgfxfWdThuAtSnKcLWhVC9CEOR5HkGFqDK-2FISKdeQGa=
+V12U4SEcljsHB5oJbp-2F9B6qjpnrYtoHAD3N-2FYMDPk-2BRkKQ39X-2FFtyZV1NOyFLWMX03Y=
+8FRtwNvrZJqUWi6LLSp6ZEMoerr3-2Fb68NTbjiGnznwJPMHTM9L59B47a3iOzf0UPuMGgdeaQH=
+4hZQI8Kge6wiJRCPXwzh0LtcLt7nckCcrTgycVq6EDgw8i6FvXjgoWa0SsFchNJlmn0SBTxXIqj=
+RuBALMXoSZGkayHi312YwqzNc-2FLRgveUPtsRCvYkQVqH6QSw84JIOeAlhH6jzH7Ee5u7c17tr=
+seLfvKYq1LcKembgAlmwE8-2FHQWE-2FWm0QAx-2BPgu3EljX7xq1AGNHo4Lz7jCHJKOna9E8np=
+w8-2BclZ3sqGXxWZTp84NVdbfee-2F6fCHnNAb63uHW5Xj8nTbf7d31CqtzPnTDOq0aPMk-2Fwf=
+-2B1FRS7rGGTFo5ZU5h2Is-2FrgVp-2Btw3yUWDOgdobf4wrU9tVXgxGmwtvH-2F0ki8zz83yf-=
+2F-2BZy5J0UUSQ662Yo7sl-2FqA4Yj7LEA-3D-3D" alt=3D"" width=3D"1" height=3D"1"=
+ border=3D"0" style=3D"height:1px !important;width:1px !important;border-wi=
+dth:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-=
+right:0 !important;margin-left:0 !important;padding-top:0 !important;paddin=
+g-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;=
+"/>
+</body>
+  </html>
+
+--9470bf8ca1285aa7d3d14df1c657a6219bc9c7bcde03c828bb1e50bc0d22--

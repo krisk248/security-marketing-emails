@@ -1,0 +1,471 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp1777766wrr; Fri, 16
+ Jul 2021 05:54:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/htue3TDkdoFm8CvZ9At9vmwcQF1EkXakybfpWEmvECfcBTUZg3mol+04uts0SkPqhjKu
+X-Received: by 2002:a9d:7301:: with SMTP id e1mr5396765otk.245.1626440079379;
+ Fri, 16 Jul 2021 05:54:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1626440079; cv=pass; d=google.com;
+ s=arc-20160816;
+ b=QiroTCooohQnyaOFlaWQazLZjmyqOXtgKmImHDjWDJgO4YTt2DvEzjYoNEeNn6WC1A
+ abV8tqMQQF1Vczh9jXOVIdtXwuSOLIJOwLNy1PpH+uxzQkrDA4NT8xOnax8iGJxhvI42
+ WMUTzFgEEF2+RWYRCg43ASOBhN2nRdW5nKmDwOAT71KzChL2d4gsxBC4n90ErkXcmNf+
+ zQ0I0SvEP99dUMPZg5gfxeP3AS4GJO2+Q/uWQyjzmi8xqP+IHHzc0gGlkEZMRIJv/6qU
+ rU5wXNeaFX2nlc0QP+9oLke9uDovtZWvbmaLQzt+mWMZ6B6hKsrMrsiO08br1RpJpozj VEZw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:content-language:accept-language:message-id:date
+ :thread-index:thread-topic:subject:to:from:dkim-signature;
+ bh=2DEKalcAeWymD5DtVnK8j3um5LkZlJz5A8cam5XbSyo=;
+ b=MiFwmluFX483VEhDPgB1vufTQR02MvWgdFIagFyfiXu7YIVJboX8WTTf9z85HGUgm/
+ LLKwbT8MeZHMOso/25ayUdEQWu2GmI22TfXWDCsyXI4rOlCeZAiwE+FUD7PPlHGb0HY4
+ qdBs82SAPtxIxqAPsqoE9xEbKiUXnfMmO03lZi7EE0BkJ9kyzqX7HZl0Kx4M4hBzl72T
+ yV8q7WaiuAs687ewqInEP1wlwMyjYddxZsfhsTs9qQRFzRLTnA0SmeYjB5EvPKcQ4pPR
+ viyOLjacNnR3i18xg3gMkncGDSDFfepc5iZni+dksP+hzAYECWU17TCmD0ePGp/PoPxl q8TQ==
+ARC-Authentication-Results: i=2; mx.google.com; dkim=pass
+ header.i=@amisequs.onmicrosoft.com
+ header.s=selector1-amisequs-onmicrosoft-com header.b=rXtsIgzB; arc=pass (i=1
+ spf=pass spfdomain=amiseq.com dkim=pass dkdomain=amiseq.com dmarc=pass
+ fromdomain=amiseq.com); spf=pass (google.com: domain of neil.naidu@amiseq.com
+ designates 40.107.93.71 as permitted sender)
+ smtp.mailfrom=neil.naidu@amiseq.com; dmarc=pass (p=QUARANTINE sp=QUARANTINE
+ dis=NONE) header.from=amiseq.com
+Return-Path: <neil.naidu@amiseq.com>
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2071.outbound.protection.outlook.com. [40.107.93.71]) by
+ mx.google.com with ESMTPS id f73si4427844oig.15.2021.07.16.05.54.39 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Fri, 16 Jul 2021 05:54:39
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of neil.naidu@amiseq.com designates
+ 40.107.93.71 as permitted sender) client-ip=40.107.93.71;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@amisequs.onmicrosoft.com
+ header.s=selector1-amisequs-onmicrosoft-com header.b=rXtsIgzB; arc=pass (i=1
+ spf=pass spfdomain=amiseq.com dkim=pass dkdomain=amiseq.com dmarc=pass
+ fromdomain=amiseq.com); spf=pass (google.com: domain of neil.naidu@amiseq.com
+ designates 40.107.93.71 as permitted sender)
+ smtp.mailfrom=neil.naidu@amiseq.com; dmarc=pass (p=QUARANTINE sp=QUARANTINE
+ dis=NONE) header.from=amiseq.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mLJ5EfvslXMfa7rqN5keBVnhKmxD/GK4POwckF8mUxrQdX6uM4xwMTmZHBb8TuXC2Pcs5aoVg4/mgzrNwHUOGEyIvbyH/GIctemYZp6Zy9vH1ene9XsmCxei5a6hNTeErpZBU9/nMEV6KEyrPwGC7JV9kI1/6NsKBnp23IXVOj4CeeG582LOWlSDJkkIAw0pVrODii4a3E5K8/2f7AfyPXzu/KZb2pKOq2FEJimyim7mHpwQE8Kp28y+4PlyFlp20DSurCqAaKOfGztUjlbiC+lxDYkEaZj8vt+8nXYG5/g7C2nSrtZ2NjR2uW1BL5cjHsFfdPkiiZxeqE8HRGb2IA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2DEKalcAeWymD5DtVnK8j3um5LkZlJz5A8cam5XbSyo=;
+ b=JHu9jfP3ap9m7iC6OM87Kud9Gl7LaYe6Wqdi/2dzYFC31KjBdTxzoWkPGwOPZZueMl08ctVbUVkianH9X6a9dN/4Wyz8iKj3TYB96o4HcDsG7Gtokcf41Sydcc0DlRAoavGo75kaZLv1nENyIvZGVOoSRmIN7RTIVSPc3lOykbYyjG6CSdZjgYHdmUemZSWV9y8dz521cxtVXcHw/3vQpEjDSlbZt2zSQxEIRFle5M5eH5RQzpqaq7h1yuLowcTtpf8CAAHvgtnAbg20tvG3GXg9ZFFPj9O40mWitpFxmF+ykLct2t7X/rL+paeAclWr4rRWhIsARyw3dUUC9dwJMg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amiseq.com; dmarc=pass action=none header.from=amiseq.com;
+ dkim=pass header.d=amiseq.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amisequs.onmicrosoft.com; s=selector1-amisequs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2DEKalcAeWymD5DtVnK8j3um5LkZlJz5A8cam5XbSyo=;
+ b=rXtsIgzBLIdo14wKiDuzfdUy2BUz0ey61CxIYYPJfNPDeRbDFVYAoY+x7vN0K9LrLF4eWCAqyDljwL94Ayi/XlrQfl8DWNkzbgXyu0nqVL7Ktf79dGHVf0HA+ZP4YIvhf4rpv+oJ6f1AMW0ivgByneUSZ0bLuLhL047csKf30b9iVaBHi2/3u5V707afNPMhF6482GEzjguyH4j9JW1mtIpQWmAfU9QVc6TgTJv7PD0yZQKm4S3mtzDJm/lEmV+7MXzsUVTT3K0yykayMs5Le7uwackJsEO3G/XIaVOmEDs7VhkGw5avapOcyTzRaoBwk6FTSNQRUnJ4JMJkeLMcYw==
+Received: from BN7PR08MB4835.namprd08.prod.outlook.com (2603:10b6:408:2f::18)
+ by BN7PR08MB6068.namprd08.prod.outlook.com (2603:10b6:408:36::25) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4242.21; Fri, 16 Jul
+ 2021 12:54:38 +0000
+Received: from BN7PR08MB4835.namprd08.prod.outlook.com
+ ([fe80::48c4:40a:df85:6050]) by BN7PR08MB4835.namprd08.prod.outlook.com
+ ([fe80::48c4:40a:df85:6050%5]) with mapi id 15.20.4331.024; Fri, 16 Jul 2021
+ 12:54:38 +0000
+From: Neil Naidu <neil.naidu@amiseq.com>
+To: "arkadiy.tetelman@chime.com" <arkadiy.tetelman@chime.com>
+Subject: RE: Enterprise Integrated Cybersecurity Platform
+Thread-Topic: RE: Enterprise Integrated Cybersecurity Platform
+Thread-Index: Add6PgGynG2iXztMRYKpz+yAkhjEUQ==
+Date: Fri, 16 Jul 2021 12:54:38 +0000
+Message-ID: <BN7PR08MB48359B48B71DAFC5DA2D9558E0119@BN7PR08MB4835.namprd08.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+authentication-results: chime.com; dkim=none (message not signed)
+ header.d=none;chime.com; dmarc=none action=none header.from=amiseq.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 4987bea8-55a3-4779-bd2d-08d94858dec8
+x-ms-traffictypediagnostic: BN7PR08MB6068:
+x-microsoft-antispam-prvs: <BN7PR08MB6068B497AEF371474AC1DB9CE0119@BN7PR08MB6068.namprd08.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aUQpgP7GTQN3qxPSAK4Ebkoh4ooeX4iHAWDleZjvFIXKN3s2kwACAun1UuMl+IsoWtrPIdbpkKpCcVdd/h7XH9Nd+PE7HnHbzl3yRU2ymrVINKzK+ae6oqjFxyi0cVvyOyZXbwbGrvAXsbzsOFADb560ZAhQN5C0m/xziiidAeBaTyfx2135+d8BXMgAAVuRbrwN1LgB1xhRrs5f/7OqWGZ6lstXwFobCPz5+2AvVYZqGwm1pNoH3LGo+XlokWNC2Ma5YlyzSm+KDREdgtWgmhFHSnmSjdyKlY+NdtsDzk0clQ9YPsp7dTg1hI+4H1T0q7OdBZuipeKyEAW4edfMXwmbtQobRd48Gj/pdGI7+uJTkfPKzhtpkXHqmhAvBQMeGLbijsQmEuxPUKmk2FYb305kGur4fj+KOCtQgZu/n6jv03M9EGBa36ucvwv5bHnnp3DUGsPvebADLOIw7roShOyAVVLI2g3TgVZKD8TjoBiGcEZjWI7Jcbcl4ts/Ej+1bFFWONhFKi/DZuTSLnw/PSOdXbctZ58on1zdSEe8qO0NlCw410/vlW9APVpsGYIVI9/fwCADiXIJEW6FeBTxj+8fPwBRUgumkJbPICEUi44rP0jiJ7sjgzini2VRU2iVhsOgxNWKh0ssy2GuLloP0IdVlZLudjUvpJIKnpJmFzxma+GMjSDjRD6FCfBpIrKjtq9SPJg7m5gp1ha8qwp9F+Sx1GHhryZAOUvZvsEvPBQke3VKUOCz4fqBXMOnYcsuE+R8A95etlf6HdUS5owuCYX1b46smmMKdU4ZI6BYHhf3s6eM+OnHwAE7xkhGqJWo
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN7PR08MB4835.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(39840400004)(376002)(366004)(136003)(396003)(346002)(66576008)(316002)(55016002)(44832011)(19627405001)(8936002)(76116006)(66446008)(99936003)(64756008)(76236003)(186003)(8676002)(9686003)(6916009)(166002)(66574015)(66946007)(86362001)(66476007)(66556008)(478600001)(9326002)(5660300002)(71200400001)(33656002)(38100700002)(2906002)(52536014)(7696005)(6506007)(53546011)(122000001)(3480700007)(83380400001)(99760200001)(38070700004);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Mq3l3jRgDlrrwAyiAEYNuRtwn17rYWLRMEdiAoKSllZ9jX/kRNPthp0XeNOA?=
+ =?us-ascii?Q?PZxGI0UpdamujAIEd0u9ZcL671OA/4SZkExgzTlGDXkVVESajf7Ei1w3qeCf?=
+ =?us-ascii?Q?1lE+z4EaMKl1lTo5HJ9Lw3I8fyQyoyczVnDgdRs0E4h5pZZ1oCbke3n6/74e?=
+ =?us-ascii?Q?F/Qfl0/U6Cg0pUzQKVDnXl1UToIhKe54v94AedlEUeEITmDcQANb4CG6jzqW?=
+ =?us-ascii?Q?3my7SV/Hk4uZiUX4gBXs13NSnzoesIHUH3CTYTasaBKNk9k3UQNb5SPIzGHd?=
+ =?us-ascii?Q?EkoPJm22LvXSGsx30rO/nwnFYgmkfmC741kDLwBV3ZMuw3ed7YAN3NNYPaMJ?=
+ =?us-ascii?Q?Vzdgy8KSFiVLT89S8PJ0wkDFd0H8UZq9mJsKbFddygts1L+wG/qU+DfPryqL?=
+ =?us-ascii?Q?agRKrU8fOfjHZRDF75DxNeFWD2oJq8b/lXuZBeNSZUYox71DpKgyRVUUaXXT?=
+ =?us-ascii?Q?mm5ZwT9b8y0mccAVhRbWn+AUwsCAmwnWTs5/lmWDcab/Z0QeMSPcLyrGxi/e?=
+ =?us-ascii?Q?IkVDOf76PKZmUAtVFlTpY2vPpG+INmcYKYxw5N/mDXezJemaIVf9sQIYHub1?=
+ =?us-ascii?Q?C3P5+lNpouPVYdanXREp4/ltox+OZZrVdRjRjboljS4LH2Ib8ax6WHTdvj46?=
+ =?us-ascii?Q?AQrRT2y+XgbhrWIU3l1LQGSNAbWUWDLnSjswL8QRU9H34Z8nE6IpAK11l8i2?=
+ =?us-ascii?Q?nSFE/iX7FrkGKMfsdexoZGs+xPEuNwASZ6ZzN38v+a/qEsKPSOq8MU50+vGP?=
+ =?us-ascii?Q?fCg5HJYRCqizx9GmwIP1kgG8uZ7rCzD732+1Bk6HhsvqKwKRN4qt2WIrPBqW?=
+ =?us-ascii?Q?h3W0pitnyfPN11/IswXJt+5CiUWACGTs2FcqsL4Ija4uSDWuGLvd8g5Zw7Nd?=
+ =?us-ascii?Q?/CguXE9/NxJOD2QlF9IEcKihznoj5Yu33ZcgOi2YpT8tOT2WLTlffhNnZptk?=
+ =?us-ascii?Q?NWZVX1JYk48IGhxxtjnZigbYxgxArrCl6vOJpm/P1NRkaef0Y7Qepuhu0vJr?=
+ =?us-ascii?Q?XGD9kV7Fjf0r9Oxq1ZQ25E92wAG6aHUmCscxtPFUn7Xd8x9d25ongPqL9ImY?=
+ =?us-ascii?Q?8Tr7MMVanzhxqHvM/04je9kAxZwc7ucldLM3hUlZl1jVSOwQ04FYePXu5LXb?=
+ =?us-ascii?Q?xgclcJIxfpu0D/PasiOMw+zfm4gejYG+ORa1e4nxSMK2Sx8P64bKhYKQGaAL?=
+ =?us-ascii?Q?D5WW99oVoHoz/LI5y8e/6P+VMbKkJ7a1hTrd20boV98RgdHmtnq/Y6DK4K/n?=
+ =?us-ascii?Q?vdiKTKNbRrHX8prh2af85wMc5QQI52vOr2n5MAp/WjLeKhKMCo/tbEKzdisE?=
+ =?us-ascii?Q?KyCVt3eg0P24ZytSHOIbIVdSOL1ldndDmCt0GYoZE34ZTxUVW7gvkOtXbKQC?=
+ =?us-ascii?Q?Cm6cdQgtTT/IrS5dW8VHYVyIhymf?=
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/related;
+ boundary="_005_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_";
+ type="multipart/alternative"
+MIME-Version: 1.0
+X-OriginatorOrg: amiseq.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN7PR08MB4835.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4987bea8-55a3-4779-bd2d-08d94858dec8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2021 12:54:38.0705 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 1de8574e-552e-40e2-9ae2-552c02fba440
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: J8ELybjbbG5Yo3PF6M43EZzKKHBt0O2QqON627rIW4dqcX+moXaz5H89RG9pWYiUr7SAjW7bDxFTuSF52PZeoQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR08MB6068
+
+
+--_005_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_
+Content-Type: multipart/alternative;
+	boundary="_000_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_"
+
+--_000_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Arkadiy,
+
+A host of new and evolving cybersecurity threats has everyone on high alert=
+. Ever-more sophisticated cyberattacks involving malware, phishing, machine=
+ learning, artificial intelligence, cryptocurrency and more have placed the=
+ data and assets of corporations, governments and individuals at constant r=
+isk.
+
+Introducing Artemis an API driven enterprise integrated security platform t=
+hat allows for smarter security operations to gain a holistic view across y=
+our organisation.
+Enable better, faster security operations today, and prepare to handle thre=
+ats with the industry's one-of-a-kind comprehensive product suite for Cyber=
+security operations. Arm your security team with integrated best-in-class d=
+etection, investigation, response, threat intelligence and historical analy=
+sis.
+Artemis helps to see real viable data, information you need to react to rat=
+her than false positives, information you should act on. A tool that filter=
+s through all the noise and getting to the important alerts and also know w=
+hat your endpoints are doing.
+Artemis automates the mundane aspects of use cases like vulnerability manag=
+ement and account provisioning freeing up time for your security team to fo=
+cus on high-value work all this from a single command centre with user base=
+d access control.
+
+Like to know more? let me set up a 15-minute call with our product leader a=
+nd show you how it works.
+
+Neil Naidu
+Sr. Manager - Client Engagement | Amiseq, Inc<http://www.amiseq.com/>
+(408) 503-6918 | neil.naidu@amiseq.com<mailto:neil.naidu@amiseq.com> | 1551=
+ McCarthy Blvd Suite # 215, Milpitas CA 95035
+
+[cid:image001.jpg@01D77A03.5566CCD0]<http://www.amiseq.com/>
+
+
+From: Neil Naidu
+Sent: Friday, June 25, 2021 5:50 AM
+To: Tetelman, Arkadiy 'arkadiy.tetelman@chime.com'
+Subject: RE: Pentest as a Platform
+
+Hello Arkadiy,
+
+Our growing dependency on cyberspace has greatly increased from the past ye=
+ar and so the situation awareness. Organizations are looking to make their =
+apps and services more secure and the need to improve breach resiliency acr=
+oss their digital environments.
+Looking to introduce to you Artemis (Pentest as a Platform) a simple cloud-=
+based platform that could elevate monitoring, managing and reporting of you=
+r Cybersecurity posture to the next level. Artemis is a data driven Pentest=
+ platform offered as SaaS or on-Prem, allowing teams to initiate, track and=
+ remediate vulnerabilities from a single command centre, Integrating the or=
+ganisations entire Pentest applications and giving role-based access to var=
+ious levels of authority.
+
+Arkadiy, do let me know if we could schedule a 15/20-minute demo next week =
+to showcase the platform and get your feedback.
+
+Neil Naidu
+Sr. Manager - Client Engagement | Amiseq, Inc<http://www.amiseq.com/>
+(408) 503-6918 | neil.naidu@amiseq.com<mailto:neil.naidu@amiseq.com> | 1551=
+ McCarthy Blvd Suite # 215, Milpitas CA 95035
+
+[cid:image001.jpg@01D77A03.5566CCD0]<http://www.amiseq.com/>
+
+
+
+
+
+-- Amiseq -- can-spam policy -
+We're committed to your privacy. Amiseq utilizes both public information an=
+d/or the information you provide to us to contact you about our relevant co=
+ntent and services.
+<<UNSUBSCRIBE>><mailto:neil.naidu%22amiseq.net?subject=3DUNSUBSCRIBE>
+
+
+
+
+--_000_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-GB" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
+break-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Hello Arkadiy,<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">A host of new and evolving cybersecurity threats has=
+ everyone on high alert. Ever-more sophisticated cyberattacks involving mal=
+ware, phishing, machine learning, artificial intelligence, cryptocurrency a=
+nd more have placed the data and assets
+ of corporations, governments and individuals at constant risk.<o:p></o:p><=
+/p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Introducing Artemis an API driven enterprise integra=
+ted security platform that allows for smarter security operations to gain a=
+ holistic view across your organisation.<o:p></o:p></p>
+<p class=3D"MsoNormal">Enable better, faster security operations today, and=
+ prepare to handle threats with the industry&#8217;s one-of-a-kind comprehe=
+nsive product suite for Cybersecurity operations. Arm your security team wi=
+th integrated best-in-class detection, investigation,
+ response, threat intelligence and historical analysis.<o:p></o:p></p>
+<p class=3D"MsoNormal">Artemis helps to see real viable data, information y=
+ou need to react to rather than false positives, information you should act=
+ on. A tool that filters through all the noise and getting to the important=
+ alerts and also know what your endpoints
+ are doing.<o:p></o:p></p>
+<p class=3D"MsoNormal">Artemis automates the mundane aspects of use cases l=
+ike vulnerability management and account provisioning freeing up time for y=
+our security team to focus on high-value work all this from a single comman=
+d centre with user based access control.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Like to know more? let me set up a 15-minute call wi=
+th our product leader and show you how it works.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:11.5pt;ms=
+o-fareast-language:EN-IN">Neil Naidu</span></b><span lang=3D"EN-US" style=
+=3D"font-size:11.5pt;mso-fareast-language:EN-IN"><br>
+Sr. Manager - Client Engagement |&nbsp;</span><a href=3D"http://www.amiseq.=
+com/"><span lang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-language:E=
+N-IN">Amiseq, Inc</span></a><span lang=3D"EN-US" style=3D"font-size:11.5pt;=
+mso-fareast-language:EN-IN"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.5pt;color=
+:black;background:white;mso-fareast-language:EN-IN">(408) 503-6918</span><s=
+pan lang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-language:EN-IN"> |=
+&nbsp;</span><a href=3D"mailto:neil.naidu@amiseq.com"><span lang=3D"EN-US" =
+style=3D"font-size:11.5pt;mso-fareast-language:EN-IN">neil.naidu@amiseq.com=
+</span></a><span lang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-langu=
+age:EN-IN">
+ |&nbsp;<span style=3D"color:black;background:white">1551 McCarthy Blvd Sui=
+te # 215, Milpitas CA 95035</span><span style=3D"background:white"><o:p></o=
+:p></span></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.5pt;mso-f=
+areast-language:EN-IN"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><a href=3D"http://www.amiseq.com/"><span lang=3D"EN-=
+US" style=3D"font-size:11.5pt;color:windowtext;mso-fareast-language:EN-IN;t=
+ext-decoration:none"><img border=3D"0" width=3D"55" height=3D"27" id=3D"Pic=
+ture_x0020_3" src=3D"cid:image001.jpg@01D77A03.5566CCD0"></span></a><span l=
+ang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-language:EN-IN"><o:p></=
+o:p></span></p>
+<div style=3D"mso-element:para-border-div;border:none;border-bottom:solid w=
+indowtext 1.5pt;padding:0in 0in 1.0pt 0in">
+<p class=3D"MsoNormal" style=3D"border:none;padding:0in"><o:p>&nbsp;</o:p><=
+/p>
+</div>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></b>=
+</p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"mso-fareast-languag=
+e:EN-GB">From:</span></b><span lang=3D"EN-US" style=3D"mso-fareast-language=
+:EN-GB"> Neil Naidu
+<br>
+<b>Sent:</b> Friday, June 25, 2021 5:50 AM<br>
+<b>To:</b> Tetelman, Arkadiy &#8216;arkadiy.tetelman@chime.com&#8217;<br>
+<b>Subject:</b> RE: Pentest as a Platform<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Hello Arkadiy,<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Our growing dependency on cyberspace has greatly inc=
+reased from the past year and so the situation awareness. Organizations are=
+ looking to make their apps and services more secure and the need to improv=
+e breach resiliency across their digital
+ environments.<o:p></o:p></p>
+<p class=3D"MsoNormal">Looking to introduce to you Artemis (Pentest as a Pl=
+atform) a simple cloud-based platform that could elevate monitoring, managi=
+ng and reporting of your Cybersecurity posture to the next level. Artemis i=
+s a data driven Pentest platform offered
+ as SaaS or on-Prem, allowing teams to initiate, track and remediate vulner=
+abilities from a single command centre, Integrating the organisations entir=
+e Pentest applications and giving role-based access to various levels of au=
+thority.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Arkadiy, do let me know if we could schedule a 15/20=
+-minute demo next week to showcase the platform and get your feedback.<o:p>=
+</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:11.5pt;ms=
+o-fareast-language:EN-IN">Neil Naidu</span></b><span lang=3D"EN-US" style=
+=3D"font-size:11.5pt;mso-fareast-language:EN-IN"><br>
+Sr. Manager - Client Engagement |&nbsp;</span><a href=3D"http://www.amiseq.=
+com/"><span lang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-language:E=
+N-IN">Amiseq, Inc</span></a><span lang=3D"EN-US" style=3D"font-size:11.5pt;=
+mso-fareast-language:EN-IN"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.5pt;color=
+:black;background:white;mso-fareast-language:EN-IN">(408) 503-6918</span><s=
+pan lang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-language:EN-IN"> |=
+&nbsp;</span><a href=3D"mailto:neil.naidu@amiseq.com"><span lang=3D"EN-US" =
+style=3D"font-size:11.5pt;mso-fareast-language:EN-IN">neil.naidu@amiseq.com=
+</span></a><span lang=3D"EN-US" style=3D"font-size:11.5pt;mso-fareast-langu=
+age:EN-IN">
+ |&nbsp;<span style=3D"color:black;background:white">1551 McCarthy Blvd Sui=
+te # 215, Milpitas CA 95035</span><span style=3D"background:white"><o:p></o=
+:p></span></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.5pt;mso-f=
+areast-language:EN-IN"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><a href=3D"http://www.amiseq.com/"><span lang=3D"EN-=
+US" style=3D"font-size:11.5pt;color:windowtext;mso-fareast-language:EN-IN;t=
+ext-decoration:none"><img border=3D"0" width=3D"55" height=3D"27" id=3D"Pic=
+ture_x0020_2" src=3D"cid:image001.jpg@01D77A03.5566CCD0"></span></a><span s=
+tyle=3D"mso-fareast-language:EN-GB"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:13.0pt"><o:p=
+>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:13.0pt"><o:p=
+>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:13.0pt"><o:p=
+>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:13.0pt"><o:p=
+>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:13.0pt"><o:p=
+>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-CA" style=3D"font-size:10.0pt;color=
+:black">-- Amiseq -- can-spam policy &#8211;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-CA" style=3D"font-size:10.0pt;color=
+:black">We're committed to your privacy. Amiseq utilizes both public inform=
+ation and/or the information you provide to us to contact you about our rel=
+evant content and services.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><a href=3D"mailto:neil.naidu%22amiseq.net?subject=3D=
+UNSUBSCRIBE"><span lang=3D"EN-US" style=3D"font-size:10.0pt">&lt;&lt;UNSUBS=
+CRIBE&gt;&gt;</span></a><span lang=3D"EN-US"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"mso-fareast-language:EN-GB"><img bord=
+er=3D"0" width=3D"1" height=3D"1" id=3D"_x0000_i1025" src=3D"cid:image002.p=
+ng@01D77A03.5566CCD0"></span><span style=3D"mso-fareast-language:EN-GB"><o:=
+p></o:p></span></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+<img src=3D"https://t.sidekickopen01.com/s3t/o/5/f18dQhb0S7n28bWM87W1H9pwZ5=
+9hl0VW7_jsyP5JR-jdW4n-0967v4SX2N56kBsn2yNz1d_xvfP03?si=3D8000000002768220&a=
+mp;pi=3Dd5621b4b-8723-4b7a-a42f-7949efb1525f" width=3D"1" height=3D"1" styl=
+e=3D"display:none!important;">
+</body>
+</html>
+
+--_000_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_--
+
+--_005_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_
+Content-Type: image/jpeg; name="image001.jpg"
+Content-Description: image001.jpg
+Content-Disposition: inline; filename="image001.jpg"; size=1040;
+	creation-date="Fri, 16 Jul 2021 12:54:35 GMT";
+	modification-date="Fri, 16 Jul 2021 12:54:35 GMT"
+Content-ID: <image001.jpg@01D77A03.5566CCD0>
+Content-Transfer-Encoding: base64
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMg
+IyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAAbADcDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2XOKC
+a888a6jcReLLVoJnWGwSKSYKxAO6THIp/jPUJbHxrpE0csgiVEZ1ViFIL4JI6UAd8x+UkVl6da6t
+DfTvf6jHcWuf3MawhWA/2j61x8WoTXXxF1IiaTyUgmRFDHb8qAZA+tV2nmPg7w497PcjTGkYXskb
+ndjJ27j1xmgLnpoNBbFcB4gtH0vwnZQnVJbi3e+XZOHwViOeN2ecDvS6nFa2Hh2FNF1S5nt9Qvo4
+ZJ/P3kL0IU9qAO+zRXJ+EFkstb1vShPLLa2roYRK24ruHIzRQBzniDS9Q1XUfEt5bySRw2+xGi8s
+n7QFGQB9CO1Wtbt5dXvbRhFIxk0RmyUPDjBA9jkdK9FApcUAeY6BaXEeoWE00UgkuNPuZZCUOdzE
+9ff2q9pmoTaT4Q0RbqxebTZVeO8HlFmTk7fl9K7+gAc8UAeWvDNH4Mg321wbMaqJIImjLMIOe3XH
+1rW1m8t9U0CCbSNPuY4LC+jlli+z7G2jklV7/hXejvRQBxfg+/hv/FGvXUYkRZ/LdEkQqxXGM4or
+sgiht20biMZxzRQB/9k=
+
+--_005_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_
+Content-Type: image/png; name="image002.png"
+Content-Description: image002.png
+Content-Disposition: inline; filename="image002.png"; size=98;
+	creation-date="Fri, 16 Jul 2021 12:54:36 GMT";
+	modification-date="Fri, 16 Jul 2021 12:54:36 GMT"
+Content-ID: <image002.png@01D77A03.5566CCD0>
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRS
+TlMAQObYZgAAAApJREFUeF5jYAAAAAIAAd6ej78AAAAASUVORK5CYII=
+
+--_005_BN7PR08MB48359B48B71DAFC5DA2D9558E0119BN7PR08MB4835namp_--

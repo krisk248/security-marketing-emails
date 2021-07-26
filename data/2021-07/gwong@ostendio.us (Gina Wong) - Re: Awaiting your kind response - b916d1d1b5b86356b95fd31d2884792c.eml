@@ -1,0 +1,1697 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp700145wrr; Thu, 8 Jul
+ 2021 07:16:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw97oaQnhacmVVAYcdmU83Kvfg8NKzo+HFtXuWpksDkx4HQo9RFzUqhv5nNLDPc+c6vKLfO
+X-Received: by 2002:a65:4903:: with SMTP id p3mr32456369pgs.402.1625753783232;
+ Thu, 08 Jul 2021 07:16:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1625753783; cv=pass; d=google.com;
+ s=arc-20160816;
+ b=JvK4brnyN0fCkrCgza/bIZ5tzqBMbXEzwKOhgEZPKEGhHGgQ9mLPbqocIPq4/hPu+c
+ eD1fnl51D88YIFDI4VfGZV6KS+OMg5+NUQRzPR1SMPs3D3XncLyWiZ6pJmphxwa3dnq4
+ l2mMSitt6cHOBZko3TBQuBA0Ahgq7tcsxEbNj/dpWCSjTDz5YiTeRk0sz6jrn67bGXF3
+ OvlYAr0nukg+pAQoolDOVGrl0ad+750YOmChx7V2UDS4UQXpQV3XSmLpCEtEC4Kjv5L4
+ bSDzMP/X4by/BGjEbTWdwgzMse27RMvgSnHTSIJ7vdqD6Kjjbaud6eQD+hhmah+QU04B a0gA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:content-language:accept-language:message-id:date
+ :disposition-notification-to:importance:thread-index:thread-topic
+ :subject:to:from; bh=SFtWmDJ19+tHC8bIUTKFnmRIxS6NfsWXn5RLH1P/JVA=;
+ b=YvZt0SeJMb0jCTafend+1OnLNaSLjAqLf7F3e50LveN62QpoX/1b9mp5TcRhlrxuBj
+ sZfvTWzMhuUXmsiKuxqGIyeY9Dzl1vZoSLMSJmNsrKUJL14AhoN1C1s/bSwx7Atb3vS7
+ 7EhwpZICCmq8/ffT71bxkj7cRYQonvDraDbkVixze01lcr7MCuZeyVZtGO1c4OWMxSqp
+ Mf96wl+EumvwYNW1nncVtlA/5EJUemw/Y5e7tK35n8ODw31EQcfu/SXFGQtSoCDGjSd5
+ cFRdV6Y/8GPasOb8fEBt1/usHeBkP0dLcd9Ay7A08+QZnfiWwgKew+fBQGmcBiLLpf1B ncvg==
+ARC-Authentication-Results: i=2; mx.google.com; arc=pass (i=1 spf=pass
+ spfdomain=ostendio.us dkim=pass dkdomain=ostendio.us dmarc=pass
+ fromdomain=ostendio.us); spf=pass (google.com: domain of gwong@ostendio.us
+ designates 40.107.138.107 as permitted sender)
+ smtp.mailfrom=gwong@ostendio.us
+Return-Path: <gwong@ostendio.us>
+Received: from IND01-MA1-obe.outbound.protection.outlook.com
+ (mail-eopbgr1380107.outbound.protection.outlook.com. [40.107.138.107]) by
+ mx.google.com with ESMTPS id mj5si3097801pjb.123.2021.07.08.07.16.22 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Thu, 08 Jul 2021 07:16:23
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of gwong@ostendio.us designates
+ 40.107.138.107 as permitted sender) client-ip=40.107.138.107;
+Authentication-Results: mx.google.com; arc=pass (i=1 spf=pass
+ spfdomain=ostendio.us dkim=pass dkdomain=ostendio.us dmarc=pass
+ fromdomain=ostendio.us); spf=pass (google.com: domain of gwong@ostendio.us
+ designates 40.107.138.107 as permitted sender)
+ smtp.mailfrom=gwong@ostendio.us
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Z6Yvtv2tqYzwoHvScbfSYJg1RPlgEC1yrcOzDx03r839/65FLdgRhtiuK+zRK/X3RUuvd4KfRPkCIYAaiv7vLIk9aERVk7Jk4qj++Hdaeh4HENI+5aIGzOiZf7w2LOfno9MzNkExPlbLTMEV2Hq4vpfNwMRz5bN1NAa4E/A2bk7wfF+c4OK+GEH8znTNwlMACzl7gfaf9jdTwzkU6L+IDj0AU4KREM+Mi9PaeZOuMUPAn7G4SfygBGvV4Zmflza0cUAtqipgm3bmkWadQc+KT35i+kVHr+sMcerSEZRsNjf0qlCUqtPl5U/DSE5XIBQ5WyCCyTC576qzxANejiwKMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SFtWmDJ19+tHC8bIUTKFnmRIxS6NfsWXn5RLH1P/JVA=;
+ b=gxH/GYtChfpzVlMs0/BqYWVMwh9/uosrVz1+37BOX7o2r817arMJDVbQxZ5/gPnlkZDTwIVH+yjTrva3z9hkShs6jBphBbLBk72vEJMEHCczyBHssEYzkGZZrvXAkFe2YMeWmWIE9g+rBZZ7N5e1Ok6MTvBZxU2CvDlTne6uUydvahz2iuueg55KFcA1C2BSQXUcaY7LeJ3CrPAFp+bQas/jE10X3x6Dri+1ziUzzr80F7jxxrIdHXC3ENDrby3j8RWHiN1xgB2M5P+hEh/D8JXid1PiJhdAZSIWNYP/1YTrQJIbdldMtKMykOi2rWucrxfDwJpCFoLDOx666jmldw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=ostendio.us; dmarc=pass action=none header.from=ostendio.us;
+ dkim=pass header.d=ostendio.us; arc=none
+Received: from MAXPR01MB2192.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:53::14)
+ by MAXPR0101MB1132.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:f::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.21; Thu, 8 Jul
+ 2021 14:16:20 +0000
+Received: from MAXPR01MB2192.INDPRD01.PROD.OUTLOOK.COM
+ ([fe80::3937:8b65:595b:549f]) by MAXPR01MB2192.INDPRD01.PROD.OUTLOOK.COM
+ ([fe80::3937:8b65:595b:549f%4]) with mapi id 15.20.4287.034; Thu, 8 Jul 2021
+ 14:16:19 +0000
+From: Gina Wong <gwong@ostendio.us>
+To: "arkadiy.tetelman@chime.com" <arkadiy.tetelman@chime.com>
+Subject: Re: Awaiting your kind response
+Thread-Topic: Awaiting your kind response
+Thread-Index: Addz167M6N5aKMX2Tju0BUtZaKnSrQ==
+Importance: high
+X-Priority: 1
+Disposition-Notification-To: Gina Wong <gwong@ostendio.us>
+Date: Thu, 8 Jul 2021 14:16:19 +0000
+Message-ID: <MAXPR01MB2192BA07E56763F0FDD88802A5199@MAXPR01MB2192.INDPRD01.PROD.OUTLOOK.COM>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+authentication-results: chime.com; dkim=none (message not signed)
+ header.d=none;chime.com; dmarc=none action=none header.from=ostendio.us;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ccaa59ea-b9c1-4a9f-e0e2-08d9421af52f
+x-ms-traffictypediagnostic: MAXPR0101MB1132:
+x-microsoft-antispam-prvs: <MAXPR0101MB1132564A96C382C43245711BA5199@MAXPR0101MB1132.INDPRD01.PROD.OUTLOOK.COM>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: xHWG9tSLLrDSb+Jod+xT2c5KaR9I9WTIvr8ad/GvlxRNAFjwvkvycOA8q93P0xhQxEJyagSgqLvL1+dmDSQBuLQlWqjRF1LLynZKADJLBWIjtCQttKsriin/qRYc9t8hodkkQRdh/8fMQz3PDzmEvqQTZ92iKLTi2PepZ5LZPH0/+jcuBfxFOREqKZMhfjnG3VHl24WmNYiA3OQnLS+mO6RScQ3vFPBmvfh73cOz/RcRI1STJa2l+1eRhCwPbtJ2cfV5i4M1bj+J5Fk6P1zCJ7vQqITuFFZwKjNmpUC0YgMysgKnmCPeS/mm1LpR8KQtoQvuLLGdt43o1Hf21v33HA6mmb2lgaGVIaav0DG47snU7m2/Z+r3KEaSOG6TP2Um16qb1EGHZHFEDpPZfBIeu/N6iL1mit5zRj6wPgjaQ9Hgj2Jxz3FMqcJyHdPte65Xu/ajfhnFSvpSf/8EVZk6MSBxamzrK5fYoYKHQW2qqMwgdIQWZMC+7NnAHJsOS0yxrbq/mI19+irL00Zg63xWHxTrtGKc49ofNgzAp2C9VA3y4j4aM+k+r3qALG6ujkhYkpfMKTdJZyPAhvFnnGP1JEmzPsdtkuOEM4+TJrJGWakmKMuRPGU6xY1LvdzBM5KH6mOCBIa8w4kIi81GEhmXJ2Qe0dBQACiURoFXQnlT0jy9NPgXQtbAUYp7V/UVMnt2MckbD3bbnfpAbPFrQ2y3iqbhA9LO8TBAbgXRLE09TOU=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MAXPR01MB2192.INDPRD01.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(136003)(366004)(39850400004)(396003)(346002)(376002)(2906002)(122000001)(83380400001)(66476007)(66946007)(38100700002)(55016002)(30864003)(66616009)(86362001)(7696005)(6506007)(9686003)(3480700007)(53546011)(84040400003)(33656002)(99936003)(64756008)(66556008)(76116006)(66446008)(6916009)(5660300002)(186003)(478600001)(8936002)(8676002)(71200400001)(9326002)(52536014)(316002)(49910200004)(80162007)(579004);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?eeDR90pmzdRP2lgJspxgzI0FlbUsy4GtdTYYhjsXuhS4b/JPXrVNxdCU0hQR?=
+ =?us-ascii?Q?wy7na8fa0XLwnJUQOtIEXvFwlZPbgMTBCnrV8yzBqQiPYOSRCEDgV0a/FX7N?=
+ =?us-ascii?Q?rf7j8DvZmB5l/be2NY5chjpglzMzj1psriBSvKTSvvM4LAX9tz9FERuR8j6f?=
+ =?us-ascii?Q?aXvQiRYyioB88EOubvqrARhmZJH85mLT6NddeDPBZaAhhhqcI8Uh6jODsfrZ?=
+ =?us-ascii?Q?X2C9o8FxfB5RGUjf/s1nKmwHTIWU8mHUrEbYC2M4vpHKfo9+rAI6kyXf9C78?=
+ =?us-ascii?Q?q9NpyA7xc76+stSrZeswjuSsVPxEKHQFiPQ1/pYcJ3C3HUw4zi7pAyXjw91N?=
+ =?us-ascii?Q?nmmYayZJUJRzs6IAax7oKA6ezcI73XIP1Rplso+YBCLCqRG1DdPcnx4TehZf?=
+ =?us-ascii?Q?nu0+xB/HcK27xc+I1WWIkEdKrudU47tPShbPSMnvDSwMikwDZdbh8PC76p+e?=
+ =?us-ascii?Q?rRmoxuXfKdgmsGlrGEPYFm7x9nr4MR1H5qsgx1zgvMe98HVOHyVDbfU1Upj5?=
+ =?us-ascii?Q?8wd+aRlKEySh0MzJpsrFi/BR8lp5TAVzyyHCvhefC5jaj46VnLtpec+DHDcd?=
+ =?us-ascii?Q?mgE25BDyBp/c3qutD5I0pSrtnB8SIfhNV9FzkXppSV1oo+Jzvn68EVC5YNgW?=
+ =?us-ascii?Q?txXnOKMymCkN3b9l6woGEk7JRipIEd4mUeZ52WHjLz47Y34YPgSglLxY/VWm?=
+ =?us-ascii?Q?PxR153B0rO/NrxZ910IZfznzMknxuwShokbWA3TgxjCq0o346lW+TMzrUcCG?=
+ =?us-ascii?Q?TPxgh6HVGRErZdgOoghr/1apEM5Mqf8XRJGUfRR+TXR7d+1UuCCF7B1yxyzg?=
+ =?us-ascii?Q?b4x5t3DR9zyN2AI1WGSy3FktmQFtJTk/4tycG3KqsRDrt1+RDPrJKHjZx3i5?=
+ =?us-ascii?Q?wWE/jQQvdlrtFsagw5VOMBHnMu8sh4MU6uJz5zLCTRfoYyt7HY4eiGmxEElH?=
+ =?us-ascii?Q?C40h+dmBJnIxpR68S8dokKjXA85kaZyQVYlT3i+py/EN25Z5OdpZjqVFxxrB?=
+ =?us-ascii?Q?fe9XiFJofW2Wsh4ijmzloetvcXDWSQ1eFeJCzi+PgRrUO0wms54rKeJQCAGP?=
+ =?us-ascii?Q?IgdL9BTITo85msD2JcrxS1gG1Zcd58+BN12UQh7mSXe8zd3R9GrHcsztQanh?=
+ =?us-ascii?Q?+DVxQjIEdurTWjk/zwIcGOgWI4LHBWEwCoZjY9sfRZN5MWKe8oWaBHMWltBz?=
+ =?us-ascii?Q?q3rExlix2j/Tnls/oVNMxckFDtWTjwDY74AOHD2tEAdetONxhVMJRcCteQiE?=
+ =?us-ascii?Q?yw7Bk5OrBMz9TtmMZoJCopcCI3w5/eWX/vVyVCzPtXdiqixnV9j9xkCn71pO?=
+ =?us-ascii?Q?w+EwaagB02If9LpPalyI/rOHJQA/rNeTdgE1e1V1MoiLPN6P2A0oDcJGaxgE?=
+ =?us-ascii?Q?BMtu88VCL7GkFW4I/sYFpRpCGBJ/?=
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/related;
+ boundary="_004_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_";
+ type="multipart/alternative"
+MIME-Version: 1.0
+X-OriginatorOrg: ostendio.us
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MAXPR01MB2192.INDPRD01.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: ccaa59ea-b9c1-4a9f-e0e2-08d9421af52f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Jul 2021 14:16:19.8355 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 02445bb4-fd52-43d6-9dba-75d7df6823f0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: tVzjLgdj5dp3kKUQx2b3RyVf7UxR1TJ8zNPsZzONFsG7zYiRSdXelnWdO/ONZBcrkS7Af4rjxyjTt7Xws9Un1w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MAXPR0101MB1132
+
+
+--_004_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_
+Content-Type: multipart/alternative;
+	boundary="_000_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_"
+
+--_000_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy,
+I am reaching out again because I believe strongly that Ostendio is the par=
+tner that can help you change the way you do business. An always-on approac=
+h to information security can make a huge difference for health care organi=
+zations.
+What do we do best?
+
+  *   Identify and quantify enterprise risk.
+  *   Quickly build and deploy security assessments based on more than 100 =
+security regulations and standards or from custom, e.g., a vendor assessmen=
+t.
+  *   Operationalize documents, training, tasks, assets, vendors, and much =
+more.
+  *   Connect directly with auditors and vendors to request and share infor=
+mation.
+So, when the time comes for us to go to work for Chime, just drop me a note=
+!
+Speak soon,
+Gina
+From: Gina Wong
+Sent: July 2, 2021 7:56 AM
+To: 'arkadiy.tetelman@chime.com' <arkadiy.tetelman@chime.com>
+Subject: RE: Ostendio - trying to meet you
+Importance: High
+
+Dear Arkadiy,
+Most FinTech Organizations we speak with are telling us that the traditiona=
+l security and risk management platforms operate separately from the core b=
+usiness processes meaning they require incremental effort to maintain. Info=
+rmation typically needs to be entered manually or imported from other data =
+sources, and as a result, data can quickly become unreliable and out of dat=
+e.
+If this resonates with you, we should talk.
+Ostendio MyVCM is designed to be used daily across the entire organization =
+as the primary workflow platform and becomes the database of record data fo=
+r all security and risk management activities. Ostendio MyVCM can also be e=
+xtended to a company's Vendors and Auditors through the MyVCM Trust Network=
+(tm), allowing companies to understand and manage their risk profile across=
+ their entire security and risk management ecosystem.
+I'd love to discuss how we can put our unique expertise to work for Chime -=
+ please let me know when you could chat next week.
+Best,
+Gina
+From: Gina Wong
+Sent: June 29, 2021 7:57 AM
+To: 'arkadiy.tetelman@chime.com' <arkadiy.tetelman@chime.com<mailto:arkadiy=
+.tetelman@chime.com>>
+Subject: Re: Ostendio \Can we schedule a brief call?
+Importance: High
+
+Hi Arkadiy,
+Over the years, my team and I at Ostendio have seen that even the most mino=
+r changes to a Risk Management program can result in significant gains.
+Suffice to say, I'm hoping to talk about how we can help Chime with that ch=
+ange. Please let me know when you'd be up for a 20-minute call.
+Always On. Always Auditable. Always Secure.
+My Best,
+Gina
+From: Gina Wong
+Sent: June 24, 2021 7:43 AM
+To: arkadiy.tetelman@chime.com<mailto:arkadiy.tetelman@chime.com>
+Subject: RE: Ostendio \Time for a quick touch base?
+Importance: High
+
+Hello Arkadiy,
+Gina here again from Ostendio!
+I'm continuing to reach out because I'm confident in the success we can bri=
+ng to your Risk Management Program based on outcomes that our clients such =
+as Brazen, Matchbook Services, Reversing Labs, Mytonomy have come to love.
+
+  *   Quickly Build and Deploy Security Assessments - Systematically collec=
+t and document your risk by deploying security assessments to your employee=
+s company-wide.
+  *   Deploy Security and Policy Training and Assessments Online - Reduce t=
+he cost of training while maximizing employee participation. Convert employ=
+ees to security evangelists with effective and frequent education and train=
+ing.
+  *   Align Vendors and Suppliers to Your Security and Compliance Standards=
+ - Reduce the risk of vendor-induced security incidents and meet supplier r=
+isk management requirements.
+  *   Document and Demonstrate Compliance with Industry Standards and Regul=
+ations - Reduce the burden required to track compliance and create a living=
+ system of record. Choose from hundreds of pre-built templates that are upd=
+ated over time.
+It's also worth noting that Ostendio offers -
+
+  *   Auditor Connect - The First Online Marketplace for Companies to Conne=
+ct and Engage with Qualified Security Audit Firms.
+  *   Vendor Connect- Create a living ecosystem of vendor assessments. Invi=
+te vendors to submit online records of their security and compliance readin=
+ess.
+  *   Professional Services support to its customers who need additional ex=
+pert help with audit preparation.
+Please let me know if and when you'd be up for a call.
+Thanks so much,
+Gina
+From: Gina Wong
+Sent: June 21, 2021 7:43 AM
+To: 'arkadiy.tetelman@chime.com' <arkadiy.tetelman@chime.com<mailto:arkadiy=
+.tetelman@chime.com>>
+Subject: Re: Are you the right person to speak to?
+Importance: High
+
+Dear Arkadiy,
+Wanted to resurface Chime's challenges around Risk Management and demonstra=
+tion of compliance to security standards internally and externally. I don't=
+ want to pester you, but I do believe in the value we can provide.
+FinTech organizations choose to partner with Ostendio because we deliver an=
+ Integrated Risk Management Platform that makes it easier to build, operate=
+ and showcase their security program.
+I will try and reach you again next week, unless I hear from you first. I h=
+ope to get an opportunity to connect with you soon.
+Arkadiy, if these responsibilities do not fall under your title, is there s=
+omeone more appropriate you could suggest?
+Kind regards,
+Gina
+From: Gina Wong
+Sent: June 16, 2021 7:45 AM
+To: 'arkadiy.tetelman@chime.com' <arkadiy.tetelman@chime.com<mailto:arkadiy=
+.tetelman@chime.com>>
+Subject: RE: Pitching for a short Intro call?
+Importance: High
+
+Good day Arkadiy,
+We know what's essential for Financial Services organizations operating sec=
+urity programs that need to demonstrate compliance to security standards in=
+ternally and externally.
+For 100+ customers in the US, Ostendio MyVCM Integrated Risk Management Sof=
+tware is the end-to-end platform that covers Risk Management, Assessments, =
+Vendors, Incidents, Assets, Audits, Training, Documents; and occasionally w=
+inning a few awards!
+In 2021 we won top honors at the Cybersecurity Excellence Awards:
+
+  *   Best Cybersecurity Company - Gold award
+  *   Cybersecurity Service Provider of the Year - Gold award
+  *   Most Innovative Cybersecurity Company of the Year - Silver award
+  *   Compliance Solution - Silver award
+  *   Cybersecurity Executive of the Year - Grant Elliott - Silver award
+Please reply so that we can set up time to discuss and see if Ostendio is a=
+ good fit for your company?
+Regards,
+Gina
+From: Gina Wong
+Sent: June 11, 2021 7:55 AM
+To: arkadiy.tetelman@chime.com<mailto:arkadiy.tetelman@chime.com>
+Subject: Re: Ostendio MyVCM(tm) Platform Overview
+Importance: High
+
+Hi Arkadiy,
+As I mentioned in my previous email to you, Ostendio MyVCM platform is amon=
+g only a handful of platforms with an always-on approach to information sec=
+urity.
+The Ostendio MyVCM platform makes it easier for Financial Services companie=
+s to build, operate and showcase their security risk management program by =
+making it a part of their everyday business operations. Financial instituti=
+ons like Chime use MyVCM to address the following high-level challenges:
+
+  *   Identify and quantify enterprise risk.
+  *   Quickly build and deploy security assessments based on more than 100 =
+security regulations and standards or from custom, e.g., a vendor assessmen=
+t.
+  *   Operationalize documents, training, tasks, assets, vendors, and much =
+more.
+  *   Connect directly with auditors and vendors to request and share infor=
+mation.
+MyVCM becomes the primary platform for managing information security and ri=
+sk within Chime, reducing the need for double entry or manual imports. It a=
+lso provides you with access to an unprecedented level of real-time actiona=
+ble data related to the effectiveness of your security risk management prog=
+ram.
+It will take just 20 minutes to explain how we can help you build and run a=
+ successful security program. Let me know what times work best for you in t=
+he next two weeks.
+Best,
+Gina
+From: Gina Wong
+Sent: June 8, 2021 10:52 AM
+To: 'arkadiy.tetelman@chime.com' <arkadiy.tetelman@chime.com<mailto:arkadiy=
+.tetelman@chime.com>>
+Subject: RE: Let's set up a call to discuss - Arkadiy
+Importance: High
+
+Hi Arkadiy,
+I'm following up on the email below. We want to share some customer success=
+ stories with you from others in the Financial Services industry who are tu=
+rning to always-on information security to become and remain certified comp=
+liant.
+Our customers include Brazen, Matchbook Services, Reversing Labs, Mytonomy =
+and many more.
+Are you available to chat for a few minutes? It will be time well spent!
+Cheers,
+Gina
+From: Gina Wong
+Sent: June 3, 2021 12:35 PM
+To: arkadiy.tetelman@chime.com<mailto:arkadiy.tetelman@chime.com>
+Subject: Meeting with Ostendio Specialists \ Always-on integrated risk mana=
+gement technology
+Importance: High
+
+Ostendio has been recognized as a five-category winner in the 2021 Cybersec=
+urity Excellence Awards including Best Cybersecurity Company.
+Hi Arkadiy,
+First and foremost, I hope that you and those close to you are safe and hea=
+lthy.
+My name is Gina Wong, with Ostendio. I believe I might be connecting with y=
+ou at a good time. I wanted to talk to you about a challenge and an opportu=
+nity in the Financial Services space - always-on information security compl=
+iance.
+Our SaaS-based platform, Ostendio MyVCM(tm), operationalizes the ongoing wo=
+rk required to build and run a successful security program. So, when organi=
+zations need to demonstrate compliance to security standards internally and=
+ externally, they can do so with ease. Ostendio MyVCM(tm) is compatible wit=
+h over 100 security frameworks and counting and partners with audit partner=
+s.
+Ostendio is different than other Risk Management Software providers:
+
+  *   Single platform to Build, Operate and Showcase your security & risk m=
+anagement program.
+  *   Engage all staff in the process, ensuring organization-wide buy-in.
+  *   Always Audit Ready - real-time reporting; anytime, anywhere.
+  *   Build once, present many - MyVCM maps your program against over 100 g=
+lobal security frameworks.
+  *   MyVCM Trust Network - connect directly with your customers, suppliers=
+, partners, and auditors to share assessments.
+Ostendio focuses on the Financial Services industry and has developed a str=
+ong portfolio of customers such as Brazen, Matchbook Services, Reversing La=
+bs and Mytonomy.
+If you aren't 100% satisfied with how you operate towards security complian=
+ce, we should talk.
+Do you have time to connect this week or next?
+Best regards,
+Gina
+Gina Wong | Sr. Business Manager
+[cid:image001.png@01D773AD.C70837E0]
+Arlington Tower, 1300 17th St N, Suite 850,
+Arlington, VA, 22209, United States.
+
+--_000_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"UD Digi Kyokasho NK-B";}
+@font-face
+	{font-family:"\@UD Digi Kyokasho NK-B";}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParag=
+raphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListPar=
+agraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagra=
+phCxSpLast
+	{mso-style-priority:34;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle20
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:371660661;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1467929690 1037620150 67698691 67698693 67698689 676=
+98691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"UD Digi Kyokasho NK-B",serif;
+	mso-hansi-font-family:Wingdings;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:575943913;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1782775402 -280706948 67698691 67698693 67698689 676=
+98691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0AE;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;
+	color:#002060;
+	mso-ansi-font-weight:bold;
+	mso-bidi-font-weight:normal;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l2
+	{mso-list-id:782529890;
+	mso-list-type:hybrid;
+	mso-list-template-ids:628677608 67698693 67698691 67698693 67698689 676986=
+91 67698693 67698689 67698691 67698693;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l3
+	{mso-list-id:809177611;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-114031010 -1229680782 67698691 67698693 67698689 67=
+698691 67698693 67698689 67698691 67698693;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0FC;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	color:#002060;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l3:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l3:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l3:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l3:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l3:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l3:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l4
+	{mso-list-id:995693604;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1440441958 67698689 67698691 67698693 67698689 6769=
+8691 67698693 67698689 67698691 67698693;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l4:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l4:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l4:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l4:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l4:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l4:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l4:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:1051226787;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1169220968 1037620150 67698691 67698693 67698689 676=
+98691 67698693 67698689 67698691 67698693;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"UD Digi Kyokasho NK-B",serif;
+	mso-hansi-font-family:Wingdings;}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l5:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l5:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l5:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
+break-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal" style=3D"line-height:normal"><span lang=3D"EN-IN" st=
+yle=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#0070C0;mso-f=
+areast-language:EN-IN">Hi Arkadiy,<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><a name=3D"_Hlk73456946=
+"><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-=
+serif;color:#0070C0;mso-fareast-language:EN-IN">I am reaching out again bec=
+ause I believe strongly that Ostendio is the partner
+ that can help you change the way you do business. An always-on approach to=
+ information security can make a huge difference for health care organizati=
+ons.</span></a><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Ligh=
+t&quot;,sans-serif;color:#0070C0;mso-fareast-language:EN-IN"><o:p></o:p></s=
+pan></p>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><span lang=3D"EN-IN" st=
+yle=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#0070C0;mso-f=
+areast-language:EN-IN">What do we do best?<o:p></o:p></span></p>
+<ul style=3D"margin-top:0in" type=3D"square">
+<li class=3D"MsoNormal" style=3D"color:#0070C0;margin-bottom:0in;margin-bot=
+tom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;m=
+so-add-space:auto;line-height:normal;mso-list:l2 level1 lfo1">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Identify and quantify enterprise risk.<o:p></o:p></span=
+></b></li><li class=3D"MsoNormal" style=3D"color:#0070C0;margin-bottom:0in;=
+margin-bottom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top=
+-alt:0in;mso-add-space:auto;line-height:normal;mso-list:l2 level1 lfo1">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Quickly build and deploy security assessments based on =
+more than 100 security regulations and standards or from custom, e.g., a ve=
+ndor assessment.<o:p></o:p></span></b></li><li class=3D"MsoNormal" style=3D=
+"color:#0070C0;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margi=
+n-bottom-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;line-height:no=
+rmal;mso-list:l2 level1 lfo1">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Operationalize documents, training, tasks, assets, vend=
+ors, and much more.<o:p></o:p></span></b></li><li class=3D"MsoNormal" style=
+=3D"color:#0070C0;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-ma=
+rgin-bottom-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;line-height=
+:normal;mso-list:l2 level1 lfo1">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Connect directly with auditors and vendors to request a=
+nd share information.<o:p></o:p></span></b></li></ul>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><span lang=3D"EN-IN" st=
+yle=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#0070C0;mso-f=
+areast-language:EN-IN">So, when the time comes for us to go to work for
+<b>Chime</b>, just drop me a note!<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-IN" style=3D"font-family:&quot;Cali=
+bri Light&quot;,sans-serif;color:#0070C0;mso-fareast-language:EN-IN">Speak =
+soon,<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> July 2, 2021 7:56 AM<br>
+<b>To:</b> 'arkadiy.tetelman@chime.com' &lt;arkadiy.tetelman@chime.com&gt;<=
+br>
+<b>Subject:</b> RE: Ostendio &#8211; trying to meet you<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">Dear Arkadiy,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">Most FinTech Organizations we speak=
+ with are telling us that the traditional security
+ and risk management platforms operate separately from the core business pr=
+ocesses meaning they require incremental effort to maintain. Information ty=
+pically needs to be entered manually or imported from other data sources, a=
+nd as a result, data can quickly
+ become unreliable and out of date.&nbsp; <o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">If this resonates with you, we shou=
+ld talk.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">Ostendio MyVCM is designed to be us=
+ed daily across the entire organization as the primary
+ workflow platform and becomes the database of record data for all security=
+ and risk management activities. Ostendio MyVCM can also be extended to a c=
+ompany's Vendors and Auditors through the MyVCM Trust Network&#8482;, allow=
+ing companies to understand and manage
+ their risk profile across their entire security and risk management ecosys=
+tem. <o:p>
+</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">I'd love to discuss how we can put =
+our unique expertise to work for
+<b>Chime</b> - please let me know when you could chat next week. <o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-IN" style=3D"font-family:&quot;Cali=
+bri Light&quot;,sans-serif;color:black;mso-fareast-language:EN-IN">Best,<br=
+>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 29, 2021 7:57 AM<br>
+<b>To:</b> 'arkadiy.tetelman@chime.com' &lt;<a href=3D"mailto:arkadiy.tetel=
+man@chime.com">arkadiy.tetelman@chime.com</a>&gt;<br>
+<b>Subject:</b> Re: Ostendio \Can we schedule a brief call?<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><span lang=3D"EN-IN" st=
+yle=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso-far=
+east-language:EN-IN">Hi Arkadiy,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><span lang=3D"EN-IN" st=
+yle=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso-far=
+east-language:EN-IN">Over the years, my team and I at Ostendio have seen th=
+at even the most minor changes to a Risk Management
+ program can result in significant gains.</span><span style=3D"font-family:=
+&quot;Calibri Light&quot;,sans-serif;color:black;border:none windowtext 1.0=
+pt;padding:0in"><o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><span lang=3D"EN-IN" st=
+yle=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso-far=
+east-language:EN-IN">Suffice to say, I'm hoping to talk about how we can he=
+lp
+<b>Chime</b> with that change. Please let me know when you'd be up for a 20=
+-minute call.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"line-height:normal"><i><span lang=3D"EN-IN"=
+ style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#0070C0;ms=
+o-fareast-language:EN-IN">Always On. Always Auditable. Always Secure.<o:p><=
+/o:p></span></i></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-IN" style=3D"font-family:&quot;Cali=
+bri Light&quot;,sans-serif;color:black;mso-fareast-language:EN-IN">My Best,=
+<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 24, 2021 7:43 AM<br>
+<b>To:</b> <a href=3D"mailto:arkadiy.tetelman@chime.com">arkadiy.tetelman@c=
+hime.com</a><br>
+<b>Subject:</b> RE: Ostendio \Time for a quick touch base?<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">Hello Arkadiy,<o:p></o:p></span></p=
+>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">Gina here again from Ostendio!<o:p>=
+</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">I'm continuing to reach out because=
+ I'm confident in the success we can bring to your
+ Risk Management Program based on outcomes that our clients such as </span>=
+<span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast=
+-language:EN-IN">Brazen, Matchbook Services, Reversing Labs, Mytonomy
+</span><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,=
+sans-serif;color:black;mso-fareast-language:EN-IN">have come to love.<o:p><=
+/o:p></span></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"color:#002060;margin-bottom:0in;margin-bot=
+tom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;m=
+so-add-space:auto;text-align:justify;line-height:normal;mso-list:l0 level1 =
+lfo2">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Quickly Build and Deploy Security Assess=
+ments</span></b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Lig=
+ht&quot;,sans-serif;mso-fareast-language:EN-IN"> - Systematically
+ collect and document your risk by deploying security assessments to your e=
+mployees company-wide.<o:p></o:p></span></li><li class=3D"MsoNormal" style=
+=3D"color:#002060;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-ma=
+rgin-bottom-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:=
+justify;line-height:normal;mso-list:l0 level1 lfo2">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Deploy Security and Policy Training and =
+Assessments Online</span></b><span lang=3D"EN-IN" style=3D"font-family:&quo=
+t;Calibri Light&quot;,sans-serif;mso-fareast-language:EN-IN">
+ - Reduce the cost of training while maximizing employee participation. Con=
+vert employees to security evangelists with effective and frequent educatio=
+n and training.<o:p></o:p></span></li><li class=3D"MsoNormal" style=3D"colo=
+r:#002060;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margin-bot=
+tom-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:justify;=
+line-height:normal;mso-list:l0 level1 lfo2">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Align Vendors and Suppliers to Your Secu=
+rity and Compliance Standards</span></b><span lang=3D"EN-IN" style=3D"font-=
+family:&quot;Calibri Light&quot;,sans-serif;mso-fareast-language:EN-IN">
+ - Reduce the risk of vendor-induced security incidents and meet supplier r=
+isk management requirements.<o:p></o:p></span></li><li class=3D"MsoNormal" =
+style=3D"color:#002060;margin-bottom:0in;margin-bottom:0in;margin-top:0in;m=
+so-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-a=
+lign:justify;line-height:normal;mso-list:l0 level1 lfo2">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Document and Demonstrate Compliance with=
+ Industry Standards and Regulations</span></b><span lang=3D"EN-IN" style=3D=
+"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast-language:EN-I=
+N">
+ - Reduce the burden required to track compliance and create a living syste=
+m of record. Choose from hundreds of pre-built templates that are updated o=
+ver time.<o:p></o:p></span></li></ul>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">It's also worth noting that Ostendi=
+o offers &#8211;
+<o:p></o:p></span></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"color:#002060;margin-bottom:0in;margin-bot=
+tom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;m=
+so-add-space:auto;text-align:justify;line-height:normal;mso-list:l5 level1 =
+lfo3">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Auditor Connect</span></b><span lang=3D"=
+EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareas=
+t-language:EN-IN"> - The First Online Marketplace for Companies
+ to Connect and Engage with Qualified Security Audit Firms.<o:p></o:p></spa=
+n></li><li class=3D"MsoNormal" style=3D"color:#002060;margin-bottom:0in;mar=
+gin-bottom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-al=
+t:0in;mso-add-space:auto;text-align:justify;line-height:normal;mso-list:l5 =
+level1 lfo3">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Vendor Connect</span></b><span lang=3D"E=
+N-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast=
+-language:EN-IN">- Create a living ecosystem of vendor assessments.
+ Invite vendors to submit online records of their security and compliance r=
+eadiness.<o:p></o:p></span></li><li class=3D"MsoNormal" style=3D"color:#002=
+060;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margin-bottom-al=
+t:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:justify;line-h=
+eight:normal;mso-list:l5 level1 lfo3">
+<b><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans=
+-serif;mso-fareast-language:EN-IN">Professional Services support</span></b>=
+<span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-se=
+rif;mso-fareast-language:EN-IN"> to its customers who need additional
+ expert help with audit preparation.<o:p></o:p></span></li></ul>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">Please let me know if and when you'=
+d be up for a call.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-IN" style=3D"font-family:&quot;Cali=
+bri Light&quot;,sans-serif;color:black;mso-fareast-language:EN-IN">Thanks s=
+o much,<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 21, 2021 7:43 AM<br>
+<b>To:</b> 'arkadiy.tetelman@chime.com' &lt;<a href=3D"mailto:arkadiy.tetel=
+man@chime.com">arkadiy.tetelman@chime.com</a>&gt;<br>
+<b>Subject:</b> Re: Are you the right person to speak to?<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">Dear Arkadiy,<b>
+<o:p></o:p></b></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal;backg=
+round:white">
+<span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black=
+">Wanted to resurface
+<b>Chime</b>'s challenges around </span><span style=3D"font-family:&quot;Ca=
+libri Light&quot;,sans-serif;color:black;mso-fareast-language:EN-IN">Risk M=
+anagement and demonstration of compliance to security standards internally =
+and externally</span><span style=3D"font-family:&quot;Calibri Light&quot;,s=
+ans-serif;color:black">.
+ I don't want to pester you, but I do believe in the value we can provide. =
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;bor=
+der:none windowtext 1.0pt;padding:0in">FinTech organizations choose to part=
+ner with Ostendio because we deliver an Integrated
+ Risk Management Platform that makes it easier to build, operate and showca=
+se their security program.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black">I will try and reach you again next week, unless I hear from y=
+ou first. I hope to get an opportunity to connect
+ with you soon.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black">Arkadiy, if these responsibilities do not fall under your titl=
+e, is there someone more appropriate you could suggest?<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span lang=3D"EN-GB" style=3D"font-family:&quot;Cali=
+bri Light&quot;,sans-serif;color:black;mso-fareast-language:EN-IN">Kind reg=
+ards,<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 16, 2021 7:45 AM<br>
+<b>To:</b> 'arkadiy.tetelman@chime.com' &lt;<a href=3D"mailto:arkadiy.tetel=
+man@chime.com">arkadiy.tetelman@chime.com</a>&gt;<br>
+<b>Subject:</b> RE: Pitching for a short Intro call?<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#002060;m=
+so-fareast-language:EN-IN">Good day Arkadiy,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#002060;m=
+so-fareast-language:EN-IN">We know what's essential for Financial Services =
+organizations operating security programs that need
+ to demonstrate compliance to security standards internally and externally.=
+ <o:p>
+</o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#002060;m=
+so-fareast-language:EN-IN">For 100+ customers in the US, Ostendio MyVCM Int=
+egrated Risk Management Software is the end-to-end
+ platform that covers Risk Management, Assessments, Vendors, Incidents, Ass=
+ets, Audits, Training, Documents; and occasionally winning a few awards!
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#002060;m=
+so-fareast-language:EN-IN">In 2021 we won top honors at the Cybersecurity E=
+xcellence Awards:<o:p></o:p></span></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"color:#002060;margin-bottom:0in;margin-bot=
+tom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;m=
+so-add-space:auto;text-align:justify;line-height:normal;mso-list:l1 level1 =
+lfo4">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Best Cybersecurity Company - Gold award<o:p></o:p></spa=
+n></b></li><li class=3D"MsoNormal" style=3D"color:#002060;margin-bottom:0in=
+;margin-bottom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-to=
+p-alt:0in;mso-add-space:auto;text-align:justify;line-height:normal;mso-list=
+:l1 level1 lfo4">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Cybersecurity Service Provider of the Year - Gold award=
+<o:p></o:p></span></b></li><li class=3D"MsoNormal" style=3D"color:#002060;m=
+argin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margin-bottom-alt:8.0=
+pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:justify;line-height=
+:normal;mso-list:l1 level1 lfo4">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Most Innovative Cybersecurity Company of the Year - Sil=
+ver award<o:p></o:p></span></b></li><li class=3D"MsoNormal" style=3D"color:=
+#002060;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margin-botto=
+m-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:justify;li=
+ne-height:normal;mso-list:l1 level1 lfo4">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Compliance Solution - Silver award<o:p></o:p></span></b=
+></li><li class=3D"MsoNormal" style=3D"color:#002060;margin-bottom:0in;marg=
+in-bottom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt=
+:0in;mso-add-space:auto;text-align:justify;line-height:normal;mso-list:l1 l=
+evel1 lfo4">
+<b><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fare=
+ast-language:EN-IN">Cybersecurity Executive of the Year - Grant Elliott - S=
+ilver award<o:p></o:p></span></b></li></ul>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><b><=
+span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:#00206=
+0;mso-fareast-language:EN-IN">Please reply</span></b><span style=3D"font-fa=
+mily:&quot;Calibri Light&quot;,sans-serif;color:#002060;mso-fareast-languag=
+e:EN-IN">
+ so that we can set up time to discuss and see if Ostendio is a good fit fo=
+r your company?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Calibri Light&quot;=
+,sans-serif;color:#002060;mso-fareast-language:EN-IN">Regards,<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 11, 2021 7:55 AM<br>
+<b>To:</b> <a href=3D"mailto:arkadiy.tetelman@chime.com">arkadiy.tetelman@c=
+hime.com</a><br>
+<b>Subject:</b> Re: Ostendio MyVCM&#8482; Platform Overview<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">Hi Arkadiy,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black;mso-fareast-language:EN-IN">As I mentioned in my previous email=
+ to you,
+</span><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;colo=
+r:black;mso-fareast-language:EN-IN">Ostendio MyVCM platform</span><span lan=
+g=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color=
+:black;mso-fareast-language:EN-IN"> is
+</span><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,=
+sans-serif">among only a handful of platforms with an
+<b><i><span style=3D"color:black">always-on approach to information securit=
+y. </span>
+</i></b>&nbsp;<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">The Ostendio MyVCM platform makes it easier for Fi=
+nancial Services companies to build, operate and
+ showcase their security risk management program by making it a part of the=
+ir everyday business operations. Financial institutions like
+<b>Chime</b> use MyVCM to address the following high-level challenges:<o:p>=
+</o:p></span></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"color:black;margin-bottom:0in;margin-botto=
+m:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;mso=
+-add-space:auto;text-align:justify;line-height:normal;mso-list:l4 level1 lf=
+o5">
+<span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast=
+-language:EN-IN">Identify and quantify enterprise risk.<o:p></o:p></span></=
+li><li class=3D"MsoNormal" style=3D"color:black;margin-bottom:0in;margin-bo=
+ttom:0in;margin-top:0in;mso-margin-bottom-alt:8.0pt;mso-margin-top-alt:0in;=
+mso-add-space:auto;text-align:justify;line-height:normal;mso-list:l4 level1=
+ lfo5">
+<span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast=
+-language:EN-IN">Quickly build and deploy security assessments based on mor=
+e than 100 security regulations and standards or from custom, e.g., a vendo=
+r assessment.<o:p></o:p></span></li><li class=3D"MsoNormal" style=3D"color:=
+black;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margin-bottom-=
+alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:justify;line=
+-height:normal;mso-list:l4 level1 lfo5">
+<span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast=
+-language:EN-IN">Operationalize documents, training, tasks, assets, vendors=
+, and much more.<o:p></o:p></span></li><li class=3D"MsoNormal" style=3D"col=
+or:black;margin-bottom:0in;margin-bottom:0in;margin-top:0in;mso-margin-bott=
+om-alt:8.0pt;mso-margin-top-alt:0in;mso-add-space:auto;text-align:justify;l=
+ine-height:normal;mso-list:l4 level1 lfo5">
+<span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast=
+-language:EN-IN">Connect directly with auditors and vendors to request and =
+share information.<o:p></o:p></span></li></ul>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">MyVCM becomes the primary platform for managing in=
+formation security and risk within
+<b>Chime</b>, reducing the need for double entry or manual imports. It also=
+ provides you with access to an unprecedented level of real-time actionable=
+ data related to the effectiveness of your security risk management program=
+.<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;=
+color:black">It will take just 20 minutes to explain how we can help you
+</span><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;colo=
+r:black;mso-fareast-language:EN-IN">build and run a successful security pro=
+gram</span><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&qu=
+ot;,sans-serif;color:black">. Let me know what times work
+ best for you in the next two weeks. <o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Calibri Light&quot;=
+,sans-serif;color:black;mso-fareast-language:EN-IN">Best,<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 8, 2021 10:52 AM<br>
+<b>To:</b> 'arkadiy.tetelman@chime.com' &lt;<a href=3D"mailto:arkadiy.tetel=
+man@chime.com">arkadiy.tetelman@chime.com</a>&gt;<br>
+<b>Subject:</b> RE: Let&#8217;s set up a call to discuss - Arkadiy<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">Hi Arkadiy,<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">I'm following up on the email below. We want to sh=
+are some customer success stories with you from
+ others in the Financial Services industry who are turning to always-on inf=
+ormation security to become and remain certified compliant.<o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">Our customers include</span><span style=3D"font-fa=
+mily:&quot;Calibri Light&quot;,sans-serif;mso-fareast-language:EN-IN">
+ Brazen, Matchbook Services, Reversing Labs, Mytonomy<span style=3D"color:b=
+lack"> and many more.<o:p></o:p></span></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;color:black;mso=
+-fareast-language:EN-IN">Are you available to chat for a few minutes? It wi=
+ll be time well spent!<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Calibri Light&quot;=
+,sans-serif;color:black;mso-fareast-language:EN-IN">Cheers,<br>
+Gina</span><o:p></o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal" style=3D"margin-bottom:0in;line-height:normal"><b>Fr=
+om:</b> Gina Wong
+<br>
+<b>Sent:</b> June 3, 2021 12:35 PM<br>
+<b>To:</b> <a href=3D"mailto:arkadiy.tetelman@chime.com">arkadiy.tetelman@c=
+hime.com</a><br>
+<b>Subject:</b> Meeting with Ostendio Specialists \ Always-on integrated ri=
+sk management technology
+<br>
+<b>Importance:</b> High<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><b><=
+i><span lang=3D"EN-IN" style=3D"font-family:&quot;Calibri Light&quot;,sans-=
+serif;color:#002060;mso-fareast-language:EN-IN">Ostendio has been recognize=
+d as a five-category winner in the 2021 Cybersecurity
+ Excellence Awards including Best Cybersecurity Company.<o:p></o:p></span><=
+/i></b></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;color:black;mso-fareast-language:EN-IN">Hi Arkadiy,<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&=
+quot;,sans-serif;color:black">First and foremost, I hope that you and those=
+ close to you are safe and healthy.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n lang=3D"EN-IN" style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&=
+quot;,sans-serif;color:black;mso-fareast-language:EN-IN">My name is Gina Wo=
+ng, with Ostendio</span><span lang=3D"EN-IN" style=3D"font-size:10.5pt;font=
+-family:&quot;Calibri Light&quot;,sans-serif;color:black">.
+ I believe I might be connecting with you at a good time. I wanted to talk =
+to you about a challenge and an opportunity in the Financial Services space=
+ &#8211;
+<b>always-on information security compliance</b>.</span><span lang=3D"EN-IN=
+" style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;color:black;mso-fareast-language:EN-IN"><o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;color:black;mso-fareast-language:EN-IN">Our SaaS-based platform,
+<b>Ostendio MyVCM&#8482;</b>, operationalizes the ongoing work required to =
+build and run a successful security program. So, when organizations need to=
+ demonstrate compliance to security standards internally and externally, th=
+ey can do so with ease. Ostendio MyVCM&#8482;
+ is compatible with over 100 security frameworks and counting and partners =
+with audit partners.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;color:black;mso-fareast-language:EN-IN">Ostendio</span><span style=3D"fon=
+t-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast-=
+language:EN-IN">
+ is different than other Risk Management Software providers: <o:p></o:p></s=
+pan></p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoListParagraphCxSpFirst" style=3D"color:#002060;margin-left:=
+0in;mso-add-space:auto;text-align:justify;line-height:normal;mso-list:l3 le=
+vel1 lfo6">
+<b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sa=
+ns-serif;mso-fareast-language:EN-IN">Single platform to Build,</span></b><s=
+pan style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-se=
+rif;mso-fareast-language:EN-IN"> Operate and Showcase your
+ security &amp; risk management program.<o:p></o:p></span></li><li class=3D=
+"MsoListParagraphCxSpMiddle" style=3D"color:#002060;margin-left:0in;mso-add=
+-space:auto;text-align:justify;line-height:normal;mso-list:l3 level1 lfo6">
+<b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sa=
+ns-serif;mso-fareast-language:EN-IN">Engage all staff in the process,
+</span></b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&=
+quot;,sans-serif;mso-fareast-language:EN-IN">ensuring organization-wide buy=
+-in.<o:p></o:p></span></li><li class=3D"MsoListParagraphCxSpMiddle" style=
+=3D"color:#002060;margin-left:0in;mso-add-space:auto;text-align:justify;lin=
+e-height:normal;mso-list:l3 level1 lfo6">
+<b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sa=
+ns-serif;mso-fareast-language:EN-IN">Always Audit Ready</span></b><span sty=
+le=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-serif;mso=
+-fareast-language:EN-IN"> - real-time reporting; anytime,
+ anywhere.<o:p></o:p></span></li><li class=3D"MsoListParagraphCxSpMiddle" s=
+tyle=3D"color:#002060;margin-left:0in;mso-add-space:auto;text-align:justify=
+;line-height:normal;mso-list:l3 level1 lfo6">
+<b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sa=
+ns-serif;mso-fareast-language:EN-IN">Build once, present many</span></b><sp=
+an style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-ser=
+if;mso-fareast-language:EN-IN"> - MyVCM maps your program
+ against over 100 global security frameworks.<o:p></o:p></span></li><li cla=
+ss=3D"MsoListParagraphCxSpLast" style=3D"margin-left:0in;mso-add-space:auto=
+;text-align:justify;line-height:normal;mso-list:l3 level1 lfo6">
+<b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sa=
+ns-serif;color:#002060;mso-fareast-language:EN-IN">MyVCM Trust Network</spa=
+n></b><span style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;=
+,sans-serif;color:#002060;mso-fareast-language:EN-IN"> -
+ connect directly with your customers, suppliers, partners, and auditors to=
+ share assessments.</span><span style=3D"font-size:10.5pt;font-family:&quot=
+;Calibri Light&quot;,sans-serif;mso-fareast-language:EN-IN"><o:p></o:p></sp=
+an></li></ul>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;mso-fareast-language:EN-IN">Ostendio focuses on the Financial Services in=
+dustry and has developed a strong portfolio of customers
+ such as Brazen, Matchbook Services, Reversing Labs and Mytonomy. <o:p></o:=
+p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;mso-fareast-language:EN-IN">If you aren't 100% satisfied with how you ope=
+rate towards security compliance, we should talk.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-size:10.5pt;font-family:&quot;Calibri Light&quot;,sans-seri=
+f;mso-fareast-language:EN-IN">Do you have time to connect this week or next=
+</span><span style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-=
+fareast-language:EN-IN">?<o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"text-align:justify;line-height:normal"><spa=
+n style=3D"font-family:&quot;Calibri Light&quot;,sans-serif;mso-fareast-lan=
+guage:EN-IN">Best regards,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+Gina</span><span lang=3D"EN-IN"><o:p></o:p></span></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:4.0pt;text-align:justify;line=
+-height:normal">
+<b><span lang=3D"EN-IN" style=3D"font-size:10.0pt;font-family:&quot;Arial&q=
+uot;,sans-serif;color:#2E74B5">Gina Wong
+</span></b><b><span lang=3D"EN-IN" style=3D"font-size:10.0pt;font-family:&q=
+uot;Arial&quot;,sans-serif;color:gray">|
+</span></b><span lang=3D"EN-IN" style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif;color:gray">Sr. Business Manager</span><b><span lan=
+g=3D"EN-IN" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-se=
+rif;color:#143570"><o:p></o:p></span></b></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:4.0pt;text-align:justify;line=
+-height:normal">
+<span lang=3D"EN-IN"><img border=3D"0" width=3D"102" height=3D"29" style=3D=
+"width:1.0625in;height:.3055in" id=3D"Picture_x0020_1" src=3D"cid:image001.=
+png@01D773AD.C70837E0"></span><b><span style=3D"font-family:&quot;Calibri L=
+ight&quot;,sans-serif;background:yellow;mso-highlight:yellow;mso-fareast-la=
+nguage:EN-IN"><o:p></o:p></span></b></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:4.0pt;text-align:justify;line=
+-height:normal">
+<span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans-serif;col=
+or:gray;mso-fareast-language:EN-IN">Arlington Tower, 1300 17th St N, Suite =
+850,
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:9.0pt;line-height:105%;font=
+-family:&quot;Arial&quot;,sans-serif;color:gray;mso-fareast-language:EN-IN"=
+>Arlington, VA, 22209, United States.</span><o:p></o:p></p>
+</div>
+</body>
+</html>
+
+--_000_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_--
+
+--_004_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_
+Content-Type: image/png; name="image001.png"
+Content-Description: image001.png
+Content-Disposition: inline; filename="image001.png"; size=7043;
+	creation-date="Thu, 08 Jul 2021 14:16:18 GMT";
+	modification-date="Thu, 08 Jul 2021 14:16:18 GMT"
+Content-ID: <image001.png@01D773AD.C70837E0>
+Content-Transfer-Encoding: base64
+
+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
+
+--_004_MAXPR01MB2192BA07E56763F0FDD88802A5199MAXPR01MB2192INDP_--

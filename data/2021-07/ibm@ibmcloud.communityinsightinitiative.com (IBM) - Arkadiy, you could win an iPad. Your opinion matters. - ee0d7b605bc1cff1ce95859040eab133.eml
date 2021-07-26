@@ -1,0 +1,382 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp3184674wrr; Mon, 12
+ Jul 2021 04:05:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyfZD8XJeZsdKUwrYzotjzGYzTIaGcGRF9QzwdmI1gFQKHrvKoLFKVQzA00Bwfw2jevgmK5
+X-Received: by 2002:aca:4483:: with SMTP id r125mr9695427oia.78.1626087918956;
+ Mon, 12 Jul 2021 04:05:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626087918; cv=none; d=google.com;
+ s=arc-20160816;
+ b=mosEAjj+jU5vtc2QPEaItj5Q28KMYL4+J/Pa/yKC8p6vhmTP6CXXmJO8TGosegwqlv
+ JP8+iAJ8Q1F530qelaDfU/mO1XIq9+WcbpUW0o4AFtKoEWPxKLMpL39BJ9PhmvyBu/sA
+ kqbMV7XBuUhgo//e64rEzbBp0xVHBvDVd/66U2wD0YaQqnagNMA4uieCEqtooRRg5QdL
+ MZ5rWSBro9e3H/+MRgYcbSYYbPSAy29jU/pJsyBAmUgNikko+qMgyc1m4mpWwTjOoWM+
+ 7yu+I9KC2knQQbaUbeCDKL9E1c3E3Ry+1PPUPC5TpWZ0HJQqsYPkBDrtvGGLkUDYASO5 TDnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:to:reply-to:message-id:subject:mime-version:from
+ :date:content-transfer-encoding:dkim-signature;
+ bh=Y4iclQ9A42Wd8Nh3nAJ54AJrfds1vKMEWCHURu4FZsY=;
+ b=sZ8zhU2kvfY66bKe7+er/y4rEPyNk4OgUdfMhhZZa3sfALNg4ekuwUVeZcFPOT/AlA
+ 6PNhCalkH/4uZ2ZUkZNy4yeScPSdXaxgrOP8zdtKBhmiTOf5ApCCliIgcZjDltQVwVUQ
+ s1oed08mu+Ouc5y6xOpA0/3SDrlzrBBPYPKfWvCvbnLodXg8F3Ih9jTig1VtH2Kx7ZjW
+ zTdFXx8NKBzycOUTcIpVi4SlsKuk/R8E+gOivKI1V1xsMFPr/gac61W9hN6e0bEwKc2n
+ j9mX6wdgYme7fjyVZ3fpb57uW6JymJatvDviDRXYWNEK1ggiwkkSBDDz3GK/z2+AC+5O V5WA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@communityinsightinitiative.com header.s=m1 header.b=WNMm7S7U;
+ spf=pass (google.com: domain of
+ bounces+4179949-3fa2-arkadiy.tetelman=chime.com@mail.communityinsightinitiative.com
+ designates 149.72.155.109 as permitted sender)
+ smtp.mailfrom="bounces+4179949-3fa2-arkadiy.tetelman=chime.com@mail.communityinsightinitiative.com"
+Return-Path: <bounces+4179949-3fa2-arkadiy.tetelman=chime.com@mail.communityinsightinitiative.com>
+Received: from o1.ptr1465.communityinsightinitiative.com
+ (o1.ptr1465.communityinsightinitiative.com. [149.72.155.109]) by
+ mx.google.com with ESMTPS id m7si986913otk.63.2021.07.12.04.05.18 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128); Mon, 12 Jul 2021 04:05:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+4179949-3fa2-arkadiy.tetelman=chime.com@mail.communityinsightinitiative.com
+ designates 149.72.155.109 as permitted sender) client-ip=149.72.155.109;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@communityinsightinitiative.com header.s=m1 header.b=WNMm7S7U;
+ spf=pass (google.com: domain of
+ bounces+4179949-3fa2-arkadiy.tetelman=chime.com@mail.communityinsightinitiative.com
+ designates 149.72.155.109 as permitted sender)
+ smtp.mailfrom="bounces+4179949-3fa2-arkadiy.tetelman=chime.com@mail.communityinsightinitiative.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=communityinsightinitiative.com;
+ h=content-transfer-encoding:content-type:from:mime-version:subject:
+ reply-to:to:list-unsubscribe; s=m1;
+ bh=Y4iclQ9A42Wd8Nh3nAJ54AJrfds1vKMEWCHURu4FZsY=;
+ b=WNMm7S7U22A+xCEP0/pq1CXvRux7XCC43Wj2FvYPnfGK/AcdMZeyDczRkgj25vJwSc4Q
+ naeS5j33r8AGhmeCmORS1yOWNMuVMh3RMu/9RMf/kJQAbpXX9QK4Ik3G0YlW4BNHn1Ija1
+ Sw895xIxvQnjabTNisxPPGf3fpRoTVmHw=
+Received: by filterdrecv-8676f84bc9-7sgdr with SMTP id
+ filterdrecv-8676f84bc9-7sgdr-1-60EC21EA-26 2021-07-12 11:05:14.180427512
+ +0000 UTC m=+403732.360258836
+Received: from NDE3OTk0OQ (unknown) by geopod-ismtpd-3-0 (SG) with HTTP id
+ R4yXSZSUTS-MIMrtD2TMTg for <ibm@ibmcloud.communityinsightinitiative.com>;
+ Mon, 12 Jul 2021 11:05:14.127 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Date: Mon, 12 Jul 2021 11:05:17 +0000 (UTC)
+From: IBM <ibm@ibmcloud.communityinsightinitiative.com>
+Mime-Version: 1.0
+Subject: Arkadiy, you could win an iPad. Your opinion matters.
+Message-ID: <R4yXSZSUTS-MIMrtD2TMTg@geopod-ismtpd-3-0>
+Reply-To: community@communityinsightinitiative.com
+X-SG-EID: =?us-ascii?Q?2qUkcjAvxuAvvYPIbmfdKtdXLk3dpeyyQCq1cIrniYexGaNv8BW1VZrrUUBRdG?=
+ =?us-ascii?Q?R5NhWFTO9rZTmILspXsFgVVZKF=2FptxJrsEbfTXn?=
+ =?us-ascii?Q?v3=2FkJOf6HpbBySUsMxqmoICXq1tqVumfY0I7P+w?=
+ =?us-ascii?Q?kHngW51I0uy+DmnMMDwBtlbghtnQ2KSWFyxtl5j?=
+ =?us-ascii?Q?Rqp0EG8kbi3oNlDiJFS+7RK7TmSpjgARyA8nF79?=
+ =?us-ascii?Q?GEgSfYUtEDCR8gW=2FQQBjOiG+CevFPyrInKZs64x?=
+ =?us-ascii?Q?6tswSjtxmmi=2FUGHEFDNAA=3D=3D?=
+X-SG-ID: =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FKZYY8R8iWRlXZKgYnTrP?=
+ =?us-ascii?Q?u+pHaK8+2ow9zwJA6uNokJUnoVrPRHwn2+=2FeM69?=
+ =?us-ascii?Q?cVKKwg=3D?=
+To: arkadiy.tetelman@chime.com
+X-Entity-ID: mUglPQ4/HX/MuHkwFZb0Qw==
+List-Unsubscribe: =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40mail=2Ecommunityinsightinitiative=2Ecom=3Fsubjec?=
+ =?us-ascii?Q?t=3Dhttps=3A=2F=2Fu4179949=2Ect=2Esendgrid=2Enet=2Fwf=2Fu?=
+ =?us-ascii?Q?nsubscribe*q*upn=3D5Z3XbQWSN2-2FVMFeM7B17?=
+ =?us-ascii?Q?h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2?=
+ =?us-ascii?Q?B3Xf2zAuuuYARE-2BfLQDqOEnyP0wOQn70lJL16?=
+ =?us-ascii?Q?88gIbhD6JlEnMUna-2FsL4V8-2FDJOmq-2FLtqy?=
+ =?us-ascii?Q?AbWRjlyQ1-2BD-2Fhp2c4RDFSLBveHUrq5-2B-2?=
+ =?us-ascii?Q?F6Aus3gebwy3eH4svrIJmnGAKraORCWLmlpCc8a?=
+ =?us-ascii?Q?2oArFgl9X8GZioxb1gJLwwQTCm6a1NLrW-2BAsa?=
+ =?us-ascii?Q?01NYVtKpokmwH4yYDGnG31tLYsWBVSJIQ-2Bsfd?=
+ =?us-ascii?Q?pD93XcGyGtrPfL20sAyZaeybPm8f8Uq59Kcm7FK?=
+ =?us-ascii?Q?DrvzqCuJAiym=3E?=
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+" />
+
+<title>DC Cloud Email</title>
+<style type=3D"text/css">
+@media only screen and (max-width: 620px) {
+
+table[class=3Dw620], td[class=3Dw580], img[class=3Dw600] { width:280px !imp=
+ortant; }
+table[class=3Dw620], td[class=3Dw580], img[class=3Dw600] { width:280px !imp=
+ortant; }
+table[class=3Dw620], td[class=3Dw580], img[class=3Dw600] { width:280px !imp=
+ortant; }
+table[class=3Dw620], td[class=3Dw620], img[class=3Dw620] { width:280px !imp=
+ortant; }
+table[class*=3Dhide], td[class*=3Dhide], img[class*=3Dhide], p[class*=3Dhid=
+e], span[class*=3Dhide] { display:none !important; }
+
+table[class=3Dh0], td[class=3Dh0] { height: 0 !important; }
+p[class=3Dfooter-content-left] { text-align: center !important; }
+#headline p { font-size: 30px !important; }
+.article-content, #left-sidebar{ -webkit-text-size-adjust: 90% !important; =
+-ms-text-size-adjust: 90% !important; }
+.header-content, .footer-content-left {-webkit-text-size-adjust: 80% !impor=
+tant; -ms-text-size-adjust: 80% !important;}
+img { height: auto; line-height: 100%;}
+ }
+
+        @media only screen and (max-width : 600px) {
+
+            /* force container columns to (horizontal) blocks */
+            td[class=3D"force-col"] {
+                display: block;
+                padding-right: 0 !important;
+            }
+            table[class=3D"col-3"] {
+                /* unset table align=3D"left/right" */
+                float: none !important;
+                width: 100% !important;
+
+                /* change left/right padding and margins to top/bottom ones=
+ */
+                margin-bottom: 0px;
+                padding-bottom: 0px;
+                border-bottom: 0px;
+            }
+
+            /* remove bottom border for last column/row */
+            table[id=3D"last-col-3"] {
+                border-bottom: none !important;
+                margin-bottom: 0;
+            }
+
+            /* align images right and shrink them a bit */
+            img[class=3D"col-3-img"] {
+                float: left;
+                margin-left: 0px;
+                max-width: 210px;
+            }
+
+
+	*[class=3Dtbl1] {
+width:100% !important;
+height:auto !important;
+}
+
+span[class=3Dlogomobileimage] {
+display: block !important;
+background-image: url('images/184x61.gif') !important; background-size: 100=
+% 100% !important;
+width: 184px !important;
+height: 61px !important;
+margin-left:auto !important;
+margin-right:auto !important;
+}
+
+*[class=3Dhide]{
+display:none !important;
+width:0 !important;
+height:0 !important;
+}
+
+*[class=3Demailcolsplit] {
+width: 100% !important;
+float:left !important; }
+
+*[class=3Dredbtn] {
+display: block !important;
+height: 40px !important;
+width: 100% !important;
+vertical-align:middle !important;
+font-family:Open Sans, sans-serif !important;
+font-size:18px !important;
+font-weight: strong;
+background-color:#ff0000;
+color:#ffffff;
+text-align:center !important;
+margin-bottom: 3px;}
+
+*[class=3Dhide]{
+display:none !important;
+width:0 !important;
+height:0 !important;
+}
+
+        }
+
+</style></head>
+
+
+<body style=3D"background-color:#f3f3f3;" leftmargin=3D"0" topmargin=3D"0" =
+marginwidth=3D"0" marginheight=3D"0">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><table width=3D"600" border=3D"0" align=3D"center" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"w620">
+      <tr>
+        <td bgcolor=3D"#FFFFFF" style=3D"padding-top:15px; padding-bottom:1=
+5px; padding-left:15px; padding-right:15px; border: 1px  solid #d1d1d1; bac=
+kground: #FFFFFF;"><table width=3D"100%" border=3D"0" align=3D"center" cell=
+padding=3D"0" cellspacing=3D"0">
+           <tr>
+           	<td style=3D"text-align: right; padding-bottom:10px; padding-to=
+p:15px" class=3D"emailcolsplit">
+           	=09
+                       <img src=3D"https://cth-staging-new.s3.amazonaws.com=
+/images/24/logos/IBM_175x84.png" width=3D"175" height=3D"84"  vspace=3D"0" =
+border=3D"0" align=3D"right" Alt=3D"Corporate Logo"/>
+      =20
+                </td>
+           </tr>
+           <tr>
+              <td style=3D"padding-bottom:10px; font-size:26px;font-family:=
+Arial; color:#000000; line-height:33px; " class=3D"emailcolsplit">
+              <hr style=3D"height:2px;border-width:0;background-color:gray"=
+ />
+           =20
+              <strong>Please take this brief survey.</strong><br/>=20
+              It will take 7 minutes.<br/>
+              You could win an iPad.=20
+              </td>
+           </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+            <table border=3D"0" align=3D"center" cellpadding=3D"0" cellspac=
+ing=3D"0">
+              <tr>
+                  <td width=3D"56%" valign=3D"top" style=3D" font-size:13px=
+; font-family:Arial; color:#000000; line-height:20px;" class=3D"emailcolspl=
+it">
+Hi Arkadiy,<br/>
+	<br/>
+As an IT leader who solves cloud and data center challenges in the real wor=
+ld, your opinion matters. <br/><br/>
+4,617 IT leaders have already participated. <br/>
+ <br/>
+You are part of a select group of 50 people eligible to win an iPad. <br/>
+	<br/>
+In exchange for providing your personal views, you=E2=80=99ll receive an an=
+alysis that identifies top priorities and challenges.<br/>           =20
+    <br/>
+We=E2=80=99ll also benchmark your organization against the wider community =
+and your industry peers.  <br/>           =20
+    <br/>
+It will take 7 minutes. It is worth your time. It is the easiest way to win=
+ an iPad and one of the only ways to benchmark yourself against industry pe=
+ers. <br/>           =20
+    <br/>   =20
+	    <a href=3D"https://u4179949.ct.sendgrid.net/ls/click?upn=3De2RH3s1KJOX=
+IJt466vY1JuqIzr4TR4VWykWq2wb9kgrybhSjezHnhA3UmUwvxphZoE9fd9LjzYT-2BywhdL6Jk=
+OblgFE6EQF2XAgx6GkufjGYib2cNt1aVZ1Ozruo8pnDiY-2FZlOuVbUYYsu4wWIn5BKlSokvnsP=
+gKQmlqdNXJBbgY-3DfvMD_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB=
+6lvw9FYss6qfgUGaUcivXd-2FWSqgkrbTUHpDy1U1fQDlQEgXZOJ3ypzlHFPDwX80QqYPlZGpGt=
+UVXwwsvYVmhTHzy53R38JYtrlpUO5BVYdJlg2WFYvSPPzGVV62X7avl1P6PfF9RPnP4XrhqRuCT=
+qcTrk0-2B2ZrvFl1x6TxkVmm-2FwVljOOU2pn1Q4dgnomviCJDXBIJScq2Uuz5GHtPgZbTqutjR=
+EIWKFXTIs3AJJi9vzHIrmUol0tg-3D" target=3D"_blank" style=3D"text-decoration:=
+ underline; color:#000000; font-weight:bold">Take the Survey</a>
+                      <br/><br/>
+                     Thank you,                  =20
+                   <br/>
+                     IBM<br/>
+                     <a href=3D"https://u4179949.ct.sendgrid.net/ls/click?u=
+pn=3DOXAhjjxTNQrwsf0eG4Kh4p4eb5EL7fLovQgAWzrkNaEVDV-2BKpXk8yp-2BZ1q7UPKRcOF=
+QF_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6qfgUGaUci=
+vXd-2FWSqgkrbTUHpDy1U1fQDlQEgXZOJ3ypzlHFPDwX80QqYPlZGpGtUVXwwsvYVmhTHzy53R3=
+8JYtsSdrvXTdEM8OU9XU1262pDEW1Glk-2Fw9U-2Bc2moik6h2jck6ft6ghcPcdKCMs9Q8-2Fi8=
+fmixdnn-2BIZw-2Fd7TY8KALr3iGv-2FpJDFLmlPRCS3xaz6yb3pQ0j7GlrBFXrEY-2FFcn-2B5=
+m918n8IJDB8LpdRzWNU8-3D">IBM.com</a><br/>
+</td>
+                <td width=3D"3%" valign=3D"top" class=3D"emailcolsplit">&nb=
+sp;</td>
+                <td width=3D"51%" valign=3D"top" class=3D"emailcolsplit"><t=
+able width=3D"100%" border=3D"0" align=3D"right" cellpadding=3D"0" cellspac=
+ing=3D"0">
+                    <tbody><tr>
+                      <td>
+                         <img src=3D"https://cth-staging-new.s3.amazonaws.c=
+om/images/24/gifts/iPad%202021%20211x230.jpg" width=3D"211" height=3D"230" =
+  align=3D"left" class=3D"col-3-img" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td><table width=3D"100%" border=3D"0" align=3D"cente=
+r" cellpadding=3D"0" cellspacing=3D"0">
+                          <tbody><tr>
+                            <td bgcolor=3D"#cf142b" style=3D"display:block;=
+ width:100% !important; height:auto !important;border-radius:6px; font-size=
+:18px; text-align:center; font-family:Arial, Helvetica, sans-serif; color:#=
+FFFFFF; line-height:30px;"><a href=3D"https://u4179949.ct.sendgrid.net/ls/c=
+lick?upn=3De2RH3s1KJOXIJt466vY1JuqIzr4TR4VWykWq2wb9kgrybhSjezHnhA3UmUwvxphZ=
+oE9fd9LjzYT-2BywhdL6JkOblgFE6EQF2XAgx6GkufjGYib2cNt1aVZ1Ozruo8pnDiY-2FZlOuV=
+bUYYsu4wWIn5BKlSokvnsPgKQmlqdNXJBbgY-3DpxSk_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrB=
+pTqox4xXDA5o4wdJmgedTB6lvw9FYss6qfgUGaUcivXd-2FWSqgkrbTUHpDy1U1fQDlQEgXZOJ3=
+ypzlHFPDwX80QqYPlZGpGtUVXwwsvYVmhTHzy53R38JYtrvo-2FO-2FcwRkMxpao3pv7-2FoAZK=
+ZNfapthSSW-2BeqoSqhtzrs6xcjFH9WnlLcGi5ELqgJwFWMGJYCJ7n7agSLIyJEStl5OG8yxaX5=
+rWUIwsjgNof0gQahKLrbfdX8ES2QPJr4Tg9GlelmxchqSJa0qqkHk-3D" target=3D"_blank"=
+ style=3D"text-decoration:none; color:#FFFFFF">Take the Survey </a></td>
+                          </tr>
+                      </tbody></table></td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td style=3D" font-size:11px; font-family:Arial; colo=
+r:#000000; line-height:16px; text-align:center">
+                        To be entered to win an iPad, you must complete the=
+ survey by August 15th, 2021. </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                </tbody></table></td>
+              </tr>
+          </tbody></table></td>
+      </tr>
+          </tbody></table></td>
+      </tr>
+
+=20
+     <tr>
+    	<td style=3D" font-size:11px; font-family:Arial; color:#000000; line-h=
+eight:16px; text-align:center">
+          You agree to be bound by the official rules located at the follow=
+ing URL by participating in this contest: <a href=3D"https://u4179949.ct.se=
+ndgrid.net/ls/click?upn=3DmhTI1DPVI7cvyDYyLqAo2SnrGA3futJOdtCebb7ujJlzGWat-=
+2F0AB-2BfyKE2CoaxLvVG0-2B0ZudDyuWHRoDSajwNEmZ-2FWU5NaYA9rVEXlhZuLw-3Dsgwj_a=
+Kl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5o4wdJmgedTB6lvw9FYss6qfgUGaUcivXd-=
+2FWSqgkrbTUHpDy1U1fQDlQEgXZOJ3ypzlHFPDwX80QqYPlZGpGtUVXwwsvYVmhTHzy53R38JYt=
+nEsv7jRa9Qsv7pv8OIxF80AKaHF8Agt8N8arRX0iCjtNiB9qCEQ-2FBC5cpunLDd8etMSYA3YG-=
+2FL7WCSuoR2PeZSwKRHVZlCc80dOdjrApXsarCZbvc2O0zaMQ4Q78sM-2B8h7kZN6n54ggKityb=
+NhSEys-3D">Contest Rules</a>
+            <br/>
+       =20
+         This email was sent to arkadiy.tetelman@chime.com on behalf of IBM=
+ &bull; 1 New Orchard Rd &bull; Armonk, NY 10504                       =20
+         =20
+=20
+          <tr>
+    <td>&nbsp;</td>
+  </tr>
+</tbody></table>
+<p>If you&#39;d like to unsubscribe and stop receiving these emails <a href=
+=3D"https://u4179949.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQWSN2-2FVMFe=
+M7B17h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuuuYARE-2BfLQDqOEnyP0wOQ=
+n70lJL1688gIbhD6JlEnMUna-2FsL4V8-2FDJOmq-2FLtqyAbWRjlyQ1-2BD-2Fhp2c4RDFSLBv=
+QzUHw-2Bc4lJq2OzSj3NFJ4K4Gl2cLKRkBn1ZY9G0pNeRYCdRz7RmmMzdgfvQHoq06HbvVNcp7m=
+V-2B5KYClfPhSE0J7yhppzyErkWZ-2BHVnaU174JyZ6gPgfal0AeboPMFeJD-2FWxneA9YSu6EZ=
+IdaN2FDoJKB3Qqhn6z7OkCXAy4yYC"> click here </a>.</p>
+<img src=3D"https://u4179949.ct.sendgrid.net/wf/open?upn=3D5Z3XbQWSN2-2FVMF=
+eM7B17h16F-2BrThWWo6R3pIpxtZ1gcsPdxyAqUX0mr-2B3Xf2zAuuuYARE-2BfLQDqOEnyP0wO=
+Qn70lJL1688gIbhD6JlEnMUna-2FsL4V8-2FDJOmq-2FLtqyAbWRjlyQ1-2BD-2Fhp2c4RDFSLB=
+vSZt5-2F2NTzu4AGvxjABol0-2Fa6DCH7qiw9EM8U4fbuBHKCbTpx6ncT6phgdsiQ2LO-2F3Bu7=
+EWZBqDKbl0nksLoGgUzLxw8tP2dTNEirjzqL3qb9jIOeM5dgKwGJVkbRbsKye9ITmtFGd9vtF38=
+nYY5XZ4-3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:=
+1px !important;width:1px !important;border-width:0 !important;margin-top:0 =
+!important;margin-bottom:0 !important;margin-right:0 !important;margin-left=
+:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-=
+right:0 !important;padding-left:0 !important;"/></body></html>=20

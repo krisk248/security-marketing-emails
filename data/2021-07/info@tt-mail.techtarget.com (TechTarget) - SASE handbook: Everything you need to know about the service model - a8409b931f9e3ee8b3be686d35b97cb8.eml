@@ -1,0 +1,173 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp3142521wrr; Wed, 7 Jul
+ 2021 09:03:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzws8iGIikOF0BloLrwoGBcLqHvVXKalOmUtmqdWexbTvdSR6LynDGSVjuCNhAEnyY1Te/5
+X-Received: by 2002:aa7:90c9:0:b029:307:49ca:dedd with SMTP id
+ k9-20020aa790c90000b029030749cadeddmr26272451pfk.9.1625673814588; Wed, 07 Jul
+ 2021 09:03:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625673814; cv=none; d=google.com;
+ s=arc-20160816;
+ b=UOtjyZ+nGFOYMe9C9imMUSBZ0ondYGF/l885kdFxalz7Ktppvl+ZeRB/mFtxnutLIw
+ HkBc+akZol4bUp7c6yMaesyYbKDs4sUutdfwVFs2oB5gt0wBdWwF6kV9VwGWuWkix+Iy
+ WrGZVYbmcDidtHrSMPKNfRAOpAVIitN4bPgle5fqUF9UkZLv1bAmUGWcPWk7K6O5l8gs
+ N46RTvK06R9oPvOxzMyZMIrfLKPOMgVndI8kXpN/revj3Ram3iXVKlk/fcHhxI8wXn9Q
+ iZrQSVUAQPgwW+TjmRgI8VsZf2WKQr+rIKVTlyF2aLIJE9YWvPFFWFALwNhcNtf2af14 Drow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=rTIfl5tMH3jP9nT3c9YtY6suIVNoqC5fuRUdN+TPfhk=;
+ b=V4lGnx1vq8AwAKKLY7pyO3EczB7gH9jWPtVkDmT8JZWO5Xx2wgJy+Un4WdNIyFc5/q
+ nlZ2aUOLZlvJ+2wUQ21/t8Tj1qWggSgOpBZgfvdCptK616za5m5JyUVXDfe4suRAgTcr
+ iER1sawxFgiPVkHi2PrPR92cVx3OxIEH3x5QZZ4V26+xCOuf0ocTMg3r/TrGmo5AR5X1
+ +9CdJCoZvo1eOveYMf7wx44vRU9NDVcupRbEPdgVzP8yN5WZpsvPR0AlafXoc1qnnqfR
+ +ITjte2KJ78+10SexsBrUP4aHsGFTVjHzoYvDl3XB4/kIm1DQmdX1Td6BuBaAhBr5WXi fAJQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=UbGiwhsw;
+ spf=pass (google.com: domain of
+ zgeomdv-rt3udq-94c8me-xecj45-bwbtg2-h-m2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ g22si21917881pji.87.2021.07.07.09.03.33 for <arkadiy.tetelman@chime.com>;
+ Wed, 07 Jul 2021 09:03:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ zgeomdv-rt3udq-94c8me-xecj45-bwbtg2-h-m2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=UbGiwhsw;
+ spf=pass (google.com: domain of
+ zgeomdv-rt3udq-94c8me-xecj45-bwbtg2-h-m2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625673811;
+ h=From; bh=Xn8H39UQyftSiV865ih3rNK+7I0=;
+ b=UbGiwhswQ7hpaoKPQwhsbrB067Og1iVBUxUi32zN4vcpgfFnMSbsO2ezvo2w9VFA
+ K/VS9LBnSbSK3/DzGBSMlfRoNwKes1jFZy3spJudqk8Eat/kFIQiVH/gbw06Aer9
+ 8PYhfqds+Fo55qS0C96CO0IKg7Cj6r4uXIESplb+gpI=;
+Received: from [127.0.0.1] ([127.0.0.1:47356]) by bm1-21.bo3.e-dialog.com
+ (envelope-from
+ <ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 2A/5E-30401-350D5E06; Wed, 07
+ Jul 2021 12:03:31 -0400
+Date: Wed, 07 Jul 2021 12:03:31 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.SXGIA2.11856811@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: SASE handbook: Everything you need to know about the service model
+Message-Id: <6122-427-ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@e-dialog.com>
+X-Mail-From: ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/ZGEOMDV/94C8ME/XECJ45/BWBTG2/T0/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856811
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169298365/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856811&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856811&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856811&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169297035/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">SASE handbook: Everything you need to know about the service model</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169297035/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Gartner says it's time to get sassy. Not as in being bold or brazen, but SASE, as in the acronym for Secure Access Service Edge.<br /><br />Coined by the research firm in late 2019, the term SASE refers to a service model that aims to accommodate the needs of cloud-, mobile- and edge-reliant enterprises by creating a converged, centrally controlled fabric of cloud services and security functions.<br /><br />But there are risks related to the SASE 
+model that network administrators must be prepare for. Tap into this handbook to examine the potential for and possible obstacles to SASE adoption.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/ZGEOMDV/94C8ME/XECJ45/BWBTG2/T0/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169298367/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169298368/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169298368/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169298367/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[ZGEOMDV-RT3UDQ-94C8ME-XECJ45-BWBTG2-H-M2-20210707-aa04bf8cafa59a]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/ZGEOMDV/94C8ME/XECJ45/BWBTG2/DD0C/52"></body></html>
+
+

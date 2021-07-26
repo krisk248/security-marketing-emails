@@ -1,0 +1,1082 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp1004009wrr; Fri, 9 Jul
+ 2021 13:00:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZbLVEUGIMgUWnTIPEPpHAJvsRLcxJWbdMspTh29sB/10S+G7vV4dVDGqF43sgQKRK9mZ4
+X-Received: by 2002:a05:6808:355:: with SMTP id
+ j21mr511856oie.13.1625860831670; Fri, 09 Jul 2021 13:00:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625860831; cv=none; d=google.com;
+ s=arc-20160816;
+ b=BqYQrE73SjUBcijC0MhzPTErOe5a8RMXJDuvM3leT4UguwOg9BF9yyQ9P64bei+cEY
+ RdQDgnuC9Bdl51vv9ArxFdSCVSxlDW0AzwUYf/vlp8Fx35RBqPM5AoWhqrnu/R2XjsFc
+ vs7TTAWxE1skSCYgjeU0KLeeEOgtdlJBcUPolXqYdmgADUNoSLvBWnDXJxlT8VByyLFh
+ S6f+VDWBuH6YtbyC7etJOEqBb1GZY505aTIpmVq8CcdHNZt0aWZxEgYD+zfAdxZHBdRW
+ lmD6TZJhqVzs7GdJjcjALOe5KCwqUHi+2Tzk2oTSQCPZP+hK2SuvevrHhXi2S3ZIGocu rQ4Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816; h=mime-version:subject:from:to:message-id:sender:date
+ :list-unsubscribe:dkim-signature;
+ bh=XDZ1pG+st1m5DLqanubQ+eSqXj6zndGfXPsz8P7rrmg=;
+ b=KYdNjqAEO5z40T2mbtXDrQ0HpAdheYWlgqT5bw2zeRUejMTaxp9ZeVT2TjxRYBnGFH
+ /Kl3yFhEKOzBQJVDpA6kSK63Njp8TgXJBQvUpdFeaqXLwPZDgeRYsu7aMCPFJaXNdQ24
+ SJ0Qn3bhac1bUnY6cGMNyZNLrG3tS6YwCvT8SrBiHG0TqDRDVUt7hXQv7Y5tdGghj7ZX
+ OreVNa8HHQsScdB3gCrJtq1gUH0f7dKO5b22/1wlffo2kqrNplal17J6ZJaC6ejdiEin
+ Z0X3IDggXrlAXdMb+jhT0IRIPGMUjVS2pJYvvcVn8DFB1szWfmlBDSEw8M8B93bSM+cT /26A==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@events.techforge.pub header.s=k1 header.b=b6aURTRP; spf=pass
+ (google.com: domain of
+ bounce+7d86cd.de5699-arkadiy.tetelman=chime.com@events.techforge.pub
+ designates 209.61.151.235 as permitted sender)
+ smtp.mailfrom="bounce+7d86cd.de5699-arkadiy.tetelman=chime.com@events.techforge.pub"
+Return-Path: <bounce+7d86cd.de5699-arkadiy.tetelman=chime.com@events.techforge.pub>
+Received: from rs235.mailgun.us (rs235.mailgun.us. [209.61.151.235]) by
+ mx.google.com with UTF8SMTPS id f23si9432847otc.136.2021.07.09.13.00.27 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128); Fri, 09 Jul 2021 13:00:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounce+7d86cd.de5699-arkadiy.tetelman=chime.com@events.techforge.pub
+ designates 209.61.151.235 as permitted sender) client-ip=209.61.151.235;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@events.techforge.pub header.s=k1 header.b=b6aURTRP; spf=pass
+ (google.com: domain of
+ bounce+7d86cd.de5699-arkadiy.tetelman=chime.com@events.techforge.pub
+ designates 209.61.151.235 as permitted sender)
+ smtp.mailfrom="bounce+7d86cd.de5699-arkadiy.tetelman=chime.com@events.techforge.pub"
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=events.techforge.pub;
+ q=dns/txt; s=k1; t=1625860831; h=Content-Type: Mime-Version: Subject: From:
+ To: Message-Id: Sender: Date: List-Unsubscribe;
+ bh=XDZ1pG+st1m5DLqanubQ+eSqXj6zndGfXPsz8P7rrmg=;
+ b=b6aURTRPpvcEwDWHazHRgnBo0hYYLTtFsydbpoNY7zZS5wskl5lDT1K0Hpo6D0NrG803082G
+ ++jKyiUQ+HQ8QbFLrCGvIE8q0IuC0b5jNfHqVgICIOxmpdfF5Rv1m1Bfum6tbKJgd/Y8CnvA
+ Vd3ULYmn7OXCRO5LxqbrcEA9rIA=
+X-Mailgun-Sending-Ip: 209.61.151.235
+X-Mailgun-Sid: WyIwMDdjNSIsICJhcmthZGl5LnRldGVsbWFuQGNoaW1lLmNvbSIsICJkZTU2OTkiXQ==
+List-Unsubscribe: <mailto:u+mfyha3djmnqxi2lpnzpwszb5guztkjtehvsgknjwhe4smzlnmfuwyx3jmq6tczrrhbsdknrzmu2tanzrmfqwkobxgrsdsyzxmvqwmmjyhfrtgnzgna6tmy3ggaywkylfg44doytemy4toyrsmfqweyzzgi3tiy3ghe3gmzrgne6tembsgeydombzgiydambrgmxdclrtie2dgm2cie4ukqjwgy4tqm2eeu2dazlwmvxhi4zoorswg2dgn5zgozjoob2wejtshvqxe23bmruxsltumv2gk3dnmfxcknbqmnugs3lffzrw63jgoq6tczrrhbsdknrzmu2tanzrmfqwkobxgrsdsyzxmvqwmmjyhfrtgnzgoq6xazlsonxw4ylmnf5gkzc7onsxg43jn5xf6zlnmfuwyx3wgethipkdnrxxkzblkrzgc3ttmzxxe3lboruw63rlinxw4z3smvzxg@events.techforge.pub>
+Received: by luna.mailgun.net with HTTP; Fri, 09 Jul 2021 20:00:13 +0000
+Date: Fri, 09 Jul 2021 20:00:13 +0000
+Sender: noreply@events.techforge.pub
+Message-Id: <20210709200013.1.3A433BA9EA66983D@events.techforge.pub>
+X-Mailgun-Variables: {"email_id": "1f18d569e5071aae874d9c7eaf189c37",
+ "application_id": "535"}
+X-Mailgun-Tag: 1f18d569e5071aae874d9c7eaf189c37
+X-Mailgun-Tag: personalized_session_email_v1
+X-Mailgun-Tag: Cloud Transformation Congress
+X-Mailgun-Tag: Cloud Transformation Congress_personalized_session_email
+To: Arkadiy <arkadiy.tetelman@chime.com>
+From: Cloud Transformation Congress <noreply@events.techforge.pub>
+Subject: Don't miss Google's presentation: Developing a trusted public cloud
+ for data-sensitive businesses
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="f5b58a41315441f29f559d176f036d4c"
+
+
+--f5b58a41315441f29f559d176f036d4c
+Content-Type: text/plain; charset="ascii"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+[Cloud Transformation Congress]
+
+
+
+
+We look forward to welcoming you to Cloud Transformation Congress next week!
+
+Don't miss Google's presentation: Developing a trusted public cloud offering for data-sensitive businesses. Add to your personal event schedule today.
+
+SESSION STARTS: 13th of July 2021 11:15AM - 11:45AM MDT
+
+Data is the strategic asset of our time. As more enterprises are moving their sensitive data to the cloud, are security measures keeping up? This session will explore how to enable opportunities amidst changing customer demands and regulatory frameworks. Plus, the importance of having a robust data governance strategy. Add to your schedule today!
+
+ADD SESSION TO YOUR SCHEDULE (http://email.events.techforge.pub/c/eJyFkLtqwzAUhp_GWgJGN1vS4MFNmqnQJZ3DiXVsi8iWsOVA-_RVUgotHQqaPp3Lfz6I0bsOkgvz2dmmEhWxjcWqNobgBM7fKeuZthlhRRUDQK2kNZ1CyNx0QpGxsbLS2Fsp-4tVRiklUde8t5pzDb1B4psxpbgWoi34MT-PfBxKiLH0br5msPdhs6cF5rUPy_RItA_zsOCam44XsAM6W4jD_uX17XBi3BS8fiTMDJYrWPdeJkzoJ5gLXknajW7CsgtTLoQthVyXlg2JazjljCpqOKWUiZKVopVCPLXmua1ro8WhkBRvOKc1T-zGnGfAMm4XsjR_Nv3YQ9L_plITcVnDDN59oD2v-bq7-i_VN5b_Hx52v0Xsvk18AgAJjA8)
+
+Open platform (http://email.events.techforge.pub/c/eJyFkLtqwzAUhp_GWgJGN1vS4MFNmqnQJZ3DiXVsi8iWsOVA-_RVUgotHQqaPp3Lfz6I0bsOkgvz2dmmEhWxjcWqNobgBM7fKeuZthlhRRUDQK2kNZ1CyNx0QpGxsbLS2Fsp-4tVRiklUde8t5pzDb1B4psxpbgWoi34MT-PfBxKiLH0br5msPdhs6cF5rUPy_RItA_zsOCam44XsAM6W4jD_uX17XBi3BS8fiTMDJYrWPdeJkzoJ5gLXknajW7CsgtTLoQthVyXlg2JazjljCpqOKWUiZKVopVCPLXmua1ro8WhkBRvOKc1T-zGnGfAMm4XsjR_Nv3YQ9L_plITcVnDDN59oD2v-bq7-i_VN5b_Hx52v0Xsvk18AgAJjA8)
+
+============================================================
+
+You are receiving this email as part of your attendance at this event.
+If you would no longer like to receive email about networking at this event, you can ** unsubscribe (http://email.events.techforge.pub/u/eJyFkEtuwyAURVdTJpEQH9uYAQM37Q4yj57hEaNisIBESldf0i6g03OvdD9wHDFYaCGna3BmlCNxxuE4aU1whxBflHs-u45wZIoD4KwGp61C6FxbqchmJusZR0A1q9V5rVYBsFot1GC9nrwnwQgmOFNMC8YYl5RTuQxSvi_6c5kmPcuPt4HhA1OrtKHdfC43pMd9JcVA-QIXnp03jDuk7rRb2JHavJP2f79mDiw1J4jhG921Yq2vwX8DH7zr55jv7nQpkGoP3n8POZ1zupXu_QGP8V4T)
+
+
+To unsubscribe click: <http://email.events.techforge.pub/u/eJwVyktuwyAQANDThCUaGAOeBQtH7TmiKTPEKP7JpZF6-7rbp8fHsbTCve3bo0kOGIxk0RCJjK7cln911Y1ykQZIjlnHNAiVpHw5FUxmzslDYUJMPhZCEAnODxi1ViCSGkzLHryDBOQBwKF1FqcB8T7R5xQjjfhxG0DfuvVv27XMdT-fao-fL3NmPl8s7ffyrsvK2zXL3Fa1ZV9Nzzc__QEfGjuG>
+
+
+--f5b58a41315441f29f559d176f036d4c
+Content-Type: text/html; charset="ascii"
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+<head>
+<!-- NAME: 1:3 COLUMN -->
+<!--[if gte mso 15]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<meta charset=3D"UTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1">
+<title></title>
+
+<style type=3D"text/css">
+p{
+	margin:10px 0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;
+}
+h1,h2,h3,h4,h5,h6{
+	display:block;
+	margin:0;
+	padding:0;
+}
+img,a img{
+	border:0;
+	height:auto;
+	outline:none;
+	text-decoration:none;
+}
+body,#bodyTable,#bodyCell{
+	height:100%;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+=2EmcnPreviewText{
+	display:none !important;
+}
+#outlook a{
+	padding:0;
+}
+img{
+	-ms-interpolation-mode:bicubic;
+}
+table{
+	mso-table-lspace:0pt;
+	mso-table-rspace:0pt;
+}
+=2EReadMsgBody{
+	width:100%;
+}
+=2EExternalClass{
+	width:100%;
+}
+p,a,li,td,blockquote{
+	mso-line-height-rule:exactly;
+}
+a[href^=3Dtel],a[href^=3Dsms]{
+	color:inherit;
+	cursor:default;
+	text-decoration:none;
+}
+p,a,li,td,body,table,blockquote{
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%;
+}
+=2EExternalClass,.ExternalClass p,.Exter=
+nalClass td,.ExternalClass div,.Exter=
+nalClass span,.ExternalClass font{
+	line-height:100%;
+}
+a[x-apple-data-detectors]{
+	color:inherit !important;
+	text-decoration:none !important;
+	font-size:inherit !important;
+	font-family:inherit !important;
+	font-weight:inherit !important;
+	line-height:inherit !important;
+}
+#bodyCell{
+	padding:10px;
+}
+=2EtemplateContainer{
+	max-width:600px !important;
+}
+a.mcnButton{
+	display:block;
+}
+=2EmcnImage{
+	vertical-align:bottom;
+}
+=2EmcnTextContent{
+	word-break:break-word;
+}
+=2EmcnTextContent img{
+	height:auto !important;
+}
+=2EmcnDividerBlock{
+	table-layout:fixed !important;
+}
+/*
+@tab Page
+@section Background Style
+@tip Set the background color and top border for your email. You may want t=
+o choose colors that match your company's branding.
+*/
+body,#bodyTable{
+	/*@editable*/background-color:#fafafa;
+}
+/*
+@tab Page
+@section Background Style
+@tip Set the background color and top border for your email. You may want t=
+o choose colors that match your company's branding.
+*/
+#bodyCell{
+	/*@editable*/border-top:0;
+}
+/*
+@tab Page
+@section Email Border
+@tip Set the border for your email.
+*/
+=2EtemplateContainer{
+	/*@editable*/border:0;
+}
+/*
+@tab Page
+@section Heading 1
+@tip Set the styling for all first-level headings in your emails. These sho=
+uld be the largest of your headings.
+@style heading 1
+*/
+h1{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:26px;
+	/*@editable*/font-style:normal;
+	/*@editable*/font-weight:bold;
+	/*@editable*/line-height:125%;
+	/*@editable*/letter-spacing:normal;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Page
+@section Heading 2
+@tip Set the styling for all second-level headings in your emails.
+@style heading 2
+*/
+h2{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:22px;
+	/*@editable*/font-style:normal;
+	/*@editable*/font-weight:bold;
+	/*@editable*/line-height:125%;
+	/*@editable*/letter-spacing:normal;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Page
+@section Heading 3
+@tip Set the styling for all third-level headings in your emails.
+@style heading 3
+*/
+h3{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:20px;
+	/*@editable*/font-style:normal;
+	/*@editable*/font-weight:bold;
+	/*@editable*/line-height:125%;
+	/*@editable*/letter-spacing:normal;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Page
+@section Heading 4
+@tip Set the styling for all fourth-level headings in your emails. These sh=
+ould be the smallest of your headings.
+@style heading 4
+*/
+h4{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:18px;
+	/*@editable*/font-style:normal;
+	/*@editable*/font-weight:bold;
+	/*@editable*/line-height:125%;
+	/*@editable*/letter-spacing:normal;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Preheader
+@section Preheader Style
+@tip Set the background color and borders for your email's preheader area.
+*/
+#templatePreheader{
+	/*@editable*/background-color:#fafafa;
+	/*@editable*/background-image:none;
+	/*@editable*/background-repeat:no-repeat;
+	/*@editable*/background-position:center;
+	/*@editable*/background-size:cover;
+	/*@editable*/border-top:0;
+	/*@editable*/border-bottom:0;
+	/*@editable*/padding-top:9px;
+	/*@editable*/padding-bottom:9px;
+}
+/*
+@tab Preheader
+@section Preheader Text
+@tip Set the styling for your email's preheader text. Choose a size and col=
+or that is easy to read.
+*/
+#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+	/*@editable*/color:#656565;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:12px;
+	/*@editable*/line-height:150%;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Preheader
+@section Preheader Link
+@tip Set the styling for your email's preheader links. Choose a color that =
+helps them stand out from your text.
+*/
+#templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent p a{
+	/*@editable*/color:#656565;
+	/*@editable*/font-weight:normal;
+	/*@editable*/text-decoration:underline;
+}
+/*
+@tab Header
+@section Header Style
+@tip Set the background color and borders for your email's header area.
+*/
+#templateHeader{
+	/*@editable*/background-color:#FFFFFF;
+	/*@editable*/background-image:none;
+	/*@editable*/background-repeat:no-repeat;
+	/*@editable*/background-position:center;
+	/*@editable*/background-size:cover;
+	/*@editable*/border-top:0;
+	/*@editable*/border-bottom:0;
+	/*@editable*/padding-top:9px;
+	/*@editable*/padding-bottom:0;
+}
+/*
+@tab Header
+@section Header Text
+@tip Set the styling for your email's header text. Choose a size and color =
+that is easy to read.
+*/
+#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:16px;
+	/*@editable*/line-height:150%;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Header
+@section Header Link
+@tip Set the styling for your email's header links. Choose a color that hel=
+ps them stand out from your text.
+*/
+#templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
+	/*@editable*/color:#2BAADF;
+	/*@editable*/font-weight:normal;
+	/*@editable*/text-decoration:underline;
+}
+/*
+@tab Body
+@section Body Style
+@tip Set the background color and borders for your email's body area.
+*/
+#templateBody{
+	/*@editable*/background-color:#FFFFFF;
+	/*@editable*/background-image:none;
+	/*@editable*/background-repeat:no-repeat;
+	/*@editable*/background-position:center;
+	/*@editable*/background-size:cover;
+	/*@editable*/border-top:0;
+	/*@editable*/border-bottom:0;
+	/*@editable*/padding-top:0;
+	/*@editable*/padding-bottom:0;
+}
+/*
+@tab Body
+@section Body Text
+@tip Set the styling for your email's body text. Choose a size and color th=
+at is easy to read.
+*/
+#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:16px;
+	/*@editable*/line-height:150%;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Body
+@section Body Link
+@tip Set the styling for your email's body links. Choose a color that helps=
+ them stand out from your text.
+*/
+#templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
+	/*@editable*/color:#2BAADF;
+	/*@editable*/font-weight:normal;
+	/*@editable*/text-decoration:underline;
+}
+/*
+@tab Columns
+@section Column Style
+@tip Set the background color and borders for your email's columns.
+*/
+#templateColumns{
+	/*@editable*/background-color:#fafafa;
+	/*@editable*/background-image:none;
+	/*@editable*/background-repeat:no-repeat;
+	/*@editable*/background-position:center;
+	/*@editable*/background-size:cover;
+	/*@editable*/border-top:0;
+	/*@editable*/border-bottom:2px solid #EAEAEA;
+	/*@editable*/padding-top:0;
+	/*@editable*/padding-bottom:9px;
+}
+/*
+@tab Columns
+@section Column Text
+@tip Set the styling for your email's column text. Choose a size and color =
+that is easy to read.
+*/
+#templateColumns .columnContainer .mcnTextContent,#templateColumns .columnC=
+ontainer .mcnTextContent p{
+	/*@editable*/color:#202020;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:16px;
+	/*@editable*/line-height:150%;
+	/*@editable*/text-align:left;
+}
+/*
+@tab Columns
+@section Column Link
+@tip Set the styling for your email's column links. Choose a color that hel=
+ps them stand out from your text.
+*/
+#templateColumns .columnContainer .mcnTextContent a,#templateColumns .colum=
+nContainer .mcnTextContent p a{
+	/*@editable*/color:#2BAADF;
+	/*@editable*/font-weight:normal;
+	/*@editable*/text-decoration:underline;
+}
+/*
+@tab Footer
+@section Footer Style
+@tip Set the background color and borders for your email's footer area.
+*/
+#templateFooter{
+	/*@editable*/background-color:#FAFAFA;
+	/*@editable*/background-image:none;
+	/*@editable*/background-repeat:no-repeat;
+	/*@editable*/background-position:center;
+	/*@editable*/background-size:cover;
+	/*@editable*/border-top:0;
+	/*@editable*/border-bottom:0;
+	/*@editable*/padding-top:9px;
+	/*@editable*/padding-bottom:9px;
+}
+/*
+@tab Footer
+@section Footer Text
+@tip Set the styling for your email's footer text. Choose a size and color =
+that is easy to read.
+*/
+#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+	/*@editable*/color:#656565;
+	/*@editable*/font-family:Helvetica;
+	/*@editable*/font-size:12px;
+	/*@editable*/line-height:150%;
+	/*@editable*/text-align:center;
+}
+/*
+@tab Footer
+@section Footer Link
+@tip Set the styling for your email's footer links. Choose a color that hel=
+ps them stand out from your text.
+*/
+#templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
+	/*@editable*/color:#656565;
+	/*@editable*/font-weight:normal;
+	/*@editable*/text-decoration:underline;
+}
+@media only screen and (min-width:768px){
+	.templateContainer{
+		width:600px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	body,table,td,p,a,li,blockquote{
+		-webkit-text-size-adjust:none !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	body{
+		width:100% !important;
+		min-width:100% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	#bodyCell{
+		padding-top:10px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.columnWrapper{
+		max-width:100% !important;
+		width:100% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImage{
+		width:100% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+		.mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCapti=
+onBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mcn=
+ImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaptionR=
+ightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionRi=
+ghtImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCar=
+dRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImage=
+CardRightImageContentContainer{
+			max-width:100% !important;
+			width:100% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnBoxedTextContentContainer{
+		min-width:100% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImageGroupContent{
+		padding:9px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter .=
+mcnTextContent{
+		padding-top:9px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCapti=
+onBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-child=
+ .mcnTextContent{
+		padding-top:18px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImageCardBottomImageContent{
+		padding-bottom:9px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImageGroupBlockInner{
+		padding-top:0 !important;
+		padding-bottom:0 !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImageGroupBlockOuter{
+		padding-top:9px !important;
+		padding-bottom:9px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnTextContent,.mcnBoxedTextContentColumn{
+		padding-right:18px !important;
+		padding-left:18px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	.mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+		padding-right:18px !important;
+		padding-bottom:0 !important;
+		padding-left:18px !important;
+	}
+}
+@media only screen and (max-width: 480px){
+		.mcpreview-image-uploader{
+			display:none !important;
+			width:100% !important;
+		}
+	}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 1
+	@tip Make the first-level headings larger in size for better readability o=
+n small screens.
+	*/
+	h1{
+		/*@editable*/font-size:22px !important;
+		/*@editable*/line-height:125% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 2
+	@tip Make the second-level headings larger in size for better readability =
+on small screens.
+	*/
+	h2{
+		/*@editable*/font-size:20px !important;
+		/*@editable*/line-height:125% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 3
+	@tip Make the third-level headings larger in size for better readability o=
+n small screens.
+	*/
+	h3{
+		/*@editable*/font-size:18px !important;
+		/*@editable*/line-height:125% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Heading 4
+	@tip Make the fourth-level headings larger in size for better readability =
+on small screens.
+	*/
+	h4{
+		/*@editable*/font-size:16px !important;
+		/*@editable*/line-height:150% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Boxed Text
+	@tip Make the boxed text larger in size for better readability on small sc=
+reens. We recommend a font size of at least 16px.
+	*/
+	.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContaine=
+r .mcnTextContent p{
+		/*@editable*/font-size:14px !important;
+		/*@editable*/line-height:150% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Preheader Visibility
+	@tip Set the visibility of the email's preheader on small screens. You can=
+ hide it to save space.
+	*/
+	#templatePreheader{
+		/*@editable*/display:block !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Preheader Text
+	@tip Make the preheader text larger in size for better readability on smal=
+l screens.
+	*/
+	#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+		/*@editable*/font-size:14px !important;
+		/*@editable*/line-height:150% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Header Text
+	@tip Make the header text larger in size for better readability on small s=
+creens.
+	*/
+	#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+		/*@editable*/font-size:16px !important;
+		/*@editable*/line-height:150% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Body Text
+	@tip Make the body text larger in size for better readability on small scr=
+eens. We recommend a font size of at least 16px.
+	*/
+	#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+		/*@editable*/font-size:16px !important;
+		/*@editable*/line-height:150% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Column Text
+	@tip Make the column text larger in size for better readability on small s=
+creens. We recommend a font size of at least 16px.
+	*/
+	#templateColumns .columnContainer .mcnTextContent,#templateColumns .column=
+Container .mcnTextContent p{
+		/*@editable*/font-size:16px !important;
+		/*@editable*/line-height:150% !important;
+	}
+}
+@media only screen and (max-width: 480px){
+	/*
+	@tab Mobile Styles
+	@section Footer Text
+	@tip Make the footer content text larger in size for better readability on=
+ small screens.
+	*/
+	#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+		/*@editable*/font-size:14px !important;
+		/*@editable*/line-height:150% !important;
+	}
+	.phone-image {
+		display: none;
+	}
+}
+</style>
+</head>
+<body>
+	<!--*|IF:MC_PREVIEW_TEXT|*-->
+	<!--[if !gte mso 9]><!----><span class=3D"mcnPreviewText" style=3D"display=
+:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opaci=
+ty:0; overflow:hidden; visibility:hidden; mso-hide:all;"></span><!--<![endi=
+f]-->
+	<!--*|END:IF|*-->
+	<center>
+		<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+height=3D"100%" width=3D"600px" id=3D"bodyTable">
+			<tr>
+				<td align=3D"center" valign=3D"top" id=3D"bodyCell">
+					<!-- BEGIN TEMPLATE // -->
+					<!--[if (gte mso 9)|(IE)]>
+					<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"=
+0" width=3D"600" style=3D"width:600px;">
+					<tr>
+					<td align=3D"center" valign=3D"top" width=3D"600" style=3D"width:600px=
+;">
+					<![endif]-->
+                    <!-- <table align=3D"left" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" style=3D"max-width:600px;" width=3D"100%" class=3D"mcn=
+TextContentContainer">
+                        <tbody>
+                            <tr>
+                                <td valign=3D"top" class=3D"mcnTextContent"=
+ style=3D"padding: 0px 18px 9px; text-align: center;">
+                                    <div style=3D"font-family:lato,helvetic=
+a neue,helvetica,arial,sans-serif; text-align: left; font-size: 11px;">
+                                        <webversion>View in browser</webver=
+sion>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"100%" class=3D"templateContainer">
+                      <tr>
+                        <td valign=3D"top" id=3D"templatePreheader">
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" class=3D"mcnTextBlock" style=3D"min-width:100%;=
+">
+                                    <tbody class=3D"mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"mcn=
+TextBlockInner" style=3D"padding-top:9px;">
+                                                <!--[if mso]>
+                                                <table align=3D"left" borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"width:1=
+00%;">
+                                                <tr>
+                                                <![endif]-->
+
+																								<!--[if mso]>
+                                                <td valign=3D"top" width=3D=
+"300" style=3D"width:300px;">
+                                                <![endif]-->
+                                                <table align=3D"left" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width:300px;" widt=
+h=3D"300" class=3D"mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td align=3D"le=
+ft" valign=3D"top" class=3D"mcnTextContent" style=3D"padding: 0px 18px 9px;=
+ text-align: left;">
+                                                                <img width=
+=3D"100" src=3D"https://d1ew4vee5tqwao.cloudfront.net/containers-images/Clo=
+udTransformationCongress3662.png" style=3D"width: auto; height: auto;max-wi=
+dth:100%;max-height:70px;margin: 0px; float: left;" alt=3D"Cloud Transforma=
+tion Congress" />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--[if mso]>
+                                                </td>
+                                                <![endif]-->
+
+                                                <!--[if mso]>
+                                                <td valign=3D"top" width=3D=
+"300" style=3D"width:300px;">
+                                                <![endif]-->
+                                                <table align=3D"left" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width:300px;" widt=
+h=3D"100%" class=3D"mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td valign=3D"t=
+op" class=3D"mcnTextContent" style=3D"padding: 0px 18px 9px; text-align: ce=
+nter;">
+
+                                                                <div style=
+=3D"text-align: right;">
+                                                                    <strong=
+>Official Online Platform &amp; Networking</strong><br>
+                                                                    <span s=
+tyle=3D"color:#15CC93"><strong>Cloud Transformation Congress</strong></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--[if mso]>
+                                                </td>
+                                                <![endif]-->
+
+                                                <!--[if mso]>
+                                                </tr>
+                                                </table>
+                                                <![endif]-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign=3D"top" id=3D"templateHeader"></td>
+                        </tr>
+                        <tr>
+                            <td valign=3D"top" id=3D"templateBody">
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" class=3D"mcnTextBlock" style=3D"min-width:100%;=
+">
+                                    <tbody class=3D"mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"mcn=
+TextBlockInner" style=3D"padding-top:9px;">
+                                            <!--[if mso]>
+                                            <table align=3D"left" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"width:100%;=
+">
+                                            <tr>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            <td valign=3D"top" width=3D"600=
+" style=3D"width:600px;">
+                                            <![endif]-->
+                                                <table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width:100%; min-=
+width:100%;" width=3D"100%" class=3D"mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign=3D"t=
+op" class=3D"mcnTextContent" style=3D"padding-top:0; padding-right:33px; pa=
+dding-bottom:9px; padding-left:33px; text-align: left; line-height:170%;">
+                                                                <p style=3D=
+"text-align:left;font-family:lato,helvetica neue,helvetica,arial,sans-serif=
+;"><b style=3D"color:#15CC93">We look forward to welcoming you to Cloud Tra=
+nsformation Congress next week! </b><b>Don&#39;t miss Google&#39;s presenta=
+tion: Developing a trusted public cloud offering for data-sensitive busines=
+ses. Add to your personal event schedule today.</b></p>
+                                                                <p style=3D=
+"text-align:left;font-family:lato,helvetica neue,helvetica,arial,sans-serif=
+; font-size:11px;margin-top: 14px; color:#7e7a99;">SESSION STARTS: 13th of =
+July 2021 11:15AM - 11:45AM MDT</p>
+                                                                <p style=3D=
+"text-align:left;font-family:lato,helvetica neue,helvetica,arial,sans-serif=
+; color: #3f3d4c; font-size: 16px;margin-top: 12px;">Data is the strategic =
+asset of our time. As more enterprises are moving their sensitive data to t=
+he cloud, are security measures keeping up? This session will explore how t=
+o enable opportunities amidst changing customer demands and regulatory fram=
+eworks. Plus, the importance of having a robust data governance strategy. A=
+dd to your schedule today!</p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            <!--[if mso]>
+                                            </td>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            </tr>
+                                            </table>
+                                            <![endif]-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" class=3D"mcnButtonBlock" style=3D"min-width:100=
+%;margin-top: 33px;">
+                                    <tbody class=3D"mcnButtonBlockOuter">
+                                        <tr>
+                                            <td style=3D"padding-top:0; pad=
+ding-right:18px; padding-bottom:18px; padding-left:18px;" valign=3D"top" al=
+ign=3D"center" class=3D"mcnButtonBlockInner">
+                                                <table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" class=3D"mcnButtonContentContainer" style=3D"b=
+order-collapse: separate !important;border-radius: 4px;background-color: #1=
+5CC93;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td align=3D"ce=
+nter" valign=3D"middle" class=3D"mcnButtonContent" style=3D"font-family: La=
+to, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14=
+px; padding: 17px;">
+                                                               =20
+                                                                    <a clas=
+s=3D"mcnButton " title=3D"Join Session" href=3D"http://email.events.techfor=
+ge.pub/c/eJyFkL1uwyAURp_GLJEQv7YZPDhJM1Xqks4RhmsbBWNk40jt05cmitSqQyUWDhe-j6=
+Nj9M7o5OZwcbaRXCLbWJClUggm7fw3pT2tbUYgSUW1hroSVpkKdObK8AqNjRAArO-YUQw6SWuhu=
+p4oYepSqp6WPfLNmFJcC94W7JSXBzYOWMeIvQvXDA5-3ux50WHt52W6NzrMYVhgzZdOnbYDOFvw=
+4-H17f14pkwVrLw3zEwvV23dB06QwE86FEwKYkY3ATbzlAf1luY8l5YN8m7Nbz4-nFmpBGPINYw=
+wSiqiGCGEckwxbwXn-1a9tGWpan4sBIEbhLTmGDPmkgPguHVoaf7E_whH6X99qYmwrHPQ3n2CvT=
+zrPfzfaD6_y9n9trN76vkCB9ySKw" target=3D"_blank" style=3D"font-weight: bold;=
+letter-spacing: normal;line-height: 100%;text-align: center;text-decoration=
+: none;color: #FFFFFF;">ADD SESSION TO YOUR SCHEDULE</a>
+                                                               =20
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" class=3D"mcnButtonContentContainer" style=3D"b=
+order-collapse: separate !important;border-radius: 4px; padding-top:4px">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td align=3D"ce=
+nter" valign=3D"middle" class=3D"mcnButtonContent" style=3D"font-family: La=
+to, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14=
+px; padding: 20px;">
+                                                               =20
+                                                                    <a styl=
+e=3D"font-family:lato,helvetica neue,helvetica,arial,sans-serif; color: #00=
+0000; font-size: 16px; text-align: center;" href=3D"http://email.events.tec=
+hforge.pub/c/eJyFkLtqwzAUhp_GWgJGN1vS4MFNmqnQJZ3DiXVsi8iWsOVA-_RVUgotHQqaPp=
+3Lfz6I0bsOkgvz2dmmEhWxjcWqNobgBM7fKeuZthlhRRUDQK2kNZ1CyNx0QpGxsbLS2Fsp-4tVR=
+iklUde8t5pzDb1B4psxpbgWoi34MT-PfBxKiLH0br5msPdhs6cF5rUPy_RItA_zsOCam44XsAM6=
+W4jD_uX17XBi3BS8fiTMDJYrWPdeJkzoJ5gLXknajW7CsgtTLoQthVyXlg2JazjljCpqOKWUiZK=
+VopVCPLXmua1ro8WhkBRvOKc1T-zGnGfAMm4XsjR_Nv3YQ9L_plITcVnDDN59oD2v-bq7-i_VN5=
+b_Hx52v0Xsvk18AgAJjA8" target=3D"_blank">Open platform</a>
+                                                               =20
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign=3D"top" id=3D"templateFooter">
+
+                                <table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" class=3D"mcnTextBlock" style=3D"min-width:100%;=
+">
+                                    <tbody class=3D"mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"mcn=
+TextBlockInner" style=3D"padding-top:9px;">
+                                                <!--[if mso]>
+                                                <table align=3D"left" borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" style=3D"width:1=
+00%;">
+                                                <tr>
+                                                <![endif]-->
+
+                                                <!--[if mso]>
+                                                <td valign=3D"top" width=3D=
+"600" style=3D"width:600px;">
+                                                <![endif]-->
+                                                <table align=3D"left" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width:100%; min-wi=
+dth:100%;" width=3D"100%" class=3D"mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign=3D"t=
+op" class=3D"mcnTextContent" style=3D"font-size: 13px; font-family:Helvetic=
+a,Verdana;padding-top: 36px; padding-right:18px; padding-bottom:9px; paddin=
+g-left:18px; text-align: center; color: #8B8B93;">
+                                                                <span style=
+=3D"color: #8B8B93 !important">You are receiving this email as part of your=
+ attendance at this event.
+                                                                    <br/>
+                                                                    If you =
+would no longer like to receive email about networking at this event, you c=
+an <a href=3D"http://email.events.techforge.pub/u/eJyFkEtuwyAURVdTJpEQH9uYA=
+QM37Q4yj57hEaNisIBESldf0i6g03OvdD9wHDFYaCGna3BmlCNxxuE4aU1whxBflHs-u45wZIoD=
+4KwGp61C6FxbqchmJusZR0A1q9V5rVYBsFot1GC9nrwnwQgmOFNMC8YYl5RTuQxSvi_6c5kmPcu=
+Pt4HhA1OrtKHdfC43pMd9JcVA-QIXnp03jDuk7rRb2JHavJP2f79mDiw1J4jhG921Yq2vwX8DH7=
+zr55jv7nQpkGoP3n8POZ1zupXu_QGP8V4T">unsubscribe</a>.
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--[if mso]>
+                                                </td>
+                                                <![endif]-->
+
+                                                <!--[if mso]>
+                                                </tr>
+                                                </table>
+                                                <![endif]-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                    <!-- // END TEMPLATE -->
+                </td>
+            </tr>
+        </table>
+    </center>
+<br>
+<p><a href=3D"http://email.events.techforge.pub/u/eJwVyktuwyAQANDThCUaGAOeB=
+QtH7TmiKTPEKP7JpZF6-7rbp8fHsbTCve3bo0kOGIxk0RCJjK7cln911Y1ykQZIjlnHNAiVpHw5=
+FUxmzslDYUJMPhZCEAnODxi1ViCSGkzLHryDBOQBwKF1FqcB8T7R5xQjjfhxG0DfuvVv27XMdT-=
+fao-fL3NmPl8s7ffyrsvK2zXL3Fa1ZV9Nzzc__QEfGjuG">unsubscribe</a></p><img widt=
+h=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.events.techforge.pub/=
+o/eJyFkEtuwyAURVdTJpEQH9uYAQM37Q4yj57hEaNisIBESldf0i6g03OvdD9wHDFYaCGna3Bml=
+CNxxuE4aU1whxBflHs-u45wZIoD4KwGp61C6FxbqchmJusZR0A1q9V5rVYBsFot1GC9nrwnwQgm=
+OFNMC8YYl5RTuQxSvi_6c5kmPcuPt4HhA1OrtKHdfC43pMd9JcVA-QIXnp03jDuk7rRb2JHavJP=
+2f79mDiw1J4jhG921Yq2vwX8DH7zr55jv7nQpkGoP3n8POZ1zupXu_QGP8V4T"></body>
+</html>
+--f5b58a41315441f29f559d176f036d4c--

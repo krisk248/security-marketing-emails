@@ -1,0 +1,164 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp3274149wrr; Wed, 7 Jul
+ 2021 11:45:15 -0700 (PDT)
+X-Received: by 2002:a92:d492:: with SMTP id
+ p18mr18372591ilg.226.1625683515308; Wed, 07 Jul 2021 11:45:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625683515; cv=none; d=google.com;
+ s=arc-20160816;
+ b=CTBNgYqTxu1ZTjOUTeV2bE5egEVZKRG7le91vK836HbHtbM/KY2wT+GSsZZ/MWkIVQ
+ 2mUmaBGBQbuj9R8JUdwXCKCJcaAEItn8BvtFE01IEu+MQ9mMgRM2geawfV7bZzAU4p5V
+ TDXwm7O6uZSayAkKJwekd1ukHfzTPfqjxtxoyap8PcW2+icLZe7q/Oa841HkjmNDzSUW
+ pXCVkrurzj8lgBiMhOACV85WzUlk9+Nbsw8aW2WePNfgt+5wyNGu1g2Znj/Gyxa/B3Jf
+ Fn8EmR5k0YpF+xcqnI0ktdybefX16yxkEfEnl9UrlsVL264sEvT5VaDn5R4XsETyp7cs nz+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:mime-version:from:dkim-signature;
+ bh=d6UjUeC1/rwGV7ic6LAmdEfffoWRPoZay4ZOgm0F4NY=;
+ b=zqmyEc1k3Rs3hliimKca4NZ3lGAXtkksRQ5ehhsRQ8mVW0kk/V9pGsHCEuHQyQhbik
+ 4LDtoOeqa8ama5F4n/SiHP4Zx1C6YmaAgkR8b42XVd7z85ZRWveg22WJlw7GPMbKJXMO
+ woQtFU6K3vB5kR9A9rI44tR7T4RWHt7S822VEy38Nx/t8DUNxPh6BGSqFLXRWq79NY2B
+ 1gHSC9BIe5+iwehV3kfxCIRFaHx0R1bhRpakA1notMOIyv6PsM50TV/8dOOxy1l1pxRP
+ 7pwMsvP9bFfh/c42yR41eUEgdY9rhmyKMF6MAZ+7Nl5vjzLNkabTRtITrNCejPFReGgE UY8A==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@verkadasecurity-com.20150623.gappssmtp.com header.s=20150623
+ header.b=l8yPLylX; spf=pass (google.com: domain of
+ adam.m.ibrahim@verkadasecurity.com designates 209.85.220.41 as permitted
+ sender) smtp.mailfrom=adam.m.ibrahim@verkadasecurity.com; dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=verkadasecurity.com
+Return-Path: <adam.m.ibrahim@verkadasecurity.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ j10sor1849897iok.53.2021.07.07.11.45.15 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Wed, 07 Jul 2021 11:45:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of adam.m.ibrahim@verkadasecurity.com
+ designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@verkadasecurity-com.20150623.gappssmtp.com header.s=20150623
+ header.b=l8yPLylX; spf=pass (google.com: domain of
+ adam.m.ibrahim@verkadasecurity.com designates 209.85.220.41 as permitted
+ sender) smtp.mailfrom=adam.m.ibrahim@verkadasecurity.com; dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=verkadasecurity.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=verkadasecurity-com.20150623.gappssmtp.com; s=20150623;
+ h=from:mime-version:date:message-id:subject:to;
+ bh=d6UjUeC1/rwGV7ic6LAmdEfffoWRPoZay4ZOgm0F4NY=;
+ b=l8yPLylXDwLqLT/zhVTmNgQDbfmZ+thKfq7t0/UP1t3f+SCor4jJBUbjTd1uK9SYUv
+ OE+GNPu6ucKIFTgGEUrwhwPbWJ9cELlarVNazu5Hf+FnsBw3DzKf4pZ7NhEVMwOBMAvC
+ vEX2U+0oC69f+qNgA0UWZ37USfK9M4rniwbYlaU9vuY7yPNL7f+2NJ8Bnd2tY+y530/H
+ OQyX84yWydDB72modSqJMOTI+irpV2ATzRV8Hoi8d/vl8dWstzxv3Cj0caWlIz/910UA
+ 5e/rofsrpUMvZ33BnAYS7ZcDFd5mQ0Z7E/hxatm5Ar0+7K0dFdx6LDJXyAtfRGS6gHKM 0Y3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:mime-version:date:message-id:subject:to;
+ bh=d6UjUeC1/rwGV7ic6LAmdEfffoWRPoZay4ZOgm0F4NY=;
+ b=U2KIIdn8vBsFaVYSjaAZVcD/zr163lQ7utC5HswmlBj4hx7KCEJCs9uauVW0kmNXO1
+ FOLtxWJ4R27tsf6a0AJCrrM0rzD84eUYUg+wCtWRvIHubEc4WiA0l0gdU7MMZ0ag6eiT
+ PtqorfCWp//EYlCOV1jYQ1AdPf/5/yQvN+5JcpVCZ9H30R7QPy6On/eX234W4wVjhSwQ
+ 58JBI3MxqUhKMdzwpfd6Zz2fB+f8QJtqcH55VVHUXMmZgHALJt3WdGX7w9Ts99emmAZB
+ sPHncuvkACfFxZtn8TZE+QhHfhdCECRKexHgpX/Ji1iuRL3M4nAJN876ryetj2woXAqN 3bZA==
+X-Gm-Message-State: AOAM532J+DCLnZL4mQb1icKa/k8w7DQNdOGxGv/EzrKrQ0ry9K3W8DPL
+ 5arIlVm+djAE42+1nYRv6wfTBo4U95h+mXJP960FeOIQQq8=
+X-Google-Smtp-Source: ABdhPJyaNzac+ErS/iMPgKIV8YuYAbvosDuGWrjhwYT5xCVoNQgFkn0eypGcRNldYcosLSA+9+XlVRcD+R+i8lZnSs0=
+X-Received: by 2002:a6b:7617:: with SMTP id g23mr21506464iom.63.1625683514477;
+ Wed, 07 Jul 2021 11:45:14 -0700 (PDT)
+Received: from 193155701165 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 7 Jul 2021 18:45:14 +0000
+From: Adam Ibrahim <adam.m.ibrahim@verkadasecurity.com>
+Mime-Version: 1.0
+X-OUTREACH-SENT: true
+Date: Wed, 7 Jul 2021 18:45:14 +0000
+Message-ID: <CAOq0PAz7ASNo8xDqsWCQ93qOTsRduUq+pOuf9okj4XsyentySg@mail.gmail.com>
+Subject: Intrusion detection at Chime
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Content-Type: multipart/alternative; boundary="00000000000065dc6105c68cf045"
+
+
+--00000000000065dc6105c68cf045
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Arkadiy,
+
+I wanted to introduce myself from Verkada Security. One of my colleagues
+has been in touch in the past but we weren't able to connect with Chime.
+
+I'm getting back in touch, Arkadiy, because we recently launched our new
+alarm product and I think it could add a lot of value.
+
+
+   - 24-7 professional monitoring with round-the-clock video verification
+   of break-ins / incidents and emergency dispatch - at no extra cost to Chime
+   - Our alarm system integrates with almost all existing door contact
+   sensors, window-open sensors, etc. -- saving you hassle and money
+   - Native integration with our cameras, access control, and environmental
+   sensors, so you can see exactly what's happening during and after an
+   intrusion and get alerts when any device detects unusual activity
+   on-premise at Chime
+
+
+We actually have an exclusive webinar coming up -- register HERE
+<https://www.verkada.com/intrusion-demo> to join. If the webinar time
+doesn't work for you, would love to walk you through our product line and
+give you a 1:1 personalized demo. Do you have time tomorrow or Friday,
+Arkadiy?
+
+
+*Adam Ibrahim*
+Operations at Verkada Inc.
+
+If security does not pertain to you please click here
+<https://verkada.com/emailsettings/?utm_email=arkadiy.tetelman@chime.com>
+
+--00000000000065dc6105c68cf045
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans s=
+erif;font-size:13px">Hi Arkadiy,</span></div><div dir=3D"ltr"><span style=
+=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:1=
+3px">=C2=A0</span></div><div dir=3D"ltr" role=3D"presentation"><span style=
+=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:1=
+3px">I wanted to introduce myself from Verkada Security. One of my colleagu=
+es has been in touch in the past but we weren&#39;t able to connect with Ch=
+ime.=C2=A0</span></div><br><div dir=3D"ltr" role=3D"presentation"><span sty=
+le=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size=
+:13px">I&#39;m getting back in touch, Arkadiy, because we recently launched=
+ our new alarm product and I think it could add a lot of value.</span></div=
+><br><ul style=3D"font-size:13px;font-family:Helvetica Neue,Liberation Sans=
+,Arial,sans serif;padding-left:26px"><li><div><span style=3D"font-family:He=
+lvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">24-7 professi=
+onal monitoring with round-the-clock video verification of break-ins / inci=
+dents and emergency dispatch - at no extra cost to Chime</span></div></li><=
+li><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,san=
+s serif;font-size:13px">Our alarm system integrates with almost all existin=
+g door contact sensors, window-open sensors, etc. -- saving you hassle and =
+money</span></div></li><li><div><span style=3D"font-family:Helvetica Neue,L=
+iberation Sans,Arial,sans serif;font-size:13px">Native integration with our=
+ cameras, access control, and environmental sensors, so you can see exactly=
+ what&#39;s happening during and after an intrusion and get alerts when any=
+ device detects unusual activity on-premise at Chime</span></div></li></ul>=
+<br><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sa=
+ns serif;font-size:13px">We actually have an exclusive webinar coming up --=
+ register=C2=A0</span><a rel=3D"noopener noreferrer" target=3D"_blank" href=
+=3D"https://www.verkada.com/intrusion-demo"><span style=3D"font-family:Helv=
+etica Neue,Liberation Sans,Arial,sans serif;font-size:13px">HERE</span></a>=
+<span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;=
+font-size:13px">=C2=A0to join.=C2=A0If the webinar time doesn&#39;t work fo=
+r you, would love to walk you through our product line and give you a 1:1 p=
+ersonalized demo. Do you have time tomorrow or Friday, Arkadiy?</span></div=
+><br><br><div role=3D"presentation" dir=3D"ltr"><span style=3D"font-family:=
+Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px"><strong>Ada=
+m Ibrahim</strong></span></div><div><span style=3D"font-family:Helvetica Ne=
+ue,Liberation Sans,Arial,sans serif;font-size:13px">Operations at Verkada=
+=C2=A0Inc.=C2=A0</span></div><br><div><span style=3D"font-family:Helvetica =
+Neue,Liberation Sans,Arial,sans serif;font-size:13px">If=C2=A0security does=
+ not pertain to you please=C2=A0</span><a rel=3D"noopener noreferrer" targe=
+t=3D"_blank" href=3D"https://verkada.com/emailsettings/?utm_email=3Darkadiy=
+.tetelman@chime.com"><span style=3D"font-family:Helvetica Neue,Liberation S=
+ans,Arial,sans serif;font-size:13px">click here</span></a></div><br><br><di=
+v><br></div><div class=3D"outreach-signature"><br></div><img src=3D"https:/=
+/goto.verkada.com/api/mailings/opened/PMRGSZBCHIYTSMZYG43TQNJMEJXXEZZCHIRDO=
+YJUHA2WEMJZFUZDCYZRFU2GEY3EFU4TQZTDFVRDONLDGJRTKMRYGJQWKIRMEJ3GK4TTNFXW4IR2=
+EI2CELBCONUWOIR2EJUGM5JZOY3VM4DDOZ3WIQKBIRAUQ2BXHF4EQUDPJFVEORBTMJNDA2KIPJH=
+EKZ2YJRYEM2Z5EJ6Q=3D=3D=3D=3D.gif" alt=3D"" width=3D"1" height=3D"1">
+
+--00000000000065dc6105c68cf045--

@@ -1,0 +1,127 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp6776752wrr; Wed, 21
+ Jul 2021 11:21:44 -0700 (PDT)
+X-Received: by 2002:aca:2308:: with SMTP id e8mr22750969oie.57.1626891703881;
+ Wed, 21 Jul 2021 11:21:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626891703; cv=none; d=google.com;
+ s=arc-20160816;
+ b=kQP+wfgDXYV1bSE9eM835MEsB2jN4CwFlxoEaq5NE3W3gZInX/Gl0PdMyJxhImSN63
+ htNuTxGGv38kDN/WyEw+/K1krDXg9qqG0LdwDmUSzuH34qQjfuRfPVj4hRONDOaM3zGk
+ J+jakKOvzsRA1hwvSC9Trb5JVFzvUr/KOot5i6WaG/oBqE1MrDURucxnm9/ube5+LE3S
+ Fn+5t5aPpzJ2q4vAc4wduns2dmVnAVMBGfv1/q6MABeszj2jBUfwxn9ZZEY3IpsUKRap
+ roEZCOCgRMkef3aKuda9NbJ5g302jQU8o10O7irJSWo2sJ8OM+ECpXpa7rh417I31bWm qt6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:mime-version:from:dkim-signature;
+ bh=bVBn1uPPhindTPpzcC/ScXNrz+pnMH0mUmnvt5WW6aQ=;
+ b=lMCNGsxPY7Ej9iVe8gHSS1W6bH2hGSf+f8eDy0j47M+78qPxu2QmYZwPNso4nXlHOx
+ 7q7/VbNIfScBr6WSwOB9g3Ah1E3A+58zEDQD1Or5Yisj6REIZdem/EyZwq47qvAaa5jX
+ hVz1fN6Ad/TV3mnmtsVEY/deW0fHsIAxYG0evZWe107vrBAqGBjSOALi9FyZr11zKNuR
+ rdJyYSDgnT1m6N//u3VvVOQBw0fEfk0c+5eC2tOGmq60GxGULSH5JnWTfplEbIqVfB3H
+ ezqFulenOydPPHyu6VpFy5y4O66DzSVtFzj0aP0k4esSSfv/zo7y+HidO1kv4E0n/pvp Mtfg==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass header.i=@tonic.ai
+ header.s=google header.b=NEHTlWjV; spf=pass (google.com: domain of
+ joe@tonic.ai designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=joe@tonic.ai; dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=tonic.ai
+Return-Path: <joe@tonic.ai>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ b5sor1359338oon.13.2021.07.21.11.21.43 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Wed, 21 Jul 2021 11:21:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of joe@tonic.ai designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass header.i=@tonic.ai
+ header.s=google header.b=NEHTlWjV; spf=pass (google.com: domain of
+ joe@tonic.ai designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=joe@tonic.ai; dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=tonic.ai
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tonic.ai; s=google;
+ h=from:mime-version:date:message-id:subject:to;
+ bh=bVBn1uPPhindTPpzcC/ScXNrz+pnMH0mUmnvt5WW6aQ=;
+ b=NEHTlWjV5IpS7VIaWnwv0NqIXvR6xEqcRi2amXv0WpjSjMEJrbTNzlkKCV22akCK3p
+ skHnt9GOboZOCzTVyXFMQ6vrSCA65gcHr+xZRVZwRiHqgg/R4Wtp5e70yIbexTpSYOEp
+ /CyQ2OEvh8fg3kk7FL2FyC2SnIk95ZNSB3P30=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:mime-version:date:message-id:subject:to;
+ bh=bVBn1uPPhindTPpzcC/ScXNrz+pnMH0mUmnvt5WW6aQ=;
+ b=RSdo4GJptK7wnERVt9HFCj1kmFK3loSDr7sSeAr1gBMTLOb71oCyvF1do7L58m3nFX
+ aDVJDUqddjLGGF+KrFrFBM83Y4UOCfkFj/P+9picYe/kasS3+4HfQGk8SJt4pClMlAXT
+ aXdktf3fCcaxyPrSqgNKmUpGhDAToPL2+gPMO/eb91ohOXfS2x9OSqLpZLJONZx/Pq2c
+ VeOGSST0uTv0ROB6Djl6Mu0iUuT806KbDQxkx+fkNgQr7Srt5pWw0hRHwO4ECQ7vWdPr
+ /Ttmypy+XtS4Zn2kAKtFUwfL2+Df1gpa+Gf8a5XtCt03Sf3XYXTvBathbyLtkqgGr/Al w0cQ==
+X-Gm-Message-State: AOAM532v2IsJrK0+uj+elBzV2TE9GyzVmuDQuKFr6wKHscLikYVlpWlg
+ CFU9eUHnc6gMYtDgAekinD7qVJQ8wua9xQIEmmrKa+6YBjs=
+X-Google-Smtp-Source: ABdhPJzRTJO0+/lVx2B3ZI2cWRrw8bE8JEAa9IliaJ5cRVKHahcq+oBg2VexYTasveQdG8+ehDkqjo3Jn5N9ChmUOSM=
+X-Received: by 2002:a4a:6558:: with SMTP id z24mr25425453oog.41.1626891703179;
+ Wed, 21 Jul 2021 11:21:43 -0700 (PDT)
+Received: from 193155701165 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 21 Jul 2021 14:21:42 -0400
+From: Joe Atkins <joe@tonic.ai>
+Mime-Version: 1.0
+X-OUTREACH-SENT: true
+Date: Wed, 21 Jul 2021 14:21:42 -0400
+Message-ID: <CAApGK1fYaKjB3KxmfRQ7G=qVFwJhdKs620z8nwuJk5g2i5C0+g@mail.gmail.com>
+Subject: test automation at Chime
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Content-Type: multipart/alternative; boundary="0000000000000e722305c7a63eb6"
+
+
+--0000000000000e722305c7a63eb6
+Content-Type: text/plain; charset="UTF-8"
+
+Arkadiy,
+
+Do you have an efficient approach to distributing obfuscated test data for
+your remote dev team?
+
+Synthesizing realistic test data is typically a more secure and productive
+approach than legacy obfuscation techniques.
+
+If interested, I'm happy to share how this would look for Chime.
+
+--
+Joe Atkins
+tonic.ai | +19259635238
+San Francisco, CA 94103
+
+
+
+If you'd like me to stop sending you emails, please click here
+<https://tonicai.orhektor.com/api/mailings/unsubscribe/PMRGSZBCHI4TMNJWGIWCE33SM4RDUIRSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWMZDBMQZTIOJQEIWCE5TFOJZWS33OEI5CENBCFQRHG2LHEI5CENDJKJUXEWCNGBNGWQ2TJY4HASKFMFYS24LRPFAWI4LMKZNGY3RWJJ5EK23OGV2DAZBZKU6SE7I=>
+
+--0000000000000e722305c7a63eb6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans s=
+erif;font-size:13px">Arkadiy,</span></div><br><div><span style=3D"font-fami=
+ly:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">Do you h=
+ave an efficient approach to distributing obfuscated test data for your rem=
+ote dev=C2=A0team?</span></div><br><div><span style=3D"font-family:Helvetic=
+a Neue,Liberation Sans,Arial,sans serif;font-size:13px">Synthesizing realis=
+tic test data is typically a more secure and productive approach than legac=
+y obfuscation techniques.</span></div><br><div><span style=3D"font-family:H=
+elvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">If intereste=
+d, I&#39;m happy to share how this would look for Chime.</span></div><br><d=
+iv><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans ser=
+if;font-size:13px">--</span></div><div><span style=3D"font-family:Helvetica=
+ Neue,Liberation Sans,Arial,sans serif;font-size:13px">Joe Atkins</span></d=
+iv><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,san=
+s serif;font-size:13px"><a href=3D"http://tonic.ai">tonic.ai</a>=C2=A0|=C2=
+=A0+19259635238</span></div><div><span style=3D"font-family:Helvetica Neue,=
+Liberation Sans,Arial,sans serif;font-size:13px">San Francisco, CA 94103</s=
+pan></div><br><div><br></div><div class=3D"outreach-signature"><br></div><d=
+iv class=3D"outreach-signature outreach-unsubscribe" style=3D"font-size:10p=
+x;color:#999">If you&#39;d like me to stop sending you emails, please <a hr=
+ef=3D"https://tonicai.orhektor.com/api/mailings/unsubscribe/PMRGSZBCHI4TMNJ=
+WGIWCE33SM4RDUIRSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWMZDBMQZTIOJQEI=
+WCE5TFOJZWS33OEI5CENBCFQRHG2LHEI5CENDJKJUXEWCNGBNGWQ2TJY4HASKFMFYS24LRPFAWI=
+4LMKZNGY3RWJJ5EK23OGV2DAZBZKU6SE7I=3D">click here</a></div><img src=3D"http=
+s://tonicai.orhektor.com/api/mailings/opened/PMRGSZBCHI4TMNJWGIWCE33SM4RDUI=
+RSMJTDSOJYMU3S2OJZMUYS2NDGMVSS2YTGMIZC2YRTGZQWMZDBMQZTIOJQEIWCE5TFOJZWS33OE=
+I5CENBCFQRHG2LHEI5CENJWLJIGIMLTOQ2HKSBVNRSEQTLSOU4GO22DMVFXENLHPBRGKTDPIQ2F=
+C3SVLIYE4WCRJE6SE7I=3D.gif" alt=3D"" width=3D"1" height=3D"1">
+
+--0000000000000e722305c7a63eb6--

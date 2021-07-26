@@ -1,0 +1,671 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:a5d:4d03:0:0:0:0:0 with SMTP id z3csp1894420wrt; Fri, 2 Jul
+ 2021 11:03:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwaye8ZaMWYIxR1wIV8da9x+6rw8fhnAxliJ1oNHOWwJsIzbEmcz7kHj3QINSr7Ug/HEjOo
+X-Received: by 2002:a17:90b:4ac8:: with SMTP id
+ mh8mr942367pjb.84.1625248992738; Fri, 02 Jul 2021 11:03:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625248992; cv=none; d=google.com;
+ s=arc-20160816;
+ b=Ocm+eQSNG/MZor/yGkRG92EKrXZus9fhVvOmGO9ufcqKR8dVcpLskeIxq8Z41QAphF
+ dzwNPwx9hERf7XFDOizJX07GcGx6+1V3QeAb4h10Xx5gwW0gLhS4tdaUbPJKEL2R6Ky6
+ hvNbry5rTo9S+mb809xiEHfHsdNfY4At2jH0jbBsq9/k6zANVZeh0f3bfW+hb4lHlqXK
+ liFWQKyuHgG8IjgVUizLixiad9rzXzyQpW1Rx2NrslHOufPvVuOhRvcnwiMtjqfaiEXB
+ fL6xYjinXWsAC0HgB38iNv+1ybciBJOXuZeIwL/1dmNLIE8KOJt4MpJ+Rq3N7XYe49Ve XwWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=71Pv+hDBDkuJ3J2w2igsqRNPNMXvXQvj+xQiImtK28I=;
+ b=kAx2gy8snXE9LRhxX27yzp0AaHT12xf5STUGOLiNmSgpyG+XpVxw/AGmmrlV1i4+gJ
+ gP+i5TJixNCMatCASHaEWlFjrKKs4M77P6UUg+EmfpboTh/u4T0vDcaPZXCBKP8ESK4a
+ vwDYXsx8D4mSi8Tp/w0iesPA9js5ct+PJknzNbtKrX00K7EDnD5Gxg41Q+Q4TGKIcSqy
+ TzmYeoTzZNKeb3qAJ3vmY3PLVfqQJnDk7630QBd7z9CCScxwoeDMiWRXOjxBLLH+UbTj
+ NReei29ESKiG4NiwE+VlNOH6lEL43YniFjCTiCdpsBK7MvITCN2uNNmgFNxWfvmOyCiG WcXA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=J+5aYoal;
+ spf=pass (google.com: domain of
+ je0s18f-hsdxze-bx2goy-lap58g-nfma8k-h-m2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.72]) by mx.google.com with ESMTP id
+ b20si4250437pgm.341.2021.07.02.11.03.10 for <arkadiy.tetelman@chime.com>;
+ Fri, 02 Jul 2021 11:03:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ je0s18f-hsdxze-bx2goy-lap58g-nfma8k-h-m2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender) client-ip=96.47.30.72;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=J+5aYoal;
+ spf=pass (google.com: domain of
+ je0s18f-hsdxze-bx2goy-lap58g-nfma8k-h-m2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625248989;
+ h=From; bh=HxkGlpyE+83MXdNdepTy9+6BJhU=;
+ b=J+5aYoalP2kIjatkRZPcmdiw8W1DSna2mFFknFYYtdd2cgERfA3moM/QJ1HIiB+K
+ kyTsSh0ptqPof6SjESwXpDdk6/NOljF9KwyRW/+DuncoINd5ybuDH1B9+CWMAoa6
+ aM6ZEFD1GzerXf+4bTinELJsi1GGz1q3s9J6kMgQMRs=;
+Received: from [127.0.0.1] ([127.0.0.1:45923]) by bm1-20.bo3.e-dialog.com
+ (envelope-from
+ <JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id CE/25-05752-DD45FD06; Fri, 02
+ Jul 2021 14:03:09 -0400
+Date: Fri, 02 Jul 2021 14:03:09 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.6PWT9Q.11850376@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: Why multicloud architecture?
+Message-Id: <25270-618-JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@e-dialog.com>
+X-Mail-From: JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/JE0S18F/BX2GOY/LAP58G/NFMA8K/T0/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11850376
+
+
+
+
+<html><body><!doctype html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+      <head>
+        <title>
+          
+        </title>
+        <!--[if !mso]><!-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--<![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style type="text/css">
+          #outlook a { padding:0; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }
+        </style>
+        <!--[if mso]>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <!--[if lte mso 11]>
+        <style type="text/css">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]-->
+        
+        
+    <style type="text/css">
+      @media only screen and (min-width:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+.mj-column-per-75 { width:75% !important; max-width: 75%; }
+.mj-column-per-25 { width:25% !important; max-width: 25%; }
+.mj-column-per-80 { width:80% !important; max-width: 80%; }
+.mj-column-per-20 { width:20% !important; max-width: 20%; }
+      }
+    </style>
+    
+  
+        <style type="text/css">
+        
+        
+
+    @media only screen and (max-width:480px) {
+      table.mj-full-width-mobile { width: 100% !important; }
+      td.mj-full-width-mobile { width: auto !important; }
+    }
+  
+        </style>
+        
+        
+      </head>
+      <body style="word-spacing:normal;background-color:#ffffff;">
+<div style="background-color: #ffffff;">
+        <!-- BEGIN HIDDEN PREHEADER TEXT -->
+<div class="preheader" style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+      <span class="preheader" style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;">The latest white papers, case studies and product information</span>
+  </div>
+<!-- END HIDDEN PREHEADER TEXT -->
+<!-- BEGIN Honeypot link -->
+  
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+      
+          
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/168635733/36983911/1" style="text-decoration: none; display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+  
+</table>
+<!-- END Honeypot link -->
+<!-- BEGIN 250okblank table -->
+<div id="_two50" style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;">
+    <img id="_two50_img" style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11850376&promo_type=White Paper Dedicated" alt="" />
+<style><!--
+            @media print{
+              #_two50 {background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11850376&promo_type=White Paper Dedicated'); } }
+              blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11850376&promo_type=White Paper Dedicated'); }
+--></style>
+<table style="display: none; font-size: 0; color: #fefefe; line-height: 0; height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" border="0" cellspacing="0" cellpadding="0" width="0">
+</table>
+</div>
+<!-- END 250okblank table -->
+      
+      <!--[if mso | IE]>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#00b3ac;background-color:#00b3ac;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #00b3ac; background-color: #00b3ac; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0; line-height: 0; text-align: left; display: inline-block; width: 100%; direction: ltr;">
+        <!--[if mso | IE]>
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" >
+<tr>
+<td style="vertical-align:middle;width:450px;" ><![endif]-->
+<div class="mj-column-per-75 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: middle; width: 75%;">
+        
+      
+<table style="vertical-align: middle;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 10px 0 5px 10px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 17px; font-weight: 800; line-height: 17px; text-align: left; color: #ffffff;">Business Technology Research</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 0 10px 10px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 13px; font-weight: 200; line-height: 1; text-align: left; color: #ffffff;">March 21, 2021</div>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+<td style="vertical-align:middle;width:150px;" ><![endif]-->
+<div class="mj-column-per-25 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: middle; width: 25%;">
+        
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="vertical-align:middle;padding:10px 10px 10px 0;">
+              
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0; word-break: break-word;" align="right">
+                  
+      
+<table style="border-collapse: collapse; border-spacing: 0px;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="width: 71px;">
+              
+        <a
+ href="https://www.techtarget.com" target="_blank"
+>
+          
+      <img style="border: 0; display: block; outline: none; text-decoration: none; height: 38px; width: 100%; font-size: 13px;" src="https://cdn.ttgtmedia.com/welcome_nl/TechTargetLogo.png" alt="TechTarget" width="71" height="38" />
+    
+        </a>
+      
+            </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+      </div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#f2f2f2;background-color:#f2f2f2;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #f2f2f2; background-color: #f2f2f2; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 5px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: bold; line-height: 17px; text-align: left; color: #323232;">IN THIS ISSUE</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 5px 20px; padding-top: 6px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/168635554/36983911/1" style="color:#00379c;"
+>Why multicloud architecture?</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 5px 20px; padding-top: 6px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/168632581/36983911/2" style="color:#00379c;"
+>How are cloud databases impacting DBAs?</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 0 20px; padding-top: 6px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/168634580/36983911/3" style="color:#00379c;"
+>The 7 deadly sins of public cloud costs
+</a></div>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #ffffff; background-color: #ffffff; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 21px; font-weight: 600; line-height: 26px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/168635554/36983911/2" style="color:#00379c;"
+>Why multicloud architecture?</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; line-height: 1; text-align: left; color: #afafaf;">This resource is brought to you by our sponsors</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 20px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Multicloud&rsquo;s growth is outpacing even hybrid cloud solutions in today&rsquo;s market.<br /><br />The next step is understanding how to best manage multicloud environments, as well as keep them secure. Inside this exclusive 58-page O&rsquo;Reilly report, discover:<br /></font></font>
+<ul>
+<li><font size="2"><font face="arial, trebuchet, verdana">The benefits of a multicloud architecture</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Why powerful orchestration interfaces are crucial for multicloud</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">How to build container infrastructure in multiple cloud environments</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">How to use API Gateways to centralize security</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">And more</font></font></li>
+</ul>
+<font size="2"><font face="arial, trebuchet, verdana">Download the report here to explore the benefits and challenges of using multicloud edge solutions.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px; word-break: break-word;" align="left">
+                  
+      
+<table style="border-collapse: separate; width: 224px; line-height: 100%;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border: none; border-radius: 3px; cursor: auto; height: 40px; mso-padding-alt: 10px 25px; background: #ce3325;" align="center" valign="middle" bgcolor="#ce3325">
+            <a
+ href="https://go.techtarget.com/r/168635554/36983911/2" style="display: inline-block; width: 174px; background: #ce3325; color: #ffffff; font-family: Helvetica,arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"
+>
+              Read More
+            </a>
+          </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#f2f2f2;background-color:#f2f2f2;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #f2f2f2; background-color: #f2f2f2; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 21px; font-weight: 600; line-height: 26px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/168632581/36983911/3" style="color:#00379c;"
+>How are cloud databases impacting DBAs?</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; line-height: 1; text-align: left; color: #afafaf;">This resource is brought to you by our sponsors</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 20px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">While database migration is attractive thanks to your ability to offload serious database responsibilities to the cloud provider, does it seriously mean you don&rsquo;t need a DBA anymore?<br /><br />The fact of the matter is that DBAs are still critical to your database functions, and your database performance, availability, and costs depend on their abilities.<br /><br />Access this white paper to learn why DBAs are as important as ever to your 
+organization and discover how their role is shifting within database management.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px; word-break: break-word;" align="left">
+                  
+      
+<table style="border-collapse: separate; width: 224px; line-height: 100%;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border: none; border-radius: 3px; cursor: auto; height: 40px; mso-padding-alt: 10px 25px; background: #ce3325;" align="center" valign="middle" bgcolor="#ce3325">
+            <a
+ href="https://go.techtarget.com/r/168632581/36983911/3" style="display: inline-block; width: 174px; background: #ce3325; color: #ffffff; font-family: Helvetica,arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"
+>
+              Read More
+            </a>
+          </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+        
+        
+<table style="background: #ffffff; background-color: #ffffff; width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table style="vertical-align: top;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 21px; font-weight: 600; line-height: 26px; text-align: left; color: #323232;"><a
+ href="https://go.techtarget.com/r/168634580/36983911/4" style="color:#00379c;"
+>The 7 deadly sins of public cloud costs</a></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 10px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; line-height: 1; text-align: left; color: #afafaf;">This resource is brought to you by our sponsors</div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px 20px 20px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; text-align: left; color: #323232;"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Enterprises are wasting $14.1B in public cloud spend every year. Why is this happening?<br /><br />It all comes back to seven deadly sins that repeatedly cause waste and drain your funds. Wondering what these sins are and what you can do about them?<br /><br />Download the ebook now.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 0 20px; word-break: break-word;" align="left">
+                  
+      
+<table style="border-collapse: separate; width: 224px; line-height: 100%;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border: none; border-radius: 3px; cursor: auto; height: 40px; mso-padding-alt: 10px 25px; background: #ce3325;" align="center" valign="middle" bgcolor="#ce3325">
+            <a
+ href="https://go.techtarget.com/r/168634580/36983911/4" style="display: inline-block; width: 174px; background: #ce3325; color: #ffffff; font-family: Helvetica,arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"
+>
+              Read More
+            </a>
+          </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="font-size: 0px; padding: 10px 25px; padding-top: 30px; padding-bottom: 0; word-break: break-word;" align="center">
+<p style="border-top: solid 1px #f2f2f2; font-size: 1px; margin: 0px auto; width: 100%;">&nbsp;</p>
+<!--[if mso | IE]>
+<table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #f2f2f2;font-size:1px;margin:0px auto;width:550px;" role="presentation" width="550px" >
+<tr>
+<td style="height:0;line-height:0;"> &nbsp;
+</td>
+</tr>
+</table>
+<![endif]-->
+    
+    
+                </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;" mce_style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div style="margin:0px auto;max-width:600px;">
+        
+        
+<table style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td style="direction: ltr; font-size: 0px; padding: 20px 0; padding-top: 0; text-align: center;">
+                <!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td class="" style="vertical-align:top;width:480px;" ><![endif]-->
+<div class="mj-column-per-80 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+        
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="vertical-align:top;padding-top:0;">
+<style><!--
+     td.mobile-logo {display:block !important;width:100% !important;text-align: left !important;padding:0 20px !important;}
+--></style>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="font-size: 0px; padding: 10px 25px; word-break: break-word;" align="left">
+<div style="font-family: Helvetica,arial,sans-serif; font-size: 11px; font-weight: 200; line-height: 1.3; text-align: left; color: #999999;">This newsletter is published by <a
+ href="https://www.techtarget.com" style="color:#008bc1;"
+>TechTarget, Inc.</a>,
+<br />275 Grove Street, Newton, Massachusetts, 02466 US
+<br /><br />
+Click to: <a
+ href="http://ed-link.techtarget.com/u/JE0S18F/BX2GOY/LAP58G/NFMA8K/T0/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/" style="color:#008bc1;"
+>Unsubscribe</a>
+<br /><br />
+  You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/168635735/36983911/1" style="color:#008bc1;"
+>Partners List</a> below, as described in our <a
+ href="https://go.techtarget.com/r/168635736/36983911/1" style="color:#008bc1;"
+>Privacy Policy</a>. For additional assistance, please contact: <a
+ href="mailto:webmaster@techtarget.com" style="color:#008bc1;"
+>webmaster@techtarget.com</a>
+<br /><br />
+&copy; 2021 TechTarget, Inc. all rights reserved. Designated trademarks, brands, logos and service marks are the property of their respective owners. 
+<br /><br />
+  <a
+ href="https://go.techtarget.com/r/168635736/36983911/1" style="color:#008bc1;"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/168635735/36983911/1" style="color:#008bc1;"
+>Partners List</a></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+<td class="" style="vertical-align:middle;width:120px;" ><![endif]-->
+<div class="mj-column-per-20 mj-outlook-group-fix" style="font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: middle; width: 100%;">
+        
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td style="vertical-align:middle;padding:10px 10px 10px 0;">
+              
+      
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td class="mobile-logo" style="font-size: 0px; padding: 0; word-break: break-word;" align="right">
+                  
+      
+<table style="border-collapse: collapse; border-spacing: 0px;" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="width: 71px;">
+              
+        <a
+ href="https://www.techtarget.com" target="_blank"
+>
+          
+      <img style="border: 0; display: block; outline: none; text-decoration: none; height: 38px; width: 100%; font-size: 13px;" src="https://media.techtarget.com/digitalguide/images/Misc/techtarget_logo_transparent_173x91.png" alt="TechTarget" width="71" height="38" />
+    
+        </a>
+      
+            </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+              </td>
+</tr>
+</table>
+</div>
+<!--[if mso | IE]></td>
+</tr>
+</table>
+<![endif]-->
+    
+    
+      </div>
+</body>
+    </html>
+
+<!-- [[JE0S18F-HSDXZE-BX2GOY-LAP58G-NFMA8K-H-M2-20210702-3883abe901f2f3]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/JE0S18F/BX2GOY/LAP58G/NFMA8K/X8JE/52"></body></html>
+
+

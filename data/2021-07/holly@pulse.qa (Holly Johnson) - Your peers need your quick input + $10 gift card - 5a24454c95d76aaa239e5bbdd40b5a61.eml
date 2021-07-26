@@ -1,0 +1,250 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp2076428wrr; Fri, 16
+ Jul 2021 11:44:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzwI25JL0UUpBmYI86aFdwyKhEKqUnMEGLyizRrcSsvDtszEU0D/tXiGsLEfMg9bQdO4Z3U
+X-Received: by 2002:a17:906:74c1:: with SMTP id
+ z1mr13278002ejl.466.1626461041048; Fri, 16 Jul 2021 11:44:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626461041; cv=none; d=google.com;
+ s=arc-20160816;
+ b=RwpdDrBULhTYj2hpOtU/xOziSiXcvPaS+LKn1w6biywCf4u17399b7S3c63YhCmHx0
+ CMUcP8U6Ny+02zPyF2RMKwL6uZ6P+FPZFXlFvkw2JXHXj4iLuMhtiRZFLYXj0OZ5+5hu
+ GyXUS+pdoE4V3vY7llRjXbCDCRw4AARQG76Q75EELYuUM2bHWt8IsNsVFtiHTgL4ohv7
+ CPM6+LZiC39RbcQt6vPDt8kJp9pbVANTc1eECLzpUX35JrZ9rRuVa16jmZzqP/CyehlT
+ iaxrkRd3D4j6hJw4BQLnOScxz4uQ3o3ARu5BxEV2cKT4Abf/mal5VmhcFO5J8JSwdgm2 zHXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=dkim-signature:content-transfer-encoding:mime-version:precedence
+ :reply-to:from:list-unsubscribe:list-help:feedback-id:date
+ :message-id:subject:to; bh=Xlf5qMrmA3vfAGTb2Lsc1uxqEaZ8WuE0T2thiqSC9/U=;
+ b=b91ln1hk0qFe4ZMLrLCE1Cn+Cxe0a++0cBTrXriDef+KHbnWBidgoQRbGKh6wOpxYm
+ jffyZaZfNzSbNbORdnwo7w70JVopVNHgXHHBo147XsRkd3GP+Y+ok+XRU9aEyfoyi1Xc
+ ISGBcCBiaR+nJEqND04ep4EaPI2283cs+X2DSWFzYMOfSXRUsSctpfytVlXm8v2Zmqtf
+ tm9/4cvZxgf1WcBhN3lS8fZ89lWzYBIh40RUUm9AZWyVbvcbx0Wqq99LHuwelj7d72Ig
+ /MEwv/SG/OxxKCoC20MmfhIXqpT+v8zsbChZQjsB0fK+LGKFXdYfajjZuLqOqiHkr/Wa LRVg==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@bounce.automizy.com header.s=aut header.b=UJZXXtZv; spf=pass
+ (google.com: domain of
+ b5kvajwb-prkmi3h_lz2qchwpsq396ydsmylbl61utqjlvuws-ur0nkibtfw@bounce.automizy.com
+ designates 185.161.74.197 as permitted sender)
+ smtp.mailfrom=b5KvAjWB-PRKmI3H_lz2qcHWPsQ396YdsmylBl61UtQjLvUws-ur0NKIbtFw@bounce.automizy.com;
+ dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=pulse.qa
+Return-Path: <b5KvAjWB-PRKmI3H_lz2qcHWPsQ396YdsmylBl61UtQjLvUws-ur0NKIbtFw@bounce.automizy.com>
+Received: from smtp12.automizy.com (smtp12.automizy.com. [185.161.74.197]) by
+ mx.google.com with ESMTPS id j23si14631405eje.21.2021.07.16.11.44.00 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Fri, 16 Jul 2021 11:44:01
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ b5kvajwb-prkmi3h_lz2qchwpsq396ydsmylbl61utqjlvuws-ur0nkibtfw@bounce.automizy.com
+ designates 185.161.74.197 as permitted sender) client-ip=185.161.74.197;
+Authentication-Results: mx.google.com; dkim=pass header.i=@bounce.automizy.com
+ header.s=aut header.b=UJZXXtZv; spf=pass (google.com: domain of
+ b5kvajwb-prkmi3h_lz2qchwpsq396ydsmylbl61utqjlvuws-ur0nkibtfw@bounce.automizy.com
+ designates 185.161.74.197 as permitted sender)
+ smtp.mailfrom=b5KvAjWB-PRKmI3H_lz2qcHWPsQ396YdsmylBl61UtQjLvUws-ur0NKIbtFw@bounce.automizy.com;
+ dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=pulse.qa
+Received: from mq.automizy.com (unknown [10.6.6.139]) by smtp12.automizy.com
+ (Postfix) with SMTP id A5686202D9 for <arkadiy.tetelman@chime.com>; Fri, 16
+ Jul 2021 20:44:00 +0200 (CEST)
+To: arkadiy.tetelman@chime.com
+Subject: Your peers need your quick input + $10 gift card
+Message-ID: <20995635553886862-b5KvAjWB-PRKmI3H_lz2qcHWPsQ396YdsmylBl61UtQjLvUws-ur0NKIbtFw@automizy.com>
+Date: Fri, 16 Jul 2021 18:44:00 +0000 (GMT)
+X-Bounce-ID: 20995635553886862-b5KvAjWB-PRKmI3H_lz2qcHWPsQ396YdsmylBl61UtQjLvUws-ur0NKIbtFw
+X-Mailer: Automizy
+Feedback-ID: 79421_975_bulk:975::automizy
+List-Help: <mailto:help@automizy.com>
+List-Unsubscribe: <https://unsubscribe.automizy.com/5/Ca5F6qNBVM7s68LaNZoTtHKFcJnE0pwhhEgJtxmy_jYzUa0Xxln5Zho6OoE>,
+From: =?UTF-8?B?SG9sbHkgSm9obnNvbg==?= <holly@pulse.qa>
+Reply-To: holly@pulse.qa
+Precedence: bulk
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary=ac18191ca3b09a441faab3baf453f8cf4a67; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bounce.automizy.com;
+ s=aut; t=1626461040;
+ h=to:subject:message-id:date:x-bounce-id:x-mailer:feedback-id:list-help:list-unsubscribe:from:reply-to:precedence:mime-version:content-type:content-transfer-encoding;
+ bh=Xlf5qMrmA3vfAGTb2Lsc1uxqEaZ8WuE0T2thiqSC9/U=;
+ b=UJZXXtZvot+hGObyFx9JPPZppD+2H8uV52+5MeSsWwoBz/bSX+upBQs+Th9Sw1HZqqi0FR5Q10ozjI/DsnIAck1uMr6YRt05Vf2kRVB+M4uJaR4uxZxucVj9om6d9FUhBWn+JuHhgJWUolw6MDu5d1ssC4MT8DRzs/5CTpOvnkQ=;
+
+
+--ac18191ca3b09a441faab3baf453f8cf4a67
+Content-Type: text/plain; format=flowed; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy, You're one of a select few who are receiving this invitation =
+=E2=80=94 will you take a few minutes to share your thoughts on Application=
+ Security Priorities And Code Tampering. We=E2=80=99re gathering industry b=
+enchmarks from executives like you. Your responses will be confidential and=
+ only analyzed in aggregate. As a thank you for completing the 5-minute sur=
+vey: You will receive access to peer and industry benchmarks for this surve=
+y You will receive 1000 Pulse points, which is redeemable for a $10 gift ca=
+rd to Amazon, Apple App Store, Uber, or a charity of your choice. Follow th=
+is link to the survey: Take the survey Or copy and paste the URL below into=
+ your internet browser: https://www.pulse.qa/topic/application-security-pri=
+orities-ma3/?utm_source=3DSurvey%20Email The survey takes approximately 5 m=
+inutes to complete and is only available for a limited time and to a limite=
+d number of respondents. Please do not share the survey link with others as=
+ it is personalized to ensure that the survey will only work once. We are c=
+ollecting responses through July 18, 2021 If you have any trouble with the =
+survey, please reply to this email to let us know. Thanks, Team Pulse Discl=
+aimer Pulse is a market research firm that conducts research on a variety o=
+f topics. We are not trying to sell anything to you and are conducting this=
+ survey to gather industry benchmarks to enrich the shared peer knowledge i=
+n the Pulse executive community. Your response to this survey is voluntary.=
+ If you are asked in this survey to reveal your personal information like y=
+our identity or the identity of the organization on whose behalf you are re=
+sponding and do not wish to do so, please do not respond to this survey. Yo=
+ur survey responses will be used by Pulse Q&A in accordance with all the pr=
+ivacy principles listed out on our Privacy Policy at https://home.pulse.qa/=
+legal/privacy-policy. Pulse Q&A does not want you to, and you should not, i=
+nclude in your survey response any sensitive information, and any confident=
+ial or proprietary information belonging to you or another party, as Pulse =
+Q&A uses your survey responses as per the terms defined under our Privacy P=
+olicy at https://home.pulse.qa/legal/privacy-policy. Pulse Q&A reserves the=
+ right to terminate or withdraw this survey, and your opportunity to partic=
+ipate in this survey, at any time. Pulse Q&A (including its affiliates) alo=
+ne has the right to view and use the survey results. You are invited to par=
+ticipate in this survey because you are a registered member on our website =
+or because we have obtained your information from a public source where you=
+ have submitted your contact information voluntarily. Unsubscribe
+--ac18191ca3b09a441faab3baf453f8cf4a67
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE><html><head><meta http-equiv=3D"Content-Type" content=3D"text/htm=
+l; charset=3Dutf-8"><meta property=3D"og:title" content=3D"Your peers need =
+your quick input + $10 gift card"/><meta property=3D"og:description" conten=
+t=3D"..."/><meta property=3D"og:type" content=3D"website"/><meta property=
+=3D"og:url" content=3D"https://webversion.automizy.com/5/lpu151aLSsCGbj5o7f=
+6Ko9Lko3zY_r9P5aC1ca1jva9qIB44bII2mInw1z0"/><meta property=3D"og:image" con=
+tent=3D"//img.automizy.com/logo/automizy-logo-100x100.jpg"/><meta name=3D"v=
+iewport" content=3D"width=3Ddevice-width, initial-scale=3D1.0"/><title></ti=
+tle></head></html><body><div><span style=3D"font-size:14px;"><span style=3D=
+"font-family:helvetica neue,helvetica,arial,verdana,sans-serif;"><span styl=
+e=3D"background:white"><span style=3D"color:black">Hi </span></span></span>=
+Arkadiy<span style=3D"font-family:helvetica neue,helvetica,arial,verdana,sa=
+ns-serif;"><span style=3D"background:white"><span style=3D"color:black">,<b=
+r/><br/> You're one of a select few who are receiving this invitation =E2=
+=80=94 will you take a few minutes to share your thoughts on&nbsp;</span></=
+span></span></span><strong>Application Security Priorities And Code Tamperi=
+ng</strong>.<span style=3D"font-size:14px;"><span style=3D"font-family:helv=
+etica neue,helvetica,arial,verdana,sans-serif;"><span style=3D"background:w=
+hite"><span style=3D"color:black">&nbsp;We=E2=80=99re gathering industry be=
+nchmarks from executives like you.&nbsp;</span></span></span>Your responses=
+ will be confidential and only analyzed in aggregate.</span><br/><span styl=
+e=3D"font-size:14px;"><span style=3D"font-family:helvetica neue,helvetica,a=
+rial,verdana,sans-serif;"><span style=3D"background:white"><span style=3D"c=
+olor:black">&nbsp;</span></span></span></span><p><span style=3D"font-size:1=
+4px;">As a thank you for completing the 5-minute survey:</span></p><ul><li =
+aria-level=3D"1"><span style=3D"font-size:14px;">You will receive access to=
+ peer and industry benchmarks for this survey</span></li><li aria-level=3D"=
+1"><span style=3D"font-size:14px;">You will receive <strong>1000</strong> P=
+ulse points, which is redeemable for a <b>$10</b> gift card to Amazon, Appl=
+e App Store, Uber, or a charity of your choice.</span></li></ul><br/><span =
+style=3D"font-size:14px;"><span style=3D"font-family:helvetica neue,helveti=
+ca,arial,verdana,sans-serif;"><span style=3D"background:white"><span style=
+=3D"color:black">&nbsp;<br/> Follow this link to the survey:<br/><a data-li=
+nk-tag-id=3D"00000963-mcfixuy9h6" href=3D"https://link.mizy-a.com/redirect/=
+v2/GY334EGUIA344SRW3YAY77KCTFHRAIO237Z3GMX5P66VQWRHUMHGJ62P3662W3YZOCWJW77H=
+7UIJKCWEF5BQ=3D=3D=3D=3D/v6/517914/717833">Take the survey</a><br/> &nbsp;<=
+br/> Or copy and paste the URL below into your internet browser:</span></sp=
+an></span></span><br/><br/><a data-link-tag-id=3D"00000964-ipcqe4mxk8" href=
+=3D"https://link.mizy-a.com/redirect/v2/UWQ553NMEYX5DPTDNRA3LP7BHTAM7WJ44RE=
+4E7GH746X46OEJV4WJTUWGTQGRCO2GO5FWMQ2QTGZJV3TDHBA=3D=3D=3D=3D/v6/517915/717=
+833">https://www.pulse.qa/topic/application-security-priorities-ma3/?utm_so=
+urce=3DSurvey%20Email</a><br/><br/><span style=3D"font-size:14px;"><span st=
+yle=3D"font-family:helvetica neue,helvetica,arial,verdana,sans-serif;"><spa=
+n style=3D"background:white"><span style=3D"color:black">The survey takes a=
+pproximately 5 minutes to complete and is only available for a limited time=
+ and to a limited number of respondents. Please do not share the survey lin=
+k with others as it is personalized to ensure that the survey will only wor=
+k once. We are collecting responses through<strong>&nbsp;July 18, 2021</str=
+ong>&nbsp;<br/><br/> If you have any trouble with the survey, please reply =
+to this email to let us know.<br/> &nbsp;<br/><br/> Thanks,<br/> Team Pulse=
+</span></span></span></span><br/><br/><br/><span style=3D"font-size:11px;">=
+<strong><u>Disclaimer</u></strong></span><div style=3D"text-align:start; te=
+xt-indent:0px; -webkit-text-stroke-width:0px"><span style=3D"font-size:11px=
+;"><span style=3D"font-family:helvetica neue,helvetica,arial,verdana,sans-s=
+erif;"><span style=3D"background:white"><span style=3D"color:black"><em>Pul=
+se is a market research firm that conducts research on a variety of topics.=
+ We are not trying to sell anything to you and are conducting this survey t=
+o gather industry benchmarks to enrich the shared peer knowledge in the <a =
+data-link-tag-id=3D"00001418-ke8tjtnoqfl" href=3D"https://link.mizy-a.com/r=
+edirect/v2/75T2CCAS3R5UABBEXILOUEO6V7YGSD3XAG2HFYBIZO4EGR5TIICOZJ3EPKOFHBOO=
+U4XQFSLC7TRAQGLOHTMQ=3D=3D=3D=3D/v6/517916/717833">Pulse executive communit=
+y</a>.&nbsp;</em></span></span></span></span><span style=3D"font-size:11px;=
+"><span style=3D"color:#000000"><span style=3D"font-family:Arial, Helvetica=
+, sans-serif"><span style=3D"font-style:normal"><span style=3D"font-variant=
+-ligatures:normal"><span style=3D"font-variant-caps:normal"><span style=3D"=
+font-weight:400"><span style=3D"letter-spacing:normal"><span style=3D"orpha=
+ns:2"><span style=3D"text-transform:none"><span style=3D"white-space:normal=
+"><span style=3D"widows:2"><span style=3D"word-spacing:0px"><span style=3D"=
+background-color:#ffffff"><span style=3D"text-decoration-thickness:initial"=
+><span style=3D"text-decoration-style:initial"><span style=3D"text-decorati=
+on-color:initial"><font face=3D"arial, sans-serif">Your response to this su=
+rvey is voluntary. If you are asked in this survey to reveal your personal =
+information like your identity or the identity of the organization on whose=
+ behalf you are responding and do not wish to do so, please do not respond =
+to this survey. Your survey responses will be used by Pulse Q&A in accordan=
+ce with all the privacy principles listed out on our Privacy Policy at&nbsp=
+;<a data-link-tag-id=3D"00000969-g2j7trm711" data-saferedirecturl=3D"https:=
+//www.google.com/url?q=3Dhttps://home.pulse.qa/legal/privacy-policy&source=
+=3Dgmail&ust=3D1616791277977000&usg=3DAFQjCNGkpdivTHvJQGJ6f8V0hERe4Sjkuw" h=
+ref=3D"https://link.mizy-a.com/redirect/v2/NOYWIJYD7YXOEBPF6SBRU7VXIONPTJ3E=
+A7LPVJBOWKJ7BB5Y5Y5HNL2J2HBY6KYFMTA6W7FHHKJ2IIRQUX5Q=3D=3D=3D=3D/v6/517918/=
+717833" style=3D"color:#1155cc" target=3D"_blank">https://home.pulse.qa/<wb=
+r/>legal/privacy-policy</a>.&nbsp;Pulse Q&A does not want you to, and you s=
+hould not, include in your survey response any sensitive information, and a=
+ny confidential or proprietary information belonging to you or another part=
+y, as Pulse Q&A uses your survey responses as per the terms defined under o=
+ur Privacy Policy at&nbsp;<a data-link-tag-id=3D"00000970-po3zslpr41" data-=
+saferedirecturl=3D"https://www.google.com/url?q=3Dhttps://home.pulse.qa/leg=
+al/privacy-policy&source=3Dgmail&ust=3D1616791277977000&usg=3DAFQjCNGkpdivT=
+HvJQGJ6f8V0hERe4Sjkuw" href=3D"https://link.mizy-a.com/redirect/v2/LBPKSBUZ=
+7QGYHGHGH5RHLRIZJDS557UX3KLYG5KE7INWPZNT45P7JWCXYOEFXLYRW6X34QTP4JYS6GDAKIC=
+A=3D=3D=3D=3D/v6/517917/717833" style=3D"color:#1155cc" target=3D"_blank">h=
+ttps://home.pulse.qa/<wbr/>legal/privacy-policy</a>.&nbsp;</font></span></s=
+pan></span></span></span></span></span></span></span></span></span></span><=
+/span></span></span></span></span><span style=3D"font-size:11px;"><span sty=
+le=3D"color:#000000"><span style=3D"font-family:Arial, Helvetica, sans-seri=
+f"><span style=3D"font-style:normal"><span style=3D"font-variant-ligatures:=
+normal"><span style=3D"font-variant-caps:normal"><span style=3D"font-weight=
+:400"><span style=3D"letter-spacing:normal"><span style=3D"orphans:2"><span=
+ style=3D"text-transform:none"><span style=3D"white-space:normal"><span sty=
+le=3D"widows:2"><span style=3D"word-spacing:0px"><span style=3D"background-=
+color:#ffffff"><span style=3D"text-decoration-thickness:initial"><span styl=
+e=3D"text-decoration-style:initial"><span style=3D"text-decoration-color:in=
+itial"><font face=3D"arial, sans-serif">Pulse Q&A reserves the right to ter=
+minate or withdraw this survey, and your opportunity to participate in this=
+ survey, at any time. Pulse Q&A (including its affiliates) alone has the ri=
+ght to view and use the survey results.&nbsp;</font></span></span></span></=
+span></span></span></span></span></span></span></span></span></span></span>=
+</span></span></span></div><div style=3D"text-align:start; text-indent:0px;=
+ -webkit-text-stroke-width:0px"><span style=3D"font-size:11px;"><span style=
+=3D"color:#000000"><span style=3D"font-family:Arial, Helvetica, sans-serif"=
+><span style=3D"font-style:normal"><span style=3D"font-variant-ligatures:no=
+rmal"><span style=3D"font-variant-caps:normal"><span style=3D"font-weight:4=
+00"><span style=3D"letter-spacing:normal"><span style=3D"orphans:2"><span s=
+tyle=3D"text-transform:none"><span style=3D"white-space:normal"><span style=
+=3D"widows:2"><span style=3D"word-spacing:0px"><span style=3D"background-co=
+lor:#ffffff"><span style=3D"text-decoration-thickness:initial"><span style=
+=3D"text-decoration-style:initial"><span style=3D"text-decoration-color:ini=
+tial"><i><font face=3D"arial, sans-serif">You are invited to participate in=
+ this survey because&nbsp;you are a registered member on our website or bec=
+ause we have obtained your information from a public source where you have =
+submitted your contact information voluntarily.</font></i></span></span></s=
+pan></span></span></span></span></span></span></span></span></span></span><=
+/span></span></span></span></div><br/><span style=3D"font-family:arial,helv=
+etica neue,helvetica,sans-serif;font-size:14px"><a href=3D"https://link.miz=
+y-a.com/redirect/v2/N6Y7BZHS2NVOOEYPVGYPS7YEXYGEZHF7JIWKEBQ4DMEXGEBKJQMMFJK=
+5C7UAWNCPETN2U3VD5HUGWJUWR27BSJZ44HGQHDAWFJYI5XR4DRH3VEPZZAW7D5CIYBVM6DHMHF=
+BCYNTG2YNCU62253LDAIZD3TWMBNBS2FI27N4J6H4NHICD4P635L5EPOA4WVIHHJJJGLYQM3CEO=
+ZKO6DKXVF3ONB7T4HKQQRWKFPJTTDNSEIS7SQCSWBUNC4ZO7TNRSBPELDLK4ADQ=3D=3D=3D=3D=
+/v6/517919/717833">Unsubscribe</a></span></div><img alt=3D"" src=3D"https:/=
+/open.mizy-a.com/track/v1/MJSUTW5M67HHEJTINMCTF6WVU6JVIXCIS43DMWRJN66YCLBYC=
+ZJQEHS4GUNB4Q4LW7X5CVFY67DUAFPIOOW62=3D=3D=3D" height=3D"1" width=3D"10" />=
+</body></html>
+--ac18191ca3b09a441faab3baf453f8cf4a67--
+

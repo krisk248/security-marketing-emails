@@ -1,0 +1,380 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp555213wrr; Wed, 14 Jul
+ 2021 04:06:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhF4ulFKRfn7RXa/I9jo6JKhhT0t1CAu0mDEa8sKOd0pPSTxv4Fo5AHZnb+8XqoOeCvfCP
+X-Received: by 2002:a05:620a:c86:: with SMTP id
+ q6mr1114760qki.278.1626260815512; Wed, 14 Jul 2021 04:06:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626260815; cv=none; d=google.com;
+ s=arc-20160816;
+ b=lhoNDWHjbJ0p9jzlY/J4xnWYN+z3RnIw0OOEQZ+umPSzJvm42nWMf78tYlHc8Xa/y4
+ HNkzV++s86k2nVCTEIEQ3SjHd6/SpYye203YsX36UpZJwUWmbxtYEw5p9sQSv5v6O0BF
+ 8Ump9OfhYv7SDAGMIt+7qHBi/fJKEZxLQYch45tu5vUaIbQROFOLauBZi9zwBIGuCq+O
+ oqbg6v3RUmeoT9CeT4/iZTSonYTHOi3wGHrfe/jM0naFkNFnD2biWMqjPM8zRlK+9KLh
+ giLOskhJG3t3pv/lkqjzoI9zpGKfa6zikwiOpy8By8F9aCEfv07d1ZsFhfgYkEMPU8Mp o1vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:list-unsubscribe-post:content-transfer-encoding
+ :mime-version:subject:to:from:message-id:date:dkim-signature;
+ bh=hCdHvmHXepuIvaifYJ1f9uLXGVX9VhZw8Fegxupqo7M=;
+ b=hZa13PY6p1Xe9X2rXd1433jZb5U4x8bnfz5rvDrcKkuoGBlA294ioqh0MX25GAifez
+ 1UB7ZWgjfy56xQsrrXTtHOth8DgNhO4iEYIXUS9fwPWtz/t7VCNySGU3dyQp68LTSaCZ
+ DlzSqC7tXSaCM0e4/JSF4RQB6PGMsC/xtczMeY3+y8QJ0tjSCScvUEppk7bPg+0mk9So
+ aj9OJ3DrdNWq23rJf66GUY3qRtMwlfDIfNwy0Ns+b7ungH8wS1CZl+fka4Hv2hU5rQGb
+ SCLAv7Crvqsl81bNSUzlnGi9YT+pd57nSQUFcLHc95OAgtO0K8e1pYSSvfJDnglMAEpS fTfw==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@techtarget.com header.s=PPS10252018 header.b="bzp12/rm"; spf=pass
+ (google.com: domain of
+ 114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com designates
+ 206.19.49.33 as permitted sender)
+ smtp.mailfrom="114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com";
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=techtarget.com
+Return-Path: <114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com>
+Received: from chalmers.techtarget.com (mailhost9.lists.techtarget.com.
+ [206.19.49.33]) by mx.google.com with ESMTP id
+ k10si1689821qko.352.2021.07.14.04.06.55 for <arkadiy.tetelman@chime.com>;
+ Wed, 14 Jul 2021 04:06:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ 114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com designates
+ 206.19.49.33 as permitted sender) client-ip=206.19.49.33;
+Authentication-Results: mx.google.com; dkim=pass header.i=@techtarget.com
+ header.s=PPS10252018 header.b="bzp12/rm"; spf=pass (google.com: domain of
+ 114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com designates
+ 206.19.49.33 as permitted sender)
+ smtp.mailfrom="114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com";
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=techtarget.com
+Return-Path: <114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com>
+DKIM-Signature: v=1; a=rsa-sha1; d=techtarget.com; s=PPS10252018;
+ c=relaxed/relaxed; q=dns/txt; i=@techtarget.com; t=1626260815;
+ h=From:To:Subject:List-Unsubscribe:MIME-Version:Content-Type:Message-ID;
+ bh=jmG+Ya3VmMfzR5476nCWFJ2MfvU=;
+ b=bzp12/rmFFWunh8ZM04Wp7R0sQFsPz8gBqb+BG5u32nZff3YXMkorVt9mklGPTAK
+ deYdxjIwdNFr+uO+JPJ8vFlfUsiFnM9JmvfkdnoABhoE3Or1mSnKnBaqaSLKl/6q
+ 54W1L+5CxdS9secPLJ1Y6z5+NjOZm96BWgIrYZjkiU9i8iHDyzaoMGvcGlf4I79j
+ zrIymSzUxdT5NosZXZuIPhURYkPPafopfSD5kGnulD4LCYq50afLymHpde9HeDsw
+ j2tbxaL3NH8h9BllsxkRchY0fu5e2bZM9GBmflgBj5rrj6AsdzNt8F4dWbv+gfOu
+ vjb/mBMMGwIiLyPix6ZPUQ==;
+Received: from [10.200.1.7] ([10.200.1.7:41612]) by chalmers.techtarget.com
+ (envelope-from
+ <114709+2d7+2d6543-arkadiy.tetelman=chime.com@lists.techtarget.com>)
+ (ecelerity 2.2.2.35 r(26825/26848M)) with ECSTREAM id 6B/55-30721-F45CEE06;
+ Wed, 14 Jul 2021 07:06:55 -0400
+Date: Wed, 14 Jul 2021 07:06:55 -0400
+Message-ID: <6B.55.30721.F45CEE06@chalmers.techtarget.com>
+From: TechTarget <no_reply@techtarget.com>
+To: "arkadiy.tetelman@chime.com" <arkadiy.tetelman@chime.com>
+Subject: How does SAP Product Footprint Management work?
+MIME-Version: 1.0
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <https://users.techtarget.com/registration/techtarget/Unsubscribe.page?em=arkadiy.tetelman@chime.com&uid=36983911&lid=1443664&sci=7896695&smi=0>
+
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+<title>Latest Technology News &amp; Expert Advice</title>
+<meta charset=3D"UTF-8">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<!--[if mso]>
+<style type=3D"text/css">
+body, table, td {font-family: Helvetica, Arial, sans-serif !important;}
+a {color: #008bc1 !important;text-decoration: underline !important;}
+a:hover {color: #005272 !important;text-decoration:underline !important;}
+</style>
+<![endif]-->
+<style type=3D"text/css">
+body {margin:0;}
+.leftColumnContent,.rightColumnContent,.fullColumnContent{
+padding: 20px;
+}
+.headerColumnContent {
+height:45px;
+padding: 0 10px 0 20px;
+}
+.templateColumnContainerLeft {
+border-bottom: 6px solid #f2f2f2;
+border-right: 3px solid #f2f2f2;
+}
+.templateColumnContainerRight {
+border-bottom: 6px solid #f2f2f2;
+border-left: 3px solid #f2f2f2;
+}
+.templateColumnContainerFull {
+border-bottom: 6px solid #f2f2f2;
+}
+.templateColumnContainerHeader {
+}
+@media only screen and (max-width: 480px){
+.hide {
+display:none !important;
+}
+.mobile-date {display:block !important;padding-top:5px !important;}
+#templateColumns{
+width:100% !important;
+table-layout: auto !important;
+}
+.templateColumnContainerFull{
+display:block !important;
+width:100% !important;
+}
+.templateColumnContainerLeft{
+display:block !important;
+width:100% !important;
+border-right:none !important;
+}
+.templateColumnContainerRight{
+display:block !important;
+width:100% !important;
+border-left:none !important;
+}
+.templateColumnContainerHeader{
+display:block !important;
+width:100% !important;
+border-right:none !important;
+}
+.columnImage{
+height:auto !important;
+max-width:480px !important;
+width:100% !important;
+}
+.leftColumnContent{
+font-size:16px !important;
+line-height:125% !important;
+}
+.rightColumnContent{
+font-size:16px !important;
+line-height:125% !important;
+}
+.headerColumnContent {
+padding-top:10px !important;
+padding-bottom:10px !important;
+}
+}
+</style>
+</head>
+<body style=3D"margin:0;padding:0; background: #f2f2f2;font-family: Helveti=
+ca, Arial, sans-serif;" bgcolor=3D"#f2f2f2">
+<!-- HIDDEN PREHEADER TEXT -->
+<div style=3D"display: none; font-size: 1px; color: #00b3ac; line-height: 1=
+px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: =
+0px; opacity: 0; overflow: hidden; position: absolute; top: -9999px; width:=
+ 0; visibility: hidden; mso-hide: all; " class=3D"preheader">
+<span class=3D"preheader" style=3D"position: absolute; top: -9999px; color:=
+#00b3ac;">The latest news and tips on the topics you=E2=80=99re interested =
+in</span>
+</div>
+<div style=3D"height:1px; font-size:1px;"><a id=3D"ttLogoId" href=3D"https:=
+//go.techtarget.com/r/170471029/36983911/1" border=3D"0"><img src=3D"https:=
+//cdn.ttgtmedia.com/searchTechTarget/images/spacer.gif" alt=3D"TechTarget" =
+border=3D"0" width=3D"1" height=3D"1" /></a></div>
+<!-- header-->
+<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#00b3a=
+c" align=3D"center" border=3D"0" style=3D"margin:0 auto; table-layout: fixe=
+d;">
+<tr>
+<td style=3D"margin:0 auto;table-layout: fixed;"><!-- this style is only on=
+ recipe3... ?does it matter? -->
+<table width=3D"640" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=
+=3D"templateColumnContainerHeader" align=3D"center" bgcolor=3D"#00b3ac" sty=
+le=3D"margin:0 auto; table-layout: fixed;">
+<tr>
+<td align=3D"center" valign=3D"top" width=3D"100%" class=3D"templateColumnC=
+ontainerHeader">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" bgco=
+lor=3D"#00b3ac">
+<tr>
+<td class=3D"headerColumnContent" style=3D"width:80%">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td style=3D"display:inline;line-height:17px;font-family:Helvetica,arial,sa=
+ns-serif;color:#ffffff;font-size: 17px;" class=3D"mobile-block"><b>Latest T=
+echnology News &amp; Expert Advice</b></td>
+<td style=3D"display:inline-block;line-height:17px" class=3D"hide" width=3D=
+"10">&nbsp;</td>
+<td style=3D"display:inline-block;line-height:17px;background-color: #85dad=
+6;width: 1px;padding:0;" class=3D"hide" width=3D"1" height=3D"17" bgcolor=
+=3D"#85dad6"></td>
+<td style=3D"display:inline-block;line-height:17px" class=3D"hide" width=3D=
+"10">&nbsp;</td>
+<td style=3D"display:inline;line-height:17px;font-family:Helvetica,arial,sa=
+ns-serif;color:#ffffff;font-size: 12px;font-weight: 100;" class=3D"mobile-d=
+ate">July 14, 2021</td>
+</tr>
+</table>
+</td>
+<td class=3D"headerColumnContent" style=3D"width:20%">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td align=3D"right" valign=3D"middle" width=3D"10%" style=3D"line-height:45=
+px;padding-left:10px;padding-right:10px;"><a href=3D"https://go.techtarget.=
+com/r/170471030/36983911/2" border=3D"0" style=3D"color:#003bac;display:inl=
+ine-block;text-decoration:none !important"><img src=3D"https://cdn.ttgtmedi=
+a.com/welcome_nl/TechTargetLogo.png" border=3D"0" width=3D"71" height=3D"38=
+" alt=3D"TechTarget" style=3D"vertical-align:middle;"></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- end header -->
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"640" bgcolor=3D"#ffffff" id=3D"templateColumns" style=3D"margin:0 au=
+to;table-layout: fixed">
+<tr>
+<td align=3D"center" valign=3D"top" width=3D"100%" colspan=3D"2" class=3D"t=
+emplateColumnContainerFull">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td class=3D"leftColumnContent">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td style=3D"padding:0 0 6px 0;text-align:left;font-family:Helvetica,arial,=
+sans-serif;font-size:13px;font-weight:bold;color:#323232;" class=3D"mobile-=
+no-padding"><strong>Issue Highlights:</strong></td>
+</tr>
+<tr>
+<td style=3D"padding:6px 0;text-align:left;font-family:Helvetica,arial,sans=
+-serif;font-size:13px;" class=3D"mobile-toc-item"><a href=3D"https://go.tec=
+htarget.com/r/170471441/36983911/3?utm_content=3Deru-rd2-rcpF" style=3D"col=
+or:#008bc1 !important;text-align:left;text-decoration:underline;" class=3D"=
+mobile-toc-title"><font color=3D"#008bc1" style=3D"text-decoration:underlin=
+e;">How does SAP Product Footprint Management work?</font></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" width=3D"50%" class=3D"templateColumnCo=
+ntainerLeft">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td class=3D"leftColumnContent">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" valign=3D"top" styl=
+e=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;border-collapse:collapse !important">
+<tr>
+<td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-ta=
+ble-lspace:0pt;mso-table-rspace:0pt;text-align:left;font-family:Helvetica,a=
+rial,sans-serif;font-size:20px;line-height:20px;font-weight:bold;"><a href=
+=3D"https://go.techtarget.com/r/170471441/36983911/4?utm_content=3Deru-rd2-=
+rcpF" style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;colo=
+r:#008bc1 !important;text-decoration:underline !important;color:#008bc1 !im=
+portant;text-align:left;text-decoration:underline;" class=3D"mobile-title">=
+<font color=3D"#008bc1" style=3D"text-decoration:underline;">How does SAP P=
+roduct Footprint Management work?</font></a></td>
+</tr>
+<tr>
+<td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-ta=
+ble-lspace:0pt;mso-table-rspace:0pt;color:#626262;font-weight:100;font-size=
+:14px;line-height:19px;font-family:Helvetica,arial,sans-serif;text-align:le=
+ft;padding-top:10px;" class=3D"mobile-summary">SAP Product Footprint Manage=
+ment can help companies assess and manage their environmental impact. Learn=
+ about some of the software's capabilities.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align=3D"center" valign=3D"top" width=3D"50%" class=3D"templateColumnCo=
+ntainerRight">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td class=3D"rightColumnContent">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" valign=3D"top" styl=
+e=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;border-collapse:collapse !important">
+<tr>
+<td style=3D"-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-ta=
+ble-lspace:0pt;mso-table-rspace:0pt;text-align:left;font-family:Helvetica,a=
+rial,sans-serif;font-size:20px;line-height:20px;font-weight:bold;"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- footer -->
+<tr>
+<td colspan=3D"2" width=3D"100%" valign=3D"top" align=3D"center" style=3D"b=
+ackground-color:#f2f2f2;">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"15" width=3D"100%" ali=
+gn=3D"center" style=3D"border-top:1px solid #f2f2f2;" class=3D"100p">
+<tr>
+<td width=3D"80%" style=3D"text-align:left;color:#898989;font-weight:100;li=
+ne-height:1.4;font-family:Helvetica,arial, sans-serif;font-size:11px;">Bitp=
+ipe Updates is published by <a href=3D"https://go.techtarget.com/r/17047103=
+0/36983911/5" style=3D"color:#008bc1 !important;text-decoration:underline !=
+important; border:none !important;">TechTarget, Inc.</a>
+<br/>275 Grove Street, Newton, Massachusetts, 02466 US
+<br/><br/><!--UNSUBLINK_START-->Click to: <a href=3D"https://users.techtarg=
+et.com/registration/techtarget/Unsubscribe.page?em=3Darkadiy.tetelman@chime=
+.com&uid=3D36983911&lid=3D1443664&sci=3D7896695&smi=3D0" style=3D"color:#00=
+8bc1 !important;text-decoration:underline !important"><font color=3D"#008bc=
+1" style=3D"text-decoration:underline !important">Unsubscribe</font></a>
+<!--UNSUBLINK_END-->
+<br/><br/>You are receiving this email because you are a member of TechTarg=
+et. When you access content from this email,
+your information may be shared with the sponsors or future sponsors of that=
+ content and with our Partners,
+see up-to-date <a href=3D"https://go.techtarget.com/r/170471041/36983911/6"=
+ style=3D"color:#008bc1 !important;text-decoration:underline !important; bo=
+rder:none !important;">Partners List</a> below, as described in our <a href=
+=3D"https://go.techtarget.com/r/170471042/36983911/7" id=3D"privacypolicyli=
+nk" style=3D"color:#008bc1 !important;text-decoration:underline !important;=
+"><font color=3D"#008bc1" style=3D"text-decoration:underline !important;">P=
+rivacy Policy</font></a>.
+For additional assistance, please contact: <a href=3D"mailto:webmaster@tech=
+target.com" style=3D"color:#008bc1 !important;text-decoration:underline !im=
+portant;"><font color=3D"#008bc1" style=3D"color:#008bc1 !important; text-d=
+ecoration:underline !important;">webmaster@techtarget.com</font></a>
+<br/><br/>&copy; 2021 TechTarget, Inc. all rights reserved. Designated trad=
+emarks, brands, logos and service marks are the property of their respectiv=
+e owners.
+<br/><br/><a href=3D"https://go.techtarget.com/r/170471042/36983911/8" id=
+=3D"privacypolicylink" style=3D"color:#008bc1 !important;text-decoration:un=
+derline !important;"><font color=3D"#008bc1" style=3D"text-decoration:under=
+line !important;">Privacy Policy</font></a> | <a href=3D"https://go.techtar=
+get.com/r/170471041/36983911/9" style=3D"color:#008bc1 !important;text-deco=
+ration:underline !important; border:none !important;">Partners List</a>
+</td>
+<td align=3D"right" valign=3D"top" width=3D"20%" style=3D"padding-left:10px=
+;color:#008bc1 !important;"><a href=3D"https://go.techtarget.com/r/17047103=
+0/36983911/10" style=3D"color:#008bc1 !important;text-decoration:underline =
+!important; border:none !important;"><font color=3D"#008bc1" style=3D"color=
+:#008bc1 !important"><img src=3D"https://cdn.ttgtmedia.com/digitalguide/ima=
+ges/Misc/techtarget_logo_transparent_173x91.png" width=3D"86" height=3D"45"=
+ border=3D"0" alt=3D"TechTarget"></font></a></td>
+</tr>
+</table>
+<!--250OK_START--><style> @media print{ #_two50 { background-image:url('htt=
+p://250analytics.techtarget.com/ea/scsC0vfEyj/?t=3Dp&e=3D36983911&c=3D78966=
+95&promo_type=3DERU'); } } blockquote #_two50, #mailContainerBody #_two50,
+div.OutlookMessageHeader, table.moz-email-headers-table {
+background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=
+=3Df&e=3D36983911&c=3D7896695&promo_type=3DERU'); }</style><div id=3D'_two5=
+0'></div><img id=3D'_two50_img' src=3D'http://250analytics.techtarget.com/e=
+a/scsC0vfEyj/?e=3D36983911&c=3D7896695&promo_type=3DERU' width=3D'1' height=
+=3D'1' style=3D'margin:0
+!important; padding:0 !important; border:0 !important; height:1px !importan=
+t; width:1px !important;'/><!--250OK_END--> </td>
+</tr>
+</table>
+<skipWrap>
+<img src=3D"https://go.techtarget.com/clear.jpg?g=3D3223095" width=3D"1" he=
+ight=3D"1"/></body>
+</skipWrap>
+</html>

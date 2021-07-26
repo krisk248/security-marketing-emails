@@ -1,0 +1,178 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp2046966wrr; Tue, 6 Jul
+ 2021 07:03:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcmoJH1NUUPF2b+d2sjZb0l46auemj0oZliCQIGZ6hgGCi6ZISudaJvkCHm5WYgjwbsW4v
+X-Received: by 2002:a17:902:bb91:b029:129:62d6:dee3 with SMTP id
+ m17-20020a170902bb91b029012962d6dee3mr15461530pls.31.1625580179922; Tue, 06
+ Jul 2021 07:02:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625580179; cv=none; d=google.com;
+ s=arc-20160816;
+ b=P9t9uEHjd0VMWWm4HVoEHgc3GWsy7yVwJshcJyXBIwnOROmyH6CSaI8aI0ScPN0MXL
+ KOS8TwBISNJIMn8hAp8napNN2HRXUj0NqLjzv8VELZGIDaNOyTGOOAeDTkezQY5yuXXX
+ VM5VwXHseazohiZO8ja8FUEfI4MymQXXAiylhkLjPgQ943elDbFhiC0e/W3lnErOD815
+ PafSsUCrmr4hBzGE0HxD59yV4D/jaPWe8mhBnMye94bE8GIbspBz5Fu3lc89110L3eaa
+ +KbZYkbzgOqz0E2jBK7pgW5Qrn+grmd30re++WP7cfBr2xRWYvyLXb9fX9B6waXjyJG9 a32A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=+ArMTsbZnUWh7KtG3T6kBjGIrO0T284duVQylgMon+0=;
+ b=CULVKIzULDfqepRDRz/AYEY7ca6GuAgYZFST7v7pOcAe2Aprs+vX06TNpZOpRZ+6je
+ U9wUussMynmW7I0q20Mg5k4A7sTExjSd31Loo5WzIgYRvGvPGKUHWA82+qDDi0gjagzQ
+ xXZYOSPM08FWWjF41dXXC4TybLmf8Zgu3Sh2DpZ50miDcXukicyPb7dHT33sGakQmbrG
+ ooBIjLo81G8Zh/I5o/ZkAxOb340m+8gmhbxkN2YaIh5nKVnM6SnhRtHpTpSANhgGuof/
+ qIwYsORpP7SQzVKXPRDLbYkzoQgrhhRtN2ziHwrACDr8TiCt4pf8FWKU0U2xB4X5cZSx datQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=pOJJ9YD4;
+ spf=pass (google.com: domain of
+ njanbcu-3z0vp3-wg3sa0-lap58g-ljz2l8-h-m2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ r8si19689316pgg.395.2021.07.06.07.02.58 for <arkadiy.tetelman@chime.com>;
+ Tue, 06 Jul 2021 07:02:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ njanbcu-3z0vp3-wg3sa0-lap58g-ljz2l8-h-m2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=pOJJ9YD4;
+ spf=pass (google.com: domain of
+ njanbcu-3z0vp3-wg3sa0-lap58g-ljz2l8-h-m2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625580177;
+ h=From; bh=AgPbUKjiP/BbpKiD/w/xrrxY6eY=;
+ b=pOJJ9YD4dtf8yU/rpBdiWEQNos6X2K5E8b0AhqRcQmK43mFs+TWPztn9zh72CSYE
+ kgpV/vXHy32WvsHjQ7DEkRfmF56rcj8yNU258Cl7FbsTamV0W2n7ZOhzC/DmSrop
+ +XM6N7cy6cJr3LNF9Dg903n/OpdAm+Fk/sFHanXYJOQ=;
+Received: from [127.0.0.1] ([127.0.0.1:49719]) by bm1-23.bo3.e-dialog.com
+ (envelope-from
+ <NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 23/DE-09868-19264E06; Tue, 06
+ Jul 2021 10:02:57 -0400
+Date: Tue, 06 Jul 2021 10:02:57 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.2R7PYD.11856806@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: Why ransomware attacks are escalating
+Message-Id: <12809-483-NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@e-dialog.com>
+X-Mail-From: NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/NJANBCU/WG3SA0/LAP58G/LJZ2L8/15/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856806
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169089170/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856806&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856806&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856806&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169089015/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">Why ransomware attacks are escalating</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169089015/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">According to the <i>New York Times&rsquo; 2020 Cyberthreat Defense Report</i>, <b>ransomware attacks have escalated in magnitude, frequency and severity - using newer, more complex techniques, like file exfiltration</b>.<br /><br />The following article explains:<br /></font></font>
+<ul>
+<li><font size="2"><font face="arial, trebuchet, verdana">Why ransomware attacks are escalating</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">What organizations can learn from previous schemes</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">How a comprehensive security strategy can reduce the exposure</font></font></li>
+</ul>
+<font size="2"><font face="arial, trebuchet, verdana">Read on for the full article.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/NJANBCU/WG3SA0/LAP58G/LJZ2L8/15/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169089172/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169089173/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169089173/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169089172/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[NJANBCU-3Z0VP3-WG3SA0-LAP58G-LJZ2L8-H-M2-20210706-8f6faa620f43ae]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/NJANBCU/WG3SA0/LAP58G/LJZ2L8/X8JJ/52"></body></html>
+
+

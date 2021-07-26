@@ -1,0 +1,172 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp583641wrr; Thu, 8 Jul
+ 2021 05:03:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUzgKpkXjKRzFJyAgkgxsXP1meiQ+CFSTPcULFsJAG8DDdsgGKaeEZO4tuQ+ssMDrVsJLB
+X-Received: by 2002:a17:902:b692:b029:11a:fae3:ba7f with SMTP id
+ c18-20020a170902b692b029011afae3ba7fmr25675163pls.22.1625745793648; Thu, 08
+ Jul 2021 05:03:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625745793; cv=none; d=google.com;
+ s=arc-20160816;
+ b=U/94ZG8ME5cLjbPuQOVcsBtiNdw6TRYiiFY+E38/4n4fZA4+1bHDlO7HnBpNxuj14/
+ xrz/Dr6kQ7c1sU7Tyj7LO8a5LKQRJDlylXUY9BwDiLJ3D3GDOoMGjHtZDbIRAAuTigGc
+ aDFAYh7wZcO/tdbVa81IuUxkecS/zOPWhtV/CSM6nGStxig1KbxT4RitmqRvJzWPb+ab
+ i9LAdTmr5DELB10alGn/4vCSI5cXIZLGI3upPDm8WambzJldHk32VfWd4pNJKFPEAuCj
+ nBncuNZFoiFoOheZpgiXCS6rvJg0kercz1v65TUEikOPLCIDOXkRrcoYWrsqqHKzTnm+ EUtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=nqiTHMWgW4QZ5N/aWW9nUKPvDZ7nmHWsdPwopi6GXVg=;
+ b=KzLSYp59PtahsAvoDCrVxvM2TfiEP55RYMm0mpERMtRaa+NE/Xu2uPMH4eKVzSPJkP
+ o1N9+f5nWeHjrP6rP2x65qXm6ITPamy7ceMF2mJjIPBd/YI5tXSW92XNscDZmFlpqMgJ
+ u3x7yZeXEgRtEXjle5MCy0lpfuMpKbyax0jAPa4JSEm9/qP579Zfw5h1ojklKfx79fIj
+ /K/alD29Jq5sOhAkF/vZvFp3m2t3F5+EA8FbsBRH1pViQuIfV4kfl60sIDv7S20gzRSd
+ eLMXaJuj8LCOYeYC9sgYNmvDQpTSuwSHfdC43Nz+n93a9kwT7V/wCVAM6S1YaaTgSKGe c7fw==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=ESAxfyyy;
+ spf=pass (google.com: domain of
+ gd8e3hs-w6tb93-1ctpy8-wi0s5m-tldxnr-h-m2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ p15si3427364plw.348.2021.07.08.05.03.12 for <arkadiy.tetelman@chime.com>;
+ Thu, 08 Jul 2021 05:03:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ gd8e3hs-w6tb93-1ctpy8-wi0s5m-tldxnr-h-m2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=ESAxfyyy;
+ spf=pass (google.com: domain of
+ gd8e3hs-w6tb93-1ctpy8-wi0s5m-tldxnr-h-m2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625745791;
+ h=From; bh=zYt1vKkoL0geJm2F/jlbFlQVaAA=;
+ b=ESAxfyyyOicMYkCCY07NXXkPMkuBfu+udlM4Uk1ENT+sAQLFp3cgLqweKnxqHw7S
+ uL76b82krjmLLjDmhMNThjMuF+WzouO7r4Os5r+2t05gPpAXB4CJHzvdbd/jkuwU
+ jbwXZ1POJfIpcq2nriZrvFtUXDoip13rLu3kzXXLGY4=;
+Received: from [127.0.0.1] ([127.0.0.1:45984]) by bm1-23.bo3.e-dialog.com
+ (envelope-from
+ <GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id E2/64-09868-F79E6E06; Thu, 08
+ Jul 2021 08:03:11 -0400
+Date: Thu, 08 Jul 2021 08:03:11 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.GOJ2L1.11856813@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: WHY YOU NEED MORE THAN A BASIC AUDIO DEVICE FOR YOUR MEETING ROOMS
+Message-Id: <24852-517-GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@e-dialog.com>
+X-Mail-From: GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/GD8E3HS/1CTPY8/WI0S5M/TLDXNR/H3/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856813
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169460847/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856813&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856813&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856813&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169460532/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">WHY YOU NEED MORE THAN A BASIC AUDIO DEVICE FOR YOUR MEETING ROOMS</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169460532/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">81% of IT decision makers say audio has the biggest impact on improving the quality of virtual meetings. Why? Because poor sound causes fatigue, increases distraction and reduces comprehension.<br /><br />View this article by Shure to get an in-depth look at audio solutions to keep your employees engaged and focused during virtual meetings.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/GD8E3HS/1CTPY8/WI0S5M/TLDXNR/H3/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169460849/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169460850/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169460850/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169460849/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[GD8E3HS-W6TB93-1CTPY8-WI0S5M-TLDXNR-H-M2-20210708-d3c1fc4786f0f3]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/GD8E3HS/1CTPY8/WI0S5M/TLDXNR/JS75/52"></body></html>
+
+

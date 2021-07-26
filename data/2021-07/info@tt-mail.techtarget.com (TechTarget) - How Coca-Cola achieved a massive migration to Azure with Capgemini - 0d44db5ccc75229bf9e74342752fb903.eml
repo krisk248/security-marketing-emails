@@ -1,0 +1,172 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp684405wrr; Thu, 15 Jul
+ 2021 05:03:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxs//IkQxytm6VBjGP3R4E8EfMzdpsg727/375VZ6XkyAoBswGxZDQvfxhJXhpMWnyMrtAV
+X-Received: by 2002:a17:90a:9b89:: with SMTP id
+ g9mr9693926pjp.200.1626350597158; Thu, 15 Jul 2021 05:03:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626350597; cv=none; d=google.com;
+ s=arc-20160816;
+ b=exyadJHMX6gSyJSWM+7AFxhG7x9UEM4m7DoLwLTDkAVqtOnVWguHKIdAz0Tp3Qml4C
+ Zrzdqgs+hzAK4zb5mDoJmJgrqBcmei4IZiGGPcm5TeboLz81qX+FmLod8+c6oxz+kwTC
+ LQYMUNKnLjr5KchzsCbCBCCBjUWVZ0spsl8XRUhUucN0P90flSsDbCMxuss3p3eNsdAs
+ 6gMArh+w+qouJN0/Bqi3QD5jmUaKsb00rx/SHoHvZFkg0nj+TR99rRfzyvZ18IuUmRpM
+ 6B1Ocphr+VbbnGxgw9I6iMQtD4Wgsx/vooYpQy5bjdOQponbZVNyM5b1QW/96KBdjXFK KLZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=xf97VlFwF+xY5ZUkBTem5fqsmh0UrX2hXFNbgGUhGG8=;
+ b=o/JFA9pY9gHyqCynOeNWRQF6NptaKy0F4yGWeUQhQLp5hfptf9XvFrMEpqe2YQ3GqG
+ 7Gg2K+zhu3C+piecqIW10F9s88pcklW05zVpv4u8mUOSAn48s0p7JphttFb0pNyyNsmA
+ JYi47H5FcosEkt6m7PUadqXcwSOKMtaipJ2nx/9eRdbDfM7kQJt0GjUmAQrtGhRVu6Fm
+ 6e2IGOj/CFxT0odo2q0Y/hY8nqzveBZJw9sVzB9+jhzytQiPhq6nzIiP3OJF3gAYKJP5
+ +rO4SlszffD9sItWPY6BhcVKAUWLuuCCUWnD0P5gREYE5uVC5byjX75au76pcb8Yy+dN StbA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=n0MUIucE;
+ spf=pass (google.com: domain of
+ b5lxspy-w6tq2m-32bhbu-n71wo6-z6ssnj-h-m2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ 9si7434224pgm.436.2021.07.15.05.03.15 for <arkadiy.tetelman@chime.com>; Thu,
+ 15 Jul 2021 05:03:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ b5lxspy-w6tq2m-32bhbu-n71wo6-z6ssnj-h-m2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=n0MUIucE;
+ spf=pass (google.com: domain of
+ b5lxspy-w6tq2m-32bhbu-n71wo6-z6ssnj-h-m2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1626350592;
+ h=From; bh=RbLgB06mbVUKouN0gQJ+XFaAlXs=;
+ b=n0MUIucEKC1DLC2EgriYCQOSbsyH8ljqwWG8n0TmdABQ9rOMuO81hQqd7v7lctIN
+ Q5CojM8zJCKDXkMV2snTKh96XHfFYeQRUIwHP1/OIwOCdL6EHaTMi3F6e8QBjb19
+ 2m+RbIV2j6Fj7NQe2zBiKS9wGSS95mZ3YV+jXeoxHzE=;
+Received: from [127.0.0.1] ([127.0.0.1:55932]) by bm1-22.bo3.e-dialog.com
+ (envelope-from
+ <B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 2E/78-17864-00420F06; Thu, 15
+ Jul 2021 08:03:12 -0400
+Date: Thu, 15 Jul 2021 08:03:12 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.N71WO6.11884768@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: How Coca-Cola achieved a massive migration to Azure with Capgemini
+Message-Id: <20490-300-B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@e-dialog.com>
+X-Mail-From: B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/B5LXSPY/32BHBU/N71WO6/Z6SSNJ/PG/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11884768
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/170536805/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11884768&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11884768&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11884768&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/170535031/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">How Coca-Cola achieved a massive migration to Azure with Capgemini</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/170535031/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Coke One North America (CONA) provides each of the 12 largest Coca-Cola Company&rsquo;s bottling partners with the tools they need to collaborate smoothly.<br /><br />When the organization wanted to move to a new cloud foundation to support their existing SAP HANA applications, CONA chose to migrate to Microsoft Azure, with the help of Capgemini.<br /><br />See how CONA was able to achieve better cost savings and performance by moving to Azure in 
+this case study.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/B5LXSPY/32BHBU/N71WO6/Z6SSNJ/PG/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/170536807/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/170536808/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/170536808/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/170536807/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[B5LXSPY-W6TQ2M-32BHBU-N71WO6-Z6SSNJ-H-M2-20210715-9d5e0623cf5e84]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/B5LXSPY/32BHBU/N71WO6/Z6SSNJ/948Z/52"></body></html>
+
+

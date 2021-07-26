@@ -1,0 +1,168 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp4866273wrr; Mon, 19
+ Jul 2021 15:00:14 -0700 (PDT)
+X-Received: by 2002:a17:906:32d8:: with SMTP id
+ k24mr29178749ejk.422.1626732014067; Mon, 19 Jul 2021 15:00:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626732014; cv=none; d=google.com;
+ s=arc-20160816;
+ b=GzE0ZOmY1/iOgT7RXDmwiEclKCy72SAgvnMCqV1uFoTRoxl6wPRROJnb+lw7lwo5YR
+ 3wX+ho/YVBqzr2mDGmEH1//pQMzwhIOixKfHv3O1uLxKJ2AQxHTZJwE/PB4tm7R+QWtk
+ IVv8A4oEDqK95Wz6mmrY9grErRVSeT6JOsJCPHdwODJVI8/o0zvqP981RIaw7eDhLrT7
+ T209xwRdl2dbu0nzgz1q86Sa7CIHOoR9YqU5yznSTtjG67LvY9xjdeLmiA5t+KmifBXv
+ pbLjIypzVmhdUSZ3zIQxTZkHTHvOe318V1uGgrZ0tu5qocAoKm7MSijbGHRph+W/WxAx jeQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:trackid:mime-version:from:dkim-signature;
+ bh=Ldlwwdl8PS5szYUABy39rjJNr7YkW/yMSa2N7CQI5YY=;
+ b=m1la/SvB+aBD/lO8FCt1/FE4VEN5lG25mpG4w8Mf9Vvw0sb6GPv79e7hnpOlAPEIR+
+ TMLJr5UqyMpKYSRsNGhv3sOLa6LxpVCQQ5KSxJqdLtCFIcs3RtXqWDacIB1w9l7a3Nsp
+ llZisYsG9d7xhQXiMxaME+VnT0mGWJkGQ7I4LYUjuMy4a8s4AV+mKUxUaTBm7Z/B2uuc
+ a5ROkm9MXkdgrfMZSUXPAiB2ReOL0IzC4OFr4nfACnILFtkYLFYl6SJVjDEUotp3PrZc
+ f3zZyNfBOPIauKPi5l6G+y56+LCQimq7XOu2/EVVTRVXJHuHvruWuKDukUJRJKmrrTvO gRRg==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@banyansecurity.io header.s=google header.b=QQCEiWGo; spf=pass
+ (google.com: domain of peter@banyansecurity.io designates 209.85.220.41 as
+ permitted sender) smtp.mailfrom=peter@banyansecurity.io; dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=banyansecurity.io
+Return-Path: <peter@banyansecurity.io>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ g9sor10257593ejk.22.2021.07.19.15.00.14 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Mon, 19 Jul 2021 15:00:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter@banyansecurity.io designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass header.i=@banyansecurity.io
+ header.s=google header.b=QQCEiWGo; spf=pass (google.com: domain of
+ peter@banyansecurity.io designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=peter@banyansecurity.io; dmarc=pass (p=REJECT sp=REJECT
+ dis=NONE) header.from=banyansecurity.io
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=banyansecurity.io;
+ s=google; h=from:mime-version:trackid:date:message-id:subject:to;
+ bh=Ldlwwdl8PS5szYUABy39rjJNr7YkW/yMSa2N7CQI5YY=;
+ b=QQCEiWGojMP84vfBtmVp0LS9E+FARIy1ZxiqUuQNNCFNpGsbWMM20tg4udvOt92sz9
+ iLZYM5D3XyCd2Nl+3J0yjTAsQ9uw46rbWkOfQjuDrzUlCzM6EH6RJqrHNVZnXYnrgrDr
+ tRaAsH8w49hgERlcvMfidHzHaOF4/ArkupRPw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025; h=x-gm-message-state:from:mime-version:trackid:date:message-id
+ :subject:to; bh=Ldlwwdl8PS5szYUABy39rjJNr7YkW/yMSa2N7CQI5YY=;
+ b=CRJhq5Exk3jHg7NOeVj3OJsZHcA78TJ4RNNvCVK6rLWXYvqSzXwi+tZ2oOLqWQc0F1
+ 9bZZxuqy2lCBsU0s0RaxJ0IpN3H964aAG2ua784HrIHLBNFXz/dkrOZv+nIEN2FdYquR
+ K2v8d5pdtti4n0cDvhzGsh2yhC5KUH9js7lPSTY8jE5Kikr7plDIxkwpgVwIhDwyyRok
+ HBqDC6rzzGZnQNjVs5oHad//UOH77lJNasndxwP6BlpYYs81GBw98d/URqZ8lwFB6JDt
+ iK800eRDZ+z0Nlnal3+ZZXOXZRcpyBSs+AOPV/Uq7Z8vg/x5UpJZKDdGU+d7OgF2/liB Ub6Q==
+X-Gm-Message-State: AOAM531LDRqm3JkH6zuQjSGhBcaVSB6Wj3mfncfnzA6dc0ZDrALNgSEk
+ eMNQRzkp99HwHLJtZEHKbwp6G4HDvgM8ZGK1CXlhIFKuZu4=
+X-Google-Smtp-Source: ABdhPJwUPcYSHqMEkfnkxBGN4zm7MiO4TSad6ImO0leqBwMEIK0/ikhFYMAFwuMhSTQQ6tR22hbQizUVorav9RgNv4E=
+X-Received: by 2002:a17:907:3f21:: with SMTP id
+ hq33mr20798230ejc.271.1626732013250; Mon, 19 Jul 2021 15:00:13 -0700 (PDT)
+Received: from 916584037700 named unknown by gmailapi.google.com with
+ HTTPREST; Mon, 19 Jul 2021 15:00:12 -0700
+From: "Peter@banyansecurity.io" <Peter@banyansecurity.io>
+MIME-Version: 1.0
+trackid: B1156878BC569EFC50445DEA59B752B09D4E640C9446E914EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC4145C720BDF1B4754FC8846B94E90387A082453E50A8642378A2C9D3016A53FBA9EBB9D3FB3F45A85CA4D70B1DEF86A04A70
+Date: Mon, 19 Jul 2021 15:00:12 -0700
+Message-ID: <CAD_dLJ6EAmwkUevUpj28FwtQNPHzVvNDYh+cPKyf4pv5QqKGAQ@mail.gmail.com>
+Subject: When would be best Arkadiy?
+To: arkadiy.tetelman@chime.com
+Content-Type: multipart/alternative; boundary="000000000000cb7f9f05c7810fcc"
+
+
+--000000000000cb7f9f05c7810fcc
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<484324B102BFF41381A6D57D0B60FEB8A0CA7821AFFCA4E21C75B7F3CC2C9BDF9F7A554527=
+62BF73>
+Arkadiy,
+
+I am reaching out to coordinate some time for a discussion about the below
+topics.
+
+Kindly let me know when would be best to speak or if I should be reaching
+out to someone else?
+
+*How Banyan Security
+<https://na50.clclient.com/emailservices/lt?clet=3DB1156878BC569EFC50445DEA=
+59B752B09D4E640C9446E914EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC4145C720BDF1B4754F=
+C8846B94E90387A082453E50A8642378A2C9D3016A53FBA9EBB9D3FB3F45A85CA4D70B1DEF8=
+6A04A70&lid=3D4845>
+can
+help:*
+
+~Secure Remote Access Made Simple
+~User-to-Application Segmentation
+~Trust Based Access Control
+~Continuous Authorization
+~Device Trust Scoring
+~Any User, Any Device, Any App, Any Infrastructure
+
+
+Here is a 1 min and 42 second video overview for additional context as
+well: https://vimeo.com/374583143
+<https://na50.clclient.com/emailservices/lt?clet=3DB1156878BC569EFC50445DEA=
+59B752B09D4E640C9446E914EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC4145C720BDF1B4754F=
+C8846B94E90387A082453E50A8642378A2C9D3016A53FBA9EBB9D3FB3F45A85CA4D70B1DEF8=
+6A04A70&lid=3D4846>
+
+Looking forward to our conversation.
+
+Securely,
+Peter Economos
+Sales Development Team
+Banyan Security
+650.521.1691
+www.BanyanSecurity.io
+
+If you'd like me to stop sending you emails, please click here
+<https://na50.clclient.com/emailservices/oo?clet=3DB1156878BC569EFC50445DEA=
+59B752B09D4E640C9446E914EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A=
+6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC4145C720BDF1B4754F=
+C8846B94E90387A082453E50A8642378A2C9D3016A53FBA9EBB9D3FB3F45A85CA4D70B1DEF8=
+6A04A70>
+
+--000000000000cb7f9f05c7810fcc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<span id=3D"cl-email-uid#@@#484324B102BFF41381A6D57D0B60FEB8A0CA7821AFFCA4E=
+21C75B7F3CC2C9BDF9F7A55452762BF73#@@#idend" style=3D"display:none"><a href=
+=3D"484324B102BFF41381A6D57D0B60FEB8A0CA7821AFFCA4E21C75B7F3CC2C9BDF9F7A554=
+52762BF73"></a></span><span style=3D"font-family:Arial,sans-serif;font-size=
+:14px"><span style=3D"font-family:Arial,Helvetica,sans-serif"><span style=
+=3D"font-size:12px">Arkadiy,<br><br>I am reaching out to coordinate some ti=
+me for a discussion about the below topics.=C2=A0<br><br>Kindly let me know=
+ when would be best to speak or if I should be reaching out to someone else=
+?<br><br><em>How <a href=3D"https://na50.clclient.com/emailservices/lt?clet=
+=3DB1156878BC569EFC50445DEA59B752B09D4E640C9446E914EDED7AC4143C8F20A5A9286D=
+801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C80BEB404729D43D=
+3271E8BBC4145C720BDF1B4754FC8846B94E90387A082453E50A8642378A2C9D3016A53FBA9=
+EBB9D3FB3F45A85CA4D70B1DEF86A04A70&amp;lid=3D4845">Banyan Security</a>=C2=
+=A0can help:</em><br><br>~Secure Remote Access Made Simple<br>~User-to-Appl=
+ication Segmentation<br>~Trust Based Access Control<br>~Continuous Authoriz=
+ation<br>~Device Trust Scoring<br>~Any User, Any Device, Any App, Any Infra=
+structure<br><br><br>Here is a 1 min and 42 second video overview for addit=
+ional context as well: <a href=3D"https://na50.clclient.com/emailservices/l=
+t?clet=3DB1156878BC569EFC50445DEA59B752B09D4E640C9446E914EDED7AC4143C8F20A5=
+A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6DD68455B0F6C80BEB4047=
+29D43D3271E8BBC4145C720BDF1B4754FC8846B94E90387A082453E50A8642378A2C9D3016A=
+53FBA9EBB9D3FB3F45A85CA4D70B1DEF86A04A70&amp;lid=3D4846">https://vimeo.com/=
+374583143</a><br><br>Looking forward to our conversation.<br><br>Securely,<=
+/span></span></span>=C2=A0<br><span style=3D"font-family:Arial,sans-serif;f=
+ont-size:14px"><span style=3D"font-family:Arial,sans-serif;font-size:14px">=
+Peter Economos<br>Sales Development Team<br>Banyan Security<br>650.521.1691=
+<br><a href=3D"http://www.BanyanSecurity.io">www.BanyanSecurity.io</a></spa=
+n> </span><br><br><p><font size=3D"2" color=3D"#AABBCC">If you&#39;d like m=
+e to stop sending you emails, please click <a href=3D"https://na50.clclient=
+.com/emailservices/oo?clet=3DB1156878BC569EFC50445DEA59B752B09D4E640C9446E9=
+14EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A6B41F421AF07C3B14DEE6D=
+D68455B0F6C80BEB404729D43D3271E8BBC4145C720BDF1B4754FC8846B94E90387A082453E=
+50A8642378A2C9D3016A53FBA9EBB9D3FB3F45A85CA4D70B1DEF86A04A70">here</a></fon=
+t></p><br><img style=3D"display:none;width:1px;height:1px;" src=3D"https://=
+na50.clclient.com/emailservices/et?clet=3DB1156878BC569EFC50445DEA59B752B09=
+D4E640C9446E914EDED7AC4143C8F20A5A9286D801933126943160C4270474C50A6B41F421A=
+F07C3B14DEE6DD68455B0F6C80BEB404729D43D3271E8BBC4145C720BDF1B4754FC8846B94E=
+90387A082453E50A8642378A2C9D3016A53FBA9EBB9D3FB3F45A85CA4D70B1DEF86A04A70">
+
+--000000000000cb7f9f05c7810fcc--

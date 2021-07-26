@@ -1,0 +1,171 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp556254wrr; Thu, 22 Jul
+ 2021 07:03:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfzTQZjDpxJF+4dmhnsAsuyKDhNiuHdcr82fY3zjOYh0YugY/F4AgmHxEHWAp15B6Lye1Y
+X-Received: by 2002:a63:1960:: with SMTP id 32mr178731pgz.86.1626962581098;
+ Thu, 22 Jul 2021 07:03:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626962581; cv=none; d=google.com;
+ s=arc-20160816;
+ b=XOLCItvB/Xq3tMH0T2YL7kGHhXb5Pt5N0IGSAorUQBzz31Y3Wrez/B0b3X/XGuI0vM
+ FN59m9lhaNvjZ5cCS51SgF40uzKYFZFKIia2G9QMxZwkbol64/Kh4Q5ykSrQRVE7GkyW
+ GfuKkkwcbShwjbtUeFZwmqZxPWkbn2J2bqMcuDfadmj27Y8+OZ6rL+EcpDitG2519a5G
+ sgovBui8LQMipHRGlEoIkQJTRPvDkeZlvoM4eLwa9e8gKqbWJZlb4lLVXyXnOxwTyYdz
+ dshfkbRH/7h4gYBd3VlIVz+i7VZJ3bQlz8VPAs2EsSd5KCe+h/lyIgmbkjgLlFDFM/s9 YzoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=eONBIhDllLvnOpe8sagRm5GpNmW362DCtEAA7+FrqLA=;
+ b=j+EX3N3IBB6+gOyfFNUG0+MJKqE7JLk06KibQwmYJrB97nDgeg7SsUaayEaUjQQAHM
+ wUad3M1nfRwGCfhgzAxVfwr5HFT6kHhhNHbFYGNhb6+cF6ZwqWW7Jc3WeUBWYnZEW90x
+ XUTa/HvoiiTw4Y7EWYt8I9AyisXChWOCbTfWwEr6kcCnMa2xDBtlW+r1mGS4XAHO3Plv
+ Grv8z6TcXQv+ayThHTQAp0jH+DGsodGKvsXPb6eJTcmPTS7P7GAprN9ilb3pfpI4gRIg
+ g6E3jZdqrGMhewaApwwxnLkbbmZAdOi+0za0wSGP5qzHPFHUuZMqoBS7XnklQbHAF/vz QwcQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=A0YZgKdi;
+ spf=pass (google.com: domain of
+ 5vfzds5-zc88i5-kjdif2-icfzht-wbe9ww-h-m2-20210722-eba604853099c4@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ f25si31853182pgv.449.2021.07.22.07.02.59 for <arkadiy.tetelman@chime.com>;
+ Thu, 22 Jul 2021 07:03:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ 5vfzds5-zc88i5-kjdif2-icfzht-wbe9ww-h-m2-20210722-eba604853099c4@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=A0YZgKdi;
+ spf=pass (google.com: domain of
+ 5vfzds5-zc88i5-kjdif2-icfzht-wbe9ww-h-m2-20210722-eba604853099c4@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1626962579;
+ h=From; bh=K6uSFi5jga+eZUTFChVcZuRMrn4=;
+ b=A0YZgKdihzM2nwXDJD2Re5/BOR5mgEla1EdvoYFAwSa+ZlKODl2w09tpFHmuGaLk
+ 46sQxKafT3NAGWgBMot7A2x2ZbCoI/NSt5JbvRXoCASos4/hMhkui3z9K4GfjoVo
+ 3j1SukJdmWejkFqvsKPWmVubyJmZ564q5xOenjMOcJA=;
+Received: from [127.0.0.1] ([127.0.0.1:36492]) by bm1-22.bo3.e-dialog.com
+ (envelope-from
+ <5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 70/58-17647-39A79F06; Thu, 22
+ Jul 2021 10:02:59 -0400
+Date: Thu, 22 Jul 2021 10:02:59 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.Z92FXW.11901938@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: Finding success with succession planning
+Message-Id: <29912-614-5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@e-dialog.com>
+X-Mail-From: 5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/5VFZDS5/KJDIF2/ICFZHT/WBE9WW/OB/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11901938
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/171486579/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11901938&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11901938&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11901938&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/171486194/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">Finding success with succession planning</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/171486194/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">Succession planning is an essential part of any small, medium, or growing business&rsquo; employee development strategy.<br /><br />It can help ensure you have the right people in the right roles - whether it&rsquo;s for a planned or unexpected vacancy.<br /><br />Get started with succession planning today when you download this ebook.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/5VFZDS5/KJDIF2/ICFZHT/WBE9WW/OB/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/171486580/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/171486581/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/171486581/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/171486580/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[5VFZDS5-ZC88I5-KJDIF2-ICFZHT-WBE9WW-H-M2-20210722-eba604853099c4]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/5VFZDS5/KJDIF2/ICFZHT/WBE9WW/BXOY/52"></body></html>
+
+

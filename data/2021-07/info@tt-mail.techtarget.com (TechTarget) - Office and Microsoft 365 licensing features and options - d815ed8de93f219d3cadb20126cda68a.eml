@@ -1,0 +1,177 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp824844wrr; Fri, 9 Jul
+ 2021 09:03:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXrOfROVy4rmzVNcy1YJoeYo1wRlw5XrYBE4Ljd6azl/9ZrpST8GmMC+66W//y59cbKcI4
+X-Received: by 2002:a62:148a:0:b029:30f:be14:3b35 with SMTP id
+ 132-20020a62148a0000b029030fbe143b35mr38265237pfu.23.1625846586689; Fri, 09
+ Jul 2021 09:03:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625846586; cv=none; d=google.com;
+ s=arc-20160816;
+ b=ZXQbbNiUSjfQO4LSl6+QFx8VSRoV8+l4nvZbKVFWiJTJTjAV6ptvgHlW4fQZ5nhOlL
+ 4iQyqJ5/oRRUBvKo/uvsq6JUiK2HsmdpvoItWw/yAw2asWrQ/nkhzXK05OSWmDKahI3m
+ km1R+cb6borhClZWIqKQFN9fVplFq2uWsEZVotHTrXcjSwONPMYhRilgdrvp9GUEyStC
+ 3XzUcQ2tAkVo8zd5Vdiw7OewTxrEsvJUzO9pOGbQWQTmcG7rEcFLd2W2a3Byk+/E4Uqu
+ FCTYyhw2BxIjWta1B/BLJSYTOiohy508hBxwO0dt7ksA28rpe5B5kf7lyM5o2jYn/SxF Ln/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=3ShEnwlqJh48DvL5knIS2lkoVolP4vnWxB5Ix6pN/rQ=;
+ b=UPiIAM89wN6FkCPh5cRG8bKero6WS7ZbjZWPBnrw/KLO+h4kxNm+tUOnFPb5FIAmC6
+ nESiYFWrLKjO5wiCTGHzmQxbv72ktzmUSO81Yug925o/gib8+ebLhaPXT7q2qDfUfeGa
+ DuuzKgvoy3vvnK1sb5CKi7iv2GAKYM1WMZOiL0GKthYdn5Gy7VmF+TACwpS7sK5U6F7N
+ tIDcRAlBJcdslQpeTqriGq0ISzhyasNu7+tqU9AQAYYo9jUTQF5KTVvd9suFwWms0/U2
+ xZGs5HaXrv/QpudilkdbB84rxMraR7eOpNz88myIn07Ovcv4h7wgDZcBjmOH1xq3lYKS FfmQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=BEEPdCTQ;
+ spf=pass (google.com: domain of
+ 30j2xq7-y0b8rg-bx20yg-icfzht-bwbh9f-h-m2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.72]) by mx.google.com with ESMTP id
+ b8si16837664pja.81.2021.07.09.09.03.05 for <arkadiy.tetelman@chime.com>; Fri,
+ 09 Jul 2021 09:03:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ 30j2xq7-y0b8rg-bx20yg-icfzht-bwbh9f-h-m2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender) client-ip=96.47.30.72;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=BEEPdCTQ;
+ spf=pass (google.com: domain of
+ 30j2xq7-y0b8rg-bx20yg-icfzht-bwbh9f-h-m2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625846583;
+ h=From; bh=rzysJ5vnVfepX25wlsiko9+K3Ok=;
+ b=BEEPdCTQeRdEEQESK1B+tU3xvcdE0UqGSuKNfSYfuJEJbAZVNOs2cS4rtSh/yj5Y
+ dG/g/TcAFEBjiqa8WR7bRiSFPZdTX6uBUhK7m8WgnG+aoB1C1xPuBBWmMx35Ck36
+ nuXU7PRNVkkfwKe9wsxIevv0V4Ciu0i4T1sNkqTs2GI=;
+Received: from [127.0.0.1] ([127.0.0.1:60963]) by bm1-20.bo3.e-dialog.com
+ (envelope-from
+ <30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 6A/42-05972-73378E06; Fri, 09
+ Jul 2021 12:03:03 -0400
+Date: Fri, 09 Jul 2021 12:03:03 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.ICFZHT.11856819@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: Office and Microsoft 365 licensing features and options
+Message-Id: <27605-517-30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@e-dialog.com>
+X-Mail-From: 30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/30J2XQ7/BX20YG/ICFZHT/BWBH9F/B9/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856819
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169641072/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856819&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856819&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856819&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169639393/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">Office and Microsoft 365 licensing features and options</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169639393/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">In this solution brief, learn more about CallTower&rsquo;s Office and Microsoft 365 licensing features, which includes:<br /></font></font>
+<ul>
+<li><font size="2"><font face="arial, trebuchet, verdana">Office apps</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Windows enterprise management</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Email & calendar</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">Meetings and voice</font></font></li>
+<li><font size="2"><font face="arial, trebuchet, verdana">And more</font></font></li>
+</ul>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/30J2XQ7/BX20YG/ICFZHT/BWBH9F/B9/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169641074/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169641075/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169641075/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169641074/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[30J2XQ7-Y0B8RG-BX20YG-ICFZHT-BWBH9F-H-M2-20210709-951b7cdf073e7e]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/30J2XQ7/BX20YG/ICFZHT/BWBH9F/1C31/52"></body></html>
+
+

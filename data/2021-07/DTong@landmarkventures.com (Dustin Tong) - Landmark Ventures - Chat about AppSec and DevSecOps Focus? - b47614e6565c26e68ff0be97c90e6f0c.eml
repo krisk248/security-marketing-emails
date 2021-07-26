@@ -1,0 +1,225 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp5726504wrr; Tue, 20
+ Jul 2021 11:23:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaMtPXSsE2SJXeAS5W/cPwgQ0WNnerWQvRQkWrq7KZSjmZBu1zQm9a36ZZjLwCSPgGX1bD
+X-Received: by 2002:a05:6402:5170:: with SMTP id
+ d16mr42327673ede.300.1626805395973; Tue, 20 Jul 2021 11:23:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626805395; cv=none; d=google.com;
+ s=arc-20160816;
+ b=QvLHq2LHnh0DMdMISSee5VGYTh2lVJ92+BKuqkfJPgY/Uy3kaJzlEmP/7ajXTiCXH7
+ tctVM7GkDQtxFm4K9ZjohptCBLZC+xXozRzksQZiL8EG8bb3jpDPhNM0TR10DRtFa0pz
+ 4okZ42R7dhOuxoFs8NXrl8Tzm9qBqRAS+GXifwGxLqOwaWtrA1FWw5lt88ryCIe1tVij
+ zmdXrRecoDuc+NRbtvNuBsUpRQkDo8fyDxH/VMEXJatDOtNfJDMIayDX4TTCi3s1HMk3
+ jTRRiq5VgTkscWfMkNXx13yuVQEBk7Yo5x2XWY8qgb7QcJw2gxHL/98PnsvCyAgFriuL tg2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:content-language:accept-language:message-id:date
+ :thread-index:thread-topic:subject:to:from:dkim-signature;
+ bh=EiqZOYdS29JOiKp5tcaYohMs3wG4gDqsgNLtTelwpiM=;
+ b=xUoutMK4mw8We6YPv8fkjSB4jwNfyhu/plJ+YnDFWIPSjS2p+5HLGP1yge7AlNTN5r
+ +mIV2eMqwf/2cMUGr40X6n2CJuefGyB7/G02Alvq5V2H9I9dZ4owfGXKYCjSMvLKmyxW
+ 5xXYzX6RFOmyEOQvVxcwAewHzw/cKvIutZsFm7aLqgWIFdqE8cUgnSwntrtxLLXP7ZrA
+ kixTaTq6RGHq+dDsX5GQYf7iidQuN7zzOucmFVskflXe0IMOMh3+frEysQhKQo7Auryf
+ hf0LgcuLddihROv4CqOgovHxyPK6TTtCCSRzLfgcIMz+ZWIKpjXLTZVhQ1xQpu1OORYw IsPg==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@landmarkventures.com header.s=s1024 header.b=guXxgo08; spf=pass
+ (google.com: domain of dtong@landmarkventures.com designates 209.222.82.208
+ as permitted sender) smtp.mailfrom=DTong@landmarkventures.com; dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=landmarkventures.com
+Return-Path: <DTong@landmarkventures.com>
+Received: from outbound-ip26a.ess.barracuda.com
+ (outbound-ip26a.ess.barracuda.com. [209.222.82.208]) by mx.google.com with
+ ESMTPS id ku11si2131586ejc.388.2021.07.20.11.23.15 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Tue, 20 Jul 2021 11:23:15
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of dtong@landmarkventures.com
+ designates 209.222.82.208 as permitted sender) client-ip=209.222.82.208;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@landmarkventures.com header.s=s1024 header.b=guXxgo08; spf=pass
+ (google.com: domain of dtong@landmarkventures.com designates 209.222.82.208
+ as permitted sender) smtp.mailfrom=DTong@landmarkventures.com; dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=landmarkventures.com
+Received: from Server-07.lmv.local (owa.landmarkventures.com [66.216.50.132])
+ by mx-outbound42-226.us-east-2c.ess.aws.cudaops.com (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO); Tue, 20 Jul 2021
+ 18:23:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=s1024;
+ d=landmarkventures.com;
+ h=from:to:subject:date:message-id:content-type:mime-version;
+ bh=EiqZOYdS29JOiKp5tcaYohMs3wG4gDqsgNLtTelwpiM=;
+ b=guXxgo08RVVKZCNa5nHyATsA9RtotaKSoQm/Yg0cFlDdiuqIQEybX0wEajvj2m
+ sdFGL7cxAFCNX7kY/bMa9t3tYVTjeYvVsQa4SFVeP85SlK9GtbJyh9P7dmWRm0
+ b0Rh4QaH7FHFrfOdtmXZUFTKSu4moKVdsTvOwtp8lNjE5ZY=
+Received: from Server-07.lmv.local (10.1.1.7) by Server-07.lmv.local
+ (10.1.1.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Tue, 20 Jul
+ 2021 14:08:53 -0400
+Received: from Server-07.lmv.local ([::1]) by Server-07.lmv.local ([::1]) with
+ mapi id 15.01.2176.002; Tue, 20 Jul 2021 14:08:53 -0400
+From: Dustin Tong <DTong@landmarkventures.com>
+To: Arkadiy <arkadiy.tetelman@chime.com>
+Subject: Landmark Ventures - Chat about AppSec and DevSecOps Focus?
+Thread-Topic: Landmark Ventures - Chat about AppSec and DevSecOps Focus?
+Thread-Index: Add9kbyDtNeBzDaZQS6TOQ03asdalg==
+Date: Tue, 20 Jul 2021 18:08:53 +0000
+Message-ID: <ea78f8a22ce8483db32b70172a9e5e08@landmarkventures.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Content-Type: multipart/alternative;
+ boundary="_000_ea78f8a22ce8483db32b70172a9e5e08landmarkventurescom_"
+MIME-Version: 1.0
+X-BESS-ID: 1626805382-110978-5361-36929-6
+X-BESS-VER: 2019.1_20210719.2036
+X-BESS-Apparent-Source-IP: 66.216.50.132
+X-BESS-Outbound-Spam-Score: 0.00
+X-BESS-Outbound-Spam-Report: Code version 3.2, rules version 3.2.2.233689
+ [from cloudscan21-145.us-east-2b.ess.aws.cudaops.com] Rule breakdown below
+ pts rule name              description ---- ----------------------
+ -------------------------------- 0.00 HTML_MESSAGE           BODY: HTML
+ included in message 0.00 BSF_BESS_OUTBOUND      META: BESS Outbound
+X-BESS-Outbound-Spam-Status: SCORE=0.00 using domain:94982 scores of
+ KILL_LEVEL=7.0 tests=HTML_MESSAGE, BSF_BESS_OUTBOUND
+X-BESS-BRTS-Status: 1
+
+
+--_000_ea78f8a22ce8483db32b70172a9e5e08landmarkventurescom_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy,
+
+I'm interested in learning more about your current role and focus in regard=
+s to AppSec and DevSecOps. I've had some really interesting conversations l=
+ately surrounding CLDC and SDLC, particularly around the threat modeling sp=
+ace.
+
+Was hoping you'd be open to a quick chat next week? Let me know what day wo=
+rks best.
+
+Cheers,
+
+Dustin Tong
+Landmark Ventures | Business Development Manager
+475 Park Avenue South | New York, NY 10016
+
+Cell: 469-688-8152
+Email: dtong@landmarkventures.com<mailto:dtong@landmarkventures.com>
+Web: www.landmarkventures.com<http://www.landmarkventures.com/>
+
+Twitter<https://twitter.com/socinnovation> | LinkedIn<https://www.linkedin.=
+com/in/dustintong/> | Listen<https://anchor.fm/rebecca-nedelec/episodes/S1-=
+-Ep-14--Mel-Ochoa--COO-Landmark-Ventures--Jamie-Sears--Head-of-Community-Af=
+fairs--Americas-UBS-ekn5gb> | Schedule a Meeting<https://calendly.com/meeti=
+ngwithmel>
+_________________________________________
+
+
+
+--_000_ea78f8a22ce8483db32b70172a9e5e08landmarkventurescom_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
+break-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Hi Arkadiy,<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">I'm interested in learning more about your current r=
+ole and focus in regards to AppSec and DevSecOps. I&#8217;ve had some reall=
+y interesting conversations lately surrounding CLDC and SDLC, particularly =
+around the threat modeling space.
+<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Was hoping you&#8217;d be open to a quick chat next =
+week? Let me know what day works best.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Cheers, <o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif">Dustin Tong<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">Landmark Ventures | Business Development Manager<o:p>=
+</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">475 Park Avenue South | New York, NY 10016<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">Cell: 469-688-8152<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">Email:
+<u><span style=3D"color:blue"><a href=3D"mailto:dtong@landmarkventures.com"=
+><span style=3D"color:#0563C1">dtong@landmarkventures.com</span></a></span>=
+</u><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">Web:
+<a href=3D"http://www.landmarkventures.com/"><span style=3D"color:blue">www=
+.landmarkventures.com</span></a><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif"><a href=3D"https://twitter.com/socinnovation"><span s=
+tyle=3D"color:#0563C1">Twitter</span></a> |
+<a href=3D"https://www.linkedin.com/in/dustintong/"><span style=3D"color:#0=
+563C1">LinkedIn</span></a> |
+<a href=3D"https://anchor.fm/rebecca-nedelec/episodes/S1--Ep-14--Mel-Ochoa-=
+-COO-Landmark-Ventures--Jamie-Sears--Head-of-Community-Affairs--Americas-UB=
+S-ekn5gb">
+<span style=3D"color:#0563C1">Listen</span></a> | <a href=3D"https://calend=
+ly.com/meetingwithmel">
+<span style=3D"color:#0563C1">Schedule a Meeting</span></a><o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif">_________________________________________<o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+</body>
+</html>
+
+--_000_ea78f8a22ce8483db32b70172a9e5e08landmarkventurescom_--

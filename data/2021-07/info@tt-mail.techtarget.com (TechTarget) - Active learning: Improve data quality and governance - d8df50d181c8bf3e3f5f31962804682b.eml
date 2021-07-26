@@ -1,0 +1,173 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp1192057wrr; Mon, 5 Jul
+ 2021 09:02:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy51PRbp9CIpZFoDjEkp4i8o2M65xzRPhSmHPpbAd7hDMOZ8NBgFa/Knz7yJCukCCLVkl3E
+X-Received: by 2002:aa7:8254:0:b029:2ed:b41:fefc with SMTP id
+ e20-20020aa782540000b02902ed0b41fefcmr16082417pfn.42.1625500969632; Mon, 05
+ Jul 2021 09:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625500969; cv=none; d=google.com;
+ s=arc-20160816;
+ b=icDiDU6FUZNV4p+JsaNfe9o2bqG0vwUlnjLmuCfuyOqhSLhL2qVCQ+GTqQeItDsU1a
+ yIrL1bAPd50j6/tCYi5glaGOT0eZ1qqpZDh+04kNQT8qVQs1jiRUu9wJcQnxFHMP6K1p
+ oZRlo8tDWGnjq3eLmjz9vng/2giKCD2dCJ2txw4avt8tFZyucOQN5RruwQR/4B6jx5xe
+ +m9gAXkFxbhjFboW03XCJEXqVNWId2P9psqCGXaG/jgsVYDlmuhxsM+4TQp2tyZq3I7I
+ wIv6PxPkOZ8yd1BK1S2BTweIy/n0MWsIid01hHseSpYEatSa2Os/AyOX2452JxmJZ3Tj MvKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=JIXCfVA/oDcY0oJP72Rlirj6C1+4o4dXIkEuy06BbOo=;
+ b=iI+84mrGKE8BRCPtyuTdcfg5060i8RYeE074/kCqV+51pXKUUd8ykv3Qc92EgpwReS
+ ywHdqs7usx0mM5fSr8ibfXqenLVKm8TCrmQruG88Otv7g8MY/xedotIEf94BMWkbOzxo
+ b/GpjS4EcxDSuA99/H0ddaDn+LBgPcFa1Mhl9NizQLSpgTUSKmmtAqMIn6/TDcAjoZPL
+ 5sBsYXDXrNNZcOMeNtKCU02oyghhHRnHFVc8E4P6qOW+a0O6BJW9r+Rkqcp9eyu98a4s
+ QVBt+z6RqSu8rg1YOI90WrJ6kiTDNDqmDvi2NMvzti5ps7PT3hAk5p1o+Bm+pCOPHBaj wocw==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=DCvIVwlu;
+ spf=pass (google.com: domain of
+ 30j2xq7-y0b8je-bx28vd-aty8fr-s1kwu0-h-m2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.72]) by mx.google.com with ESMTP id
+ t70si9793262pgb.112.2021.07.05.09.02.48 for <arkadiy.tetelman@chime.com>;
+ Mon, 05 Jul 2021 09:02:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ 30j2xq7-y0b8je-bx28vd-aty8fr-s1kwu0-h-m2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender) client-ip=96.47.30.72;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=DCvIVwlu;
+ spf=pass (google.com: domain of
+ 30j2xq7-y0b8je-bx28vd-aty8fr-s1kwu0-h-m2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net
+ designates 96.47.30.72 as permitted sender)
+ smtp.mailfrom=30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1625500966;
+ h=From; bh=h1qwZ28COjooIeNRpKBsvCD0PqM=;
+ b=DCvIVwluccw7U9e4JTcHHzmfyxqqdWvn9dXnfHzzdBzJOJg0SylyDi79uGyNrDNx
+ NjrtQHLhGplE0FjS0QT328v8JfFIUN8tR6QLilHcs1hTx3jFM92nwtSw7yRl8Fen
+ O5k+eFLkSUWfrdaBOunSJL95g+kXRMu4lQUn8RmesTk=;
+Received: from [127.0.0.1] ([127.0.0.1:48083]) by bm1-21.bo3.e-dialog.com
+ (envelope-from
+ <30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 16/FE-30401-62D23E06; Mon, 05
+ Jul 2021 12:02:46 -0400
+Date: Mon, 05 Jul 2021 12:02:46 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.F6SV1U.11856803@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: Active learning: Improve data quality and governance
+Message-Id: <1774-834-30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@e-dialog.com>
+X-Mail-From: 30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/30J2XQ7/BX28VD/ATY8FR/S1KWU0/4X/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11856803
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/168758210/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11856803&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11856803&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11856803&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/168754350/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">Active learning: Improve data quality and governance</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/168754350/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">While data is plentiful, much of it is of a poor quality -leading to unhelpful insights and ineffective data analytics initiatives.<br /><br />Fortunately, data labeling can help organizations track data across its lifecycle and identify inefficiencies and errors.<br /><br />Read this white paper to discover how active learning can automate data labeling and improve data governance and quality management, ultimately boosting data science programs 
+and results.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/30J2XQ7/BX28VD/ATY8FR/S1KWU0/4X/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/168758212/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/168758213/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/168758213/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/168758212/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[30J2XQ7-Y0B8JE-BX28VD-ATY8FR-S1KWU0-H-M2-20210705-8fbb1a34f68c2c]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/30J2XQ7/BX28VD/ATY8FR/S1KWU0/1C3N/52"></body></html>
+
+

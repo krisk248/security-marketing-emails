@@ -1,0 +1,394 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp6358220wrr; Wed, 21
+ Jul 2021 02:59:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmWg8m4lAFAdsiCve4f8C5EM3/cYFz0kpurN99vQ52Xde7krEsQGifau59mha5WPHqaIBW
+X-Received: by 2002:adf:82d2:: with SMTP id 76mr41849992wrc.5.1626861578747;
+ Wed, 21 Jul 2021 02:59:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626861578; cv=none; d=google.com;
+ s=arc-20160816;
+ b=FAM+B1lZLbiRZo/zKIzi3HHGGsJoboBg56bPLxKZqVOL3tLVJdbtXRPCpFu/2IhyRu
+ 6TBsVrYs7djz47nHwIMkEI+xqHnDamfZ3l08ntwBlYr/ruHOkWTc0uo2XjL7ADElyG9b
+ COpEbIxdkvK0DVYnKumVMZPIoxEbvyGAdjlOkXD+LLcaKUrmke7Fns+xgPCGCKLC+n53
+ XJ2hMnA8xbGAlYM0//KWnqV6dKM5+vKT+OFcrpgK57to7HxsD/q53XWjNC/GzVM8/hsm
+ jcS9bkZXTTex6ffBwbsiL8YzogzgprYvtdboBN6ltwNoP9PgMDsCNxpWsgE67b2vWDhO 9wPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:subject:message-id:to:from:date:dkim-signature;
+ bh=bOnAPrKJpNplFW2JxnrKZxtpt0VnIzqzqy4rmrq/xbI=;
+ b=FY7+b0BzZn53k2DJexRJ6GiI84oa4IFJMpJ7xOSXwsJCP98s12gXVW4U+EX/tZ40X3
+ 544fGgV76I6cw0wSf7Nh5UpCjeT4OT1heNOtrQlMBewpMjNdRQyuG+nlvQwxAdwnOfcJ
+ /0cRxWQJ6GLJB2C1LUDmoQ6rKAZI921LZSnqplhP5DCOQWQbyKkO09KmdjPl/eaojmFr
+ ual6+VhhzXU8E5bYc2liRtrTXBZwsz6nl8nugJoQKk1pMOT780Xo1g6kNajC6XjqazyF
+ sutFP7ee6sd71RNEomTvm/lT/Lu0+5Jxo52qzu3C0/soCN4KiyZDiiob9lvKVcslQPpy Zr3g==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@bizclikmedia.com header.s=Salesforce-Alternate header.b=PEow9dG7;
+ spf=pass (google.com: domain of
+ tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com
+ designates 161.71.14.234 as permitted sender)
+ smtp.mailfrom="tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com";
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bizclikmedia.com
+Return-Path: <tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com>
+Received: from smtp11-lo3-sp1.mta.salesforce.com
+ (smtp11-lo3-sp1.mta.salesforce.com. [161.71.14.234]) by mx.google.com with
+ ESMTPS id k6si29801188wrq.295.2021.07.21.02.59.38 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Wed, 21 Jul 2021 02:59:38
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com
+ designates 161.71.14.234 as permitted sender) client-ip=161.71.14.234;
+Authentication-Results: mx.google.com; dkim=pass header.i=@bizclikmedia.com
+ header.s=Salesforce-Alternate header.b=PEow9dG7; spf=pass (google.com: domain
+ of
+ tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com
+ designates 161.71.14.234 as permitted sender)
+ smtp.mailfrom="tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com";
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bizclikmedia.com
+Return-Path: <tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizclikmedia.com;
+ s=Salesforce-Alternate; t=1626861578;
+ bh=MM+jSC+8mKAWAMcJPBtgefpBdkHRD0s4l4PEAdSFSZY=;
+ h=Date:From:To:Subject:MIME-Version:Content-Type;
+ b=PEow9dG72/VAiehnNValkHqtvgBNPhFXaSan8mNFR5kRTRR5dl9aJozpekWmYoJpI
+ jEFKQqvjYIIzZu0v1obFlRx7x35oIp6qIlI6GPrPhQ1OpDBlfaLkHrTEyGuxbWVa4p
+ oe4VoFqWzDH03RYNn6o0xSJNkDrdiqgUG4vhHobA=
+Authentication-Results: mx3-lo3-sp1.mta.salesforce.com
+ x-tls.subject="/C=US/ST=California/L=San Francisco/O=salesforce.com,
+ inc./OU=0:app;1:lo3;2:lo3-sp1;3:um5;4:prod/CN=um5-app1-17-lo3.ops.sfdc.net";
+ auth=pass (cipher=ECDHE-RSA-AES256-GCM-SHA384)
+Received: from [10.162.140.150] ([10.162.140.150:44138]
+ helo=um5-app1-17-lo3.ops.sfdc.net) by mx3-lo3-sp1.mta.salesforce.com
+ (envelope-from
+ <tom.venturo=bizclikmedia.com__0-1nd6enrqrzgpyk@bc3g12vnwrirhr9z.r99zwlgoth52buwu.r858axc.4j-udcquae.um5.bnc.salesforce.com>)
+ (ecelerity 4.2.38.62368 r(Core:release/4.2.38.0)) with ESMTPS
+ (cipher=ECDHE-RSA-AES256-GCM-SHA384 subject="/C=US/ST=California/L=San
+ Francisco/O=salesforce.com,
+ inc./OU=0:app;1:lo3;2:lo3-sp1;3:um5;4:prod/CN=um5-app1-17-lo3.ops.sfdc.net")
+ id 1D/8A-05703-A00F7F06; Wed, 21 Jul 2021 09:59:38 +0000
+Date: Wed, 21 Jul 2021 09:59:38 +0000 (GMT)
+From: Tom Venturo <tom.venturo@bizclikmedia.com>
+To: "arkadiy.tetelman@chime.com" <arkadiy.tetelman@chime.com>
+Message-ID: <sskvl000000000000000000000000000000000000000000000QWLAF600xjEU32ZAT4CoOVE3MS7PEA@sfdc.net>
+Subject: Cyber & Technology Magazines - Video Interview and Speaker
+ Opportunities
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="----=_Part_13728_472627864.1626861578484"
+X-Priority: 3
+X-SFDC-LK: 00D4J000000uDcq
+X-SFDC-User: 0054J000002tM4N
+X-Sender: postmaster@salesforce.com
+X-mail_abuse_inquiries: http://www.salesforce.com/company/abuse.jsp
+X-SFDC-TLS-NoRelay: 1
+X-SFDC-Binding: iCBT705cy8bBFz3B
+X-SFDC-EmailCategory: apiMassMail
+X-SFDC-EntityId: 00Q4J00000CxLKg
+X-SFDC-Interface: internal
+
+
+------=_Part_13728_472627864.1626861578484
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Arkadiy
+
+I would like to set up a call as we are eager to discuss a feature in the u=
+pcoming editions of Technology, AI, and Cyber Magazine. ??
+
+We also have a potential speaker slot for you on Sept 14th/15th in London a=
+nd maybe someone from the USA team on our Day 3 virtual stage - Sept 16th.
+
+Big themes on Technology Strategy, Enterprise IT, Digital Transformation, W=
+omen in Tech + Cyber & AI.?
+
+Link to the events pages on our website here: ?https://procurementmag.com/l=
+ive/168562??
+
+Eager to jump on a call and discuss, how=92s your diary in the next few day=
+s???
+
+Please find below the newest edition of Technology Magazine is live with lo=
+ts of exciting features!
+
+We also have content from many other thought leaders including David Trader=
+ Field CISO at Presidio.  You can view a carve out of Dave's Digital Report=
+ Below. ( click the covers to view)
+
+
+
+Many thanks,
+Tom
+
+Tom Venturo?
+Vice President of Technology & AI
+BizClik Media Group
+
+Thanks, Tom
+------=_Part_13728_472627864.1626861578484
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+=09<title></title>
+=09<meta content=3D"no-referrer" name=3D"referrer" />
+</head>
+<body>
+<p dir=3D"ltr">Arkadiy<br />
+<br />
+I would like to set up a call as we are eager to discuss a feature in the u=
+pcoming editions of Technology, AI, and Cyber Magazine. ??</p>
+
+<p dir=3D"ltr">We also have a potential speaker slot for you on Sept 14th/1=
+5th in London and maybe someone from the USA team on our Day 3 virtual stag=
+e - Sept 16th.</p>
+
+<p dir=3D"ltr">Big themes on Technology Strategy, Enterprise IT, Digital Tr=
+ansformation, Women in Tech + Cyber &amp; AI.?</p>
+
+<p dir=3D"ltr">Link to the events pages on our website here: ?<a href=3D"ht=
+tps://procurementmag.com/live/168562" rel=3D"noopener" target=3D"_blank">ht=
+tps://procurementmag.com/live/168562</a>??</p>
+
+<p dir=3D"ltr">Eager to jump on a call and discuss, how&rsquo;s your diary =
+in the next few days???</p>
+
+<p dir=3D"ltr">Please find below the newest edition of Technology Magazine =
+is live with lots of exciting features!&nbsp;<br />
+<br />
+We also have content from many other thought leaders including David Trader=
+ Field CISO at Presidio.&nbsp; You can view a carve out of Dave&#39;s&nbsp;=
+Digital Report Below. (&nbsp;<b>click the covers to view)</b><br />
+<br />
+<a href=3D"https://technologymagazine.com/magazine/technology-july-2021"><i=
+mg height=3D"312" src=3D"https://lh4.googleusercontent.com/JJZgfTjO0wkngi5n=
+da7Pfzw2MQ2MMb0qv4J-SYSFcA8eyHhClPgw7mC1aA0dhaxwnAcMDhnw1jyBMKVcRGtrfRCzGFe=
+NfD7k7GQ9VZ-DmPEK0mA4hKYg9vBNVwMJyggwnepkyKtX" style=3D"max-width: 782.04px=
+;" width=3D"221" /></a>&nbsp; &nbsp;&nbsp;<a href=3D"https://www.technology=
+magazine.com/brochure/presidio-managing-migration-risk" style=3D"text-decor=
+ation:none"><span style=3D"font-size:11pt; font-variant:normal; white-space=
+:pre-wrap"><span style=3D"font-family:Arial"><span style=3D"color:#1155cc">=
+<span style=3D"font-weight:400"><span style=3D"font-style:normal"><span sty=
+le=3D"text-decoration:underline"><span style=3D"-webkit-text-decoration-ski=
+p:none"><span style=3D"text-decoration-skip-ink:none"><span style=3D"border=
+:none"><span style=3D"display:inline-block"><span style=3D"overflow:hidden"=
+><span style=3D"width:222px"><span style=3D"height:307px"><img height=3D"30=
+7" src=3D"https://lh3.googleusercontent.com/ndXXMjDN7-BJC-iyZ8uV4-1dqsJhJyc=
+fJksvfqIaNl15ZzGVsxBbbRv37XdDAH73_2Ww7k4ljtm-paOxeiI3ghal449l6BvffaeZcwMB0k=
+xML5Vb1_bsShZVIFdYrFmKNe6mvXA-" style=3D"max-width: 782.04px;" width=3D"222=
+" /></span></span></span></span></span></span></span></span></span></span><=
+/span></span></span></a><br />
+<br />
+Many thanks,<br />
+Tom&nbsp;</p>
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td align=3D"left">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">Tom&nbsp;Venturo?</t=
+d>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">Vice&nbsp;President&=
+nbsp;of&nbsp;Technology&nbsp;&amp;&nbsp;AI</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">BizClik&nbsp;Media&n=
+bsp;Group</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09<td align=3D"right"><a href=3D"https://www.bizcl=
+ikmedia.com/" target=3D"_blank"><img alt=3D"" border=3D"0" height=3D"80" sr=
+c=3D"https://drive.google.com/uc?id=3D1Kk7k-aUkLKX8baMvxW5nxZDi_VxJtY5Z&exp=
+ort=3Ddownload" style=3D"max-width: 782.04px;" width=3D"190.68" /></a></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<tr>
+=09=09=09<td align=3D"left">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><i=
+mg alt=3D"" border=3D"0" height=3D"17" src=3D"https://drive.google.com/uc?i=
+d=3D15rxPNv3rQnsQiPSuq94cX5W7gs8_VlgI&export=3Ddownload" style=3D"max-width=
+: 782.04px;" width=3D"51" /></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D=
+"left"><img alt=3D"" border=3D"0" height=3D"17" src=3D"https://drive.google=
+.com/uc?id=3D1spdb56mNBI1B2-fsQxV2ZF2VMxVwaiz2&export=3Ddownload" style=3D"=
+max-width: 782.04px;" width=3D"98" /></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><i=
+mg alt=3D"" border=3D"0" height=3D"17" src=3D"https://drive.google.com/uc?i=
+d=3D1WJSPO5GH8MAPL-5VuFD8aBECSUd-nxbp&export=3Ddownload" style=3D"max-width=
+: 782.04px;" width=3D"42" /></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D=
+"left"><img alt=3D"" border=3D"0" height=3D"17" src=3D"https://drive.google=
+.com/uc?id=3D1Mi-INIbLB6IYiyz8uiUlvarKjh-IbG1j&export=3Ddownload" style=3D"=
+max-width: 782.04px;" width=3D"106" /></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09<td align=3D"right">
+=09=09=09=09=09=09=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://c=
+a.linkedin.com/company/bizclik-media" target=3D"_blank"><img alt=3D"Linkedi=
+n" border=3D"0" height=3D"30" src=3D"https://drive.google.com/uc?id=3D1Jy2H=
+zhjmOOMxHEj-2yjHFUf09KoZ0Sfe&export=3Ddownload" style=3D"max-width: 782.04p=
+x;" title=3D"Linkedin" width=3D"30" /></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://t=
+witter.com/bizclikmedia?lang=3Den" target=3D"_blank"><img alt=3D"Twitter" b=
+order=3D"0" height=3D"30" src=3D"https://drive.google.com/uc?id=3D1Py6w1uGe=
+tgPl9LFWDz-rTb1_XmgnE6Dn&export=3Ddownload" style=3D"max-width: 782.04px;" =
+title=3D"Twitter" width=3D"30" /></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://w=
+ww.facebook.com/BizClikMedia/" target=3D"_blank"><img alt=3D"Facebook" bord=
+er=3D"0" height=3D"30" src=3D"https://drive.google.com/uc?id=3D1a0WQdfM2V89=
+4IxG06LszdGIh4BkBbtGi&export=3Ddownload" style=3D"max-width: 782.04px;" tit=
+le=3D"Facebook" width=3D"30" /></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://w=
+ww.instagram.com/bizclikmedia" target=3D"_blank"><img alt=3D"Instagram" bor=
+der=3D"0" height=3D"30" src=3D"https://drive.google.com/uc?id=3D1S1FdAhQ3GJ=
+gE0ZXKZ_EdY3b3rJnY1ZG_&export=3Ddownload" style=3D"max-width: 782.04px;" ti=
+tle=3D"Instagram" width=3D"30" /></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://w=
+ww.bizclikmedia.com/" target=3D"_blank"><img alt=3D"Website" border=3D"0" h=
+eight=3D"30" src=3D"https://drive.google.com/uc?id=3D11FEQPoUGvOXEeQBhq0B9u=
+APMeVb03cfA&export=3Ddownload" style=3D"max-width: 782.04px;" title=3D"Webs=
+ite" width=3D"30" /></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://m=
+edium.com/business-chief" target=3D"_blank"><img alt=3D"" border=3D"0" heig=
+ht=3D"30" src=3D"https://drive.google.com/uc?id=3D1wDaL2eoxAMVHZkClnNOsnCAr=
+qYMT1JE0&export=3Ddownload" style=3D"max-width: 782.04px;" width=3D"30" /><=
+/a></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<tr>
+=09=09=09<td align=3D"left">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://mailchi.mp/technolo=
+gymagazine.com/top100leaderstechnology2021" target=3D"_blank"><img alt=3D""=
+ border=3D"0" height=3D"100" src=3D"https://drive.google.com/uc?id=3D1hQxzS=
+nptPn2U3J7AHaiGS5T8CONJnnoV&export=3Ddownload" style=3D"max-width: 782.04px=
+;" width=3D"600" /></a></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09=09<tr>
+=09=09=09<td align=3D"left">
+=09=09=09<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"left"><a href=3D"https://aimagazine.com/" ta=
+rget=3D"_blank"><img alt=3D"" border=3D"0" height=3D"100" src=3D"https://dr=
+ive.google.com/uc?id=3D1MNfgCVEQ6xm5ZhH5u9Rag1QXfsJL0QyS&export=3Ddownload"=
+ style=3D"max-width: 782.04px;" width=3D"600" /></a></td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+
+<p dir=3D"ltr">Thanks, Tom<br />
+&nbsp;</p>
+</body>
+</html><img src=3D"https://bizclikmedia.my.salesforce.com/servlet/servlet.I=
+mageServer?oid=3D00D4J000000uDcq&esid=3D0184J00000DNEfS&from=3Dext">
+------=_Part_13728_472627864.1626861578484--

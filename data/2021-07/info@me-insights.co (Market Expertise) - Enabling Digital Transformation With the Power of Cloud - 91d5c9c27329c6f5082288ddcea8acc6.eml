@@ -1,0 +1,503 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp698305wrr; Fri, 9 Jul
+ 2021 06:44:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx6NfZypVb3yYyTOIUM/y2uDIta/yVo+8j+/+ItBOpt0nsFqmoIYWqYKgr+MM6O6fBvfJzo
+X-Received: by 2002:a05:6402:4cb:: with SMTP id
+ n11mr46195623edw.292.1625838247515; Fri, 09 Jul 2021 06:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625838247; cv=none; d=google.com;
+ s=arc-20160816;
+ b=MOYtPa/1Tu4MghuhFZwt2dbBi9b6YThzHE3sxizHBKtKl6TDoZECKEubMMh+wiKZJw
+ UmHQq4msSZzx9eMO5s3h/PqyGi4ztacDKF8RZNibNXmPzWsHnmWcvu2/0kOrNZN1OjkC
+ KMXuvSyXBOnTWGVSfE2e77wLRBB+eKmP3i3bmxPnUJJ9lTJR1onTd+IZ1Uz2xzFPQ1qL
+ qPgW6ykWk9Lwt5NHbvbyMzhDrQJuQCp7dqEB6gjuPkdz68eMbMHmubyatyFlq9tNXStN
+ 7136iwqmzuJ8DJVUe2YrvJemeRykyxus1k3vZZL40n3UJ7sFkr3qn/irNxwHM6+lRc/8 hb2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=date:mime-version:feedback-id:list-unsubscribe:message-id:subject
+ :reply-to:from:to; bh=LVyi8iPXhiSiZtVMK4XAkKJBIxpkmkyS8edYxTRqkHs=;
+ b=PYSx6PHlYcKUks4qxKYPzKPXEW7YZSLyGkRoS0grxtcsqysGR+gyckwQXb9NCthib5
+ +K0A36KWG6IJanD51wZ6T8sFTIdnJQw+bqNcTYQjo3b0CvbvOMphOA4KI5cn5vZYtqY+
+ s42VVg2ZyWyoafWIJuB8kQqLz/qQY/2QUcuFeRM4k+xqWLZteboNzVLk/zbUz6EcWv2p
+ EEZkUGncgWnEUsPxC4KHdyhwY5VLLv5+C1jFKwWAhNwcbT+U9gAbUwiBJ2qphKAroBLU
+ tWauh9Osivk6PS8FifIveRPp1xs8RWeL2/swE51BKWpzVlxgd6M3MpaL4/xlwMw7tN2O AL4A==
+ARC-Authentication-Results: i=1; mx.google.com; spf=pass (google.com: domain
+ of
+ campaign-techprospect-87905-5098-256872-arkadiy.tetelman=chime.com@mail.tech-prospect.com
+ designates 202.162.252.189 as permitted sender)
+ smtp.mailfrom="campaign-techprospect-87905-5098-256872-arkadiy.tetelman=chime.com@mail.tech-prospect.com"
+Return-Path: <campaign-techprospect-87905-5098-256872-arkadiy.tetelman=chime.com@mail.tech-prospect.com>
+Received: from smtpd.189.acemail.co.in (smtpd.189.acemail.co.in.
+ [202.162.252.189]) by mx.google.com with ESMTP id
+ s22si7266701ejv.751.2021.07.09.06.44.07 for <arkadiy.tetelman@chime.com>;
+ Fri, 09 Jul 2021 06:44:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ campaign-techprospect-87905-5098-256872-arkadiy.tetelman=chime.com@mail.tech-prospect.com
+ designates 202.162.252.189 as permitted sender) client-ip=202.162.252.189;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of
+ campaign-techprospect-87905-5098-256872-arkadiy.tetelman=chime.com@mail.tech-prospect.com
+ designates 202.162.252.189 as permitted sender)
+ smtp.mailfrom="campaign-techprospect-87905-5098-256872-arkadiy.tetelman=chime.com@mail.tech-prospect.com"
+To: arkadiy.tetelman@chime.com
+From: Market Expertise <info@me-insights.co>
+Reply-To: Market Expertise <info@me-insights.co>
+Subject: Enabling Digital Transformation With the Power of Cloud
+Message-ID: <816006505256872@tech-prospect.com>
+List-Unsubscribe: <mailto:techprospect-87905-5098-256872-8b99ebe99a3ba6d0828cefcf818bc921@usub.tech-prospect.com?subject=Unsubscribe>,
+ <http://panela.tech-prospect.com/gtrack?ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQYBDQENRA==&sl=Jkp8JTMeMGRNanpsREcEWAEOWRkQAFBdFEcWX0ESBABCTQAOWU4A&clientid=87905&c=000>
+Feedback-ID: 5098:87905:20210709191254:nczc
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="b1_f9c3c9c6f0cbd726c4203edf448aba29"
+Date: Fri, 9 Jul 2021 19:14:07 +0530
+
+
+
+
+
+--b1_f9c3c9c6f0cbd726c4203edf448aba29
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+<http://panela.tech-prospect.com/gtrack?clientid=87905&ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQYBCgUORA==&sl=JkpwGjMxGWR8bUtIWVkAWgVMTFIHDR5FS1gXQFcBFU1VDA4dBA==&pp=
+HxR1LzQxMXlwdHIaAhUkRA8DXF4dRx8XfHoleX5AW0FXEQgAUFtJHUVQFVFfVFNbIlVZCFtQSFMKWxMf&&c=0000>
+
+ Hi Arkadiy,
+
+ The Cloud Transformation Congress North America, 13 July 2021 (MST),
+in partnership with Cloud Tech News is an exclusive virtual event and
+conference consisting of top-level content and thought leadership
+discussions exploring the cloud transformation ecosystem.
+
+ In a rapidly evolving market, identifying and understanding emerging
+cloud trends will help drive digital business decision making, vendor
+selection and investment strategies. An increasing number of industry
+leaders are using cloud technology to run their organisations more
+efficiently, scale their potential,
+increase collaboration, improve customer engagement, enhance profit
+margins and gain a competitive edge.
+
+ Save your seat today to learn how to tackle the latest challenges,
+and explore opportunities, market insights, trends and debates within
+cloud computing.
+
+ Register Now
+ 
+ <http://panela.tech-prospect.com/gtrack?clientid=87905&ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQYBCgUORA==&sl=JkpwGjMxGWR8bUtIWVkAWgVMTFIHDR5FS1gXQFcBFU1VDA4dBA==&pp=
+HxR1LzQxMXlwdHIaAhUkRA8DXF4dRx8XfHoleX5AW0FXEQgAUFtJHUVQFVFfVFNbIlVZCFtQSFMKWxMf&&c=0000>
+
+ Sponsored By
+
+ Copyright © 2021 Market Expertise - All rights reserved.
+
+ 300 Cadman Plaza West, One Pierrepoint Plaza, Brooklyn, NY, 11201,
+USA
+
+--Click Here to unsubscribe from this newsletter.
+
+
+--b1_f9c3c9c6f0cbd726c4203edf448aba29
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<!--[if gte mso 9]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>
+96
+</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<!--[if !mso]>
+<!-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--<![endif]-->
+<title></title>
+<!--[if !mso]>
+<!-->
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!--<![endif]-->
+<style type="text/css">
+body {
+margin: 0;
+padding: 0;
+} table,
+td,
+tr {
+vertical-align: top;
+border-collapse: collapse;
+} * {
+line-height: inherit;
+} a[x-apple-data-detectors=true] {
+color: inherit !important;
+text-decoration: none !important;
+}
+</style>
+<style type="text/css" id="media-query">
+@media (max-width: 620px) { .block-grid,
+ .col {
+min-width: 320px !important;
+max-width: 100% !important;
+display: block !important;
+} .block-grid {
+width: 100% !important;
+} .col {
+width: 100% !important;
+} .col_cont {
+margin: 0 auto;
+} img.fullwidth,
+img.fullwidthOnMobile {
+max-width: 100% !important;
+} .no-stack .col {
+min-width: 0 !important;
+display: table-cell !important;
+} .no-stack.two-up .col {
+width: 50% !important;
+} .no-stack .col.num2 {
+width: 16.6% !important;
+} .no-stack .col.num3 {
+width: 25% !important;
+} .no-stack .col.num4 {
+width: 33% !important;
+} .no-stack .col.num5 {
+width: 41.6% !important;
+} .no-stack .col.num6 {
+width: 50% !important;
+} .no-stack .col.num7 {
+width: 58.3% !important;
+} .no-stack .col.num8 {
+width: 66.6% !important;
+} .no-stack .col.num9 {
+width: 75% !important;
+} .no-stack .col.num10 {
+width: 83.3% !important;
+} .video-block {
+max-width: none !important;
+} .mobile_hide {
+min-height: 0px;
+max-height: 0px;
+max-width: 0px;
+display: none;
+overflow: hidden;
+font-size: 0px;
+} .desktop_hide {
+display: block !important;
+max-height: none !important;
+}
+}
+</style>
+</head>
+<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;">
+<!--[if IE]>
+<div class="ie-browser">
+<![endif]-->
+<table class="nl-container" style="table-layout: fixed; vertical-align: top; min-width: 320px; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;" cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#FFFFFF" valign="top">
+<tbody>
+<tr style="vertical-align: top;" valign="top">
+<td style="word-break: break-word; vertical-align: top;" valign="top">
+<!--[if (mso)|(IE)]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="background-color:#FFFFFF">
+<![endif]-->
+<div style="background-color:#474747;">
+<div class="block-grid " style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #474747;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:#474747;">
+<!--[if (mso)|(IE)]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#474747;">
+<tr>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0" style="width:600px">
+<tr class="layout-full-width" style="background-color:#474747">
+<![endif]-->
+<!--[if (mso)|(IE)]>
+<td align="center" width="600" style="background-color:#474747;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;">
+<![endif]-->
+<div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]>
+<!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif">
+<![endif]-->
+<div style="color:#393d47;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div class="txtTinyMce-wrapper" style="font-size: 14px; line-height: 1.2; color: #393d47; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 17px;">
+<p style="margin: 0; font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin-top: 0; margin-bottom: 0;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+</div>
+</div>
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if (!mso)&(!IE)]>
+<!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+</div>
+</div>
+<div style="background-color:#474747;">
+<div class="block-grid " style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
+<!--[if (mso)|(IE)]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#474747;">
+<tr>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0" style="width:600px">
+<tr class="layout-full-width" style="background-color:#ffffff">
+<![endif]-->
+<!--[if (mso)|(IE)]>
+<td align="center" width="600" style="background-color:#ffffff;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:5px;">
+<![endif]-->
+<div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]>
+<!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<div class="img-container center autowidth" align="center" style="padding-right: 0px;padding-left: 0px;">
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr style="line-height:0px">
+<td style="padding-right: 0px;padding-left: 0px;" align="center">
+<![endif]-->
+<a href="http://panela.tech-prospect.com/gtrack?clientid=87905&ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQYBCgUORA==&sl=JkpwGjMxGWR8bUtIWVkAWgVMTFIHDR5FS1gXQFcBFU1VDA4dBA==&pp=
+HxR1LzQxMXlwdHIaAhUkRA8DXF4dRx8XfHoleX5AW0FXEQgAUFtJHUVQFVFfVFNbIlVZCFtQSFMKWxMf&&c=0000"  target="_blank" style="outline:none" tabindex="-1">
+<img class="center autowidth" align="center" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/681460_663958/editor_images/adqe23242.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 600px; display: block;" width="600">
+</a>
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 20px; padding-left: 20px; padding-top: 20px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif">
+<![endif]-->
+<div style="color:#393d47;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:20px;padding-right:20px;padding-bottom:10px;padding-left:20px;">
+<div class="txtTinyMce-wrapper" style="font-size: 14px; line-height: 1.5; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: #393d47; mso-line-height-alt: 21px;">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;"><span style="font-size: 14px;">Hi Arkadiy,</span></p>
+<p style="margin: 0; line-height: 1.5; word-break: break-word; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+<p style="margin: 0; line-height: 1.5; word-break: break-word; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;"><strong>The Cloud Transformation Congress North America, 13 July 2021 (MST)</strong>, in partnership with <strong>Cloud Tech News</strong> is an exclusive virtual event and conference consisting of top-level content and thought leadership discussions exploring the cloud transformation ecosystem.</p>
+<p style="margin: 0; line-height: 1.5; word-break: break-word; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">&nbsp;</p>
+<p style="margin: 0; line-height: 1.5; word-break: break-word; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">In a rapidly evolving market, identifying and understanding emerging cloud trends will help <strong>drive digital business decision making, vendor selection </strong>and<strong> investment strategies</strong>. An increasing number of industry leaders are using cloud technology to run their organisations more efficiently, scale their potential,
+increase collaboration, improve customer engagement, enhance profit margins and gain a competitive edge.</p>
+<p style="margin: 0; line-height: 1.5; word-break: break-word; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+<br>
+Save your seat today to learn how to tackle the latest challenges, and explore opportunities, market insights, trends and debates within cloud computing.
+</p>
+</div>
+</div>
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<div class="button-container" align="center" style="padding-top:25px;padding-right:25px;padding-bottom:25px;padding-left:25px;">
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+<tr>
+<td style="padding-top: 25px; padding-right: 25px; padding-bottom: 25px; padding-left: 25px" align="center">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://lpages.market-expertise.com/cloud-transformation-congress/?fname=Arkadiy&business_email=arkadiy.tetelman@chime.com" style="height:31.5pt;width:131.25pt;v-text-anchor:middle;" arcsize="0%" stroke="false" fillcolor="#0068a5">
+<w:anchorlock/>
+<v:textbox inset="0,0,0,0">
+<center style="color:#ffffff; font-family:Tahoma, Verdana, sans-serif; font-size:16px">
+<![endif]-->
+<a href="http://panela.tech-prospect.com/gtrack?clientid=87905&ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQYBCgUORA==&sl=JkpwGjMxGWR8bUtIWVkAWgVMTFIHDR5FS1gXQFcBFU1VDA4dBA==&pp=
+HxR1LzQxMXlwdHIaAhUkRA8DXF4dRx8XfHoleX5AW0FXEQgAUFtJHUVQFVFfVFNbIlVZCFtQSFMKWxMf&&c=0000"  target="_blank" style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: #0068a5; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; width: auto; width: auto; border-top: 0px solid #8a3b8f; border-right: 0px solid #8a3b8f; border-bottom: 0px solid #8a3b8f;
+border-left: 0px solid #8a3b8f; padding-top: 5px; padding-bottom: 5px; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;">
+<span style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:undefined;">
+<span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><strong>Register Now</strong></span>
+</span>
+</a>
+<!--[if mso]>
+</center>
+</v:textbox>
+</v:roundrect>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+<table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+<tbody>
+<tr style="vertical-align: top;" valign="top">
+<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+<table class="divider_content" border="0" cellpadding="0" cellspacing="0" width="60%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 1px dotted #BBBBBB; width: 60%;" align="center" role="presentation" valign="top">
+<tbody>
+<tr style="vertical-align: top;" valign="top">
+<td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top"><span></span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (!mso)&(!IE)]>
+<!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+</div>
+</div>
+<div style="background-color:#474747;">
+<div class="block-grid " style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #474747;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:#474747;">
+<!--[if (mso)|(IE)]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#474747;">
+<tr>
+<td align="center">
+<table cellpadding="0" cellspacing="0" border="0" style="width:600px">
+<tr class="layout-full-width" style="background-color:#474747">
+<![endif]-->
+<!--[if (mso)|(IE)]>
+<td align="center" width="600" style="background-color:#474747;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;">
+<![endif]-->
+<div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]>
+<!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif">
+<![endif]-->
+<div style="color:#393d47;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div class="txtTinyMce-wrapper" style="font-size: 14px; line-height: 1.5; color: #393d47; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 21px;">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+<span style="color: #ffffff;"><strong>Sponsored By</strong></span>
+</p>
+</div>
+</div>
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<div class="img-container center fixedwidth" align="center" style="padding-right: 0px;padding-left: 0px;">
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr style="line-height:0px">
+<td style="padding-right: 0px;padding-left: 0px;" align="center">
+<![endif]-->
+<img class="center fixedwidth" align="center" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/681460_663958/editor_images/spns-logo3.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 600px; display: block;" width="600">
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif">
+<![endif]-->
+<div style="color:#393d47;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div class="txtTinyMce-wrapper" style="font-size: 14px; line-height: 1.5; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: #393d47; mso-line-height-alt: 21px;">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+<span style="color: #ffffff;">Copyright © 2021 Market Expertise<em>&nbsp;- All rights reserved.</em></span>
+<br>
+<span style="color: #ffffff;">300 Cadman Plaza West, One Pierrepoint Plaza, Brooklyn, NY, 11201, USA</span>
+</p>
+</div>
+</div>
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if (!mso)&(!IE)]>
+<!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<![endif]-->
+</div>
+</div>
+</div>
+<!--[if (mso)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (IE)]>
+</div>
+<![endif]-->
+<br/><div><p style='font-size: 12px;line-height: normal;font-family: arial;text-align: center;' >--<br><a href="http://panela.tech-prospect.com/gtrack?clientid=87905&ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQYBDQELRA==&sl=JkpmGjMxGWR8bUtIWVkAWgVMTFIHDR5FS1gXQFcBFU1VDA4dBA==&pp=0&&c=0000"  >Click Here</a> to unsubscribe from this newsletter.<br><br></div><img border="0" src="http://panela.tech-prospect.com/gtrack?clientid=87905&ul=VgMFXlFQGQdNWEVTWVMMT0oWXUMBCV5UV3cHWFsPBE1VDA4dSA==&ml=UQYKXhpSGQdN&sl=Jkp8GjMxGWR8bUtIWVkAWgVMTFIHDR5FS1gXQFcBFU1VDA4dBA==&c=0000" ></body>
+</html>
+
+
+
+--b1_f9c3c9c6f0cbd726c4203edf448aba29--

@@ -1,0 +1,313 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp1634322wrr; Fri, 23
+ Jul 2021 10:17:36 -0700 (PDT)
+X-Received: by 2002:a05:6808:28d:: with SMTP id
+ z13mr1283268oic.68.1627060656101; Fri, 23 Jul 2021 10:17:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627060656; cv=none; d=google.com;
+ s=arc-20160816;
+ b=NtNLO/BqU25sqIe5BhD3l7hBgmjsMl8YQjxCcKo5HBvMVIyZoC5/g4VERlUhon5llM
+ sOqN4NaBygaD9mC7zWe5bN2E0zm3BMVGk57Q5aalQviqFgYe89SCDA4GzNXGWTcsgR1G
+ jQNpwi45GTIY0frFOPraqDYbGqWI3nIhYMYiL4ddBAekY/YgULfx/q6yIwd9mlH/lwLd
+ cBl4Z8UysWOT5PQZY8bTJMwRGYWbLMtY3bv9xSOCEfe8nWNOFYQrU6111ElSM83ubOQD
+ 5i+Ew2VrTBQFJWZOUr9wa0E73dr+S11B5pZ56jcjYovJ/lvzFnlSMTJNw4UA5f1UGVFw cSnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:mime-version:references:in-reply-to:from
+ :dkim-signature; bh=lvUcv5mALhQHT8vEb4cg0lPCL7/ItcaMku0VPF9CnRk=;
+ b=ALQDQMec4bqu7WrO0KmOd1PG7xJRLM8dqsGfUnrOVV4XcyLbiUO0UTSFD4ZapsQLHC
+ IT7iW/CY8R4cHoeqvuMZAkXB3TcPcuR+Flf/4lZeOiGhI12nX7aWMO1a00MIs0TLZfYf
+ I8vAdpuP8poVsurkSEIWKeOCXtN/em8g743SIzd5db0O33DiVTvTFVJ7W++P+No3O9nM
+ YCVbyUddMF11GIN/hPRJ5rK+vbMH6KEp6u1VWd0x/GsWRG5v3pb9sXodMpjGvf81a0C9
+ jiy7b6VttzF4j7J+4AR5kWVE9uPARNjE3BKzDoJZ6ULhXejoxf6JevSQfbrmWpH6xBlF X5LQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass header.i=@fastly.com
+ header.s=google header.b=sE1XiJAD; spf=pass (google.com: domain of
+ ajadallah@fastly.com designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=ajadallah@fastly.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=fastly.com
+Return-Path: <ajadallah@fastly.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ f201sor3628933oob.9.2021.07.23.10.17.35 for <arkadiy.tetelman@chime.com>
+ (Google Transport Security); Fri, 23 Jul 2021 10:17:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ajadallah@fastly.com designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass header.i=@fastly.com
+ header.s=google header.b=sE1XiJAD; spf=pass (google.com: domain of
+ ajadallah@fastly.com designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=ajadallah@fastly.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=fastly.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastly.com; s=google;
+ h=from:in-reply-to:references:mime-version:date:message-id:subject:to;
+ bh=lvUcv5mALhQHT8vEb4cg0lPCL7/ItcaMku0VPF9CnRk=;
+ b=sE1XiJADCFEtkJGdq7ioXbTAMsMPzH1XiZDzMGiPD0ZbQZoUhYx34lSwUxwjQnUcuZ
+ bh3N5AmX///KlahWm/Byir8EHcvmqe9+i5Dp3O/vFHuHBO+7WtCqZDBxoT+nJFoptmDe
+ JEOLTc1EiZutNPGk/gDfMjZue1pcbpltAkonQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:in-reply-to:references:mime-version:date
+ :message-id:subject:to; bh=lvUcv5mALhQHT8vEb4cg0lPCL7/ItcaMku0VPF9CnRk=;
+ b=RGDrySgKZnNkEHu6vkusabBuW6Kx7C7uxVenR1akCRJIJG0LhKfEhDKtpKVoMsOXLB
+ hHCtydiywXB82i0soPqqhguKGK+vEQM24c5ufA6cuXPBKhKEfEVu0zslVwXQp0N76oeW
+ EbCZ8O4DmBeolfriNEsFlsjxLQWzk+ta54sl7WF97FbKz+uUmONbG5JPbLzJswfsaAj2
+ e/+nz1dy2LK1BBaLy/naEv9B5dzU7GLDLBccHNhonLLI30EpLYoa+Ktr2fCmYG0gDl0l
+ sdMb2LXFVHIHAl7AmTe9kVnQA3NyMCDBNY3nxN6oAzHdM08rv1oOndyc+3iS2DXaikRB TYvg==
+X-Gm-Message-State: AOAM5335Ux0Xmkbutxm2DLvVMfkVzb437d8DxbJRyGi6c9eSNfHqrBCp
+ npoTAIXHaKac93PFH6Hj3nTDTxFBsglZ3N7wBIUNRfb+vMM=
+X-Google-Smtp-Source: ABdhPJzqFpM6V+GLN8sukSv7LmE8bu7HORWhB1HNSo5LZOK2oVEHoZst67NEO7KfeLRdNCURNyYw8ffq6Qz8O7DBtPA=
+X-Received: by 2002:a4a:da0f:: with SMTP id e15mr675076oou.53.1627060655480;
+ Fri, 23 Jul 2021 10:17:35 -0700 (PDT)
+Received: from 193155701165 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 23 Jul 2021 12:17:34 -0500
+From: Alexa Jadallah <ajadallah@fastly.com>
+In-Reply-To: <CA+3ngSGdqts4bCtQLoX9jvN4Fa9DO40SD+Jh48T=WhzJgjvPig@mail.gmail.com>
+References: <CA+3ngSGdqts4bCtQLoX9jvN4Fa9DO40SD+Jh48T=WhzJgjvPig@mail.gmail.com>
+Mime-Version: 1.0
+X-OUTREACH-SENT: true
+Date: Fri, 23 Jul 2021 12:17:34 -0500
+Message-ID: <CA+3ngSFZs=QyZo2Fni+gzFA5fYi4QQz755PB6kCSyKqAJzarPA@mail.gmail.com>
+Subject: Re: Call tomorrow from Fastly
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Content-Type: multipart/alternative; boundary="00000000000065f58905c7cd941f"
+
+
+--00000000000065f58905c7cd941f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy,
+
+Sorry I wasn't able to catch you on the phone yesterday, we recently
+surveyed security and engineering teams from 500 companies to find out why
+legacy security tools are lacking, thought you might find it
+interesting... here=E2=80=99s the report:
+https://www.fastly.com/web-application-and-api-security-tipping-point
+
+   - $2.6 million =E2=80=94 average spend on security tools
+   - 11 =E2=80=94 average number of tools used by engineers
+   - 75% =E2=80=94 security teams wasting time on false positives
+
+Do these findings resonate with you or surprise you?
+
+Best,
+Alexa
+
+
+[image: Fastly]
+*Alexa Jadallah* | Market Development | San Francisco
+Tel: (720) 662-3651
+fastly.com <https://www.fastly.com/>  LinkedIn
+<https://www.linkedin.com/company/fastly/>
+Fastly Global HQ: 475 Brannan St. Ste 300, San Francisco, CA 94107, USA
+
+
+
+
+
+
+
+
+
+If you'd like me to stop sending you emails, please click here
+<https://sales.fastly.com/api/mailings/unsubscribe/PMRGSZBCHI2TENBWGEZCYITP=
+OJTSEORCGYZTGNZYMQYTELLBMEZGCLJUMQ4DKLLCGY3GILJWGAZTOZBUMJRWENBXMYRCYITWMVZ=
+HG2LPNYRDUIRUEIWCE43JM4RDUITKIVHDASKFPA4UYRTBIVJEK6JWJFAUYX2PGZXHKMDMGBETE2=
+CVNJMFA32JGF3TKNLWG5VT2IT5>
+
+
+On Wed, Jul 21, 2021 at 1:32 pm, Alexa Jadallah wrote:
+
+Hi Arkadiy,
+
+We haven=E2=80=99t had the chance to speak yet, I'm hoping you might help m=
+e
+determine whether a discussion around web application security would
+benefit Chime.
+
+This may not be true for you, but most people I talk to have at least one
+of these pain points with their current WAF:
+
+   - Constant rule tuning
+   - Not in full blocking mode - WAF is tuned down to avoid breaking things=
+.
+   - Hard to scale in Cloud and DevOps forward environments.
+   - Visibility & reporting are limited - blocking decisions and
+   performance impact are opaque.
+   - Doesn=E2=80=99t integrate well with other tools because API is a secon=
+d class
+   feature
+
+Does this sound familiar? I=E2=80=99ll plan to follow-up with a call tomorr=
+ow to
+see if it makes sense to put time on the calendar.
+
+Best Regards,
+Alexa
+
+
+
+*Alexa Jadallah* | Market Development | San Francisco
+Tel: (720) 662-3651
+fastly.com <https://www.fastly.com/>LinkedIn
+<https://www.linkedin.com/company/fastly/>
+Fastly Global HQ: 475 Brannan St. Ste 300, San Francisco, CA 94107, USA
+
+
+
+
+
+
+
+
+
+If you'd like me to stop sending you emails, please click here
+<https://sales.fastly.com/api/mailings/unsubscribe/PMRGSZBCHI2TEMZRGE3SYITP=
+OJTSEORCGYZTGNZYMQYTELLBMEZGCLJUMQ4DKLLCGY3GILJWGAZTOZBUMJRWENBXMYRCYITWMVZ=
+HG2LPNYRDUIRUEIWCE43JM4RDUIRTIJTE25SWORMFKQTEN5EW46TPIN4U6ODIJN4HU23XMVIG44=
+SOKI2U2VCDNZEWY5LCNVVT2IT5>
+
+--00000000000065f58905c7cd941f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans s=
+erif;font-size:13px">Hi Arkadiy,</span></div><br><div><span style=3D"font-f=
+amily:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">Sorry=
+ I wasn&#39;t able to catch you on the phone yesterday, we recently surveye=
+d security and engineering teams from 500 companies to find out why legacy =
+security tools are lacking, thought you might find it interesting...=C2=A0h=
+ere=E2=80=99s the report:=C2=A0</span><a href=3D"https://www.fastly.com/web=
+-application-and-api-security-tipping-point" target=3D"_blank" rel=3D"noope=
+ner noreferrer"><span style=3D"font-family:Helvetica Neue,Liberation Sans,A=
+rial,sans serif;font-size:13px">https://www.fastly.com/web-application-and-=
+api-security-tipping-point</span></a></div><div id=3D"docs-internal-guid-48=
+131955-7fff-429e-d661-8c411849e1d4"><ul style=3D"font-size:13px;font-family=
+:Helvetica Neue,Liberation Sans,Arial,sans serif;padding-left:26px"><li ari=
+a-level=3D"1" dir=3D"ltr"><div role=3D"presentation" dir=3D"ltr"><span styl=
+e=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:=
+13px">$2.6 million =E2=80=94 average spend on security tools</span></div></=
+li><li aria-level=3D"1" dir=3D"ltr"><div role=3D"presentation" dir=3D"ltr">=
+<span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;=
+font-size:13px">11 =E2=80=94 average number of tools used by engineers</spa=
+n></div></li><li aria-level=3D"1" dir=3D"ltr"><div role=3D"presentation" di=
+r=3D"ltr"><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,s=
+ans serif;font-size:13px">75% =E2=80=94 security teams wasting time on fals=
+e positives=C2=A0</span></div></li></ul><div dir=3D"ltr"><span style=3D"fon=
+t-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">Do=
+ these findings resonate with you or surprise you?=C2=A0</span></div></div>=
+<br><div dir=3D"ltr"><span style=3D"font-family:Helvetica Neue,Liberation S=
+ans,Arial,sans serif;font-size:13px">Best,</span></div><div dir=3D"ltr"><sp=
+an style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;fon=
+t-size:13px">Alexa</span></div><br><div class=3D"outreach-signature"><div c=
+lass=3D"gs"><div><div id=3D":q7" class=3D"ii gt"><div id=3D":kq" class=3D"a=
+3s aXjCH"><div dir=3D"ltr"><br><div><div><img style=3D"margin: 0px; padding=
+: 0px; border: none; outline: none; max-width: none; color: rgb(23, 43, 77)=
+; font-family: -apple-system, system-ui, Segoe UI, Roboto, Oxygen, Ubuntu, =
+Fira Sans, Droid Sans, Helvetica Neue, sans-serif; font-size: 14px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal;=
+ orphans: 2; text-align: left; text-indent: 0px; text-transform: none; wido=
+ws: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); text-decora=
+tion-thickness: initial; text-decoration-style: initial; text-decoration-co=
+lor: initial" alt=3D"Fastly" height=3D"48" width=3D"94" src=3D"https://www.=
+fastly.com/img/sig-@2x.png">=C2=A0</div><div><span style=3D"font-family:Hel=
+vetica Neue,Liberation Sans,Arial,sans serif;font-size:10px"><strong>Alexa =
+Jadallah</strong></span><span style=3D"font-family:Helvetica Neue,Liberatio=
+n Sans,Arial,sans serif;font-size:10px">=C2=A0| Market Development | San Fr=
+ancisco</span></div><div><span style=3D"font-family:Helvetica Neue,Liberati=
+on Sans,Arial,sans serif;font-size:10px">Tel:=C2=A0(720) 662-3651</span></d=
+iv><div><a rel=3D"noopener noreferrer" target=3D"_blank" href=3D"https://ww=
+w.fastly.com/"><span style=3D"font-family:Helvetica Neue,Liberation Sans,Ar=
+ial,sans serif;font-size:10px">fastly.com</span></a><span style=3D"font-fam=
+ily:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:10px">=C2=A0=
+=C2=A0</span><a rel=3D"noopener noreferrer" target=3D"_blank" href=3D"https=
+://www.linkedin.com/company/fastly/"><span style=3D"font-family:Helvetica N=
+eue,Liberation Sans,Arial,sans serif;font-size:10px">LinkedIn</span></a></d=
+iv><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,san=
+s serif;font-size:10px">Fastly Global HQ: 475 Brannan St. Ste 300, San Fran=
+cisco, CA 94107, USA</span></div><br></div></div></div></div></div></div><d=
+iv class=3D"gs"><div><div id=3D":q7" class=3D"ii gt"><div id=3D":kq" class=
+=3D"a3s aXjCH"><br></div></div></div></div><div class=3D"gs"><div><div id=
+=3D":q7" class=3D"ii gt"><div id=3D":kq" class=3D"a3s aXjCH"><div><br><div>=
+<br><br></div></div><br><br></div></div><br></div></div><br></div><div styl=
+e=3D"font-size:10px;color:rgb(153,153,153)" class=3D"outreach-signature out=
+reach-unsubscribe"><span style=3D"font-family:Helvetica Neue,Liberation San=
+s,Arial,sans serif">If you&#39;d like me to stop sending you emails, please=
+=C2=A0</span><a href=3D"https://sales.fastly.com/api/mailings/unsubscribe/P=
+MRGSZBCHI2TENBWGEZCYITPOJTSEORCGYZTGNZYMQYTELLBMEZGCLJUMQ4DKLLCGY3GILJWGAZT=
+OZBUMJRWENBXMYRCYITWMVZHG2LPNYRDUIRUEIWCE43JM4RDUITKIVHDASKFPA4UYRTBIVJEK6J=
+WJFAUYX2PGZXHKMDMGBETE2CVNJMFA32JGF3TKNLWG5VT2IT5" target=3D"_blank" rel=3D=
+"noopener noreferrer"><span style=3D"font-family:Helvetica Neue,Liberation =
+Sans,Arial,sans serif;font-size:10px">click here</span></a></div><br><br><d=
+iv class=3D"outreach-quote"><div><span style=3D"font-family:Helvetica Neue,=
+Liberation Sans,Arial,sans serif;font-size:10px">On Wed, Jul 21, 2021 at 1:=
+32 pm, Alexa Jadallah wrote:</span></div><br><div><span style=3D"font-famil=
+y:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">Hi Arkadi=
+y,</span></div><div id=3D"docs-internal-guid-aef40435-7fff-e4bb-8aa2-e08c56=
+bd465c"><br><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,=
+Arial,sans serif;font-size:13px">We haven=E2=80=99t had the chance to speak=
+ yet, I&#39;m hoping you might help me determine whether a discussion aroun=
+d web application security would benefit Chime.</span></div></div><br><div =
+id=3D"docs-internal-guid-aef40435-7fff-e4bb-8aa2-e08c56bd465c"><div><span s=
+tyle=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-si=
+ze:13px">This may not be true for you, but most people I talk to have at le=
+ast one of these pain points with their current WAF:=C2=A0</span></div><ul =
+style=3D"font-size:13px;font-family:Helvetica Neue,Liberation Sans,Arial,sa=
+ns serif;padding-left:26px"><li><div><span style=3D"font-family:Helvetica N=
+eue,Liberation Sans,Arial,sans serif;font-size:13px">Constant rule tuning</=
+span></div></li><li><div><span style=3D"font-family:Helvetica Neue,Liberati=
+on Sans,Arial,sans serif;font-size:13px">Not in full blocking mode - WAF is=
+ tuned down to avoid breaking things.</span></div></li><li><div><span style=
+=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:1=
+3px">Hard to scale in Cloud and DevOps forward environments.</span></div></=
+li><li><div><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial=
+,sans serif;font-size:13px">Visibility &amp; reporting are limited - blocki=
+ng decisions and performance impact are opaque.</span></div></li><li><div><=
+span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;f=
+ont-size:13px">Doesn=E2=80=99t integrate well with other tools because API =
+is a second class feature</span></div></li></ul><div><span style=3D"font-fa=
+mily:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">Does t=
+his sound familiar? I=E2=80=99ll plan to follow-up with a call tomorrow to =
+see if it makes sense to put time on the calendar.</span></div></div><br><d=
+iv><span style=3D"font-family:Helvetica Neue,Liberation Sans,Arial,sans ser=
+if;font-size:13px">Best Regards,</span></div><div><span style=3D"font-famil=
+y:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:13px">Alexa</sp=
+an></div><br><div class=3D"outreach-signature"><div class=3D"gs"><div><div =
+class=3D"ii gt" id=3D":q7"><div class=3D"a3s aXjCH" id=3D":kq"><div><br><di=
+v><div><img src=3D"https://www.fastly.com/img/sig-@2x.png" width=3D"94" hei=
+ght=3D"48" style=3D"margin: 0px; padding: 0px; border: none; max-width: non=
+e; color: rgb(23, 43, 77); font-family: -apple-system, system-ui, Segoe UI,=
+ Roboto, Oxygen, Ubuntu, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;=
+ font-size: 14px; letter-spacing: normal; text-align: left; text-indent: 0p=
+x; background-color: rgb(255, 255, 255)">=C2=A0</div><div><span style=3D"fo=
+nt-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:10px"><=
+strong>Alexa Jadallah</strong></span><span style=3D"font-family:Helvetica N=
+eue,Liberation Sans,Arial,sans serif;font-size:10px">=C2=A0| Market Develop=
+ment | San Francisco</span></div><div><span style=3D"font-family:Helvetica =
+Neue,Liberation Sans,Arial,sans serif;font-size:10px">Tel:=C2=A0(720) 662-3=
+651</span></div><div><a href=3D"https://www.fastly.com/" target=3D"_blank" =
+rel=3D"noopener noreferrer"><span style=3D"font-family:Helvetica Neue,Liber=
+ation Sans,Arial,sans serif;font-size:10px">fastly.com</span></a><a href=3D=
+"https://www.linkedin.com/company/fastly/" target=3D"_blank" rel=3D"noopene=
+r noreferrer"><span style=3D"font-family:Helvetica Neue,Liberation Sans,Ari=
+al,sans serif;font-size:10px">LinkedIn</span></a></div><div><span style=3D"=
+font-family:Helvetica Neue,Liberation Sans,Arial,sans serif;font-size:10px"=
+>Fastly Global HQ: 475 Brannan St. Ste 300, San Francisco, CA 94107, USA</s=
+pan></div><br></div></div></div></div></div></div><div class=3D"gs"><div><d=
+iv class=3D"ii gt" id=3D":q7"><br></div></div></div><div class=3D"gs"><div>=
+<div class=3D"ii gt" id=3D":q7"><div class=3D"a3s aXjCH" id=3D":kq"><div><b=
+r><div><br><br></div></div><br><br></div></div><br></div></div><br></div><d=
+iv class=3D"outreach-signature outreach-unsubscribe" style=3D"font-size:10p=
+x;color:rgb(153,153,153)"><span style=3D"font-family:Helvetica Neue,Liberat=
+ion Sans,Arial,sans serif">If you&#39;d like me to stop sending you emails,=
+ please=C2=A0</span><a href=3D"https://sales.fastly.com/api/mailings/unsubs=
+cribe/PMRGSZBCHI2TEMZRGE3SYITPOJTSEORCGYZTGNZYMQYTELLBMEZGCLJUMQ4DKLLCGY3GI=
+LJWGAZTOZBUMJRWENBXMYRCYITWMVZHG2LPNYRDUIRUEIWCE43JM4RDUIRTIJTE25SWORMFKQTE=
+N5EW46TPIN4U6ODIJN4HU23XMVIG44SOKI2U2VCDNZEWY5LCNVVT2IT5" target=3D"_blank"=
+ rel=3D"noopener noreferrer"><span style=3D"font-family:Helvetica Neue,Libe=
+ration Sans,Arial,sans serif;font-size:10px">click here</span></a></div><di=
+v><img height=3D"1" width=3D"1">=C2=A0</div></div><img src=3D"https://sales=
+.fastly.com/api/mailings/opened/PMRGSZBCHI2TENBWGEZCYITPOJTSEORCGYZTGNZYMQY=
+TELLBMEZGCLJUMQ4DKLLCGY3GILJWGAZTOZBUMJRWENBXMYRCYITWMVZHG2LPNYRDUIRUEIWCE4=
+3JM4RDUITIKVAXQ3DRLFSWQYLPGJIHKX2YN53XC3RQLBKXARSSI5EHESLXNM2TAUBQGQZES4CKJ=
+JRT2IT5.gif" alt=3D"" width=3D"1" height=3D"1">
+
+--00000000000065f58905c7cd941f--

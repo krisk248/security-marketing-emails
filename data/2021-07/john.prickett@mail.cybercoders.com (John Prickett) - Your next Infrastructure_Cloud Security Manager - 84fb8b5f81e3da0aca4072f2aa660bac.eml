@@ -1,0 +1,208 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp4864568wrr; Mon, 19
+ Jul 2021 14:56:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOv/mAmjl7sAk1k7HP3pqYpnVmFK7UaQIYjcyTgzFnrCnLgID3VoHjyVJy6md9+cXwRfS7
+X-Received: by 2002:a05:6638:1350:: with SMTP id
+ u16mr23613019jad.19.1626731804687; Mon, 19 Jul 2021 14:56:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626731804; cv=none; d=google.com;
+ s=arc-20160816;
+ b=wtTVs03Bs8f4kiBMKRyd50+zzOGuvQxVaEfAvZJTgXNO0YFqMXhO8SYfAgu8cafJ07
+ 6i5I8sGO1kFA7yOw1JznWuVQJ/qmvzCKF8ADBaAerGTVC7xpRjgNLthdgZ37/WslZ0Uc
+ P0BHHWzOVUeOVxtFQrsQXo3k55whKpW3fHOQtfJUlxbktngko3NGV0hRiva+viHw6DYz
+ OR2jkXaVnsq1UQMeV+tCh2w0B6cE+QQ7XDYCRUULcahyqSiwkaLRhJnrwY1AhdmODMFk
+ AXI5CuumGIRiqix2Wo2W//br9rT+pvdU5IJQCdsEqIYkxww1hKH+DbPdR+6As8fcJM99 +LOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:subject:cc:to:from:date:message-id:dkim-signature;
+ bh=SydcU5ybSKGBgnIJ7F3yk2cRO37ymAqVmLchTLQvKRA=;
+ b=Yxe9D/3EIekr8Hut7ndLyATpaPwnWFQ8p/ASB87ow6Z/3mal3GTfWKNF5RlKN71vWD
+ idrTem671kSqcQCmvV2VxSxwf2XsyD1nlDM52RvLqHxtWcvT7FtLY0ii/rfJ8J4B9COE
+ lYFAwGnuvs5Rd/xrVb0S49ENmIEpygPJLSRSUEltTXTms5EV8X2C5GOsP06/2Gkb8MOl
+ zpKCE9UNyyCk0Qh+0tT8IbSSAbmqGoakP6PojeD6C5hFWKxdQS/oP0bK1xoKSN8C1r79
+ 22xNUDNzQEmqmwJfqDCCK7eXjjR0I2GZz3qzohO6WFNA1dp03XQBxU2YCUTqybOfaztT fg1g==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=neutral (body hash did
+ not verify) header.i=@mail.cybercoders.com header.s=CCSMTP2
+ header.b=KXeYNFDE; spf=pass (google.com: domain of
+ john.prickett@mail.cybercoders.com designates 192.103.251.118 as permitted
+ sender) smtp.mailfrom=john.prickett@mail.cybercoders.com; dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=mail.cybercoders.com
+Return-Path: <john.prickett@mail.cybercoders.com>
+Received: from CCsmtpD.cybercoders.com (ccsmtpg.cybercoders.com.
+ [192.103.251.118]) by mx.google.com with ESMTPS id
+ i8si3651730ilr.7.2021.07.19.14.56.44 for <arkadiy.tetelman@chime.com>
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Mon, 19
+ Jul 2021 14:56:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of john.prickett@mail.cybercoders.com
+ designates 192.103.251.118 as permitted sender) client-ip=192.103.251.118;
+Authentication-Results: mx.google.com; dkim=neutral (body hash did not verify)
+ header.i=@mail.cybercoders.com header.s=CCSMTP2 header.b=KXeYNFDE; spf=pass
+ (google.com: domain of john.prickett@mail.cybercoders.com designates
+ 192.103.251.118 as permitted sender)
+ smtp.mailfrom=john.prickett@mail.cybercoders.com; dmarc=pass (p=NONE sp=NONE
+ dis=NONE) header.from=mail.cybercoders.com
+dkim-signature: v=1; a=rsa-sha1; d=mail.cybercoders.com; s=CCSMTP2;
+ c=relaxed/relaxed; q=dns/txt;
+ h=From:Subject:Date:Message-ID:To:MIME-Version:Content-Type;
+ bh=dfHdEONzFVCGjIPk5o0ybwp/qkA=;
+ b=KXeYNFDEazfTg4hE9LeMC02lHL24buuIGcl/EToISGVOazVE3JqUwEmqYOB3FYxpGM87adfUH4roXaoB8HjNvi65Ux7tXCjHaKYLf1tJ4XWrvyiJpD1t9uHS2viyGjf4f4sqTcr4WwnsZXN06OtXcerqEczHReAQMC/I3+qUpfM=
+Received: from 93d500cd71eb (Unknown [172.28.16.15]) by
+ CCsmtpD.cybercoders.com with ESMTP ; Mon, 19 Jul 2021 14:56:35 -0700
+Message-Id: <1626731803938.70804.32@93d500cd71eb>
+Date: Mon, 19 Jul 2021 21:56:43 +0000
+From: =?UTF-8?Q?John_Prickett?= <john.prickett@mail.cybercoders.com>
+To: =?UTF-8?Q?Arkadiy_Tetelman?= <arkadiy.tetelman@chime.com>
+Cc: 
+Subject: =?UTF-8?Q?Your_next_Infrastructure/Cloud_Security_Manager?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary=",S..u7,L2D0?jPdGmiVo1O?Yy,,7dfuGUypVe'76?(,:Q6BOtGMjJwM3fk5lx+K7Vo6gt"
+
+
+--,S..u7,L2D0?jPdGmiVo1O?Yy,,7dfuGUypVe'76?(,:Q6BOtGMjJwM3fk5lx+K7Vo6gt
+Content-Type: multipart/alternative; boundary="2.xFGzV5E9?NVc(DIV2h.(8HfeyqkXZ=(o:CoIbeCo/2?yh9v'+YgEDY+Pz'kO-8L36ec"
+
+--2.xFGzV5E9?NVc(DIV2h.(8HfeyqkXZ=(o:CoIbeCo/2?yh9v'+YgEDY+Pz'kO-8L36ec
+Content-Type:text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi Arkadiy,
+
+I noticed that you’re hiring a skilled Infrastructure/Cloud Security Manager.
+
+If you need help finding people who are qualified, I can send great candidates
+your way.
+
+Would you like to see some resumes?
+
+ Thanks,
+John John Prickett [John.Prickett@CyberCoders.com] Sr. Executive Recruiter 
+Phone: 949.825.5584 View my open jobs
+[http://www.cybercoders.com/jobs/by-recruiter/John-Prickett/?utm_source=signature&utm_medium=email&utm_content=recruiterbio&utm_campaign=ads]
+ [https://www.instagram.com/cybercoders/] 
+[https://www.linkedin.com/company/cybercoders/] 
+[http://www.facebook.com/CyberCoders/] 
+[http://www.cybercoders.com/?utm_source=signature&amp;utm_medium=email&amp;utm_content=logo&amp;utm_campaign=ads]
+ 
+
+CyberCoders is an Equal Opportunity Employer. All qualified applicants will
+receive consideration for employment without regard to race, color, religion,
+sex, national origin, disability, protected veteran status, or any other
+characteristic protected by law. 
+
+CyberCoders Headquarters - We recruit candidates worldwide.
+6591 Irvine Center Drive, Suite 200
+Irvine, CA 92618
+unsubscribe
+[https://cybercoders.com/unsubscribe/byemail?email=arkadiy.tetelman%40chime.com&utm_source=lead-machine&utm_medium=email&utm_campaign=5521100]
+
+--2.xFGzV5E9?NVc(DIV2h.(8HfeyqkXZ=(o:CoIbeCo/2?yh9v'+YgEDY+Pz'kO-8L36ec
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+PHA+SGkgQXJrYWRpeSw8L3A+Cgo8cD5JIG5vdGljZWQgdGhhdCB5b3UmcnNxdW87cmUgaGlyaW5n
+IGEgc2tpbGxlZCZuYnNwO0luZnJhc3RydWN0dXJlL0Nsb3VkIFNlY3VyaXR5IE1hbmFnZXIuPC9w
+PgoKPHA+SWYgeW91IG5lZWQgaGVscCBmaW5kaW5nIHBlb3BsZSB3aG8gYXJlIHF1YWxpZmllZCwg
+SSBjYW4gc2VuZCBncmVhdCBjYW5kaWRhdGVzIHlvdXIgd2F5LjwvcD4KCjxwPldvdWxkIHlvdSBs
+aWtlIHRvIHNlZSBzb21lIHJlc3VtZXM/PC9wPgoKPHA+PHRhYmxlIHN0eWxlPSJib3JkZXItY29s
+bGFwc2U6IGNvbGxhcHNlOyBtYXJnaW4tdG9wOiAxMHB4OyBmb250LWZhbWlseTogQ2FsaWJyaSwg
+QXJpYWwsIHNhbnMtc2VyaWY7IiBjbGFzcz1JbXByaW50VW5pcXVlSURUYWJsZSB3aWR0aD0iNjAw
+IiBib3JkZXI9IjAiIGNlbGxwYWRkaW5nPSIwIiBjZWxsc3BhY2luZz0iMCI+DQogICAgICAgIDx0
+Ym9keT4NCiAgICAgICAgICAgIDx0cj4NCiAgICAgICAgICAgICAgICA8dGQgY29sc3Bhbj0iNCI+
+VGhhbmtzLDxici8+Sm9objwvdGQ+DQogICAgICAgICAgICA8L3RyPg0KCSAgICA8dHI+DQogICAg
+ICAgICAgICAgICAgPHRkIGNvbHNwYW49IjQiIGhlaWdodD0iMjAiPiZuYnNwOzwvdGQ+DQogICAg
+ICAgICAgICA8L3RyPg0KICAgICAgICAgICAgPHRyPg0KICAgICAgICAgICAgICAgIDx0ZCB3aWR0
+aD0iMTQ1IiB2YWxpZ249InRvcCI+DQogICAgICAgICAgICAgICAgICAgIDx0YWJsZSBzdHlsZT0i
+Ym9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsgZm9udC1mYW1pbHk6IENhbGlicmksIEFyaWFsLCBz
+YW5zLXNlcmlmOyIgY2VsbHBhZGRpbmc9IjAiIGNlbGxzcGFjaW5nPSIwIj4NCiAgICAgICAgICAg
+ICAgICAgICAgICAgIDx0cj4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8dGQ+DQogICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXY+DQoJCQkJCQkJCQk8YSBocmVmPSJtYWls
+dG86Sm9obi5Qcmlja2V0dEBDeWJlckNvZGVycy5jb20iIHN0eWxlPSJmb250LXNpemU6IDE4cHg7
+IGNvbG9yOiAjMDBhMWUxOyB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyB0ZXh0LWRlY29yYXRp
+b246IG5vbmU7IG1zby1saW5lLWhlaWdodC1ydWxlOiBleGFjdGx5OyBsaW5lLWhlaWdodDogMjBw
+eDsiPkpvaG4gUHJpY2tldHQ8L2E+DQoJCQkJCQkJCTwvZGl2Pg0KICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIDwvdGQ+DQogICAgICAgICAgICAgICAgICAgICAgICA8L3RyPg0KICAgICAgICAg
+ICAgICAgICAgICAgICAgPHRyPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZD4NCiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1zaXplOiAxNHB4
+OyBjb2xvcjogIzQ0NDsgbWFyZ2luLWJvdHRvbTogOHB4OyBtc28tbGluZS1oZWlnaHQtcnVsZTog
+ZXhhY3RseTtsaW5lLWhlaWdodDogMTZweDsiPlNyLiBFeGVjdXRpdmUgUmVjcnVpdGVyPC9kaXY+
+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgPC90ZD4NCiAgICAgICAgICAgICAgICAgICAg
+ICAgIDwvdHI+DQogICAgICAgICAgICAgICAgICAgICAgICA8dHI+DQogICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgPHRkPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0
+eWxlPSJmb250LXNpemU6IDE0cHg7IGNvbG9yOiAjNDQ0OyBtc28tbGluZS1oZWlnaHQtcnVsZTog
+ZXhhY3RseTsgbGluZS1oZWlnaHQ6IDE2cHg7Ij5QaG9uZTogOTQ5LjgyNS41NTg0PC9kaXY+DQog
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgPC90ZD4NCiAgICAgICAgICAgICAgICAgICAgICAg
+IDwvdHI+DQogICAgICAgICAgICAgICAgICAgICAgICA8dHI+DQogICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgPHRkPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxl
+PSJtYXJnaW4tYm90dG9tOiA1cHg7Ij48YSBocmVmPSJodHRwOi8vd3d3LmN5YmVyY29kZXJzLmNv
+bS9qb2JzL2J5LXJlY3J1aXRlci9Kb2huLVByaWNrZXR0Lz91dG1fc291cmNlPXNpZ25hdHVyZSZh
+bXA7dXRtX21lZGl1bT1lbWFpbCZhbXA7dXRtX2NvbnRlbnQ9cmVjcnVpdGVyYmlvJmFtcDt1dG1f
+Y2FtcGFpZ249YWRzIiBzdHlsZT0iZm9udC1zaXplOiAxNHB4OyBjb2xvcjogIzAwYTFlMTsgdGV4
+dC1kZWNvcmF0aW9uOiBub25lOyBtc28tbGluZS1oZWlnaHQtcnVsZTogZXhhY3RseTtsaW5lLWhl
+aWdodDogMTZweDsiPlZpZXcgbXkgb3BlbiBqb2JzPC9hPjwvZGl2Pg0KICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDwvdGQ+DQogICAgICAgICAgICAgICAgICAgICAgICA8L3RyPg0KICAgICAg
+ICAgICAgICAgICAgICAgICAgPHRyPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZD4N
+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdj4NCiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9Imh0dHBzOi8vd3d3Lmluc3RhZ3JhbS5jb20vY3li
+ZXJjb2RlcnMvIiBzdHlsZT0iZGlzcGxheTogaW5saW5lLWJsb2NrOyI+DQogICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBpZD0iaW5zdGEiIGJvcmRlcj0iMCIgYWxp
+Z249ImJvdHRvbSIgc3JjPSJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9jeWJlcmNvZGVycy9p
+bWFnZS91cGxvYWQvdjE0ODM1NjU4NzIvY2Mtc2lnLWluc3RhZ3JhbV93dGpieGIuZ2lmIiB3aWR0
+aD0iMTgiIGhlaWdodD0iMTgiIC8+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICA8L2E+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmbmJzcDsmbmJzcDsm
+bmJzcDsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9Imh0dHBz
+Oi8vd3d3LmxpbmtlZGluLmNvbS9jb21wYW55L2N5YmVyY29kZXJzLyIgc3R5bGU9ImRpc3BsYXk6
+IGlubGluZS1ibG9jazsiPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IDxpbWcgaWQ9ImxpIiBib3JkZXI9IjAiIGFsaWduPSJib3R0b20iIHNyYz0iaHR0cHM6Ly9yZXMu
+Y2xvdWRpbmFyeS5jb20vY3liZXJjb2RlcnMvaW1hZ2UvdXBsb2FkL3YxNDgzNTY1ODcyL2NjLXNp
+Zy1saV9xbnhtZXIuZ2lmIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIC8+DQogICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICA8L2E+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAmbmJzcDsmbmJzcDsmbmJzcDsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIDxhIGhyZWY9Imh0dHA6Ly93d3cuZmFjZWJvb2suY29tL0N5YmVyQ29kZXJzLyIgc3R5
+bGU9ImRpc3BsYXk6IGlubGluZS1ibG9jazsiPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDxpbWcgaWQ9ImZiIiBib3JkZXI9IjAiIGFsaWduPSJib3R0b20iIHNyYz0i
+aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vY3liZXJjb2RlcnMvaW1hZ2UvdXBsb2FkL3YxNDgz
+NTY1ODcyL2NjLXNpZy1mYl94OWl0emIuZ2lmIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIC8+DQog
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2E+DQogICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+
+DQogICAgICAgICAgICAgICAgICAgICAgICA8L3RyPg0KICAgICAgICAgICAgICAgICAgICA8L3Rh
+YmxlPg0KICAgICAgICAgICAgICAgIDwvdGQ+DQogICAgICAgICAgICAgICAgPHRkIHdpZHRoPSIy
+NSIgc3R5bGU9ImJvcmRlci1yaWdodDogM3B4IHNvbGlkICM1ZjQwN2M7Ij4mbmJzcDs8L3RkPg0K
+ICAgICAgICAgICAgICAgIDx0ZCB3aWR0aD0iMjUiPiZuYnNwOzwvdGQ+DQogICAgICAgICAgICAg
+ICAgPHRkIHdpZHRoPSIzNDciIHZhbGlnbj0ibWlkZGxlIiBub3dyYXA9Im5vd3JhcCI+DQogICAg
+ICAgICAgICAgICAgICAgIDx0YWJsZSBjZWxscGFkZGluZz0iMCI+DQogICAgICAgICAgICAgICAg
+ICAgICAgICA8dHI+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHRkPg0KICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICA8YSBocmVmPSJodHRwOi8vd3d3LmN5YmVyY29kZXJzLmNv
+bS8/dXRtX3NvdXJjZT1zaWduYXR1cmUmYW1wO2FtcDt1dG1fbWVkaXVtPWVtYWlsJmFtcDthbXA7
+dXRtX2NvbnRlbnQ9bG9nbyZhbXA7YW1wO3V0bV9jYW1wYWlnbj1hZHMiPg0KICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBpZD1jYyBib3JkZXI9MCBzcmM9Imh0dHBzOi8v
+cmVzLmNsb3VkaW5hcnkuY29tL2N5YmVyY29kZXJzL2ltYWdlL3VwbG9hZC9lbWFpbC1jYy1sb2dv
+LmpwZyIgd2lkdGg9IjIzMyIgaGVpZ2h0PSI4OSIgLz4NCiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgPC9hPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+DQogICAgICAg
+ICAgICAgICAgICAgICAgICA8L3RyPg0KICAgICAgICAgICAgICAgICAgICA8L3RhYmxlPg0KICAg
+ICAgICAgICAgICAgIDwvdGQ+DQogICAgICAgICAgICA8L3RyPg0KICAgICAgICA8L3Rib2R5Pg0K
+ICAgIDwvdGFibGU+PC9wPgoKICAgICAgPGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6QXJpYWwsc2Fu
+cy1zZXJpZjtmb250LXNpemU6MTBweDt3aWR0aDo0NjBweDtjb2xvcjojYWFhIj4gICAgCiAgICAg
+ICAgQ3liZXJDb2RlcnMgaXMgYW4gRXF1YWwgT3Bwb3J0dW5pdHkgRW1wbG95ZXIuIEFsbCBxdWFs
+aWZpZWQgYXBwbGljYW50cyB3aWxsIHJlY2VpdmUgY29uc2lkZXJhdGlvbiBmb3IgZW1wbG95bWVu
+dCB3aXRob3V0IHJlZ2FyZCB0byByYWNlLCBjb2xvciwgcmVsaWdpb24sIHNleCwgbmF0aW9uYWwg
+b3JpZ2luLCBkaXNhYmlsaXR5LCBwcm90ZWN0ZWQgdmV0ZXJhbiBzdGF0dXMsIG9yIGFueSBvdGhl
+ciBjaGFyYWN0ZXJpc3RpYyBwcm90ZWN0ZWQgYnkgbGF3LgogICAgICAgIDxici8+PGJyLz4KICAg
+ICAgICBDeWJlckNvZGVycyBIZWFkcXVhcnRlcnMgLSBXZSByZWNydWl0IGNhbmRpZGF0ZXMgd29y
+bGR3aWRlLjxiciAvPgogICAgICAgIDY1OTEgSXJ2aW5lIENlbnRlciBEcml2ZSwgU3VpdGUgMjAw
+PGJyLz4KICAgICAgICBJcnZpbmUsIENBIDkyNjE4PGJyIC8+CiAgICAgICAgPGEgaHJlZj0iaHR0
+cHM6Ly9jeWJlcmNvZGVycy5jb20vdW5zdWJzY3JpYmUvYnllbWFpbD9lbWFpbD1hcmthZGl5LnRl
+dGVsbWFuJTQwY2hpbWUuY29tJnV0bV9zb3VyY2U9bGVhZC1tYWNoaW5lJnV0bV9tZWRpdW09ZW1h
+aWwmdXRtX2NhbXBhaWduPTU1MjExMDAiPnVuc3Vic2NyaWJlPC9hPgogICAgICAgIDxpbWcgc3Jj
+PSJodHRwczovL2N5YmVyY29kZXJzLmNvbS90cmFja2luZy8/dHlwZT1sbWNsMCZkYXRlPTIwMjEt
+MDctMTlUMTQlM0E1NiUzQTQzLjQ5OC0wNyUzQTAwJmlkPTU1MjExMDAiIHdpZHRoPSIxIiBoZWln
+aHQ9IjEiIC8+CiAgICAgIDwvZGl2PgogICAg
+
+--2.xFGzV5E9?NVc(DIV2h.(8HfeyqkXZ=(o:CoIbeCo/2?yh9v'+YgEDY+Pz'kO-8L36ec--
+
+
+--,S..u7,L2D0?jPdGmiVo1O?Yy,,7dfuGUypVe'76?(,:Q6BOtGMjJwM3fk5lx+K7Vo6gt--
+
+
+

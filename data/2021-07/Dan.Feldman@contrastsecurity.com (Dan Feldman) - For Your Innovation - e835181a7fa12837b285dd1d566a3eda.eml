@@ -1,0 +1,216 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp3654wrr; Wed, 14 Jul
+ 2021 14:46:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxA3pWbDTnbluMOKzrorTE93LXkqSLaBHGbhlUnF90M0RRsxp3Y2Fc3TK8eZxljhcsggD6H
+X-Received: by 2002:a17:90a:e611:: with SMTP id
+ j17mr5692952pjy.48.1626299161562; Wed, 14 Jul 2021 14:46:01 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1626299161; cv=pass; d=google.com;
+ s=arc-20160816;
+ b=DSHV/aoVyo5pY8Zm1B5NvHm23QBrKfmsq8t6EYEif3aY0sfJw+P0/qxDaPYNnAUQzk
+ AvKRqJC2/iOXrU/iGp3jcMlyeU0qilUkZSRxAS57rh8LVWAoHxWc4KEK+IMHoRYwP0Xn
+ 2hWphbuChJ+2qjnV2jLI/PC4DnGDW9BD+w96bsvldQe6XP7Sd5y71G4B+LOxCv1qnIEd
+ lRDVP1VvGQ1z8LxN3lESGlk7D+2q1QdsIHHsnr6RwSYCD9Wte5T8ViQvBwQubl8p3OPi
+ hIUof0RouI9DC+NHkOAIDLZtMLXlUOOKprydJifVUlbZtzd3zTKz1Rq/ATabWm25X4MV hvgQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:content-language:accept-language:message-id:date
+ :thread-index:thread-topic:subject:to:from:dkim-signature;
+ bh=6CtcPTP3isAMDi3pxEzcAYf05q0zns4EmXSjC2wV4oI=;
+ b=hCZ8wHWzGJfeSqYv0xsG50jddqu1/4CPVmnclXWbp5E1G4VftIMyDQv4scBWGN+Knk
+ wWRzRQpSYO3TiI1Fwfn2TuALHrSynNMTiOI62oz4pcFrelotk21SjEJTD4TEwkF1v4nK
+ 2LP4Rah5pmgvgdzfu7xED00gtNSVBFT9gnRu8sirOcSBOWiC9gYOJLzQgqY+nDJUgJZP
+ j0G3jxa+JaFP7jaswqMLvyjf09dPgOBsRnw/BPHy3VRB5nBL8ZC2KxtRB+DwB1RLGDDz
+ 6bF4+Ebz3Ryz3a5760FAyxlc3DkYLuhCbdAC7PbRVAzzXPxx7LmRUXkp8M62H8pCdVzb iCXA==
+ARC-Authentication-Results: i=2; mx.google.com; dkim=pass
+ header.i=@contrastsecurity.com header.s=selector1 header.b=DKpmNMJn; arc=pass
+ (i=1 spf=pass spfdomain=contrastsecurity.com dkim=pass
+ dkdomain=contrastsecurity.com dmarc=pass fromdomain=contrastsecurity.com);
+ spf=pass (google.com: domain of dan.feldman@contrastsecurity.com designates
+ 40.107.220.114 as permitted sender)
+ smtp.mailfrom=Dan.Feldman@contrastsecurity.com; dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=contrastsecurity.com
+Return-Path: <Dan.Feldman@contrastsecurity.com>
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2114.outbound.protection.outlook.com. [40.107.220.114]) by
+ mx.google.com with ESMTPS id c3si4084913pgh.557.2021.07.14.14.46.01 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Wed, 14 Jul 2021 14:46:01
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.feldman@contrastsecurity.com
+ designates 40.107.220.114 as permitted sender) client-ip=40.107.220.114;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@contrastsecurity.com header.s=selector1 header.b=DKpmNMJn; arc=pass
+ (i=1 spf=pass spfdomain=contrastsecurity.com dkim=pass
+ dkdomain=contrastsecurity.com dmarc=pass fromdomain=contrastsecurity.com);
+ spf=pass (google.com: domain of dan.feldman@contrastsecurity.com designates
+ 40.107.220.114 as permitted sender)
+ smtp.mailfrom=Dan.Feldman@contrastsecurity.com; dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=contrastsecurity.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DdUKpFgBSvdMdPMxCMT/xB2Y6J4BBdvLBRtPA39DOX6+pbZs36bA5saNAI8jUeZZg3MgRITle6rYCIwfFtaO9RgXW555zGpOvCganIu9MnNukwWkdaL+kEGZnUcRSWuH2FT1zZ8soNYBehTsGdRB96rqjCMXWN+I8b8yt2mzfvEO0+umpWEYL3BctlnXIG2sfdMN+XZi9EmVC6/odG3d/Um5Hf1dzpgEkFjF2HCdEyrf0Vn5AP7FOtoYFYqSE3KLPvj9hFtik4pCaNDSmSKu5Jiu28yvJifZMnEJLoxlS9OfE4WnkgaZNSGOim/cHdlcYhY+z3p4jQ6ebHNuVUmN8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6CtcPTP3isAMDi3pxEzcAYf05q0zns4EmXSjC2wV4oI=;
+ b=U3hJFvJbSqRHO05HyDLz9r66ZWGfvOHLxlJ5xCkv1HRSEWLErRAi4/5yp8nduQz091jNUKwggQnbLld2pgkYYZRX5U7D7hgK6LZWT2DjfF3TE0+bvGq4yliqv/OmUrc1buHOv+7z+w1eSysPKKNLJr25OfaojuzeiFEdDBBoFKXdPIwqZT2ieyRp3xLODYbms/CUZTpFeEywKuvt2TswFqUdmZPVpmjd7duGlGr3qiQTxxyhUgesVFqdMos8P7ldQJRU44Lmm7TDGRDnzWiBfReyuFrfdc8S5USuY+zVPNopgr7Hvjz9QxzC483yh+/wyPiZD+9tBMOpKXPwxP8Ckg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=contrastsecurity.com; dmarc=pass action=none
+ header.from=contrastsecurity.com; dkim=pass header.d=contrastsecurity.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=contrastsecurity.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6CtcPTP3isAMDi3pxEzcAYf05q0zns4EmXSjC2wV4oI=;
+ b=DKpmNMJnxVU0/kRm8Cn/j2nmynPY+hPzNXoi8x471KvD5Pad/dTu8P/W37PYom5UHNN47xJjQihrfX1EaR52sivA3gSL7IP3MmOYqIuIan0u+y1xq4wY/121fBF6BTyqYk4MgHLre5h/G6TW17LecHMhAN5DSMcHuK8SyR4I5lY=
+Received: from SJ0PR18MB4396.namprd18.prod.outlook.com (2603:10b6:a03:2e5::13)
+ by BY3PR18MB4801.namprd18.prod.outlook.com (2603:10b6:a03:3cc::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.21; Wed, 14 Jul
+ 2021 21:45:58 +0000
+Received: from SJ0PR18MB4396.namprd18.prod.outlook.com
+ ([fe80::a8c0:4364:25a5:d7fa]) by SJ0PR18MB4396.namprd18.prod.outlook.com
+ ([fe80::a8c0:4364:25a5:d7fa%8]) with mapi id 15.20.4331.021; Wed, 14 Jul 2021
+ 21:45:58 +0000
+From: Dan Feldman <Dan.Feldman@contrastsecurity.com>
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+Subject: For Your Innovation
+Thread-Topic: For Your Innovation
+Thread-Index: AQHXePmh3iGI9WvzW0yFVp34XOFSYA==
+Date: Wed, 14 Jul 2021 21:45:58 +0000
+Message-ID: <60ef5b15dfd40_13fa6ae0a3bd0480073d@melody-worker-email-render.mail>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: chime.com; dkim=none (message not signed)
+ header.d=none;chime.com; dmarc=none action=none
+ header.from=contrastsecurity.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: a321cc51-67c1-46d3-2827-08d94710c426
+x-ms-traffictypediagnostic: BY3PR18MB4801:
+x-microsoft-antispam-prvs: <BY3PR18MB480191B4191267A5356035378D139@BY3PR18MB4801.namprd18.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5797;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 26JBbMI6AVYMxgjyHDcGN4SG9TqOMOvSvi+GdjudCszmq3IchuVGn4PPTqufbW4mIgZF+2BwJ29BvHsn2+xmFqM27A66MY2Q27G5kOTzs9w/ZZI9UgNj53ZuhT3XAUjpE2Kjj0/YEIFfWYHTTVBDDANYgbKFLGll0vaea6LMFz7IVnIRzCmDwRBkWdI4wrFDKvRw2EzAnjcr11iOxPdp5KUNjriEiU3UmPdXFW4NT4f4hePFljykBMZVS6cVo6I4L5hZSeIChiju3/MeML1dqq9JOA5PsW/29O8iiDgYOAT/z58SDpYEFWfM5c3kyw0/iBtW18L+qYgX8gXi7E9hm9+NiwtcthT5A4rzywcSZLbbRXqQxcBXuUM5lJhGxls8W4PqNXWKEbtQHvBgp+5/soMN8KFpn5Ci17FvwzeqkAArBVWv/spBk7huMwCc5tmDdjMRXdIm4pcOrd4ANumw+YpGSl04NqEZ2ZtY+aPObYVEnofwZO50NhWcICGA6vLaTNHUnQt4O7d22OaYFWqU+ffa6Mn5HvcLI3XekpNij6Th49t5nNY+ZQeZfNkJO54EUlJVGu8gDdg+uqO1QpIccNgIGf7GtnL0LMCxjE0uxpigGzUheBc+/BVhahiZW4tg5LrZSBye7ISjGyIJ/NKJM8Sdz6sJPlA4SLDnlUZnQLSF6l2LDkVCKSCqUDXOysF6haDPCURZTQ3fx/yi1I2zTpjApqZCLfMO/XZnI5VlfkZmPLFuvLuFXmLr8nn5fry3iaYad4oqQTvkhHUjnG5CMRN1WiCEXJbxMOSVFiOb6Hc=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ0PR18MB4396.namprd18.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(366004)(4744005)(7116003)(6916009)(122000001)(38100700002)(5660300002)(86362001)(6506007)(316002)(478600001)(66476007)(71200400001)(6486002)(45080400002)(8936002)(2906002)(186003)(36756003)(3480700007)(166002)(83380400001)(66556008)(76116006)(64756008)(66446008)(91956017)(8676002)(66946007)(9686003)(76236003)(26005)(6512007)(38070700004);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Z20/J+ugmh3llZsySuBl8RseXFWnrptGcWJgevKN0U6W4in8R6WsaGINa16I?=
+ =?us-ascii?Q?uQ6e/eCnpv71tdPl1p4ORLCyifQy/fdftKSb2BErqzjd6/VKqmdR++T83jp+?=
+ =?us-ascii?Q?VYtdDDLrv7O1QBlCPAFj9752TAO7vEJXqzqxGXZEpl6VBxnYHh1hxuURXXFr?=
+ =?us-ascii?Q?5XXS2bROLuVrG1sfa+7SOlDtmnhk60IT0tIdix1pVOYP9LQ//wLmKgrkb/BX?=
+ =?us-ascii?Q?JVAa2bwuCmEkaBgWlA2XRTxj+EsJ5Cz5W/6cIz9DK7xxYZxGJ4qsgtQTxUAT?=
+ =?us-ascii?Q?SqW9ntxZRV4UXUlbcyLhRzagHKTC1Hq/sp+SnVh4MoisZjyrwy6oQyFeCgoD?=
+ =?us-ascii?Q?QHQiGmpi13zaphtM0wmHg+cHrxLs+bNmBZ1BJk4dinNEjPxEp2FYNJeYVEIV?=
+ =?us-ascii?Q?RliEdfMJe+5/MR4vnmPnFlFfZ4chf7OEojZc/o4OLiYObRPs4w1E34BhoxDq?=
+ =?us-ascii?Q?WeN11VwN57Ps5FlqTImynP9JsQjfhcoXz3chvZpg2mYrPpxri8qGJw9uUCA1?=
+ =?us-ascii?Q?9FvrcacliJw7BiWn+oOWiytPxP+B3PswQDl64bW2MaU+JOKiCgwXLF04Ovtc?=
+ =?us-ascii?Q?OLlV3FcDDok4/ojlJTdQrz/oS6+fOl/ALx7fNJsxVbP9WsEjqCZ0SVj6tXME?=
+ =?us-ascii?Q?L6/+XkJxGq1pTv+EoYkFlOBgYaEadl48gVmB9W92X/7D33WgoYZjuFimOTBu?=
+ =?us-ascii?Q?V2pyXLQUbxQM7LXFAIPFE/H2Q2TLJA+IPc7wVgmJ+mmRUTP+ReYca/LHJ/L4?=
+ =?us-ascii?Q?joaxRicCqpXMyP7oeK5OREuoHckT1Q6iuaJPOsu5SI1aziilt9vytXBvYCEJ?=
+ =?us-ascii?Q?vfCR1rTLvik4rtgt/ZkzZb0aDhEcHUUy4FX4X0QDB+jZ+VKXsdy/CR2wmcHl?=
+ =?us-ascii?Q?JOk3Sg/P99nPfthyPNzCw0HPRh37hfd/PGXmZQYP3KVttdok01tkscsLjRl6?=
+ =?us-ascii?Q?Z1lxmKcPeGXao+SF3N0Ryw8KaaazDUBnbTE6lrXN8wTv+cVVRBELqACINvLC?=
+ =?us-ascii?Q?X5kMI92t5k0PglDg9+fUJlR7ed0+/wGFUwdfIuDRs64YgQS9Mk5UHntvsuT7?=
+ =?us-ascii?Q?rmFjTxIAtzNyzgvC3cLpmk5j7HYov0huykQSPDw9iM+6aGCiZmIMId2DgQmv?=
+ =?us-ascii?Q?gEDSCfYu1VFNEyLu//+jbQSGkQaiR654nuTQLBAvA7Ery4k7/0Mm93nJRnDU?=
+ =?us-ascii?Q?/U4GJaDsYbWzTMnBhb2DI4MbGghCWwVRb0XfiFcYHqbcNDb0SzNE7CeWt359?=
+ =?us-ascii?Q?RtS6cGPcN/FBOAn6HEW8ey5iPTq/VQX8pvgYw70oDHN0ReJu4QKcxGVRG8kJ?=
+ =?us-ascii?Q?MIBJD6lTE4galXGL8tgbGD4F?=
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+ boundary="_000_60ef5b15dfd4013fa6ae0a3bd0480073dmelodyworkeremailrende_"
+MIME-Version: 1.0
+X-OriginatorOrg: contrastsecurity.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR18MB4396.namprd18.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a321cc51-67c1-46d3-2827-08d94710c426
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jul 2021 21:45:58.3896 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 48d090fb-932b-4e13-9c76-4aa018e3e1e8
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: otv0JfFLp8fJnxI7n2sZapOVrh+e2F/A1mruCbsC3wNWDuPTGvge9VzWU6UmzCmrLSmEvZjZksSo/ixdkxRRbCgF95wl5zZ2GSZWMcdwFWSFuoCK2AyHtX+dLQ0rl8yU
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY3PR18MB4801
+
+
+--_000_60ef5b15dfd4013fa6ae0a3bd0480073dmelodyworkeremailrende_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Arkadiy,
+
+Microsoft Teams is a business-critical tool used by tens of thousands of co=
+mpanies and over one hundred million users worldwide. White-hat hackers lik=
+e some of the security researchers in Contrast Labs help them remain secure=
+.
+
+This is exactly what recently occurred when one of our researchers found a =
+dependency confusion vulnerability in Teams.
+
+Book some time on my calendar to learn how he found it and how Contrast pro=
+actively rolled out new capabilities to protect against dependency confusio=
+n attacks.
+
+Contrast Labs Reveals Dependency Confusion Vulnerability In Microsoft Teams=
+<https://sales.contrastsecurity.com/t/10569/c/6c70f569-ffa4-46d5-883f-de727=
+f2b72b2/NB2HI4DTHIXS65TJMV3S243VGIXGQ2LHNBZXA33UFZRW63JPOZUWK53FOIXTMMBXMQ4=
+TSMLGG5SDAZJWGAZTCMRQGY4TEZJXGY7WS2LEHU3DANBRGQ4GKZJWGI2TOMZYGU3GGOJZMVSWIM=
+RX/view-su2-highspot-com-viewer-607d991f7d0e603120692e76>
+
+Kind regards,
+
+Dan Feldman
+Contrast Security | Sales Development Representative
+Cell: 650.525.2680
+
+
+--_000_60ef5b15dfd4013fa6ae0a3bd0480073dmelodyworkeremailrende_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+</head>
+<body>
+<div class=3D"sales_loft_wrapper" style=3D"font-family: Arial; font-size: 1=
+1pt;">
+<p>Hi Arkadiy,</p>
+<p>Microsoft Teams is a business-critical tool used by tens of thousands of=
+ companies and over one hundred million users worldwide. White-hat hackers =
+like some of the security researchers in Contrast Labs help them remain sec=
+ure.&nbsp;</p>
+<p>This is exactly what recently occurred when one of our researchers found=
+ a dependency confusion vulnerability in Teams.</p>
+<p>Book some time on my calendar to learn how he found it and how Contrast =
+proactively rolled out new capabilities to protect against dependency confu=
+sion attacks.&nbsp;</p>
+<p><a href=3D"https://sales.contrastsecurity.com/t/10569/c/6c70f569-ffa4-46=
+d5-883f-de727f2b72b2/NB2HI4DTHIXS65TJMV3S243VGIXGQ2LHNBZXA33UFZRW63JPOZUWK5=
+3FOIXTMMBXMQ4TSMLGG5SDAZJWGAZTCMRQGY4TEZJXGY7WS2LEHU3DANBRGQ4GKZJWGI2TOMZYG=
+U3GGOJZMVSWIMRX/view-su2-highspot-com-viewer-607d991f7d0e603120692e76">Cont=
+rast
+ Labs Reveals Dependency Confusion Vulnerability In Microsoft Teams</a></p>
+<p>Kind regards,</p>
+<div class=3D"sl-signature">
+<div class=3D"sales_loft_wrapper" style=3D"font-family: Arial; font-size: 1=
+1pt;">
+<div class=3D"sales_loft_wrapper" style=3D"font-family: Arial; font-size: 1=
+1pt;">Dan Feldman
+<div class=3D"sales_loft_wrapper" style=3D"font-family: Arial; font-size: 1=
+1pt;">Contrast Security | Sales Development Representative</div>
+<div class=3D"sales_loft_wrapper" style=3D"font-family: Arial; font-size: 1=
+1pt;">Cell: 650.525.2680</div>
+</div>
+</div>
+</div>
+</div>
+<img alt=3D"" width=3D"1" height=3D"1" src=3D"https://sales.contrastsecurit=
+y.com/t/10569/open/6c70f569-ffa4-46d5-883f-de727f2b72b2.gif">
+</body>
+</html>
+
+--_000_60ef5b15dfd4013fa6ae0a3bd0480073dmelodyworkeremailrende_--

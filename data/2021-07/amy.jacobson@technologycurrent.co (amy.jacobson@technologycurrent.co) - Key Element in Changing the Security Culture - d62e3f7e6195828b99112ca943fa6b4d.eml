@@ -1,0 +1,163 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp4129068wrr; Tue, 13
+ Jul 2021 02:10:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSOF+z5ceZ3a2u+jDepd3hGzd3PeGNLgSMWfv1rsLVKjjksjKpYY/Ni0tOWSiNLlYbYjt3
+X-Received: by 2002:a9f:238b:: with SMTP id 11mr4539099uao.91.1626167449812;
+ Tue, 13 Jul 2021 02:10:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626167449; cv=none; d=google.com;
+ s=arc-20160816;
+ b=KrNsS9DSyyhtNaWfOOGiLyziJyNt0ahu411n0h7QmWRGcseT3tXcfZG+ATlZmvvhOL
+ rr++GlwSRbaMZvpYwtiscwmsv1P+G/Q2JKNjDDp2IJ1XMoZdVYFGz7SMRaA+c6zouHQG
+ Rf/UnfWO0AXakZNf2Q+/XlAtiQOaC5wZXt1zxYq8T8z4oeY6nWPOSAeV7OjOEZ+0xo2T
+ 7tbEBo88rWSFL2oB3mAjq/HjhOveBufACiVpmOdThWIk7KKARhq8CKPZFF5MAnHYAerD
+ DUz1vrl5l/qN1odXhiksNhX3AMqUecLvWdnDVgc+l3gMh93G48zCh0Q9xrBmw3WR1V/E kY7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:message-id:mime-version:subject:from:reply-to:list-unsubscribe
+ :sender:date:list-id:dkim-signature;
+ bh=YpU2GtzORYif4WWD1iQpPXQiovFiQ0EC/e66DxXFij4=;
+ b=B3vwmW7SpdqS0cwvYhryR2t3hGI4YxrPyhUNx5mST5vZ8QPpzUBy32mV//DcoaJINF
+ qsNP4gTxwpK2CD17i6sd21oP9UcSshkJxsDC1YKl1EN0/Gz/3PxwDnZILRmhjAaRxraz
+ fcwYCTZSrGyNyHMdI/Kds8hO9ynm/426Frf1eHMwPlz8hBmIAzSSUTOX7QgfkhUBarrA
+ ZkMYSWzPgR1xwglOT989SjDsP1iPMBoqepCW/4AZ2cfbseNgDF+QsBIKLYjAOGy50yau
+ rrngazdDAPPg/CP9m/eGUuHwD/RsGJVtjOMchDKJ8uX843l80ITXyUH7elBybaeCd5GZ DuAA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@technologycurrent.co header.s=krs header.b=aGN8+BVa; spf=pass
+ (google.com: domain of
+ bounce+e456ff.59e0765-arkadiy.tetelman=chime.com@technologycurrent.co
+ designates 198.61.254.40 as permitted sender)
+ smtp.mailfrom="bounce+e456ff.59e0765-arkadiy.tetelman=chime.com@technologycurrent.co"
+Return-Path: <bounce+e456ff.59e0765-arkadiy.tetelman=chime.com@technologycurrent.co>
+Received: from so254-40.mailgun.net (so254-40.mailgun.net. [198.61.254.40]) by
+ mx.google.com with UTF8SMTPS id u25si15130841vsn.11.2021.07.13.02.10.45 for
+ <arkadiy.tetelman@chime.com> (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256
+ bits=128/128); Tue, 13 Jul 2021 02:10:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounce+e456ff.59e0765-arkadiy.tetelman=chime.com@technologycurrent.co
+ designates 198.61.254.40 as permitted sender) client-ip=198.61.254.40;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@technologycurrent.co header.s=krs header.b=aGN8+BVa; spf=pass
+ (google.com: domain of
+ bounce+e456ff.59e0765-arkadiy.tetelman=chime.com@technologycurrent.co
+ designates 198.61.254.40 as permitted sender)
+ smtp.mailfrom="bounce+e456ff.59e0765-arkadiy.tetelman=chime.com@technologycurrent.co"
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=technologycurrent.co;
+ q=dns/txt; s=krs; t=1626167449; h=To: Message-Id: Content-Type: Mime-Version:
+ Subject: From: Reply-To: List-Unsubscribe: Sender: Date: List-Id;
+ bh=YpU2GtzORYif4WWD1iQpPXQiovFiQ0EC/e66DxXFij4=;
+ b=aGN8+BVaD96Jn4i1j/T7vLcD6fNE2wmdtJtJ/ZP9jW+LjJNwayNQrH/j3E2J0daZyyOxWLog
+ 5TiQt6Af1KjCre9NFkqQv1EsxXj1JAUEFaQGvnhVK39hljREhD7fpXFH5utNMydgGTmhimd9
+ l2N+XAUYE+ZlmQF/CJIaNx9GdW4=
+X-Mailgun-Sending-Ip: 198.61.254.40
+X-Mailgun-Sid: WyI0ZjA0YSIsICJhcmthZGl5LnRldGVsbWFuQGNoaW1lLmNvbSIsICI1OWUwNzY1Il0=
+Received: by luna.mailgun.net with SMTP X-Mailgun-List-Id=34324235,
+ 8763049785069; Tue, 13 Jul 2021 09:10:49 +0000
+X-Mailgun-List-Id: 34324235
+X-Mailgun-List-Address: mail_1313859873_3.1626167223@technologycurrent.co
+List-Id: <mail_1313859873_3.1626167223.technologycurrent.co>
+Received: by luna.mailgun.net with HTTP; Tue, 13 Jul 2021 09:10:15 +0000
+Date: Tue, 13 Jul 2021 09:10:15 +0000
+Sender: amy.jacobson@technologycurrent.co
+List-Unsubscribe: <http://track.yourdomain.com.enterpriseinsights.co/?xul=2obh0hpx15nioktlf9jjxd5b1kxpz6n2ui2tjgjq0vg9imvz5hpxu1ugd7oby3lum4ull7bc4anr4is701juakqzbb76wf85dhg5dqvfw4euwlp49dvj&amp;
+ ei=arkadiy.tetelman@chime.com>
+Reply-To: amy.jacobson@technologycurrent.co
+X-Mailgun-Track: true
+X-Mailgun-Tag: x.qw5pc0.2qzq.lq8krl.lq8je1.hez1gi.5o7ix.5e2ba.17cq
+From: "amy.jacobson@technologycurrent.co" <amy.jacobson@technologycurrent.co>
+Subject: Key Element in Changing the Security Culture
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="04a636474ba04ad185e7c354ac503f93"
+Message-Id: <20210713091021.1.84824D384BA2D7C8@technologycurrent.co>
+To: arkadiy.tetelman@chime.com
+
+
+--04a636474ba04ad185e7c354ac503f93
+Content-Type: text/plain; charset="ascii"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+Hi Arkadiy,
+
+We would like to share a document based on your expertise. Please click on the link below to access your Whitepaper:
+
+Security Awareness Training As A Key Element in Changing the Security Culture
+**http://email.technologycurrent.co/c/eJxtT0uOwyAMPU2zA4GBJlmwaKeae7jEDUwJSQhVm55-6GZWI1myn9_H8mBNT6I9miZYECBFK5XoZZ245J3uQF9Up88nuLRf3UGLQs6nOc7j7h45UyrczY232jhEYcRgEEDI2_HYX5UjBYOE_nprm8kqrUCDMk20vpRlO6jTAb5r_RdZ1xHTENK44EgVbVTJUHaGT6wa2jZWMoZUFQw3huxOO6NIU_WzkJjzmMYPWTyxP7N7xPLIn7wmW8x3HMLOCxWKE6b6nfNhonp-aop98fVpFic4rO-Vx7W75_hpPyS5p7ccAzdzG17cEFyRy9atv_oXbLk**
+
+For your reference you may download other assets as well:
+
+Ransomware Hostage Rescue Manual
+**http://email.technologycurrent.co/c/eJxtjs1uwyAQhJ_G3IJgAUMOHJJGfQ-C18YNBhtj5efpS--VVtqZb0ejHaw6I9O9IrMFBpxpLtiZN0U5NdKAvAkjrxe46S_TSVbRh5Rjnt7-KAVTpT6TYAGEZwKYF9z0HobRcTF60OLuRvA9kMUKKUCCUCTaUOu6d-LSwXeb_yobji4Nc5pWN2FzxaU9L09X8BTyXhs8Fdz9gafFpcPFFiHFuvJww_ymFSvGdmgP-zAv2BoXUu2Lbk-1ekZh-2w0buZR4t_6QU4Dfvg0U5X1_KIK4e4o1377BafIW50**
+
+Thank you and hope you have a great day.
+
+All the Best,
+
+Content Marketing Team 
+
+In order to unsubscribe from this mailing list, please click here http://email.technologycurrent.co/c/eJwVkNuurCAQRL9mfCRcFR982PtM9n8AojCgXARvX3-cpJOuVDqVVT0OrNewa1ljBwwxgh0isEePAghwyjF9E05_f_C7-8dfFBatzBp8mC9Vc9ZrASo0Zug57VgL9URJz0bBRq0440RMEo0tJKpZBkIJppiwxg-mlPgiPy_890zJQjlwhZrHsAi7PoELeIJ1jtlu2q6bnU3ZHvt7T_7O6l_kjfea7hMWVxByefW8Ho7baubj1AKybZE3NmvKi_D9LP22h9DK2pKI9imqa4v7xPHmDzQnq2L8jEe5zHR8ssrMO54q2ylNGXVQjt0dXJSVoy1LddZDX61DROf7hVttzUOjtxvKC0XX9nKqmD28DvURX8sxFe4ZWULYeepLkweRnRjtBYou2i9ifZ6qjF30t3dThhOkg0UFAU53Aj5xl_13fTQCRt9otoCFzp6AaSwFQJ1K_wFIgZdg
+
+--04a636474ba04ad185e7c354ac503f93
+Content-Type: text/html; charset="ascii"
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd">
+<html><head><meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Cont=
+ent-Type"><title></title></head><body>
+<p>Hi Arkadiy,</p>
+
+<p>We would like to share a document based on your expertise. Please click =
+on the link below to access your Whitepaper:</p>
+
+<p><a data-id=3D"4358633329" data-title=3D"Security Awareness Training As A=
+ Key Element in Changing the Security Culture" data-untrack=3D"0" href=3D"h=
+ttp://email.technologycurrent.co/c/eJwVUcuOrSAQ_JpzlgYQFBZnMXMn8x88BQRRRAW_=
+_jpJJ9XpdKoqVepDmAbjQN7ugwCCYIQ9YPDZOthRTBH-6Sn-_kI_4z_6wqBoaZcU0tTkkbNeSif=
+T237YAIQkElEzGmKIgpAJJZEmpudMSf6Onx73CKOevMPHlrK--q8X-n2mZC7nrqUjqxS5Wx7C2D=
+3EOq_Z7dotu5ts2Z_z33__W0t49T-PQw6oXqpNsp6TELOUwtw8oiHIjGO2t66HivYS7rq53nxA8=
+NzrNts0D3ML41mxdDM-4X3hho2WJtwYUGNK7NHATFJwQ-dahxQK8qnZq5bNGlx3F3gaWlGBBc1I=
+O5FX7Bgy24iaTPOgbst003OMwS0-T7EF3lY-pWGKgzh1OQXsDaDCtz17z9Ca6L3q3eyNU8n8vfe=
+-euytBPg8aJ6OIpXgTrVUdjNOfR2EOvcJ8ZWbOV2PlDSHk22GxpaVeJECOrS_A3ihQTv7xKX3G4=
+gG13lgwhyIPIHOkK2oxcsUGkgfUzrpxso7f3ieuXKtK7roEPnytC6ti_qvmHf51G67yCpBh7Z76=
+8JG5xz-wGvYWX3DyXUkja52RCPBOzjK7T-NuNSD" target=3D"_blank">Security Awarene=
+ss Training As A Key Element in Changing the Security Culture</a></p>
+
+<p>For your reference you may download other assets as well:</p>
+
+<p><a data-id=3D"4358633330" data-title=3D"Ransomware Hostage Rescue Manual=
+" data-untrack=3D"0" href=3D"http://email.technologycurrent.co/c/eJwVUUGurC=
+AQPM24JNCAwMLFe3_y7qGIgooo4oic_jtJJ12pVCrV1X3DlcGi5pVrAAPBglCsyIMQQZJJYG8q2=
+e8PvMU_-WI4GW3XsITx1meMZk1Ih8o2YJQhkoDGQkrTG6GAES0p76ggmPPKN5RRYEB5tTQ2pe1F=
+f17w90yKrZ7RHc7YB9-69TH06DE2cYvuMG493GjT8dBfPf3LaXnRN9W8ttsGBI6e4P229Ik0diu=
+so7qv3RMaaOcp3yZNF7deYVT2aOdBRHUzsdfDWs5zubivy2U3PzmTbpXV4fcwi76I4yg17Bx0Hi=
+27Ek-hdC6ffbGMCU5AkVzcWfwF9ZXtnSEWY7Xs9WiUzTK5sog6n_HoOv0xarrK0GKZe9epTPsF9=
+59u2upzoBjmeaJ-mqc2uHzo0Ro-rOkFtXH2OdQcBXc32eZadcMJ_KliJmqD219DkgunPoSP3FWq=
+YtPGue3djZJJZvHt-vxLW-fNt9IqNRntF980RrCXHS27nOPyXZMhyJpCRod4EC4jbqBrERF6_w-=
+bfbZZ" target=3D"_blank">Ransomware Hostage Rescue Manual</a></p>
+
+<p>Thank you and hope you have a great day.</p>
+
+<p>All the Best,</p>
+
+<p>Content Marketing Team</p>
+
+<br>In order to unsubscribe from this mailing list, please click <a href=3D=
+"http://email.technologycurrent.co/c/eJwVkNuurCAQRL9mfCRcFR982PtM9n8AojCgXA=
+RvX3-cpJOuVDqVVT0OrNewa1ljBwwxgh0isEePAghwyjF9E05_f_C7-8dfFBatzBp8mC9Vc9ZrA=
+So0Zug57VgL9URJz0bBRq0440RMEo0tJKpZBkIJppiwxg-mlPgiPy_890zJQjlwhZrHsAi7PoEL=
+eIJ1jtlu2q6bnU3ZHvt7T_7O6l_kjfea7hMWVxByefW8Ho7baubj1AKybZE3NmvKi_D9LP22h9D=
+K2pKI9imqa4v7xPHmDzQnq2L8jEe5zHR8ssrMO54q2ylNGXVQjt0dXJSVoy1LddZDX61DROf7hV=
+ttzUOjtxvKC0XX9nKqmD28DvURX8sxFe4ZWULYeepLkweRnRjtBYou2i9ifZ6qjF30t3dThhOkg=
+0UFAU53Aj5xl_13fTQCRt9otoCFzp6AaSwFQJ1K_wFIgZdg">here</a>
+
+<img src=3D"http://track.yourdomain.com.enterpriseinsights.co/?xol=3Dmu1ykc=
+crxu5absozvr3wh&eih=3Desz0by1pk69bfu25htsk19p2ymwft8l53moov8q9t" alt=3D"" w=
+idth=3D"1" height=3D"1"><img width=3D"1px" height=3D"1px" alt=3D"" src=3D"h=
+ttp://email.technologycurrent.co/o/eJwVzEkSwiAQQNHTyLILGghkwULNRUjTGjSDUFgO=
+pzeu_l-9FGzP0nVW5IASlXRKy17tBwq88WgG7c3piIM7-4ORjWlat3m7fuhZK68NaBNTGDstUyS=
+P7mIlOWLPaaRRqz6R7VwnlqCNRoPaihpivceUP9C48bzEdXdpygvv1iJaeEN52QdJwPItMBd_r_=
+M_N1Yw8VddM9jN5TdYxjGCclR-KsY8NA"></body></html>
+
+--04a636474ba04ad185e7c354ac503f93--

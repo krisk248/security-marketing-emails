@@ -1,0 +1,852 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp657323wrr; Thu, 22 Jul
+ 2021 09:01:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwnYcANhlBq39HpRJa6a577yGXGFhxNgde9w4LaxHtHGe8XJ9WseS47OPPZ9ArTxirHZyJh
+X-Received: by 2002:a5d:4402:: with SMTP id z2mr699467wrq.44.1626969704022;
+ Thu, 22 Jul 2021 09:01:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626969704; cv=none; d=google.com;
+ s=arc-20160816;
+ b=HQwPVptI46o2cpZ0H7Him6IR4gKUuvxK+7UjCe3mLFpi1PD40Qoh2CDShTTE1uD5eu
+ YtpGzYs2DtJIFjqva/j0LqpRBiKULwNkruRPAkwO6lUdhDmo6sEUVl0kL2F23D2UFFx6
+ hDMbcm0twqjAdjLQirwir2bB1qH/TsTFjdHzuREDEw79MWzwhV0T5f4ejzsi2VRDJfux
+ s1ZW9hJQfxXXIzhfb2Pzbj6rkH926ilaS/FzH2NLXUe4sImzHd33345Csvdz3zI7/N2o
+ WFoWGpatviBuUDSlEURdQoNy1cYpB8StwAV4Iqgl38/L4IDLsQJkXZsISCH7MrTWfpq3 Sjsw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:to:reply-to:subject:message-id:mime-version:from
+ :date:dkim-signature; bh=v3xVOlJlEDVcyyoj2UD17w+NuR8LSaxLeb9lFvo/bR8=;
+ b=raen1vhamTHM66TFkxfAgY5hZ+M4nad1528mf9q9SNe/uZMeunxAEFCFxpCVjXOZj0
+ ow76BaHSwjeyT2aqWlIhL9QrFj/u9kmENqn20AQCrSHIXN0jlwEtMcq5FxaTlK0A/T7S
+ 0QzNyWGwKJX0CiGmKhAgB+D5IdBOijCjEtoF2tBQIe4DR1jKWfq6gHkuxJeZKPY2L43I
+ DL8XbNw8Uec8AiVDfgMM3szYYSfYFFMoCdmOkGmz2zqO6r9KlJXz4r0dWj4H7Yr8si5y
+ oV5pVKyvHdml1r3JqnW1qaxNYJsgpEg/N8de5WjVRwSNmB8MU4FJfopveaJlo1WW4Yvx SsFA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@humanriskmanagement.com header.s=s2 header.b=gfRQZ0w0; spf=pass
+ (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender)
+ smtp.mailfrom="bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com"
+Return-Path: <bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com>
+Received: from o1.email.utilitypartners.com (o1.email.utilitypartners.com.
+ [208.117.61.30]) by mx.google.com with ESMTPS id
+ r24si6169115ejy.194.2021.07.22.09.01.43 for <arkadiy.tetelman@chime.com>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128); Thu, 22 Jul 2021
+ 09:01:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender) client-ip=208.117.61.30;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@humanriskmanagement.com header.s=s2 header.b=gfRQZ0w0; spf=pass
+ (google.com: domain of
+ bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com
+ designates 208.117.61.30 as permitted sender)
+ smtp.mailfrom="bounces+19600278-4e84-arkadiy.tetelman=chime.com@em9974.humanriskmanagement.com"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=humanriskmanagement.com;
+ h=content-type:from:mime-version:subject:reply-to:to:list-unsubscribe; s=s2;
+ bh=v3xVOlJlEDVcyyoj2UD17w+NuR8LSaxLeb9lFvo/bR8=;
+ b=gfRQZ0w0aGz3o38gFXta2l+7WBuWTiK8kEODN0HbPOKRmgRoFijmpXStJ0stl6SME0yH
+ kPRRCCjhwiRPB395eSPn3Kx0SoH/vezLfn1fwQtKe9gy9YQRyPa30tlzO5i/9mYBz9iSDT
+ KzeAK57pf/2cA6FaYqwjfBVnAid84fESU=
+Received: by filterdrecv-578f896bbf-j5cmt with SMTP id
+ filterdrecv-578f896bbf-j5cmt-1-60F9965F-38 2021-07-22 16:01:35.081010911
+ +0000 UTC m=+508367.897765105
+Received: from MTk2MDAyNzg (unknown) by geopod-ismtpd-2-2 (SG) with HTTP id
+ xeGMdf0JRNWPZz4rb6CuaA Thu, 22 Jul 2021 16:01:35.067 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary=94d62ec38c311d898fcf71e480a9ae9c7e7fa4637550620c66a6cbd95f20
+Date: Thu, 22 Jul 2021 16:01:38 +0000 (UTC)
+From: Cybersecurity Human Risk Update <donotreply@humanriskmanagement.com>
+Mime-Version: 1.0
+Message-ID: <xeGMdf0JRNWPZz4rb6CuaA@geopod-ismtpd-2-2>
+Subject: The Ultimate Program Owner Resource: Campaign in a Box!
+Reply-To: donotreply@humanriskmanagement.com
+X-SG-EID: =?us-ascii?Q?p88jyACLQtmU4ZEEhy9VB1NI5SsTh9yqmPkrOvOMWkIvYwPq1AG07kLxu9kQyI?=
+ =?us-ascii?Q?Cpup9Z86wkzT0W9rf8T7aMxg8Gp+pYWP4vfMC9h?=
+ =?us-ascii?Q?bQrtuU1ciChDJvp9LpVzsH=2FtlOhVYiX9f2aKApu?=
+ =?us-ascii?Q?FzTs5kTiScZOQVmSkZ3T+M2b7T4boWNhYgCB=2FWo?=
+ =?us-ascii?Q?K8YV76G36wgXafIlxv+GMDUIG8n5pfneu71b92D?=
+ =?us-ascii?Q?L5W4tTjoaKhh9xHkvZ6KqBb7hzptVfzmzpmTJcM?=
+ =?us-ascii?Q?Rmf5MoZp1ixXAo=2Fx6yglVIrFITDFMIxbSzr7NFO?=
+ =?us-ascii?Q?KE3Xh=2FDEl=2F=2FsqvmF5606v4Jg?=
+X-SG-ID: =?us-ascii?Q?se=2F49CGmbS0sfR97ImeXvNj3LKmlq7X7FQkfmKDeD4rlXmhzDYLJWC3SlKd3Em?=
+ =?us-ascii?Q?ooVkQUquz4uozJPhChY340coofzjUm2NF28=2Fgyp?=
+ =?us-ascii?Q?GNJaEP5GrYNmC1nt28nqFrwIiDYpEU+imTMVNrs?=
+ =?us-ascii?Q?L4sxCpNYL5ymkAxJX6uzHTQZMzLXWD3FD6w0XTv?=
+ =?us-ascii?Q?oL4oYMVSUZ7i1bdp=2FfyRct09bQ5gRLIT6tFNwNs?=
+ =?us-ascii?Q?iEZaJyTsYH77ecky41Hh+Hmr1h8KywSdAgLeaI=2F?=
+ =?us-ascii?Q?AGoUeR1MGKJiTL3MwAuFXlmsxTpsR4ntyP6TGgb?=
+ =?us-ascii?Q?6VmO7S+X8BIeyaeh=2FMCn1vX9JmgrKJyBPOCDhMP?=
+ =?us-ascii?Q?LRtdAEuT+vkau0Uc40JSpLIGWXrKBDc1OZvT95p?=
+ =?us-ascii?Q?R3HyL+ZoshsJIMdPTVwwclv4gmvOSE4QjjG3Sn3?=
+ =?us-ascii?Q?QTkTrjTqY1+Ux5PAts8LAwpWkw5xN=2FRXbZ=2F2nvH?=
+ =?us-ascii?Q?OCqbHG8EK5QycDQ0PC2f8ZQBSGK6I5gA1L1nI9D?=
+ =?us-ascii?Q?LtlgspBwjt+bA2p2e01LlTTaLPnnrTTif=2F=2FQoRt?=
+ =?us-ascii?Q?VXMZUJG8x9foXMoY2UVytxvY0hZDLIpDAkh6VK6?=
+ =?us-ascii?Q?SW3MAZTq1anKGOpsWeCRUa9NIfHuASxd0ZthWy6?=
+ =?us-ascii?Q?tSnGkpJzunrgRGLrOV0GiLKNiq0NNLeM7nWp22W?=
+ =?us-ascii?Q?17khU3RI1ZnFC5CDPl4mINthpddgPSr3tmyoK=2Fv?=
+ =?us-ascii?Q?9Ki4=2FUcjsNuu0jSLBWRSriosYFwFAgBsAHXrEq3?=
+ =?us-ascii?Q?D5V53EozR1MFUV4y6sGZbd9WTM3Ed+DMRrRI9Mz?=
+ =?us-ascii?Q?Bz313cB=2FoiCEY7qk4JLYGqbeMQl=2FJMLHvC4jGcy?=
+ =?us-ascii?Q?yYXEEyX=2F8p5uwSKup9Zsk0CS9BCGzF9R6hhKzfN?=
+ =?us-ascii?Q?sHLxzllbmQHEOEmklrpjdL17VYqmfLAdHVLy8Am?=
+ =?us-ascii?Q?AJKWGZULTiOfjAm?=
+To: Arkadiy Tetelman <arkadiy.tetelman@chime.com>
+X-Entity-ID: ktqcbPjqzfKahrDgVDs7pg==
+List-Unsubscribe: =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40em9974=2Ehumanriskmanagement=2Ecom=3Fsubject=3Dhtt?=
+ =?us-ascii?Q?ps=3A=2F=2Fu19600278=2Ect=2Esendgrid=2Enet=2Fwf=2Funsub?=
+ =?us-ascii?Q?scribe*q*upn=3D5Z3XbQWSN2-2FVMFeM7B17h16F?=
+ =?us-ascii?Q?-2BrThWWo6R3pIpxtZ1gfb3MorQRQLDSmhBTzuD?=
+ =?us-ascii?Q?wA8dgmvK0Z-2F5Hdx6tJSVYUJa0MH-2FPCMb2Zb?=
+ =?us-ascii?Q?8QVpML4Iz-2BfRGLcfxrTGYZrQfA50-2FZwE-2B?=
+ =?us-ascii?Q?pcKqRw-2FCt7JVknut-2FqMDRGBKBVzidFB8Pnz?=
+ =?us-ascii?Q?f7G7zkpI-2B1RDtR1hcSnXMSusLz-2BKLOW8KjV?=
+ =?us-ascii?Q?bPXvslhlNyK5SknQEnnsLnv2DBRL-2FHT5s8J-2?=
+ =?us-ascii?Q?FvCd18qbWUpTnjrZHire56ADTr0TbipNKhaqggl?=
+ =?us-ascii?Q?CEGzH7rM5biMmEf6o71WqNxGljA0-2FcRGH3p0u?=
+ =?us-ascii?Q?uMr8trh-2BFghnQylUMjuuLP07i500NDb4FEVAj?=
+ =?us-ascii?Q?uRPm1POu9c9kP34W3pJC8qeUMLSOexUf58ge9D3?=
+ =?us-ascii?Q?qtii-2B-2FjMOoAt-2FySJSDCJdmA5qSDG-2F29?=
+ =?us-ascii?Q?D888zIhDz6Op-2FDC7yLRIwfbtZH-2B9IE-2BqT?=
+ =?us-ascii?Q?3Xmh96o8aLw-2F0-2Fk4t6H0fbbGUufO2mhkDoc?=
+ =?us-ascii?Q?p5J2y29t8dtH4gklrtQmBEmk9N9BbbxfiB0rglO?=
+ =?us-ascii?Q?-2BDhq1ip-2BkNAUMfkXxrgM535WAaJ6aqDoSTp?=
+ =?us-ascii?Q?KDEv6fZV6rpAyz8CwMYXxUsAUF9xUBZfhZH2cbj?=
+ =?us-ascii?Q?1zGb4Cq0A0EVbdYLjdKgbZ0OXbglbEjTiuy2F0R?=
+ =?us-ascii?Q?Rgk-2B3OW9fcIQ7l3UuRo7SCAoI0Rn1afoHCvLp?=
+ =?us-ascii?Q?yDoYSyK9CU5Y98YcnbTZ6Mk-2FXVWW-2FesaCPB?=
+ =?us-ascii?Q?ZdkoBLHRQgcQrCy7SA67JkAagSpy2TdvmLAYO6w?=
+ =?us-ascii?Q?Era6DWwN-2BuQPmBn4YJ3FZA00Td9-2BDrPiCO0?=
+ =?us-ascii?Q?j7yn3borM25rshTWZpBKXy4-2BJd08Neb4CUUJs?=
+ =?us-ascii?Q?v9m5xdHeGeam5JQxWx90QL0xS63tXoQLquAHjSc?=
+ =?us-ascii?Q?GHJLc3bQjsZPuKj4zGZrnNZDzz3wLdxHpPbqt-2?=
+ =?us-ascii?Q?Fp0-2Fd-2Bsuf4jREQtmj1wkDAt8sigIrpCjyfa?=
+ =?us-ascii?Q?E9nYPtN7kJczDAiCmQRm-2BFHJSde1M7v2rDoqe?=
+ =?us-ascii?Q?JlbzvwkgE1IPSasYMzH8DkYzT4EJrR2h1d8Jgx8?=
+ =?us-ascii?Q?nxjeH8hdMaPehfhU4EQTDqOKDmA9bl-2BIPEJ9H?=
+ =?us-ascii?Q?NBn-2BeL0w45i49ftTq3GVw3px1SIH-2FdlPcuz?=
+ =?us-ascii?Q?X6OBhgkDL4KiWLl25Ln9rNtgsmdhpl-2BR2Xmyu?=
+ =?us-ascii?Q?baGUnDYlHymaYZk-3D=3E?=
+
+
+--94d62ec38c311d898fcf71e480a9ae9c7e7fa4637550620c66a6cbd95f20
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Do you ever feel as if there aren=E2=80=99t enough hours in the day? Here a=
+t Living Security, we understand that a day in the life of a Security Aware=
+ness Program Owner is packed!
+
+The Ultimate Program Owner Resource: Campaign in a Box! ( https://www.livin=
+gsecurity.com/blog/the-ultimate-program-owner-resource-campaign-in-a-box?ut=
+m_campaign=3DNewsletter&utm_source=3Demail&utm_medium=3Dsendgrid )
+
+Hi Arkadiy,
+
+Do you ever feel as if there aren=E2=80=99t enough hours in the day? Here a=
+t Living Security, we understand that a day in the life of a Security Aware=
+ness Program Owner is packed!
+We=E2=80=99ve created a way to cut out some of the heavy legwork, so you ca=
+n focus your energy on actually running your program.
+Living Security=E2=80=99s Campaign in a Box is a program owner=E2=80=99s go=
+-to resource for monthly awareness campaigns, without all the hard work tha=
+t comes with it.
+In this post, we share what=E2=80=99s included in our Campaign in a Box and=
+ how it is going to benefit you!
+
+*The Ultimate Program Owner Resource: Campaign in a Box!* ( https://www.liv=
+ingsecurity.com/blog/the-ultimate-program-owner-resource-campaign-in-a-box?=
+utm_campaign=3DNewsletter&utm_source=3Demail&utm_medium=3Dsendgrid )
+
+---------------------------------------------------------------------------=
+--------------------
+Breaking Security Awareness Webinar Series
+Cybersecurity Awareness Month: Jumpstart Proven, Lasting Change in Security=
+ Culture This October
+---------------------------------------------------------------------------=
+--------------------
+
+This month's Breaking Security Awareness (BSA) webinar will focus on effect=
+ive strategies to plan and execute the best Cybersecurity Awareness Month (=
+CSAM) possible, as we speak with a Top 10 Fortune Cloud 100 client who has =
+demonstrated success creating dynamic and effective October programs.
+
+REGISTER NOW ( https://hubs.la/H0Snt1p0 )
+
+-------------------------
+Living Security Community
+JOIN THE CONVERSATION
+-------------------------
+
+Living Security developed this Community to support cybersecurity leaders j=
+ust like you. We realize the challenges of your role, so let's help each ot=
+her by sharing what's working best in your cybersecurity awareness program!
+
+GET MORE INFORMATION ( https://hubs.la/H0RSHVk0 )
+
+( https://twitter.com/living_security ) ( https://www.instagram.com/livings=
+ecurity/ ) ( https://www.linkedin.com/company/living-security/ )
+
+Cybersecurity Human Risk Update
+
+Living Security, 3595 RR 620 South , Austin , TX 78738
+
+Unsubscribe ( https://u19600278.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQ=
+WSN2-2FVMFeM7B17h16F-2BrThWWo6R3pIpxtZ1gfb3MorQRQLDSmhBTzuDwA8dgmvK0Z-2F5Hd=
+x6tJSVYUJa0MH-2FPCMb2Zb8QVpML4Iz-2BfRGLcfxrTGYZrQfA50-2FZwE-2BpcKqRw-2FCt7J=
+Vknut-2FqMDRGBKBVzidFB8Pnzf7G7zkpI-2B1RDtR1hcSnXMSusLz-2BKLOW8KjVbPXvslhlNy=
+K5SknQEnnsLnv2DBRL-2FHT5s8J-2FvCd18qbWUpTnjrZHire56ADTr0TbipNKhaqgglCEGzH7r=
+M5biMmEf6o71WqNxGljA0-2FcRGH3p0uuMr8trh-2BFghnQylUMjuuLP07i500NDb4FEVAjuRPm=
+1POu9c9kP34W3pJC8qeUMLSOexUf58ge9D3qtii-2B-2FjMOoAt-2FySJSDCJdmA5qSDG-2F29D=
+888zIhDz6Op-2FDC7yLRIwfbtZH-2B9IE-2BqT3Xmh96o8aLw-2F0-2Fk4t6H0fbbGUufO2mhkD=
+ocp5J2y29t8dtH4gklrtQmBEmk9N9BbbxfiB0rglO-2BDhq1ip-2BkNAUMfkXxrgM535WAaJ6aq=
+DoSTpKDEv6fZV6rpAyz8CwMYXxUsAUF9xUBZfhZH2cbj1zGb4Cq0A0EVbdYLjdKgbZ0OXbglbEj=
+Tiuy2F0RRgk-2B3OW9fcIQ7l3UuRo7SCAoI0Rn1afoHCvLpyDoYSyK9CU5Y98YcnbTZ6Mk-2FXV=
+WW-2FesaCPBZdkoBLHRQgcQrCy7SA67JkAagSpy2TdvmLAYO6wEra6DWwN-2BuQPmBn4YJ3FZA0=
+0Td9-2BDrPiCO0j7yn3borM25rshTWZpBKXy4-2BJd08Neb4CUUJsv9m5xdHeGeam5JQxWx90QL=
+0xS63tXoQLquAHjScGHJLc3bQjsZPuKj4zGZrnNZDzz3wLdxHpPbqtFeWFDXx7y-2BdkVEDVw1A=
+336Agu-2BKDk8PfUKPK0ZcfYSZ-2BBi-2Fd5AAd5Dm-2BhrfqTLPjryOWdtVePQWWJXA0Z-2BxI=
+jMjpWGHMdtDNA70FW8ZBVsTVfL9GcRIWdpCdvCRTF97jX1YQcX-2B-2F1bLGI5OVqfiheCAInHr=
+p5gHl3cqF0l8Fc5GMRoaJfGm1JifiN-2BizTXteuYApswEOt6ZeJzCn68h5jc908d-2FT-2FCY3=
+80N4eVhwElI-3D )
+--94d62ec38c311d898fcf71e480a9ae9c7e7fa4637550620c66a6cbd95f20
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 640px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: inherit;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #e36654;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><link href=3D"https://fonts.google.com/=
+specimen/Work+Sans" rel=3D"stylesheet"><style>
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6    {
+        font-family: 'Work Sans', sans-serif;=20
+        }
+  body  {
+        font-family: 'Work Sans', sans-serif;
+        }
+  </style><!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#e36654" data-body-style=
+=3D"font-size:14px; font-family:inherit; color:#000000; background-color:#F=
+7F7F7;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" class=3D"wrapper" bgcolor=3D"#F7F7F7">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#F7F7F7" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"o=
+uter" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"640">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:640px;" alig=
+n=3D"center">
+                                      <tr>
+                                        <td role=3D"modules-container" styl=
+e=3D"padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor=3D"#=
+FFFFFF" width=3D"100%" align=3D"left"><table class=3D"module preheader preh=
+eader-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;">
+    <tr>
+      <td role=3D"module-content">
+        <p>Do you ever feel as if there aren=E2=80=99t enough hours in the =
+day? Here at Living Security, we understand that a day in the life of a Sec=
+urity Awareness Program Owner is packed!</p>
+      </td>
+    </tr>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"b08b1fc4-c52c-47c0-a9f1-b18631abe9fc">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;" valign=3D"top" align=3D"center">
+         =20
+        <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=3DEVwvmma=
+Di1RKsQYtmuLaoCg3bPB2Cp5iXCZVfMHp5rVsmY5U0-2FWNPmsxH8yw22NbHy37qZU0zi7a5naQ=
+LeFiUhfBtqrTqBxVxPkmglZLgU6BfDpTASZ8jLfQnl4bAJ16h8uJZMY4DHiT6peUjw8Hvbq-2FX=
+uV9SlzVnKWaz1s67MZ2mEIvzZaH-2BvJpdKLRCvChBtDh0H6kPDU9vUa0LT1j-2FA-3D-3DJNzu=
+_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5pDGAhtPBbS9D031pzuYJu3-2FrtfHyPs=
+l3et-2BGGY0Nh1FXMcOP1QFOGo8-2BPiulGOeSs61YPmDWdJIQvUEwL2sZ-2BbZync0LlJA-2Fz=
+nE2XJRBq11ZdelcDuXbsF0jWivdYM5iwSaSUeOqzcWyrVYT5rSsFQEHXyTzB4S-2B-2BJd02wV6=
+N6Z7CJK3Ljdn241E2-2BAICYsb5w-2FtRW-2BxAcubP3hmt10xh-2Fw2R88Y57-2BG-2B5QeDHV=
+8aLd9driwlrsGUIcNC44qQmMmIGV-2BVmEWoH7r7sqpU-2FMXhz14Ml7fiLVmgpwE-2FbUOZZQL=
+cdQYvURFjX2q8OAo589mxhmRtDTlDit-2BW-2B4ZYbqSJwnaH0A0uvKjj5c4IvTuRIZxIXuaC1K=
+iVp0XsPuY8LNFDEpgzRJ7OEwOTrxtvr7ve49zHPpMcU95LtFDHGdf64T-2Fr9gk-2FDry2HgRhz=
+y39qCHwm31gw8m7-2FWEaClJeT-2BvSgr8JxprQn1-2BlEdafKGwx-2B9cYT2Ybwn-2FHqoBjZp=
+OrOh-2BoAFK-2FCEWlhGLAKVsvh-2FXPhm6FfHpfqhIelngkz2cqcMSANmW2JMT5tioXfeGeULB=
+h1ukRjRK7AAf45lNLWli4kKzK9VHy9KVIBjgZ3x-2B8-2B-2FPhlZnAEgE0yyP1mKRJkXzm7D0h=
+Lw2EUoLD0QyITwTD9CNt24q9AT-2FdKibO6NC0J3ShJEzPD7Yae0DHN0MJZrsDQN2ApPiX-2BHN=
+14lAMrujJyHOuOSs6dPIAXbEux9fjf3dNR42ABJg8-2BSnjXbddfaUvAxMcrQsdRMfezXbcCsDd=
+WUTNP7je-2B5WVQ-2F5B0pQZ-2FFeeKZaPJ-2Fni6WOkwysCa0d99emV3P8OWjKi9EFlPaTX-2B=
+O5wbbXzxiE-2FAcTC-2BNRboKGedFRHG3QiOSNrQMpKGQGh1PObLA8ywAQv-2Bo2Tj-2FUw21ai=
+QFk2KubyhfygZqeuO5eKnflTkv3Q5bI-2F6hynu6XFn8O6keAf5JMIXga5TZYE3a0MWg-2Fy6ar=
+jbPvLSRi47C4MaqvLFS6KvSie8bA3fbMUUpdTen9IeoA-2FQvqkTdAVYbf7y8A-2BUd6g-2BBEc=
+N-2BYRnHA-3D-3D"><img class=3D"max-width" border=3D"0" style=3D"display:blo=
+ck; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans=
+-serif; font-size:16px; max-width:100% !important; width:100%; height:auto =
+!important;" width=3D"640" alt=3D"The Ultimate Program Owner Resource: Camp=
+aign in a Box!" data-proportionally-constrained=3D"true" data-responsive=3D=
+"true" src=3D"http://cdn.mcauto-images-production.sendgrid.net/8da17a11c39e=
+717c/032d695b-34dd-42e1-88b1-dad6b5ed75f6/619x275.png"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"1ea1b591-d934-4e56-8877-0819ab0999bd" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 40px 18px 40px; line-height:20px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><div style=3D"font-family: inherit; text-align: inherit"><span =
+style=3D"color: #000000; font-size: 14px; font-style: normal; font-variant-=
+ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spac=
+ing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transfor=
+m: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-=
+stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-th=
+ickness: initial; text-decoration-style: initial; text-decoration-color: in=
+itial; float: none; display: inline; font-family: inherit">Hi Arkadiy,</spa=
+n></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"lin=
+e-height: 1.38; margin-top: 0pt; margin-bottom: 10pt; font-size: 11pt; colo=
+r: #000000; background-color: transparent; font-weight: 400; font-style: no=
+rmal; font-variant-ligatures: normal; font-variant-caps: normal; font-varia=
+nt-numeric: normal; font-variant-east-asian: normal; text-decoration-line: =
+none; text-decoration-thickness: initial; text-decoration-style: initial; t=
+ext-decoration-color: initial; vertical-align: baseline; white-space: pre-w=
+rap; font-family: inherit">Do you ever feel as if there aren=E2=80=99t enou=
+gh hours in the day? Here at Living Security, we understand that a day in t=
+he life of a Security Awareness Program Owner is packed!<br>
+We=E2=80=99ve created a way to cut out some of the heavy legwork, so you ca=
+n focus your energy on actually running your program.<br>
+Living Security=E2=80=99s Campaign in a Box is a program owner=E2=80=99s go=
+-to resource for monthly awareness campaigns, without all the hard work tha=
+t comes with it.<br>
+In this post, we share what=E2=80=99s included in our Campaign in a Box and=
+ how it is going to benefit you!<br>
+</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><a href=3D"https:/=
+/u19600278.ct.sendgrid.net/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoCg3bPB2Cp5iX=
+CZVfMHp5rVsmY5U0-2FWNPmsxH8yw22NbHy37qZU0zi7a5naQLeFiUhfBtqrTqBxVxPkmglZLgU=
+6BfDpTASZ8jLfQnl4bAJ16h8uJZMY4DHiT6peUjw8Hvbq-2FXuV9SlzVnKWaz1s67MZ2mEIvzZa=
+H-2BvJpdKLRCvChBtDh0H6kPDU9vUa0LT1j-2FA-3D-3DdMJW_aKl06bRJjmvwJ2wPsUPZz2YJb=
+PbRFrBpTqox4xXDA5pDGAhtPBbS9D031pzuYJu3-2FrtfHyPsl3et-2BGGY0Nh1FXMcOP1QFOGo=
+8-2BPiulGOeSs61YPmDWdJIQvUEwL2sZ-2BbZync0LlJA-2FznE2XJRBq11ZdelcDuXbsF0jWiv=
+dYM5iwSaSUeOqzcWyrVYT5rSsFQEHXyTzB4S-2B-2BJd02wV6N6Z7CJK3Ljdn241E2-2BAICYsb=
+5w-2FtRW-2BxAcubP3hmt10xh-2Fw2R88Y57-2BG-2B5QeDHV8aLd9driwlrsGUIcNC44qQmMmI=
+GV-2BVmEWoH7r7sqpU-2FMXhz14Ml7fiLVmgpwE-2FbUOZZQLcdQYvURFjX2q8OAo589mxhmRtD=
+TlDit-2BW-2B4ZYbqSJwnaH0A0uvKjj5c4IvTuRIZxIXuaC1KiVp0XsPuY8LNFDEpgzRJ7OEwOT=
+rxtvr7ve49zHPpMcU95LtFDHGdf64T-2Fr9gk-2FDry2HgRhzy39qCHwm31gw8m7-2FWEaClJeT=
+-2BvSgr8JxprQn1-2BlEdafKGwx-2B9cYT2Ybwn-2FHqoBjZpOrOh-2BoAFK-2FCEWlhGLAKVsv=
+h-2FXPhm6FfHpfqhIelngkz2cqcMSANmW2JMT5tioXfeGeULBh1ukRjRK7AAf45lNLWli4kKzK9=
+VHy9KVIBjgZ3x-2B8-2B-2FPhlZnAEgE0yyP1mKRJkXzm7D0hLw2EUoLD0QyITwTD9CNt24q9AT=
+-2FdKibO6NC0J3ShJEzPD7Yae0DHN0MJZrsDQN2ApPiX-2BHN14lAMrujJyHOuOSs6dPIAXbEux=
+9fjf3dNR42ABJg8-2BSnjXbddfaUvAxMcrQsdRMfezXbcCsDdWUTNP7je-2B5WVQ-2F5B0pQZ-2=
+FFeeKZaPJ-2Fni6WOkwysCa0d99emV3P8OWjKi9EFlPaTX-2BFu6ZKwGVsrdVgXlLKIL42hfRv8=
+xo91qfP2POU5Aqk17Zf8nE8zV5HqKGeu6Td8c-2FH-2FAEqjOJGPTL6V36z2GVwTvf5-2B3Cgn6=
+-2FplA-2FDVp7ISso8YtIPNY9kWZgOVMPLrxDrw1HLJPto50VQId68U8cniO8Hd2Z-2Bo8Ae9Bt=
+uwhqtDfkEHPscUVtJsGt6iVuVhObQ09iicKJDv1Z3y1-2FwdlO9A-3D-3D"><span style=3D"=
+font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-v=
+ariant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: pre=
+-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; backgr=
+ound-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-de=
+coration-style: initial; text-decoration-color: initial; float: none; displ=
+ay: inline; color: #e36654; font-family: inherit"><strong>The Ultimate Prog=
+ram Owner Resource: Campaign in a Box!</strong></span></a></div><div></div>=
+</div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"divider" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table=
+-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda.1">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 40px 0px 40px;" role=3D"module-content" he=
+ight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"w9yiCQx4JusmopNeqfavk9" data-mc-module-version=
+=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 18px 40px; line-height:23px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><h2 style=3D"text-align: left"><span style=3D"font-size: 11px">=
+Breaking Security Awareness Webinar Series</span><br>
+Cybersecurity Awareness Month: Jumpstart Proven, Lasting Change in Security=
+ Culture This October</h2>
+<div style=3D"font-family: inherit; text-align: left">This month's Breaking=
+ Security Awareness (BSA) webinar will focus on effective strategies to pla=
+n and execute the best Cybersecurity Awareness Month (CSAM) possible, as we=
+ speak with a Top 10 Fortune Cloud 100 client who has demonstrated success =
+creating dynamic and effective October programs.</div><div></div></div></td=
+>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+module" data-role=3D"module-button" data-type=3D"button" role=3D"module" st=
+yle=3D"table-layout:fixed;" width=3D"100%" data-muid=3D"33d32f37-e2b1-4818-=
+b5d2-3ffc4ce932f1">
+      <tbody>
+        <tr>
+          <td align=3D"center" bgcolor=3D"" class=3D"outer-td" style=3D"pad=
+ding:0px 0px 0px 0px;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"wrapper-mobile" style=3D"text-align:center;">
+              <tbody>
+                <tr>
+                <td align=3D"center" bgcolor=3D"#3F69D4" class=3D"inner-td"=
+ style=3D"border-radius:6px; font-size:16px; text-align:center; background-=
+color:inherit;">
+                  <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=
+=3DEVwvmmaDi1RKsQYtmuLaoNHP2t5fzQET0Rhg-2FUK4wdaNa9ZuvclbzbBqlS0Q926sdLnE_a=
+Kl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5pDGAhtPBbS9D031pzuYJu3-2FrtfHyPsl3=
+et-2BGGY0Nh1FXMcOP1QFOGo8-2BPiulGOeSs61YPmDWdJIQvUEwL2sZ-2BbZync0LlJA-2FznE=
+2XJRBq11ZdelcDuXbsF0jWivdYM5iwSaSUeOqzcWyrVYT5rSsFQEHXyTzB4S-2B-2BJd02wV6N6=
+Z7CJK3Ljdn241E2-2BAICYsb5w-2FtRW-2BxAcubP3hmt10xh-2Fw2R88Y57-2BG-2B5QeDHV8a=
+Ld9driwlrsGUIcNC44qQmMmIGV-2BVmEWoH7r7sqpU-2FMXhz14Ml7fiLVmgpwE-2FbUOZZQLcd=
+QYvURFjX2q8OAo589mxhmRtDTlDit-2BW-2B4ZYbqSJwnaH0A0uvKjj5c4IvTuRIZxIXuaC1KiV=
+p0XsPuY8LNFDEpgzRJ7OEwOTrxtvr7ve49zHPpMcU95LtFDHGdf64T-2Fr9gk-2FDry2HgRhzy3=
+9qCHwm31gw8m7-2FWEaClJeT-2BvSgr8JxprQn1-2BlEdafKGwx-2B9cYT2Ybwn-2FHqoBjZpOr=
+Oh-2BoAFK-2FCEWlhGLAKVsvh-2FXPhm6FfHpfqhIelngkz2cqcMSANmW2JMT5tioXfeGeULBh1=
+ukRjRK7AAf45lNLWli4kKzK9VHy9KVIBjgZ3x-2B8-2B-2FPhlZnAEgE0yyP1mKRJkXzm7D0hLw=
+2EUoLD0QyITwTD9CNt24q9AT-2FdKibO6NC0J3ShJEzPD7Yae0DHN0MJZrsDQN2ApPiX-2BHN14=
+lAMrujJyHOuOSs6dPIAXbEux9fjf3dNR42ABJg8-2BSnjXbddfaUvAxMcrQsdRMfezXbcCsDdWU=
+TNP7je-2B5WVQ-2F5B0pQZ-2FFeeKZaPJ-2Fni6WOkwysCa0d99emV3P8OWjKi9EFlPaTX-2BzO=
+WmH1zfFr2UCEbnFj16uhBg7n9wJ5k8ViX9HtNeUQRmLR2HnbTK2qIQJZmgV3Z6Z3ZkecyMGFKF-=
+2F0TQp0I5uo64gEbQSAzH3BgZ53UTEES9AWDeE7TmnLMKqdGEurJ2k6U3vic-2FDeI5TWngQnCJ=
+Jdcx6IyDBIfH-2BvwjijD8vKb-2FrBCFKwBXlgOPGvoWqcbn0Q-2Fab2GfGEG-2B03A5Kpt-2FY=
+A-3D-3D" style=3D"background-color:#3F69D4; border:0px solid #333333; borde=
+r-color:#333333; border-radius:60px; border-width:0px; color:#ffffff; displ=
+ay:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; li=
+ne-height:normal; padding:15px 60px 15px 60px; text-align:center; text-deco=
+ration:none; border-style:solid;" target=3D"_blank">REGISTER NOW</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table class=3D"module" role=3D"module" data-type=3D"divider" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"tab=
+le-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda.1.1">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 0px 40px;" role=3D"module-content" h=
+eight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"w9yiCQx4JusmopNeqfavk9.1" data-mc-module-version=
+=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 18px 40px; line-height:23px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><h2 style=3D"text-align: left"><span style=3D"font-size: 11px">=
+Living Security Community</span><br>
+JOIN THE CONVERSATION</h2>
+<div style=3D"font-family: inherit; text-align: left">Living Security devel=
+oped this Community to support cybersecurity leaders just like you. We real=
+ize the challenges of your role, so let's help each other by sharing what's=
+ working best in your cybersecurity awareness program!</div><div></div></di=
+v></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+module" data-role=3D"module-button" data-type=3D"button" role=3D"module" st=
+yle=3D"table-layout:fixed;" width=3D"100%" data-muid=3D"33d32f37-e2b1-4818-=
+b5d2-3ffc4ce932f1.1">
+      <tbody>
+        <tr>
+          <td align=3D"center" bgcolor=3D"" class=3D"outer-td" style=3D"pad=
+ding:0px 0px 0px 0px;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"wrapper-mobile" style=3D"text-align:center;">
+              <tbody>
+                <tr>
+                <td align=3D"center" bgcolor=3D"#3F69D4" class=3D"inner-td"=
+ style=3D"border-radius:6px; font-size:16px; text-align:center; background-=
+color:inherit;">
+                  <a href=3D"https://u19600278.ct.sendgrid.net/ls/click?upn=
+=3DEVwvmmaDi1RKsQYtmuLaoAupaoOu-2Fb6nqBi1UIa-2F-2BtEug8MtJPk-2FVK3fzEGCaYzx=
+3b4O_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5pDGAhtPBbS9D031pzuYJu3-2Frtf=
+HyPsl3et-2BGGY0Nh1FXMcOP1QFOGo8-2BPiulGOeSs61YPmDWdJIQvUEwL2sZ-2BbZync0LlJA=
+-2FznE2XJRBq11ZdelcDuXbsF0jWivdYM5iwSaSUeOqzcWyrVYT5rSsFQEHXyTzB4S-2B-2BJd0=
+2wV6N6Z7CJK3Ljdn241E2-2BAICYsb5w-2FtRW-2BxAcubP3hmt10xh-2Fw2R88Y57-2BG-2B5Q=
+eDHV8aLd9driwlrsGUIcNC44qQmMmIGV-2BVmEWoH7r7sqpU-2FMXhz14Ml7fiLVmgpwE-2FbUO=
+ZZQLcdQYvURFjX2q8OAo589mxhmRtDTlDit-2BW-2B4ZYbqSJwnaH0A0uvKjj5c4IvTuRIZxIXu=
+aC1KiVp0XsPuY8LNFDEpgzRJ7OEwOTrxtvr7ve49zHPpMcU95LtFDHGdf64T-2Fr9gk-2FDry2H=
+gRhzy39qCHwm31gw8m7-2FWEaClJeT-2BvSgr8JxprQn1-2BlEdafKGwx-2B9cYT2Ybwn-2FHqo=
+BjZpOrOh-2BoAFK-2FCEWlhGLAKVsvh-2FXPhm6FfHpfqhIelngkz2cqcMSANmW2JMT5tioXfeG=
+eULBh1ukRjRK7AAf45lNLWli4kKzK9VHy9KVIBjgZ3x-2B8-2B-2FPhlZnAEgE0yyP1mKRJkXzm=
+7D0hLw2EUoLD0QyITwTD9CNt24q9AT-2FdKibO6NC0J3ShJEzPD7Yae0DHN0MJZrsDQN2ApPiX-=
+2BHN14lAMrujJyHOuOSs6dPIAXbEux9fjf3dNR42ABJg8-2BSnjXbddfaUvAxMcrQsdRMfezXbc=
+CsDdWUTNP7je-2B5WVQ-2F5B0pQZ-2FFeeKZaPJ-2Fni6WOkwysCa0d99emV3P8OWjKi9EFlPaT=
+X-2B9uo7rHAvs-2F7vFjqgt1YGEDPcpGJWmUkA4zu4PrnZxk5E2fxV0Zr5MbK4PIRlkgM1-2BB5=
+0Ik46RPGPaNXV-2FTE4fDDuIcOQL42f1Kc-2B04a-2FvgybKL8CKCy0jsWvyKrGoHI3O4z3qyBC=
+UDewBBSRY4cy-2FPcoJ0-2B40RnyGRJQGtybgVjVru4KQes-2BOuBc-2BLeDlXPxPVDw57cOIBC=
+HGglN6DRVXA-3D-3D" style=3D"background-color:#3F69D4; border:0px solid #333=
+333; border-color:#333333; border-radius:60px; border-width:0px; color:#fff=
+fff; display:inline-block; font-size:14px; font-weight:normal; letter-spaci=
+ng:0px; line-height:normal; padding:15px 60px 15px 60px; text-align:center;=
+ text-decoration:none; border-style:solid;" target=3D"_blank">GET MORE INFO=
+RMATION</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table class=3D"module" role=3D"module" data-type=3D"divider" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"tab=
+le-layout: fixed;" data-muid=3D"b52386a0-22b0-4038-988a-cb8192643bda">
+    <tbody>
+      <tr>
+        <td style=3D"padding:10px 40px 0px 40px;" role=3D"module-content" h=
+eight=3D"100%" valign=3D"top" bgcolor=3D"">
+          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" height=3D"4px" style=3D"line-height:4px; font-size:4=
+px;">
+            <tbody>
+              <tr>
+                <td style=3D"padding:0px 0px 4px 0px;" bgcolor=3D"#4fd5b3">=
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"social" alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" style=3D"table-layout: fixed;" data-muid=3D"8bd92b43-527a-485c-8970-c255a=
+e4d60e6">
+    <tbody>
+      <tr>
+        <td valign=3D"top" style=3D"padding:10px 0px 10px 0px; font-size:6p=
+x; line-height:10px;" align=3D"center">
+          <table align=3D"center" style=3D"-webkit-margin-start:auto;-webki=
+t-margin-end:auto;">
+            <tbody><tr align=3D"center"><td style=3D"padding: 0px 5px;" cla=
+ss=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoI75LnejYhHo32v-2BEnoLxkR8COdjnBV96sAb=
+EvzkuxWSRQkT_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTqox4xXDA5pDGAhtPBbS9D031pzuYJ=
+u3-2FrtfHyPsl3et-2BGGY0Nh1FXMcOP1QFOGo8-2BPiulGOeSs61YPmDWdJIQvUEwL2sZ-2BbZ=
+ync0LlJA-2FznE2XJRBq11ZdelcDuXbsF0jWivdYM5iwSaSUeOqzcWyrVYT5rSsFQEHXyTzB4S-=
+2B-2BJd02wV6N6Z7CJK3Ljdn241E2-2BAICYsb5w-2FtRW-2BxAcubP3hmt10xh-2Fw2R88Y57-=
+2BG-2B5QeDHV8aLd9driwlrsGUIcNC44qQmMmIGV-2BVmEWoH7r7sqpU-2FMXhz14Ml7fiLVmgp=
+wE-2FbUOZZQLcdQYvURFjX2q8OAo589mxhmRtDTlDit-2BW-2B4ZYbqSJwnaH0A0uvKjj5c4IvT=
+uRIZxIXuaC1KiVp0XsPuY8LNFDEpgzRJ7OEwOTrxtvr7ve49zHPpMcU95LtFDHGdf64T-2Fr9gk=
+-2FDry2HgRhzy39qCHwm31gw8m7-2FWEaClJeT-2BvSgr8JxprQn1-2BlEdafKGwx-2B9cYT2Yb=
+wn-2FHqoBjZpOrOh-2BoAFK-2FCEWlhGLAKVsvh-2FXPhm6FfHpfqhIelngkz2cqcMSANmW2JMT=
+5tioXfeGeULBh1ukRjRK7AAf45lNLWli4kKzK9VHy9KVIBjgZ3x-2B8-2B-2FPhlZnAEgE0yyP1=
+mKRJkXzm7D0hLw2EUoLD0QyITwTD9CNt24q9AT-2FdKibO6NC0J3ShJEzPD7Yae0DHN0MJZrsDQ=
+N2ApPiX-2BHN14lAMrujJyHOuOSs6dPIAXbEux9fjf3dNR42ABJg8-2BSnjXbddfaUvAxMcrQsd=
+RMfezXbcCsDdWUTNP7je-2B5WVQ-2F5B0pQZ-2FFeeKZaPJ-2Fni6WOkwysCa0d99emV3P8OWjK=
+i9EFlPaTX-2Bneo-2FCI-2FTaHOGBq3SGKjSj-2B3bbyvgm-2BH1AuYaNjm4l7lvHgAwer8i0x5=
+gzPrOldKddJpbjYASoCJv410YECr7mhDe6vAhF10Pd7AIlSvUEadbVB-2BGdHsrv4h7H4AVIoqe=
+ImZfEgWzaIB6qByYZ7BvZe2G70ttrsVr-2B2IM9LMEffTkB8fNuf5twfYVLOglXacE2fuAXVeFu=
+KayNg69dkK3Dw-3D-3D" target=3D"_blank" alt=3D"Twitter" title=3D"Twitter" st=
+yle=3D"display:inline-block; background-color:#e36654; height:30px; width:3=
+0px;">
+        <img role=3D"social-icon" alt=3D"Twitter" title=3D"Twitter" src=3D"=
+https://mc.sendgrid.com/assets/social/white/twitter.png" style=3D"height:30=
+px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoHzAtCmJySJE626E0Va66T6PHRKBDsZM6p2HRC=
+s35N1ID-2BP8uD23VvMJ5d2BTSHxMg-3D-3D0C8B_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTq=
+ox4xXDA5pDGAhtPBbS9D031pzuYJu3-2FrtfHyPsl3et-2BGGY0Nh1FXMcOP1QFOGo8-2BPiulG=
+OeSs61YPmDWdJIQvUEwL2sZ-2BbZync0LlJA-2FznE2XJRBq11ZdelcDuXbsF0jWivdYM5iwSaS=
+UeOqzcWyrVYT5rSsFQEHXyTzB4S-2B-2BJd02wV6N6Z7CJK3Ljdn241E2-2BAICYsb5w-2FtRW-=
+2BxAcubP3hmt10xh-2Fw2R88Y57-2BG-2B5QeDHV8aLd9driwlrsGUIcNC44qQmMmIGV-2BVmEW=
+oH7r7sqpU-2FMXhz14Ml7fiLVmgpwE-2FbUOZZQLcdQYvURFjX2q8OAo589mxhmRtDTlDit-2BW=
+-2B4ZYbqSJwnaH0A0uvKjj5c4IvTuRIZxIXuaC1KiVp0XsPuY8LNFDEpgzRJ7OEwOTrxtvr7ve4=
+9zHPpMcU95LtFDHGdf64T-2Fr9gk-2FDry2HgRhzy39qCHwm31gw8m7-2FWEaClJeT-2BvSgr8J=
+xprQn1-2BlEdafKGwx-2B9cYT2Ybwn-2FHqoBjZpOrOh-2BoAFK-2FCEWlhGLAKVsvh-2FXPhm6=
+FfHpfqhIelngkz2cqcMSANmW2JMT5tioXfeGeULBh1ukRjRK7AAf45lNLWli4kKzK9VHy9KVIBj=
+gZ3x-2B8-2B-2FPhlZnAEgE0yyP1mKRJkXzm7D0hLw2EUoLD0QyITwTD9CNt24q9AT-2FdKibO6=
+NC0J3ShJEzPD7Yae0DHN0MJZrsDQN2ApPiX-2BHN14lAMrujJyHOuOSs6dPIAXbEux9fjf3dNR4=
+2ABJg8-2BSnjXbddfaUvAxMcrQsdRMfezXbcCsDdWUTNP7je-2B5WVQ-2F5B0pQZ-2FFeeKZaPJ=
+-2Fni6WOkwysCa0d99emV3P8OWjKi9EFlPaTX-2BrimRm3AWIzSt2zFOizHIcC7tb-2FzTU1Tif=
+CjKiJydCk-2FFKN1ON2UFNg9W1p5CuXW5tB5DjdRRHMZvfHEmZt8l-2FJs7gRpndPR9Kv5NnZCG=
+FZvwrF02D38qLfqmxqVWIL-2FJHhtPykknjUFv3Qi66bCthkNsJCE4IpSsO-2F1igxCJwXCj94X=
+XFYYvFHw8u6JREC3-2F6wOCkaCrbHTxAs4Nq-2Fa7JA-3D-3D" target=3D"_blank" alt=3D=
+"Instagram" title=3D"Instagram" style=3D"display:inline-block; background-c=
+olor:#e36654; height:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"Instagram" title=3D"Instagram" src=
+=3D"https://mc.sendgrid.com/assets/social/white/instagram.png" style=3D"hei=
+ght:30px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td><td style=3D"padding: 0px 5px;" class=3D"social-icon-column">
+      <a role=3D"social-icon-link" href=3D"https://u19600278.ct.sendgrid.ne=
+t/ls/click?upn=3DEVwvmmaDi1RKsQYtmuLaoB-2FSxnJj7QW6IRziGDQmuqGIy9gnzMgazmK7=
+6EsIHs1NY7KRGyQUWqtivr4HtQmcqw-3D-3DB3Hx_aKl06bRJjmvwJ2wPsUPZz2YJbPbRFrBpTq=
+ox4xXDA5pDGAhtPBbS9D031pzuYJu3-2FrtfHyPsl3et-2BGGY0Nh1FXMcOP1QFOGo8-2BPiulG=
+OeSs61YPmDWdJIQvUEwL2sZ-2BbZync0LlJA-2FznE2XJRBq11ZdelcDuXbsF0jWivdYM5iwSaS=
+UeOqzcWyrVYT5rSsFQEHXyTzB4S-2B-2BJd02wV6N6Z7CJK3Ljdn241E2-2BAICYsb5w-2FtRW-=
+2BxAcubP3hmt10xh-2Fw2R88Y57-2BG-2B5QeDHV8aLd9driwlrsGUIcNC44qQmMmIGV-2BVmEW=
+oH7r7sqpU-2FMXhz14Ml7fiLVmgpwE-2FbUOZZQLcdQYvURFjX2q8OAo589mxhmRtDTlDit-2BW=
+-2B4ZYbqSJwnaH0A0uvKjj5c4IvTuRIZxIXuaC1KiVp0XsPuY8LNFDEpgzRJ7OEwOTrxtvr7ve4=
+9zHPpMcU95LtFDHGdf64T-2Fr9gk-2FDry2HgRhzy39qCHwm31gw8m7-2FWEaClJeT-2BvSgr8J=
+xprQn1-2BlEdafKGwx-2B9cYT2Ybwn-2FHqoBjZpOrOh-2BoAFK-2FCEWlhGLAKVsvh-2FXPhm6=
+FfHpfqhIelngkz2cqcMSANmW2JMT5tioXfeGeULBh1ukRjRK7AAf45lNLWli4kKzK9VHy9KVIBj=
+gZ3x-2B8-2B-2FPhlZnAEgE0yyP1mKRJkXzm7D0hLw2EUoLD0QyITwTD9CNt24q9AT-2FdKibO6=
+NC0J3ShJEzPD7Yae0DHN0MJZrsDQN2ApPiX-2BHN14lAMrujJyHOuOSs6dPIAXbEux9fjf3dNR4=
+2ABJg8-2BSnjXbddfaUvAxMcrQsdRMfezXbcCsDdWUTNP7je-2B5WVQ-2F5B0pQZ-2FFeeKZaPJ=
+-2Fni6WOkwysCa0d99emV3P8OWjKi9EFlPaTX-2BACu8FnNs-2BGrmkCLl0ThdR9ZSy5QPN-2FU=
+wjElaEsBt3ja-2BkjjyybrdKeX7XGEv-2Fz-2BoFeKmMYjYkaBV-2FSycsMHrXqH9N4TFf5D0nH=
+gsrRIeOXn5FOxaeOpwT5-2FJEhmv9YBGmWfRlbUM-2FzWLcG3rXY8kE4Ov2qETKJ6h5iSuOHfQK=
+-2BYu7PI-2BuOe6XukJRdvAjt8rxLMjxdPvYxtdK817dD-2F-2BhA-3D-3D" target=3D"_bla=
+nk" alt=3D"LinkedIn" title=3D"LinkedIn" style=3D"display:inline-block; back=
+ground-color:#e36654; height:30px; width:30px;">
+        <img role=3D"social-icon" alt=3D"LinkedIn" title=3D"LinkedIn" src=
+=3D"https://mc.sendgrid.com/assets/social/white/linkedin.png" style=3D"heig=
+ht:30px; width:30px;" height=3D"30" width=3D"30">
+      </a>
+    </td></tr></tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><div data-role=3D"module-unsubscribe" class=3D"module" role=3D"mo=
+dule" data-type=3D"unsubscribe" style=3D"color:#444444; font-size:12px; lin=
+e-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid=
+=3D"4e838cf3-9892-4a6d-94d6-170e474d21e5"><div class=3D"Unsubscribe--addres=
+sLine"><p class=3D"Unsubscribe--senderName" style=3D"font-size:12px; line-h=
+eight:20px;">Cybersecurity Human Risk Update</p><p style=3D"font-size:12px;=
+ line-height:20px;"><span class=3D"Unsubscribe--senderAddress">Living Secur=
+ity, 3595 RR 620 South</span>, <span class=3D"Unsubscribe--senderCity">Aust=
+in</span>, <span class=3D"Unsubscribe--senderState">TX</span> <span class=
+=3D"Unsubscribe--senderZip">78738</span></p></div><p style=3D"font-size:12p=
+x; line-height:20px;"><a class=3D"Unsubscribe--unsubscribeLink" href=3D"htt=
+ps://u19600278.ct.sendgrid.net/wf/unsubscribe?upn=3D5Z3XbQWSN2-2FVMFeM7B17h=
+16F-2BrThWWo6R3pIpxtZ1gfb3MorQRQLDSmhBTzuDwA8dgmvK0Z-2F5Hdx6tJSVYUJa0MH-2FP=
+CMb2Zb8QVpML4Iz-2BfRGLcfxrTGYZrQfA50-2FZwE-2BpcKqRw-2FCt7JVknut-2FqMDRGBKBV=
+zidFB8Pnzf7G7zkpI-2B1RDtR1hcSnXMSusLz-2BKLOW8KjVbPXvslhlNyK5SknQEnnsLnv2DBR=
+L-2FHT5s8J-2FvCd18qbWUpTnjrZHire56ADTr0TbipNKhaqgglCEGzH7rM5biMmEf6o71WqNxG=
+ljA0-2FcRGH3p0uuMr8trh-2BFghnQylUMjuuLP07i500NDb4FEVAjuRPm1POu9c9kP34W3pJC8=
+qeUMLSOexUf58ge9D3qtii-2B-2FjMOoAt-2FySJSDCJdmA5qSDG-2F29D888zIhDz6Op-2FDC7=
+yLRIwfbtZH-2B9IE-2BqT3Xmh96o8aLw-2F0-2Fk4t6H0fbbGUufO2mhkDocp5J2y29t8dtH4gk=
+lrtQmBEmk9N9BbbxfiB0rglO-2BDhq1ip-2BkNAUMfkXxrgM535WAaJ6aqDoSTpKDEv6fZV6rpA=
+yz8CwMYXxUsAUF9xUBZfhZH2cbj1zGb4Cq0A0EVbdYLjdKgbZ0OXbglbEjTiuy2F0RRgk-2B3OW=
+9fcIQ7l3UuRo7SCAoI0Rn1afoHCvLpyDoYSyK9CU5Y98YcnbTZ6Mk-2FXVWW-2FesaCPBZdkoBL=
+HRQgcQrCy7SA67JkAagSpy2TdvmLAYO6wEra6DWwN-2BuQPmBn4YJ3FZA00Td9-2BDrPiCO0j7y=
+n3borM25rshTWZpBKXy4-2BJd08Neb4CUUJsv9m5xdHeGeam5JQxWx90QL0xS63tXoQLquAHjSc=
+GHJLc3bQjsZPuKj4zGZrnNZDzz3wLdxHpPbqtMB9nVIUXiY9pT-2FCYog33aKFwP1Uxz57C4Ro-=
+2Ber4XbB4Xzv-2Brejao5iO3iUqJmcRkk1uQHZPbhvoTadpr-2FDZKEX3zQljIBu9QdfHBKfc8Y=
+i2H7M18tEqdgHtRmX-2FlQy6f5HaDnIBD0luYiZjGjO3xZJXbG9fiRQ8Nv42VIe5K7DY97mfxNz=
+Rev8bH3DaYpfEQyqFqlENeBhFkZvIwHCvbkCUDvjx16afHkbZUUZjWieE-3D" target=3D"_bl=
+ank" style=3D"">Unsubscribe</a></p></div></td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+    <img src=3D"https://u19600278.ct.sendgrid.net/wf/open?upn=3D5Z3XbQWSN2-=
+2FVMFeM7B17h16F-2BrThWWo6R3pIpxtZ1gfb3MorQRQLDSmhBTzuDwA8dgmvK0Z-2F5Hdx6tJS=
+VYUJa0MH-2FPCMb2Zb8QVpML4Iz-2BfRGLcfxrTGYZrQfA50-2FZwE-2BpcKqRw-2FCt7JVknut=
+-2FqMDRGBKBVzidFB8Pnzf7G7zkpI-2B1RDtR1hcSnXMSusLz-2BKLOW8KjVbPXvslhlNyK5Skn=
+QEnnsLnv2DBRL-2FHT5s8J-2FvCd18qbWUpTnjrZHire56ADTr0TbipNKhaqgglCEGzH7rM5biM=
+mEf6o71WqNxGljA0-2FcRGH3p0uuMr8trh-2BFghnQylUMjuuLP07i500NDb4FEVAjuRPm1POu9=
+c9kP34W3pJC8qeUMLSOexUf58ge9D3qtii-2B-2FjMOoAt-2FySJSDCJdmA5qSDG-2F29D888zI=
+hDz6Op-2FDC7yLRIwfbtZH-2B9IE-2BqT3Xmh96o8aLw-2F0-2Fk4t6H0fbbGUufO2mhkDocp5J=
+2y29t8dtH4gklrtQmBEmk9N9BbbxfiB0rglO-2BDhq1ip-2BkNAUMfkXxrgM535WAaJ6aqDoSTp=
+KDEv6fZV6rpAyz8CwMYXxUsAUF9xUBZfhZH2cbj1zGb4Cq0A0EVbdYLjdKgbZ0OXbglbEjTiuy2=
+F0RRgk-2B3OW9fcIQ7l3UuRo7SCAoI0Rn1afoHCvLpyDoYSyK9CU5Y98YcnbTZ6Mk-2FXVWW-2F=
+esaCPBZdkoBLHRQgcQrCy7SA67JkAagSpy2TdvmLAYO6wEra6DWwN-2BuQPmBn4YJ3FZA00Td9-=
+2BDrPiCO0j7yn3borM25rshTWZpBKXy4-2BJd08Neb4CUUJsv9m5xdHeGeam5JQxWx90QL0xS63=
+tXoQLquAHjScGHJLc3bQjsZPuKj4zGZrnNZDzz3wLdxHpPbqtPc3H78nJ6EFbBjdWCXIjIeBOD4=
+iwZt0Xp5GXueHvdnKPylQPvyGpeB5OJjEhNzxkBZmXKzA9jZCsOb3pQcIwGVtqRnNHMxAbZVyfK=
+VuKStA-2B-2FAC4s2CPVMUjBZD94v-2B5X6vi-2BPUcC9MK4i9fARToJTnp9UcfWFSkMa2cxRiD=
+H-2FSLkx42EYN1uU-2Fi-2FvCPcLLItnl1wXSaXewlcjJPh9BfFw-3D-3D" alt=3D"" width=
+=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !=
+important;border-width:0 !important;margin-top:0 !important;margin-bottom:0=
+ !important;margin-right:0 !important;margin-left:0 !important;padding-top:=
+0 !important;padding-bottom:0 !important;padding-right:0 !important;padding=
+-left:0 !important;"/></body>
+  </html>
+--94d62ec38c311d898fcf71e480a9ae9c7e7fa4637550620c66a6cbd95f20--

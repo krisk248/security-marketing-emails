@@ -1,0 +1,171 @@
+Delivered-To: arkadiy.tetelman@chime.com
+Received: by 2002:adf:f951:0:0:0:0:0 with SMTP id q17csp3330103wrr; Mon, 12
+ Jul 2021 07:02:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDu9mQuQhYiydagkOuFxI6F8lmdKzTFqbH56pOAG6l0D75IhOS9seD9tKAg9yUHP0A8SAX
+X-Received: by 2002:a17:90a:2f46:: with SMTP id
+ s64mr18062655pjd.31.1626098544188; Mon, 12 Jul 2021 07:02:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626098544; cv=none; d=google.com;
+ s=arc-20160816;
+ b=evRwbTRjenR5qxjJ+VKty80KNNNzAH6v/FyxAJlfbv3LTGyUkkFOatwhCNf8Z3+fra
+ C96I3DisIcb/9K+rsfc61rGa6iBUUMbQqAUgC9Z/lLnxUA1pmzDy3gBvzKN8BKuE7rKw
+ 6lnh0KrxM3suQTqQyjsX43m77fMl6anXY1jpcwh8Sh1enYG2DC0ggKW6gkr6PJkwUE5R
+ +J6ltmCqhBqXulVHHsrvXkMkIss2szL0SmqoJ1ob4jlrG6Phj2THCx8pykyf/ggeNBDb
+ INpkHaZ1m/yg/Bf9+btN08dLPNeHak3wwtTOMRJrlU/cjbi5wsdqJt8Tp+EZGdbgLUVX tdtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=list-unsubscribe:message-id:subject:to:reply-to:from:mime-version
+ :content-transfer-encoding:date:dkim-signature;
+ bh=sCy+Ufw5gWlk7vaFZwDZj0R0e/S4Q1zQNnjzdmeTTks=;
+ b=feu9F5gazubkWvw+vBAkWGmJz4mtV/9VJHCerRHLd36Fa/jl89WyqpTExM2G5Bs6zN
+ 9UodGYNofdsG07A6Yud2HzAu4sh4Tux8jDVqo8w9WeOQYSJXDPKK6TenfNFtdLoKMnGt
+ 3vTVXA/tbyScMoTjVuukzKsOtItilXpaLXkzDfvuGvYyyXEUivbiVXKfXxWj1/aF2VoF
+ m0ivZZDbo9sdb8xKVo3h7jpPoh1ULRP9v5fs17xK17oNi6akqGVVSzzWRnH8PseWxOeW
+ ooCp6fRm/zNzcvC3rsuyLNV2NqU3Z99nh9UZcQwgdB5OdJgR9vKV2IcmHn0a/L7RAcGF oseQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=WzHLtXP7;
+ spf=pass (google.com: domain of
+ 97u4qnk-y0bsae-kjkwf8-xecj45-423nhy-h-m2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net>
+Received: from techtarget.outbound.ed10.com (techtarget.outbound.ed10.com.
+ [96.47.30.73]) by mx.google.com with ESMTP id
+ b11si18557258pfm.264.2021.07.12.07.02.22 for <arkadiy.tetelman@chime.com>;
+ Mon, 12 Jul 2021 07:02:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of
+ 97u4qnk-y0bsae-kjkwf8-xecj45-423nhy-h-m2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender) client-ip=96.47.30.73;
+Authentication-Results: mx.google.com; dkim=pass
+ header.i=@tt-mail.techtarget.com header.s=ED-DKIM-V3 header.b=WzHLtXP7;
+ spf=pass (google.com: domain of
+ 97u4qnk-y0bsae-kjkwf8-xecj45-423nhy-h-m2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net
+ designates 96.47.30.73 as permitted sender)
+ smtp.mailfrom=97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net;
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tt-mail.techtarget.com
+Return-Path: <97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net>
+DKIM-Signature: v=1; a=rsa-sha1; d=tt-mail.techtarget.com; s=ED-DKIM-V3;
+ c=relaxed/relaxed; q=dns/txt; i=@tt-mail.techtarget.com; t=1626098541;
+ h=From; bh=LCPl4VtgQ0yRc7ldo3vuKqTc+o8=;
+ b=WzHLtXP7+v1BfZUTvrC4RZqhCK3kRlxzNV3OLDeH3Zo+pdduxP1XgmP47AL7nt1B
+ 3RKsNruxoFFpWkiX1WppWYE1tu1ggDwrxYSTr5SrqsdLMpwem6bGF3irXinWMPAo
+ CjO7NKzny0LHKqjHzDvHtVuqVJuFSJrlfvuXs5KKgUA=;
+Received: from [127.0.0.1] ([127.0.0.1:50620]) by bm1-22.bo3.e-dialog.com
+ (envelope-from
+ <97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net>)
+ (ecelerity 2.2.2.45 r(34222M)) with ECSTREAM id 11/67-17864-D6B4CE06; Mon, 12
+ Jul 2021 10:02:21 -0400
+Date: Mon, 12 Jul 2021 10:02:21 -0400
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "TechTarget" <info@tt-mail.techtarget.com>
+Reply-To: "TechTarget" <info.TK8EZA.11884739@tt-mail.techtarget.com>
+To: arkadiy.tetelman@chime.com
+Subject: How to standardize your meeting rooms
+Message-Id: <7824-325-97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@e-dialog.com>
+X-Mail-From: 97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@tt-mail.bounce.ed10.net
+X-Match: tt-mail.bounce.ed10.net
+X-RCPT-To: arkadiy.tetelman@chime.com
+X-Mailer: EDMAIL R6.00.02
+List-Unsubscribe: <mailto:97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96@unsubscribe.ed10.net>,
+ <http://ed-link.techtarget.com/u/97U4QNK/KJKWF8/XECJ45/423NHY/7Y/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/>
+x-250ok-CID: 11884739
+
+
+
+
+<html><body><!-- begin blank table -->
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- blank gif row -->
+<tr>
+<td style="display: none; font-size: 0; color: #fefefe; line-height: 0; max-height: 0; width: 0; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden;" height="0"><a
+ href="https://go.techtarget.com/r/169762473/36983911/1" style="text-decoration:none"
+>&nbsp;</a></td>
+</tr>
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+<!-- begin 250okblank table -->
+<style><!--
+ @media print{ #_two50 { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=p&e=arkadiy.tetelman@chime.com&c=11884739&promo_type=White Paper Dedicated'); } } blockquote #_two50, #mailContainerBody #_two50, div.OutlookMessageHeader, table.moz-email-headers-table { background-image:url('http://250analytics.techtarget.com/ea/scsC0vfEyj/?t=f&e=arkadiy.tetelman@chime.com&c=11884739&promo_type=White Paper Dedicated'); }
+--></style>
+<img id="_two50_img" style="margin: 0 !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important;" src="http://250analytics.techtarget.com/ea/scsC0vfEyj/?e=arkadiy.tetelman@chime.com&c=11884739&promo_type=White Paper Dedicated" alt="" width="1" height="1" />
+<table border="0" cellspacing="0" cellpadding="0" width="0">
+<!-- end blank gif row -->
+</table>
+<!-- end blank table -->
+
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td style="padding: 20px 0px 0px 0px;">
+<font style="font-size: 12px;font-family: arial,helvetica,sans-serif;color: #000000;">
+<a
+ href="https://go.techtarget.com/r/169761484/36983911/1"
+><b><font style="font-size: 16px;"><font style="color: #000000;"><font style="color: #000000;">How to standardize your meeting rooms</font></font></font></b><b></b></a><br /></font>
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="2" color="#000000"><i>This resource is brought to you by our sponsors<br /></i></font></td>
+</tr>
+<tr>
+<td style="padding-top:10px;padding-bottom:10px;" width="100" height="25">
+<table border="0" cellspacing="0" cellpadding="0" width="150" bgcolor="#FF2700">
+<tr>
+<td style="padding:10px 10px 10px 10px" align="center"><a
+ href="https://go.techtarget.com/r/169761484/36983911/2" style="color: #ffffff; font-size: 12px; text-align: center; font-family: Arial; text-decoration: none;"
+><b>VIEW NOW</b></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding: 20px 0px 30px 0px;">
+<font face="arial, trebuchet, verdana" size="2" color="#000000"><table border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td>
+<font size="2">
+<font face="arial, trebuchet, verdana">The idea of standardizing your meeting room estate across your global offices can be an intimidating one, and it&rsquo;s true that to do it properly requires extensive planning and organization.<br /><br />In this brief article, learn how Shure can help you make a positive impact on meeting rooms across your enterprise.<br />
+</font>
+</font>
+</td>
+</tr>
+</table></font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;" valign="middle"><font face="arial, trebuchet, verdana" size="1">ABOUT THIS EMAIL</font>
+</td>
+</tr>
+<tr>
+<td style="padding: 0px 0px 0px 0px;">
+<hr />
+</td>
+</tr>
+<tr>
+<td><font face="arial, trebuchet, verdana" size="1" color="#000000">TechTarget Updates is published by <a
+ href="https://www.techtarget.com/"
+>TechTarget, Inc</a>., 275 Grove Street, Newton, Massachusetts, 02466 US,<br />Click to: <a
+ href="http://ed-link.techtarget.com/u/97U4QNK/KJKWF8/XECJ45/423NHY/7Y/YXJrYWRpeS50ZXRlbG1hbkBjaGltZS5jb20=/"
+>Unsubscribe </a><br /><br />You are receiving this email because you are a member of TechTarget. When you access content from this email, your information may be shared with the sponsors or future sponsors of that content and with our Partners, see up-to-date <a
+ href="https://go.techtarget.com/r/169762475/36983911/1"
+>Partners List</a>, as described in our <a
+ href="https://go.techtarget.com/r/169762476/36983911/1"
+>Privacy Policy</a>. For additional information, please contact: <a
+ href="mailto:webmaster@techtarget.com"
+>webmaster@techtarget.com</a> <br /><br />&copy; 2021 TechTarget, Inc. all rights reserved.&nbsp; Designated trademarks, brands, logos, and service marks are the property of their respective owners.<br /> <br /><a
+ href="https://go.techtarget.com/r/169762476/36983911/1"
+>Privacy Policy</a> | <a
+ href="https://go.techtarget.com/r/169762475/36983911/1"
+>Partners List</a><br /></font></td>
+</tr>
+</table>
+
+<!-- [[97U4QNK-Y0BSAE-KJKWF8-XECJ45-423NHY-H-M2-20210712-7684b2054bfc96]] --><img height="1" width="1" src="http://link.tt-mail.techtarget.com/o/97U4QNK/KJKWF8/XECJ45/423NHY/HQAW/52"></body></html>
+
+
